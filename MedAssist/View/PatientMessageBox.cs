@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MedAssistTest
+namespace MedAssist.View
 {
-    public partial class Form1 : Form
+    public partial class PatientMessageBox : Form
     {
-        public Form1()
+        public PatientMessageBox()
         {
             InitializeComponent();
+        }
+
+        private void PatientMessageBox_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
