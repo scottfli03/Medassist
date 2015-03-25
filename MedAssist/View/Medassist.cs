@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace MedAssist.View
 {
-    public partial class Form1 : Form
+    public partial class Medassist : Form
     {
         private MenuStrip menuStrip1;
         private ToolStripMenuItem usersToolStripMenuItem;
         private ToolStripMenuItem patientsToolStripMenuItem;
         private ToolStripMenuItem reportsToolStripMenuItem;
 
-        public Form1()
+        public Medassist()
         {
             InitializeComponent();
         }
