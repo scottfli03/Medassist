@@ -44,9 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\MedassistDB.cs" />
     <Compile Include="Model\Administrator.cs" />
     <Compile Include="Model\Doctor.cs" />
+    <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Nurse.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\Test.cs" />
     <Compile Include="Model\UserSecurity.cs" />
     <Compile Include="Model\Visit.cs" />
     <Compile Include="View\Medassist.cs">
@@ -210,7 +215,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
-    <Folder Include="DAL\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DB\UseToBuild_cs6232-g5.sql" />
