@@ -44,6 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Administrator.cs" />
+    <Compile Include="Model\Doctor.cs" />
+    <Compile Include="Model\Nurse.cs" />
+    <Compile Include="Model\UserSecurity.cs" />
+    <Compile Include="Model\Visit.cs" />
     <Compile Include="View\Medassist.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,8 +211,9 @@
   <ItemGroup>
     <Folder Include="Controller\" />
     <Folder Include="DAL\" />
-    <Folder Include="DB\" />
-    <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DB\UseToBuild_cs6232-g5.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
