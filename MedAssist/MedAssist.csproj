@@ -46,8 +46,14 @@
   <ItemGroup>
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\Validator.cs" />
+    <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\MedassistDB.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
+    <Compile Include="DoctorsIDandNameDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DoctorsIDandNameDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Model\Administrator.cs" />
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\Employee.cs" />
@@ -167,6 +173,17 @@
     <EmbeddedResource Include="View\VisitHistory.resx">
       <DependentUpon>VisitHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DoctorsIDandNameDataSet.xsc">
+      <DependentUpon>DoctorsIDandNameDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DoctorsIDandNameDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DoctorsIDandNameDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DoctorsIDandNameDataSet.xss">
+      <DependentUpon>DoctorsIDandNameDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
