@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\Validator.cs" />
     <Compile Include="DAL\MedassistDB.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
