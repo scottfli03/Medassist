@@ -21,19 +21,19 @@ namespace MedAssist.DAL
             SqlConnection connection = MedassistDB.GetConnection();
             string insertStatement =
                 "Insert Patients " +
-                "(FirstName, MiddleInit, LastName, SSN, StreetAddress1,, StreetAddress2, City, State, Zip, Phone, DOB, Gender) " +
-                "Values (@FirstName, @MiddleInit @LastName, @SSN, @StreetAddress1, @StreetAddress2, @City, @State, @Zip, @Phone, @DOB, @Gender)";
+                "(FirstName, MInit, LastName, SSN, StreetAddress1, StreetAddress2, City, State, ZipCode, Phone, DOB, Gender) " +
+                "Values (@FirstName, @MInit, @LastName, @SSN, @StreetAddress1, @StreetAddress2, @City, @State, @ZipCode, @Phone, @DOB, @Gender)";
 
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@SSN", patient.SSN);
             insertCommand.Parameters.AddWithValue("@FirstName", patient.FirstName);
             insertCommand.Parameters.AddWithValue("@LastName", patient.LastName);
             insertCommand.Parameters.AddWithValue("@MInit", patient.MInit);
-            insertCommand.Parameters.AddWithValue("@StreetAddress", patient.StreetAddr1);
-            insertCommand.Parameters.AddWithValue("@StreetAddress", patient.StreetAddr2);
+            insertCommand.Parameters.AddWithValue("@StreetAddress1", patient.StreetAddr1);
+            insertCommand.Parameters.AddWithValue("@StreetAddress2", patient.StreetAddr2);
             insertCommand.Parameters.AddWithValue("@City", patient.City);
             insertCommand.Parameters.AddWithValue("@State", patient.State);
-            insertCommand.Parameters.AddWithValue("@Zip", patient.ZipCode);
+            insertCommand.Parameters.AddWithValue("@ZipCode", patient.ZipCode);
             insertCommand.Parameters.AddWithValue("@Phone", patient.Phone);
             insertCommand.Parameters.AddWithValue("@DOB", patient.DOB);
             insertCommand.Parameters.AddWithValue("@Gender", patient.Gender);
