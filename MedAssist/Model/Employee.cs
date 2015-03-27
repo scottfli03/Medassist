@@ -11,12 +11,12 @@ namespace MedAssist.Model
         private int employeeID;
         private string ssn;
         private string fName;
-        private string? mInit;
+        private string mInit;
         private string lName;
         private DateTime dob;
         private char gender;
         private string street1;
-        private string? street2;
+        private string street2;
         private string city;
         private string phone;
         private string state;
@@ -58,7 +58,7 @@ namespace MedAssist.Model
             }
         }
 
-        public string? MInit
+        public string MInit
         {
             get
             {
@@ -118,7 +118,7 @@ namespace MedAssist.Model
             }
         }
 
-        public string? StreetAddr2
+        public string StreetAddr2
         {
             get
             {
@@ -139,6 +139,18 @@ namespace MedAssist.Model
             set
             {
                 city = value;
+            }
+        }
+
+        public string State
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
             }
         }
 

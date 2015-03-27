@@ -16,15 +16,5 @@ namespace MedAssist.View
         {
             InitializeComponent();
         }
-
-        private void Visit_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
