@@ -1,6 +1,4 @@
-﻿using MedAssist.Controller;
-using MedAssist.DAL;
-using MedAssist.Model;
+﻿using MedAssist.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,86 +9,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MedAssist
+namespace MedAssist.View
 {
-    public partial class NewPatient : Form
+    public partial class UpdatePatientForm : Form
     {
 
         private Patient patient;
 
-        public NewPatient()
+        public UpdatePatientForm()
         {
             InitializeComponent();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+
+
+        private void DisplayPatient()
         {
-            Close();
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            if (IsValidData())
-            {
-                patient = new Patient();
-                PutPatientData(patient);
+            txtFirstName.Text = patient.FirstName;
+            txtMiddleInit.Text = Convert.ToString(patient.MInit);
+            txtLastName.Text = patient.LastName;
+            txtSSN.Text = patient.SSN;
 
 
-                try
-                {
-                    patient.PatientID = PatientDAL.AddPatient(patient); 
-                    DialogResult = DialogResult.OK;
-                    MessageBox.Show("Patient Accepted");
-                }
-                catch (Exception ex)
-                {
-                    {
-                        MessageBox.Show(ex.Message, ex.GetType().ToString());
-                    }
-                }
-                Close();
-            }
-        }
-
-
-        private bool IsValidData()
-        {
-            if (Validator.IsPresent(txtFirstName) &&
-                Validator.IsPresent(txtLastName) &&
-                Validator.IsPresent(txtSSN) &&
-                Validator.IsPresent(dateTimePickerDOB) &&
-                Validator.IsPresent(txtAddress1) &&
-                Validator.IsPresent(txtCity) &&
-                Validator.IsPresent(txtState) &&
-                Validator.IsPresent(txtPhone) &&
-                Validator.IsPresent(txtZip))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private void PutPatientData(Patient patient)
-        {
-            
-            patient.FirstName = txtFirstName.Text;
-            patient.LastName = txtLastName.Text;
-            patient.MInit = txtMiddleInit.Text;
-            patient.StreetAddr1 = txtAddress1.Text;
-            patient.StreetAddr2 = txtAddress2.Text;
-            patient.City = txtCity.Text;
-            patient.State = txtState.Text;
-            patient.SSN = txtSSN.Text;
-            patient.Phone = txtPhone.Text;
-            patient.Gender = Convert.ToChar(txtGender);
-            patient.ZipCode = txtZip.Text;
-            patient.DOB = dateTimePickerDOB.Value.Date;
 
         }
-
-
-
-
-
     }
 }

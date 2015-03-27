@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace MedAssist.View
 {
-    public partial class Main : Form
+    public partial class MainForm : Form
     {
 
 
         NewPatient np;
 
-        public Main()
+        public MainForm()
         {
             InitializeComponent();
         }
