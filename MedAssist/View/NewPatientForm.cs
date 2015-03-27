@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MedAssist.Controller;
+using MedAssist.DAL;
+using MedAssist.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,141 +13,84 @@ using System.Windows.Forms;
 
 namespace MedAssist
 {
-    public partial class Form1 : Form
+    public partial class NewPatient : Form
     {
-        public Form1()
+
+        private Patient patient;
+
+        public NewPatient()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
+            Close();
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (IsValidData())
+            {
+                patient = new Patient();
+                PutPatientData(patient);
+
+
+                try
+                {
+                    patient.PatientID = PatientDAL.AddPatient(patient); 
+                    DialogResult = DialogResult.OK;
+                    MessageBox.Show("Patient Accepted");
+                }
+                catch (Exception ex)
+                {
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    }
+                }
+                Close();
+            }
+        }
+
+
+        private bool IsValidData()
+        {
+            if (Validator.IsPresent(txtFirstName) &&
+                Validator.IsPresent(txtLastName) &&
+                Validator.IsPresent(txtSSN) &&
+                Validator.IsPresent(dateTimePickerDOB) &&
+                Validator.IsPresent(txtAddress1) &&
+                Validator.IsPresent(txtCity) &&
+                Validator.IsPresent(txtState) &&
+                Validator.IsPresent(txtPhone) &&
+                Validator.IsPresent(txtZip))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void PutPatientData(Patient patient)
+        {
+            
+            patient.FirstName = txtFirstName.Text;
+            patient.LastName = txtLastName.Text;
+            patient.MInit = txtMiddleInit.Text[0];
+            patient.StreetAddr1 = txtAddress1.Text;
+            patient.StreetAddr2 = txtAddress2.Text;
+            patient.City = txtCity.Text;
+            patient.State = txtState.Text;
+            patient.SSN = txtSSN.Text;
+            patient.Phone = txtPhone.Text;
+            patient.Gender = txtGender.Text[0];
+            patient.ZipCode = txtZip.Text;
+            patient.DOB = dateTimePickerDOB.Value.Date;
 
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox11_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox12_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox13_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -52,7 +52,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(335, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(855, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -73,7 +73,7 @@
             // fullReportToolStripMenuItem
             // 
             this.fullReportToolStripMenuItem.Name = "fullReportToolStripMenuItem";
-            this.fullReportToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.fullReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fullReportToolStripMenuItem.Text = "Full Report";
             // 
             // administrationToolStripMenuItem
@@ -87,7 +87,7 @@
             // employeeToolStripMenuItem
             // 
             this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
-            this.employeeToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.employeeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.employeeToolStripMenuItem.Text = "Employee";
             // 
             // nurseToolStripMenuItem
@@ -129,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 172);
+            this.ClientSize = new System.Drawing.Size(855, 536);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";

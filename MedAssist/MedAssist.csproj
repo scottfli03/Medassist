@@ -44,12 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="View\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Controller\PatientController.cs" />
+    <Compile Include="Controller\Validator.cs" />
+    <Compile Include="DAL\MedassistDB.cs" />
+    <Compile Include="DAL\PatientDAL.cs" />
+    <Compile Include="Model\Administrator.cs" />
+    <Compile Include="Model\Doctor.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Nurse.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\Test.cs" />
+    <Compile Include="Model\UserSecurity.cs" />
+    <Compile Include="Model\Visit.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Admin.cs">
@@ -57,12 +64,6 @@
     </Compile>
     <Compile Include="View\Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Diagnosis.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Diagnosis.Designer.cs">
-      <DependentUpon>Diagnosis.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FullReport.cs">
       <SubType>Form</SubType>
@@ -100,12 +101,6 @@
     <Compile Include="View\Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\RoutineCheck.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\RoutineCheck.Designer.cs">
-      <DependentUpon>RoutineCheck.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\SearchPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,17 +113,11 @@
     <Compile Include="View\Test.Designer.cs">
       <DependentUpon>Test.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ViewUpdateTest.cs">
+    <Compile Include="View\VisitForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ViewUpdateTest.Designer.cs">
-      <DependentUpon>ViewUpdateTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Visit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Visit.Designer.cs">
-      <DependentUpon>Visit.cs</DependentUpon>
+    <Compile Include="View\VisitForm.Designer.cs">
+      <DependentUpon>VisitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\VisitHistory.cs">
       <SubType>Form</SubType>
@@ -148,12 +137,6 @@
     <EmbeddedResource Include="View\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Diagnosis.resx">
-      <DependentUpon>Diagnosis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\FullReport.resx">
       <DependentUpon>FullReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,20 +155,14 @@
     <EmbeddedResource Include="View\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\RoutineCheck.resx">
-      <DependentUpon>RoutineCheck.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\SearchPatient.resx">
       <DependentUpon>SearchPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Test.resx">
       <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ViewUpdateTest.resx">
-      <DependentUpon>ViewUpdateTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Visit.resx">
-      <DependentUpon>Visit.cs</DependentUpon>
+    <EmbeddedResource Include="View\VisitForm.resx">
+      <DependentUpon>VisitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\VisitHistory.resx">
       <DependentUpon>VisitHistory.cs</DependentUpon>
@@ -204,9 +181,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="DAL\" />
-    <Folder Include="Model\" />
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DB\UseToBuild_cs6232-g5.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
