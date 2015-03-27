@@ -1,6 +1,6 @@
 ﻿namespace MedAssist.View
 {
-    partial class MedassistForm
+    partial class Medassist
     {
         /// <summary>
         /// Required designer variable.
@@ -32,9 +32,7 @@
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.patientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.visitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newVisitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadVisitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,18 +44,17 @@
             this.reportsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(818, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(521, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.visitsToolStripMenuItem});
+            this.visitToolStripMenuItem});
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             this.usersToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.usersToolStripMenuItem.Text = "Users";
-            this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // patientsToolStripMenuItem
             // 
@@ -71,30 +68,16 @@
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.reportsToolStripMenuItem.Text = "Reports";
             // 
-            // visitsToolStripMenuItem
+            // visitToolStripMenuItem
             // 
-            this.visitsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newVisitToolStripMenuItem,
-            this.loadVisitToolStripMenuItem});
-            this.visitsToolStripMenuItem.Name = "visitsToolStripMenuItem";
-            this.visitsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.visitsToolStripMenuItem.Text = "Visits";
-            // 
-            // newVisitToolStripMenuItem
-            // 
-            this.newVisitToolStripMenuItem.Name = "newVisitToolStripMenuItem";
-            this.newVisitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newVisitToolStripMenuItem.Text = "New Visit";
-            // 
-            // loadVisitToolStripMenuItem
-            // 
-            this.loadVisitToolStripMenuItem.Name = "loadVisitToolStripMenuItem";
-            this.loadVisitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.loadVisitToolStripMenuItem.Text = "Load Visit";
+            this.visitToolStripMenuItem.Name = "visitToolStripMenuItem";
+            this.visitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.visitToolStripMenuItem.Text = "visit";
+            //this.visitToolStripMenuItem.Click += new System.EventHandler(this.visitToolStripMenuItem_Click);
             // 
             // Medassist
             // 
-            this.ClientSize = new System.Drawing.Size(818, 548);
+            this.ClientSize = new System.Drawing.Size(521, 420);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Medassist";
@@ -109,9 +92,6 @@
         #endregion
 
         private System.Windows.Forms.ToolStripMenuItem visitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem visitsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newVisitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadVisitToolStripMenuItem;
     }
 }
 

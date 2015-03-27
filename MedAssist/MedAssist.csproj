@@ -44,8 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\DoctorDAL.cs" />
+    <Compile Include="Controller\Validator.cs" />
     <Compile Include="DAL\MedassistDB.cs" />
+    <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="Model\Administrator.cs" />
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\Employee.cs" />
@@ -55,11 +56,11 @@
     <Compile Include="Model\Test.cs" />
     <Compile Include="Model\UserSecurity.cs" />
     <Compile Include="Model\Visit.cs" />
-    <Compile Include="View\MedassistForm.cs">
+    <Compile Include="View\Medassist.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MedassistForm.Designer.cs">
-      <DependentUpon>MedassistForm.cs</DependentUpon>
+    <Compile Include="View\Medassist.Designer.cs">
+      <DependentUpon>Medassist.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,11 +130,11 @@
     <Compile Include="View\ViewUpdateTest.Designer.cs">
       <DependentUpon>ViewUpdateTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\VisitForm.cs">
+    <Compile Include="View\Visit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\VisitForm.Designer.cs">
-      <DependentUpon>VisitForm.cs</DependentUpon>
+    <Compile Include="View\Visit.Designer.cs">
+      <DependentUpon>Visit.cs</DependentUpon>
     </Compile>
     <Compile Include="View\VisitHistory.cs">
       <SubType>Form</SubType>
@@ -153,8 +154,8 @@
     <EmbeddedResource Include="View\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MedassistForm.resx">
-      <DependentUpon>MedassistForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\Medassist.resx">
+      <DependentUpon>Medassist.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FullReport.resx">
       <DependentUpon>FullReport.cs</DependentUpon>
@@ -186,8 +187,8 @@
     <EmbeddedResource Include="View\ViewUpdateTest.resx">
       <DependentUpon>ViewUpdateTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\VisitForm.resx">
-      <DependentUpon>VisitForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\Visit.resx">
+      <DependentUpon>Visit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\VisitHistory.resx">
       <DependentUpon>VisitHistory.cs</DependentUpon>
@@ -205,9 +206,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DB\UseToBuild_cs6232-g5.sql" />
   </ItemGroup>
