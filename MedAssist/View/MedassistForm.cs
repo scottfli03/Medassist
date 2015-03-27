@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace MedAssist.View
 {
-    public partial class Medassist : Form
+    public partial class MedassistForm : Form
     {
         private MenuStrip menuStrip1;
         private ToolStripMenuItem usersToolStripMenuItem;
         private ToolStripMenuItem patientsToolStripMenuItem;
         private ToolStripMenuItem reportsToolStripMenuItem;
 
-        public Medassist()
+        public MedassistForm()
         {
             InitializeComponent();
         }
@@ -78,6 +78,22 @@ namespace MedAssist.View
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        VisitForm vf;
+        private void newVisitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        void vf_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            vf = null;
         }
     }
 }

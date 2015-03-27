@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MedAssist.View
 {
-    public partial class Visit : Form
+    public partial class VisitForm : Form
     {
-        public Visit()
+        public VisitForm()
         {
             InitializeComponent();
         }
