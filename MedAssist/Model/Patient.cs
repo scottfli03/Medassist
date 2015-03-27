@@ -165,5 +165,17 @@ namespace MedAssist.Model
                 zip = value;
             }
         }
+
+        public string State
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+            }
+        }
     }
 }

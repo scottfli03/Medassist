@@ -73,7 +73,7 @@
             this.visitToolStripMenuItem.Name = "visitToolStripMenuItem";
             this.visitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.visitToolStripMenuItem.Text = "visit";
-            this.visitToolStripMenuItem.Click += new System.EventHandler(this.visitToolStripMenuItem_Click);
+            //this.visitToolStripMenuItem.Click += new System.EventHandler(this.visitToolStripMenuItem_Click);
             // 
             // Medassist
             // 
