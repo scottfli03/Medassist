@@ -59,5 +59,50 @@ namespace MedAssist.DAL
             }
         }
 
+        public static List<Patient> GetPatientList()
+        {
+            List<Patient> patientList = new List<Patient>();
+            SqlConnection connection = MedassistDB.GetConnection();
+            String selectStatement = "SELECT PatientID, SSN, FirstName, MInit, LastName, DOB, Gender, " +
+                "StreetAddress1, StreetAddress2, Phone, City, State, ZipCode FROM Patients";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
+            try
+            {
+                connection.Open();
+                reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    Patient patient = new Patient();
+                    patient.PatientID = (int)reader["TechID"];
+                    patient.SSN = reader["SSN"].ToString();
+                    patient.FirstName = reader["FirstName"].ToString();
+                    patient.Phone = reader["MInit"].ToString();
+                    patient.LastName = reader["LastName"].ToString();
+                    patient.DOB = (DateTime)reader["DOB"];
+                    patient.Gender = reader["Gender"].ToString()[0];
+                    patient.StreetAddr1 = reader["StreetAddress1"].ToString();
+                    patient.StreetAddr2 = reader["StreetAddress2"].ToString();
+                    patient.Phone = reader["Phone"].ToString();
+                    patient.City = reader["City"].ToString();
+                    patient.State = reader["State"].ToString();
+                    patient.ZipCode = reader["ZipCode"].ToString();
+                    patientList.Add(patient);
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return patientList;
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MedAssist.
 
 namespace MedAssist.View
 {
@@ -17,14 +18,10 @@ namespace MedAssist.View
             InitializeComponent();
         }
 
-        private void Visit_Load(object sender, EventArgs e)
+        private void loadComboBoxes()
         {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            PatientDAL patientDAL = new PatientDAL(); 
+            List<Patient> patientList =  
         }
     }
 }

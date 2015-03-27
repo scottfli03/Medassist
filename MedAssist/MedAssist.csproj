@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\Validator.cs" />
     <Compile Include="DAL\MedassistDB.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
@@ -100,12 +101,6 @@
     <Compile Include="View\Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\RoutineCheck.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\RoutineCheck.Designer.cs">
-      <DependentUpon>RoutineCheck.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\SearchPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +112,12 @@
     </Compile>
     <Compile Include="View\Test.Designer.cs">
       <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\VisitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\VisitForm.Designer.cs">
+      <DependentUpon>VisitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\VisitHistory.cs">
       <SubType>Form</SubType>
@@ -154,14 +155,14 @@
     <EmbeddedResource Include="View\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\RoutineCheck.resx">
-      <DependentUpon>RoutineCheck.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\SearchPatient.resx">
       <DependentUpon>SearchPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Test.resx">
       <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\VisitForm.resx">
+      <DependentUpon>VisitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\VisitHistory.resx">
       <DependentUpon>VisitHistory.cs</DependentUpon>
@@ -179,7 +180,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="DB\UseToBuild_cs6232-g5.sql" />
   </ItemGroup>

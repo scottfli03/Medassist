@@ -142,6 +142,18 @@ namespace MedAssist.Model
             }
         }
 
+        public string State
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+            }
+        }
+
         public string Phone
         {
             get
