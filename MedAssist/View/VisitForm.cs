@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MedAssist.
 
-namespace MedAssist.View
+
+using MedAssist.Model;namespace MedAssist.View
 {
     public partial class VisitForm : Form
     {
@@ -21,7 +22,7 @@ namespace MedAssist.View
         private void loadComboBoxes()
         {
             PatientDAL patientDAL = new PatientDAL(); 
-            List<Patient> patientList =  
+           
         }
     }
 }

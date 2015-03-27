@@ -39,6 +39,7 @@
             this.patientTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updatePatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registerPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,7 +96,8 @@
             this.nurseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.patientToolStripMenuItem,
             this.patientTestToolStripMenuItem,
-            this.updatePatientToolStripMenuItem});
+            this.updatePatientToolStripMenuItem,
+            this.registerPatientToolStripMenuItem});
             this.nurseToolStripMenuItem.Name = "nurseToolStripMenuItem";
             this.nurseToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.nurseToolStripMenuItem.Text = "Nurse";
@@ -103,20 +105,20 @@
             // patientToolStripMenuItem
             // 
             this.patientToolStripMenuItem.Name = "patientToolStripMenuItem";
-            this.patientToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.patientToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.patientToolStripMenuItem.Text = "Load Visit";
             this.patientToolStripMenuItem.Click += new System.EventHandler(this.patientToolStripMenuItem_Click);
             // 
             // patientTestToolStripMenuItem
             // 
             this.patientTestToolStripMenuItem.Name = "patientTestToolStripMenuItem";
-            this.patientTestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.patientTestToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.patientTestToolStripMenuItem.Text = "Patient Test";
             // 
             // updatePatientToolStripMenuItem
             // 
             this.updatePatientToolStripMenuItem.Name = "updatePatientToolStripMenuItem";
-            this.updatePatientToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.updatePatientToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.updatePatientToolStripMenuItem.Text = "Update Patient";
             // 
             // helpToolStripMenuItem
@@ -124,6 +126,13 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // registerPatientToolStripMenuItem
+            // 
+            this.registerPatientToolStripMenuItem.Name = "registerPatientToolStripMenuItem";
+            this.registerPatientToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.registerPatientToolStripMenuItem.Text = "Register Patient";
+            this.registerPatientToolStripMenuItem.Click += new System.EventHandler(this.registerPatientToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -155,5 +164,6 @@
         private System.Windows.Forms.ToolStripMenuItem updatePatientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fullReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registerPatientToolStripMenuItem;
     }
 }
