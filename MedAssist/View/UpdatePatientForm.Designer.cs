@@ -323,6 +323,7 @@
             this.Controls.Add(this.label3);
             this.Name = "UpdatePatientForm";
             this.Text = "Update Patient";
+            this.Load += new System.EventHandler(this.UpdatePatientForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

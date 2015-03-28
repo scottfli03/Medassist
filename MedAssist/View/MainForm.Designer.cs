@@ -40,6 +40,7 @@
             this.updatePatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,7 +75,7 @@
             // fullReportToolStripMenuItem
             // 
             this.fullReportToolStripMenuItem.Name = "fullReportToolStripMenuItem";
-            this.fullReportToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.fullReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fullReportToolStripMenuItem.Text = "Full Report";
             // 
             // administrationToolStripMenuItem
@@ -88,7 +89,7 @@
             // employeeToolStripMenuItem
             // 
             this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
-            this.employeeToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.employeeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.employeeToolStripMenuItem.Text = "Employee";
             // 
             // nurseToolStripMenuItem
@@ -97,7 +98,8 @@
             this.patientToolStripMenuItem,
             this.patientTestToolStripMenuItem,
             this.updatePatientToolStripMenuItem,
-            this.registerPatientToolStripMenuItem});
+            this.registerPatientToolStripMenuItem,
+            this.searchPatientToolStripMenuItem});
             this.nurseToolStripMenuItem.Name = "nurseToolStripMenuItem";
             this.nurseToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.nurseToolStripMenuItem.Text = "Nurse";
@@ -135,7 +137,7 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // MainForm
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -167,5 +169,6 @@
         private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fullReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registerPatientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchPatientToolStripMenuItem;
     }
 }

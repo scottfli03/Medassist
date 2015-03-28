@@ -65,6 +65,15 @@
     <Compile Include="Model\Test.cs" />
     <Compile Include="Model\UserSecurity.cs" />
     <Compile Include="Model\Visit.cs" />
+    <Compile Include="PatientsAndVisits.cs">
+      <DependentUpon>PatientsAndVisits.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PatientsAndVisits.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientsAndVisits.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Admin.cs">
@@ -127,6 +136,7 @@
     <Compile Include="View\UpdatePatientForm.Designer.cs">
       <DependentUpon>UpdatePatientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Validator.cs" />
     <Compile Include="View\VisitForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +204,19 @@
     </None>
     <None Include="DoctorsIDandNameDataSet.xss">
       <DependentUpon>DoctorsIDandNameDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MedAssist.Model.Patient.datasource" />
+    <None Include="MedAssist.Model.Visit.datasource" />
+    <None Include="PatientsAndVisits.xsc">
+      <DependentUpon>PatientsAndVisits.xsd</DependentUpon>
+    </None>
+    <None Include="PatientsAndVisits.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PatientsAndVisits.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PatientsAndVisits.xss">
+      <DependentUpon>PatientsAndVisits.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
