@@ -80,7 +80,7 @@ namespace MedAssist.Model
             }
             set
             {
-                nurseID = value;
+                doctorID = value;
             }
         }
 

@@ -10,9 +10,13 @@ using System.Windows.Forms;
 
 namespace MedAssist.View
 {
-    public partial class Main : Form
+    public partial class MainForm : Form
     {
-        public Main()
+
+
+        NewPatient np;
+
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -25,6 +29,20 @@ namespace MedAssist.View
         private void Main_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void registerPatientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (np == null)
+            {
+                np = new NewPatient();
+                np.MdiParent = this;
+                np.Show();
+            }
+            else
+            {
+                np.Activate();
+            }
         }
     }
 }

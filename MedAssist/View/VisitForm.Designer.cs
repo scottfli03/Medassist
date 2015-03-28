@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label doctorIDLabel;
             System.Windows.Forms.Label patientIDLabel;
             System.Windows.Forms.Label nurseIDLabel;
@@ -57,10 +58,16 @@
             this.txtBoxFnlDiagnosis = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.doctorsIDandNameDataSet = new MedAssist.DoctorsIDandNameDataSet();
+            this.doctorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.doctorsTableAdapter = new MedAssist.DoctorsIDandNameDataSetTableAdapters.DoctorsTableAdapter();
+            this.tableAdapterManager = new MedAssist.DoctorsIDandNameDataSetTableAdapters.TableAdapterManager();
             doctorIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             nurseIDLabel = new System.Windows.Forms.Label();
             diagnosisLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.doctorsIDandNameDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.doctorsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // doctorIDLabel
@@ -99,11 +106,15 @@
             // 
             // cmbDoctor
             // 
+            this.cmbDoctor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.doctorsBindingSource, "DoctorID", true));
+            this.cmbDoctor.DataSource = this.doctorsBindingSource;
+            this.cmbDoctor.DisplayMember = "FullName";
             this.cmbDoctor.FormattingEnabled = true;
             this.cmbDoctor.Location = new System.Drawing.Point(107, 23);
             this.cmbDoctor.Name = "cmbDoctor";
             this.cmbDoctor.Size = new System.Drawing.Size(219, 21);
             this.cmbDoctor.TabIndex = 7;
+            this.cmbDoctor.ValueMember = "DoctorID";
             // 
             // cmbPatient
             // 
@@ -307,6 +318,26 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // doctorsIDandNameDataSet
+            // 
+            this.doctorsIDandNameDataSet.DataSetName = "DoctorsIDandNameDataSet";
+            this.doctorsIDandNameDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // doctorsBindingSource
+            // 
+            this.doctorsBindingSource.DataMember = "Doctors";
+            this.doctorsBindingSource.DataSource = this.doctorsIDandNameDataSet;
+            // 
+            // doctorsTableAdapter
+            // 
+            this.doctorsTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.UpdateOrder = MedAssist.DoctorsIDandNameDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // VisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,6 +374,9 @@
             this.Controls.Add(doctorIDLabel);
             this.Name = "VisitForm";
             this.Text = "VisitForm";
+            this.Load += new System.EventHandler(this.VisitForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.doctorsIDandNameDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.doctorsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,5 +409,9 @@
         private System.Windows.Forms.TextBox txtBoxFnlDiagnosis;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;
+        private DoctorsIDandNameDataSet doctorsIDandNameDataSet;
+        private System.Windows.Forms.BindingSource doctorsBindingSource;
+        private DoctorsIDandNameDataSetTableAdapters.DoctorsTableAdapter doctorsTableAdapter;
+        private DoctorsIDandNameDataSetTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }

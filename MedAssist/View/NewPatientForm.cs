@@ -88,6 +88,11 @@ namespace MedAssist
 
         }
 
+        private void NewPatient_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
 
 

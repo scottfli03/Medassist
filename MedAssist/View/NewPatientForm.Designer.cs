@@ -28,12 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
@@ -41,8 +38,6 @@
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtMiddleInit = new System.Windows.Forms.TextBox();
-            this.txtGender = new System.Windows.Forms.TextBox();
-            this.txtSSN = new System.Windows.Forms.TextBox();
             this.txtAddress1 = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtState = new System.Windows.Forms.TextBox();
@@ -53,16 +48,12 @@
             this.txtZip = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerDOB = new System.Windows.Forms.DateTimePicker();
+            this.txtSSN = new System.Windows.Forms.TextBox();
+            this.txtGender = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(279, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "SSN";
             // 
             // label3
             // 
@@ -91,24 +82,6 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "First Name";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 58);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "DOB";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(195, 54);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(25, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Sex";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -132,7 +105,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(83, 190);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 10;
+            this.btnSubmit.TabIndex = 13;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -142,7 +115,7 @@
             this.btnCancel.Location = new System.Drawing.Point(323, 190);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 11;
+            this.btnCancel.TabIndex = 14;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -168,20 +141,6 @@
             this.txtMiddleInit.Name = "txtMiddleInit";
             this.txtMiddleInit.Size = new System.Drawing.Size(25, 20);
             this.txtMiddleInit.TabIndex = 2;
-            // 
-            // txtGender
-            // 
-            this.txtGender.Location = new System.Drawing.Point(226, 51);
-            this.txtGender.Name = "txtGender";
-            this.txtGender.Size = new System.Drawing.Size(27, 20);
-            this.txtGender.TabIndex = 5;
-            // 
-            // txtSSN
-            // 
-            this.txtSSN.Location = new System.Drawing.Point(323, 51);
-            this.txtSSN.Name = "txtSSN";
-            this.txtSSN.Size = new System.Drawing.Size(100, 20);
-            this.txtSSN.TabIndex = 6;
             // 
             // txtAddress1
             // 
@@ -256,10 +215,51 @@
             // 
             this.dateTimePickerDOB.CustomFormat = "yyyy-mm-dd";
             this.dateTimePickerDOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerDOB.Location = new System.Drawing.Point(83, 54);
+            this.dateTimePickerDOB.Location = new System.Drawing.Point(83, 50);
             this.dateTimePickerDOB.Name = "dateTimePickerDOB";
             this.dateTimePickerDOB.Size = new System.Drawing.Size(100, 20);
             this.dateTimePickerDOB.TabIndex = 4;
+            // 
+            // txtSSN
+            // 
+            this.txtSSN.Location = new System.Drawing.Point(323, 47);
+            this.txtSSN.Name = "txtSSN";
+            this.txtSSN.Size = new System.Drawing.Size(100, 20);
+            this.txtSSN.TabIndex = 6;
+            // 
+            // txtGender
+            // 
+            this.txtGender.Location = new System.Drawing.Point(226, 47);
+            this.txtGender.Name = "txtGender";
+            this.txtGender.Size = new System.Drawing.Size(27, 20);
+            this.txtGender.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(195, 50);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(25, 13);
+            this.label7.TabIndex = 46;
+            this.label7.Text = "Sex";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(21, 54);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "DOB";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(279, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 41;
+            this.label2.Text = "SSN";
             // 
             // NewPatient
             // 
@@ -267,6 +267,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 233);
             this.Controls.Add(this.dateTimePickerDOB);
+            this.Controls.Add(this.txtSSN);
+            this.Controls.Add(this.txtGender);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtZip);
             this.Controls.Add(this.txtCity);
@@ -276,8 +281,6 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtAddress1);
-            this.Controls.Add(this.txtSSN);
-            this.Controls.Add(this.txtGender);
             this.Controls.Add(this.txtMiddleInit);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtFirstName);
@@ -285,14 +288,12 @@
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Name = "NewPatient";
-            this.Text = "Patient Info";
+            this.Text = "Register New Patient";
+            this.Load += new System.EventHandler(this.NewPatient_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,12 +301,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnSubmit;
@@ -313,8 +311,6 @@
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtMiddleInit;
-        private System.Windows.Forms.TextBox txtGender;
-        private System.Windows.Forms.TextBox txtSSN;
         private System.Windows.Forms.TextBox txtAddress1;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtState;
@@ -325,6 +321,11 @@
         private System.Windows.Forms.TextBox txtZip;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePickerDOB;
+        private System.Windows.Forms.TextBox txtSSN;
+        private System.Windows.Forms.TextBox txtGender;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label2;
     }
 }
 
