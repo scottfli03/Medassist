@@ -86,6 +86,7 @@ namespace MedAssist
             patient.ZipCode = txtZip.Text;
             patient.DOB = dateTimePickerDOB.Value.Date;
 
+
         }
 
         private void NewPatient_Load(object sender, EventArgs e)

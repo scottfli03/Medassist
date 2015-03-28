@@ -120,6 +120,7 @@
             this.updatePatientToolStripMenuItem.Name = "updatePatientToolStripMenuItem";
             this.updatePatientToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.updatePatientToolStripMenuItem.Text = "Update Patient";
+            this.updatePatientToolStripMenuItem.Click += new System.EventHandler(this.updatePatientToolStripMenuItem_Click);
             // 
             // registerPatientToolStripMenuItem
             // 
@@ -134,7 +135,7 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // Main
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -142,7 +143,7 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Main";
+            this.Name = "MainForm";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);

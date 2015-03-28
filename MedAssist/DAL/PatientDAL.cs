@@ -1,6 +1,7 @@
 ﻿using MedAssist.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,10 @@ namespace MedAssist.DAL
 {
     class PatientDAL
     {
+
+        
+
+
         /// <summary>
         /// Query to add patients
         /// </summary>
@@ -59,6 +64,124 @@ namespace MedAssist.DAL
             }
         }
 
+        
+        /// <summary>
+        /// Update Patient Info
+        /// </summary>
+        /// <param name="oldPatient"></param>
+        /// <param name="newPatient"></param>
+        /// <returns></returns>
+        public static bool UpdatePatient(Patient oldPatient, Patient newPatient)
+        {
+            SqlConnection connection = MedassistDB.GetConnection();
+            string updateStatement =
+                "UPDATE Patients SET " +
+                "FirstName = @NewFirstName, " +
+                "LastName = @NewLastName, " +
+                "MInit = @NewMInit, " +
+                "StreetAddress1 = @NewStreetAddress1, " +
+                "StreetAddress2 = @NewStreetAddress2, " +
+                "Phone = @NewPhone, " +
+                "City = @NewCity, " +
+                "State = @NewState, " +
+                "ZipCode = @NewZipCode " +
+                "WHERE PatientID = @OldPatientID";
+
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@NewFirstName", newPatient.FirstName);
+            updateCommand.Parameters.AddWithValue("@NewLastName", newPatient.LastName);
+            updateCommand.Parameters.AddWithValue("@NewMInit", newPatient.MInit);
+            updateCommand.Parameters.AddWithValue("@NewStreetAddress1", newPatient.StreetAddr1);
+            updateCommand.Parameters.AddWithValue("@NewStreetAddress2", newPatient.StreetAddr2);
+            updateCommand.Parameters.AddWithValue("@NewPhone", newPatient.Phone);
+            updateCommand.Parameters.AddWithValue("@NewCity", newPatient.City);
+            updateCommand.Parameters.AddWithValue("@NewState", newPatient.State);
+            updateCommand.Parameters.AddWithValue("@NewZipCode", newPatient.ZipCode);
+
+            updateCommand.Parameters.AddWithValue("@OldPatientID", oldPatient.PatientID);
+
+            try
+            {
+                connection.Open();
+                int count = updateCommand.ExecuteNonQuery();
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+        }
+
+        /// <summary>
+        /// Gets patient to Update
+        /// </summary>
+        /// <param name="patientID"></param>
+        /// <returns></returns>
+        public static Patient GetPatientToUpdate(int patientID)
+        {
+            Patient patient = new Patient();
+            SqlConnection connection = MedassistDB.GetConnection();
+            string selectStatement =
+
+                   "SELECT PatientID, FirstName, MInit, DOB, Gender, SSN, LastName, StreetAddress1, StreetAddress2, City, State, ZipCode, Phone " +
+                   "FROM Patients " +
+                   "WHERE PatientID = @PatientID";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@PatientID", patientID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                if (reader.Read())
+                {
+                   
+                    patient.PatientID = (int)reader["PatientID"];
+                    patient.FirstName = reader["FirstName"].ToString();
+                    patient.LastName = reader["LastName"].ToString();
+                    patient.MInit = Convert.ToChar(reader["Minit"]);
+                    patient.DOB = (DateTime)reader["DOB"];
+                    patient.Gender = Convert.ToChar(reader["Gender"]);
+                    patient.SSN = reader["SSN"].ToString();
+                    patient.StreetAddr1 = reader["StreetAddress1"].ToString();
+                    patient.StreetAddr2 = reader["StreetAddress2"].ToString();
+                    patient.City = reader["City"].ToString();
+                    patient.State = reader["State"].ToString();
+                    patient.ZipCode = reader["ZipCode"].ToString();
+                    patient.Phone = reader["Phone"].ToString();
+
+                }
+                else
+                {
+                    patient = null;
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+            return patient;
+        }
+
+        /// <summary>
+        /// Gets List of Patients
+        /// </summary>
+        /// <returns></returns>
         public static List<Patient> GetPatientList()
         {
             List<Patient> patientList = new List<Patient>();
@@ -104,5 +227,5 @@ namespace MedAssist.DAL
             }
             return patientList;
         }
-    }
+     }
 }
