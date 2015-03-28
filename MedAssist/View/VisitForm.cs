@@ -17,27 +17,12 @@ namespace MedAssist.View
         public VisitForm()
         {
             InitializeComponent();
-            loadComboBoxes();
-        }
-
-        private void loadComboBoxes()
-        {
-            try
-            {
-                PatientController patientCont = new PatientController();
-                List<Patient> patientList = patientCont.GetPatientList();
-                cmbPatient.DataSource = patientList;
-                cmbPatient.DisplayMember = "FirstName" + " LastName";
-                cmbPatient.ValueMember = "PatientID";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
         }
 
         private void VisitForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the '_cs6232_g5DataSet.Patients' table. You can move, or remove it, as needed.
+            this.patientsTableAdapter.Fill(this._cs6232_g5DataSet.Patients);
             // TODO: This line of code loads data into the 'doctorsIDandNameDataSet.Doctors' table. You can move, or remove it, as needed.
             this.doctorsTableAdapter.Fill(this.doctorsIDandNameDataSet.Doctors);
 

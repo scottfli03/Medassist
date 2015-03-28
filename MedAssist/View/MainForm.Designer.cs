@@ -40,6 +40,7 @@
             this.updatePatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newVisitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,7 +98,8 @@
             this.patientToolStripMenuItem,
             this.patientTestToolStripMenuItem,
             this.updatePatientToolStripMenuItem,
-            this.registerPatientToolStripMenuItem});
+            this.registerPatientToolStripMenuItem,
+            this.newVisitToolStripMenuItem});
             this.nurseToolStripMenuItem.Name = "nurseToolStripMenuItem";
             this.nurseToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.nurseToolStripMenuItem.Text = "Nurse";
@@ -134,7 +136,14 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // Main
+            // newVisitToolStripMenuItem
+            // 
+            this.newVisitToolStripMenuItem.Name = "newVisitToolStripMenuItem";
+            this.newVisitToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.newVisitToolStripMenuItem.Text = "New Visit";
+            this.newVisitToolStripMenuItem.Click += new System.EventHandler(this.newVisitToolStripMenuItem_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -142,7 +151,7 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Main";
+            this.Name = "MainForm";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -166,5 +175,6 @@
         private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fullReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registerPatientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newVisitToolStripMenuItem;
     }
 }

@@ -74,7 +74,7 @@ namespace MedAssist.DAL
                 while (reader.Read())
                 {
                     Patient patient = new Patient();
-                    patient.PatientID = (int)reader["TechID"];
+                    patient.PatientID = (int)reader["PatientID"];
                     patient.SSN = reader["SSN"].ToString();
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.Phone = reader["MInit"].ToString();

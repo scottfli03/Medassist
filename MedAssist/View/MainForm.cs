@@ -12,9 +12,8 @@ namespace MedAssist.View
 {
     public partial class MainForm : Form
     {
-
-
         NewPatient np;
+        VisitForm vf;
 
         public MainForm()
         {
@@ -37,12 +36,40 @@ namespace MedAssist.View
             {
                 np = new NewPatient();
                 np.MdiParent = this;
+                np.FormClosed += new FormClosedEventHandler(np_FormClosed);
                 np.Show();
             }
             else
             {
                 np.Activate();
             }
+        }
+
+        void np_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            np = null;
+            //throw new NotImplementedException();
+        }
+
+        private void newVisitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (vf == null)
+            {
+                vf = new VisitForm();
+                vf.MdiParent = this;
+                vf.FormClosed += new FormClosedEventHandler(vf_FormClosed);
+                vf.Show();
+            }
+            else
+            {
+                vf.Activate();
+            }
+        }
+
+        void vf_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            vf = null;
+            //throw new NotImplementedException();
         }
     }
 }

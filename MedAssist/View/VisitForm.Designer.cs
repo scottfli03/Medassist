@@ -35,7 +35,8 @@
             System.Windows.Forms.Label diagnosisLabel;
             this.txtNurse = new System.Windows.Forms.TextBox();
             this.cmbDoctor = new System.Windows.Forms.ComboBox();
-            this.cmbPatient = new System.Windows.Forms.ComboBox();
+            this.doctorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.doctorsIDandNameDataSet = new MedAssist.DoctorsIDandNameDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.txtRespRate = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -58,16 +59,21 @@
             this.txtBoxFnlDiagnosis = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.doctorsIDandNameDataSet = new MedAssist.DoctorsIDandNameDataSet();
-            this.doctorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.doctorsTableAdapter = new MedAssist.DoctorsIDandNameDataSetTableAdapters.DoctorsTableAdapter();
             this.tableAdapterManager = new MedAssist.DoctorsIDandNameDataSetTableAdapters.TableAdapterManager();
+            this._cs6232_g5DataSet = new MedAssist._cs6232_g5DataSet();
+            this.patientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientsTableAdapter = new MedAssist._cs6232_g5DataSetTableAdapters.PatientsTableAdapter();
+            this.tableAdapterManager1 = new MedAssist._cs6232_g5DataSetTableAdapters.TableAdapterManager();
+            this.patientFullNameComboBox = new System.Windows.Forms.ComboBox();
             doctorIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             nurseIDLabel = new System.Windows.Forms.Label();
             diagnosisLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.doctorsIDandNameDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.doctorsIDandNameDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._cs6232_g5DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // doctorIDLabel
@@ -97,6 +103,15 @@
             nurseIDLabel.TabIndex = 5;
             nurseIDLabel.Text = "Nurse:";
             // 
+            // diagnosisLabel
+            // 
+            diagnosisLabel.AutoSize = true;
+            diagnosisLabel.Location = new System.Drawing.Point(342, 26);
+            diagnosisLabel.Name = "diagnosisLabel";
+            diagnosisLabel.Size = new System.Drawing.Size(56, 13);
+            diagnosisLabel.TabIndex = 30;
+            diagnosisLabel.Text = "Diagnosis:";
+            // 
             // txtNurse
             // 
             this.txtNurse.Location = new System.Drawing.Point(107, 49);
@@ -116,13 +131,15 @@
             this.cmbDoctor.TabIndex = 7;
             this.cmbDoctor.ValueMember = "DoctorID";
             // 
-            // cmbPatient
+            // doctorsBindingSource
             // 
-            this.cmbPatient.FormattingEnabled = true;
-            this.cmbPatient.Location = new System.Drawing.Point(107, 75);
-            this.cmbPatient.Name = "cmbPatient";
-            this.cmbPatient.Size = new System.Drawing.Size(219, 21);
-            this.cmbPatient.TabIndex = 8;
+            this.doctorsBindingSource.DataMember = "Doctors";
+            this.doctorsBindingSource.DataSource = this.doctorsIDandNameDataSet;
+            // 
+            // doctorsIDandNameDataSet
+            // 
+            this.doctorsIDandNameDataSet.DataSetName = "DoctorsIDandNameDataSet";
+            this.doctorsIDandNameDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -239,15 +256,6 @@
             this.txtSystolic.Size = new System.Drawing.Size(56, 20);
             this.txtSystolic.TabIndex = 30;
             // 
-            // diagnosisLabel
-            // 
-            diagnosisLabel.AutoSize = true;
-            diagnosisLabel.Location = new System.Drawing.Point(342, 26);
-            diagnosisLabel.Name = "diagnosisLabel";
-            diagnosisLabel.Size = new System.Drawing.Size(56, 13);
-            diagnosisLabel.TabIndex = 30;
-            diagnosisLabel.Text = "Diagnosis:";
-            // 
             // txtBoxDiagnosis
             // 
             this.txtBoxDiagnosis.Location = new System.Drawing.Point(404, 23);
@@ -318,16 +326,6 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // doctorsIDandNameDataSet
-            // 
-            this.doctorsIDandNameDataSet.DataSetName = "DoctorsIDandNameDataSet";
-            this.doctorsIDandNameDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // doctorsBindingSource
-            // 
-            this.doctorsBindingSource.DataMember = "Doctors";
-            this.doctorsBindingSource.DataSource = this.doctorsIDandNameDataSet;
-            // 
             // doctorsTableAdapter
             // 
             this.doctorsTableAdapter.ClearBeforeFill = true;
@@ -338,11 +336,44 @@
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.UpdateOrder = MedAssist.DoctorsIDandNameDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // _cs6232_g5DataSet
+            // 
+            this._cs6232_g5DataSet.DataSetName = "_cs6232_g5DataSet";
+            this._cs6232_g5DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // patientsBindingSource
+            // 
+            this.patientsBindingSource.DataMember = "Patients";
+            this.patientsBindingSource.DataSource = this._cs6232_g5DataSet;
+            // 
+            // patientsTableAdapter
+            // 
+            this.patientsTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.PatientsTableAdapter = this.patientsTableAdapter;
+            this.tableAdapterManager1.UpdateOrder = MedAssist._cs6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // patientFullNameComboBox
+            // 
+            this.patientFullNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.patientsBindingSource, "PatientFullName", true));
+            this.patientFullNameComboBox.DataSource = this.patientsBindingSource;
+            this.patientFullNameComboBox.DisplayMember = "PatientFullName";
+            this.patientFullNameComboBox.FormattingEnabled = true;
+            this.patientFullNameComboBox.Location = new System.Drawing.Point(107, 75);
+            this.patientFullNameComboBox.Name = "patientFullNameComboBox";
+            this.patientFullNameComboBox.Size = new System.Drawing.Size(219, 21);
+            this.patientFullNameComboBox.TabIndex = 39;
+            this.patientFullNameComboBox.ValueMember = "PatientID";
+            // 
             // VisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 464);
+            this.ClientSize = new System.Drawing.Size(665, 465);
+            this.Controls.Add(this.patientFullNameComboBox);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtBoxFnlDiagnosis);
@@ -366,7 +397,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cmbPatient);
             this.Controls.Add(this.cmbDoctor);
             this.Controls.Add(nurseIDLabel);
             this.Controls.Add(this.txtNurse);
@@ -375,8 +405,10 @@
             this.Name = "VisitForm";
             this.Text = "VisitForm";
             this.Load += new System.EventHandler(this.VisitForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.doctorsIDandNameDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.doctorsIDandNameDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._cs6232_g5DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,7 +418,6 @@
 
         private System.Windows.Forms.TextBox txtNurse;
         private System.Windows.Forms.ComboBox cmbDoctor;
-        private System.Windows.Forms.ComboBox cmbPatient;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtRespRate;
         private System.Windows.Forms.Label label8;
@@ -413,5 +444,10 @@
         private System.Windows.Forms.BindingSource doctorsBindingSource;
         private DoctorsIDandNameDataSetTableAdapters.DoctorsTableAdapter doctorsTableAdapter;
         private DoctorsIDandNameDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private _cs6232_g5DataSet _cs6232_g5DataSet;
+        private System.Windows.Forms.BindingSource patientsBindingSource;
+        private _cs6232_g5DataSetTableAdapters.PatientsTableAdapter patientsTableAdapter;
+        private _cs6232_g5DataSetTableAdapters.TableAdapterManager tableAdapterManager1;
+        private System.Windows.Forms.ComboBox patientFullNameComboBox;
     }
 }
