@@ -33,5 +33,10 @@ namespace MedAssist.View
 
 
         }
+
+        private void UpdatePatientForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

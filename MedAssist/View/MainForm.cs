@@ -44,5 +44,23 @@ namespace MedAssist.View
                 np.Activate();
             }
         }
+        MedAssist.View.SearchPatient f4;
+        private void searchPatientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (f4 == null)
+            {
+                f4 = new MedAssist.View.SearchPatient();
+                f4.StartPosition = FormStartPosition.Manual;
+                f4.MdiParent = this;
+                f4.FormClosed += new FormClosedEventHandler(f4_FormClosed);
+                f4.Show();
+            }
+            else
+                f4.Activate();
+        }
+        private void f4_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            f4 = null;
+        }
     }
 }
