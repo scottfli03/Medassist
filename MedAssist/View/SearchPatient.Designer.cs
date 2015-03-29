@@ -438,6 +438,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "SearchPatient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patient Search";
             this.Load += new System.EventHandler(this.SearchPatientForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.patientsAndVisits)).EndInit();

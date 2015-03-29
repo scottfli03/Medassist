@@ -322,8 +322,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Name = "UpdatePatientForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Patient";
-            //this.Load += new System.EventHandler(this.UpdatePatientForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

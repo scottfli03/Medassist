@@ -292,6 +292,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Name = "NewPatient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register New Patient";
             this.Load += new System.EventHandler(this.NewPatient_Load);
             this.ResumeLayout(false);
