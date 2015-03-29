@@ -49,6 +49,7 @@
     <Compile Include="Controller\VisitDAL.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\MedassistDB.cs" />
+    <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
     <Compile Include="DoctorsIDandNameDataSet.Designer.cs">
