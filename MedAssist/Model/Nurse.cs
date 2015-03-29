@@ -13,6 +13,7 @@ namespace MedAssist.Model
     {
         private int nurseID;
         private string userName;
+        private string password;
 
         public Nurse() { }
 
@@ -37,6 +38,18 @@ namespace MedAssist.Model
             set
             {
                 userName = value;
+            }
+        }
+
+        public String Password
+        {
+            get
+            {
+                return password;
+            }
+            set
+            {
+                password = value;
             }
         }
     }
