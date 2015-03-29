@@ -359,6 +359,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "Admin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin-User";
             this.Load += new System.EventHandler(this.Admin_Load);
             this.ResumeLayout(false);
