@@ -35,7 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtFName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtLName = new System.Windows.Forms.TextBox();
             this.txtDOB = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -80,7 +80,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(285, 42);
+            this.label1.Location = new System.Drawing.Point(342, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 0;
@@ -89,7 +89,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(562, 42);
+            this.label2.Location = new System.Drawing.Point(725, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 1;
@@ -120,17 +120,17 @@
             this.label4.Size = new System.Drawing.Size(0, 13);
             this.label4.TabIndex = 4;
             // 
-            // textBox2
+            // txtLName
             // 
-            this.textBox2.Location = new System.Drawing.Point(349, 39);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(157, 20);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txtLName.Location = new System.Drawing.Point(406, 39);
+            this.txtLName.Name = "txtLName";
+            this.txtLName.Size = new System.Drawing.Size(157, 20);
+            this.txtLName.TabIndex = 5;
+            this.txtLName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // txtDOB
             // 
-            this.txtDOB.Location = new System.Drawing.Point(598, 39);
+            this.txtDOB.Location = new System.Drawing.Point(761, 39);
             this.txtDOB.Name = "txtDOB";
             this.txtDOB.Size = new System.Drawing.Size(157, 20);
             this.txtDOB.TabIndex = 6;
@@ -431,7 +431,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtDOB);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtLName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtFName);
             this.Controls.Add(this.label3);
@@ -458,7 +458,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtFName;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtLName;
         private System.Windows.Forms.TextBox txtDOB;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;

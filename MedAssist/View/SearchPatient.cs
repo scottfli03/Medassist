@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MedAssist.Model;
+using MedAssist.DAL;
 
 namespace MedAssist.View
 {
     public partial class SearchPatient : Form
     {
+        private Patient patient;
         public SearchPatient()
         {
             InitializeComponent();
@@ -43,10 +46,34 @@ namespace MedAssist.View
         }
 
         //This method will search for the patient by their first name and last name
-        private void GetPatient(string fName, string lName)
+        private void GetPatientData(string fName, string lName)
         {
+            if (txtFName.Text == null && txtLName == null)
+            {
+                MessageBox.Show(txtFName.Tag.ToString() + " is a required field.", fName);
+            }
+            else fName = txtFName.Text;
+                 lName = txtLName.Text;
+                 //int patientID = (int)txtFName.Text;
+                 
 
+            try
+            {
+                //get a patient object for the typed Patient
+                //will bind the datagrid to that object    
+
+                //**scott I'm trying to take the first name and last name of the patient to create a patient object for the datagrid view
+                //to use inorder to populate the list.** 
+                //patient = PatientDAL.GetPatientListWithFNameLName(fName,  lName);
+            }
+            finally
+            {
+
+            }
         }
+
+                
+    
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
