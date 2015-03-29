@@ -63,7 +63,7 @@ namespace MedAssist.View
             txtGender.Text = patient.Gender.ToString();
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+       private void btnSubmit_Click(object sender, EventArgs e)
         {
             Patient newPatient = new Patient();
             newPatient.PatientID = patient.PatientID;
@@ -72,11 +72,11 @@ namespace MedAssist.View
 
             try
             {
-                if (!PatientDAL.UpdatePatient(patient, newPatient))
+               if (!PatientDAL.UpdatePatient(patient, newPatient))
                 {
                     MessageBox.Show("Another user has updated or " +
                                     "deleted that patientt.", "Database Error");
-                    this.DialogResult = DialogResult.Retry;
+                                       this.DialogResult = DialogResult.Retry;
                 }
                 else
                 {
@@ -92,7 +92,7 @@ namespace MedAssist.View
             }
 
         }
-
+ 
         private void PutPatientData(Patient patient)
         {
             patient.FirstName = txtFirstName.Text;
@@ -104,25 +104,24 @@ namespace MedAssist.View
             patient.State = txtState.Text;
             patient.Phone = txtPhone.Text;
             patient.ZipCode = txtZip.Text;
-
+ 
         }
-
+ 
         private void btnGetPatient_Click(object sender, EventArgs e)
         {
             
             if (Validator.IsPresent(txtPatientID) &&
                 Validator.IsInt32(txtPatientID))
             {
-                int patientID = Convert.ToInt32((txtPatientID.Text));
+                
+                 int patientID = Convert.ToInt32((txtPatientID.Text));
                 this.GetPatient(patientID);
             }
-        }
+         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-
     }
 }

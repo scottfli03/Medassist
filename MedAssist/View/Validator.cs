@@ -60,6 +60,19 @@ namespace MedAssist.View
             }
         }
 
-
+        public static bool IsInt32(TextBox textBox)
+        {
+            try
+            {
+                Convert.ToInt32(textBox.Text);
+                return true;
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show(textBox.Tag.ToString() + " must be an integer value.", Title);
+                textBox.Focus();
+                return false;
+            }
+        }
     }
 }

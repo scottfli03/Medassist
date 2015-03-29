@@ -45,5 +45,25 @@ namespace MedAssist.View
                 np.Activate();
             }
         }
+
+        private void searchPatientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updatePatientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (up == null)
+            {
+                up = new UpdatePatientForm();
+                up.MdiParent = this;
+                up.Show();
+            }
+            else
+            {
+                up.Activate();
+            }
+        }
+
     }
 }
