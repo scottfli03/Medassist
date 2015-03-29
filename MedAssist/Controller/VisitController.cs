@@ -8,13 +8,14 @@ using MedAssist.Model;
 
 namespace MedAssist.Controller
 {
-    class VisitDAL
+    class VisitController
     {
-        public VisitDAL() {}
+        public VisitController() {}
 
-        public static int createVisit(Visit visit)
+        public static int CreateVisit(Visit visit)
         {
-            return VisitDAL.createVisit(visit);
+            VisitDAL visitDAL = new VisitDAL();
+            return visitDAL.createVisit(visit);
         }
     }
 }

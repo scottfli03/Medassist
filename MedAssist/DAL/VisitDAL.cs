@@ -12,6 +12,7 @@ namespace MedAssist.DAL
     {
         public VisitDAL() { }
 
+        
         public int createVisit(Visit visit)
         {
             SqlConnection connection = MedassistDB.GetConnection();
@@ -44,6 +45,10 @@ namespace MedAssist.DAL
             catch (SqlException ex)
             {
                 throw ex;
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
             finally
             {

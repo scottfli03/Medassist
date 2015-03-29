@@ -46,15 +46,19 @@
   <ItemGroup>
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\Validator.cs" />
-    <Compile Include="Controller\VisitDAL.cs" />
+    <Compile Include="Controller\VisitController.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\MedassistDB.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
-    <Compile Include="DoctorsIDandNameDataSet.Designer.cs">
+    <Compile Include="Doctor_Patient_Nurse_Employee_Visit_Dataset.cs">
+      <DependentUpon>Doctor_Patient_Nurse_Employee_Visit_Dataset.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Doctor_Patient_Nurse_Employee_Visit_Dataset.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DoctorsIDandNameDataSet.xsd</DependentUpon>
+      <DependentUpon>Doctor_Patient_Nurse_Employee_Visit_Dataset.xsd</DependentUpon>
     </Compile>
     <Compile Include="Model\Administrator.cs" />
     <Compile Include="Model\Doctor.cs" />
@@ -139,11 +143,6 @@
     <Compile Include="View\VisitHistory.Designer.cs">
       <DependentUpon>VisitHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="_cs6232_g5DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_cs6232_g5DataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -189,16 +188,16 @@
     <EmbeddedResource Include="View\VisitHistory.resx">
       <DependentUpon>VisitHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DoctorsIDandNameDataSet.xsc">
-      <DependentUpon>DoctorsIDandNameDataSet.xsd</DependentUpon>
+    <None Include="Doctor_Patient_Nurse_Employee_Visit_Dataset.xsc">
+      <DependentUpon>Doctor_Patient_Nurse_Employee_Visit_Dataset.xsd</DependentUpon>
     </None>
-    <None Include="DoctorsIDandNameDataSet.xsd">
+    <None Include="Doctor_Patient_Nurse_Employee_Visit_Dataset.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DoctorsIDandNameDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>Doctor_Patient_Nurse_Employee_Visit_Dataset.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DoctorsIDandNameDataSet.xss">
-      <DependentUpon>DoctorsIDandNameDataSet.xsd</DependentUpon>
+    <None Include="Doctor_Patient_Nurse_Employee_Visit_Dataset.xss">
+      <DependentUpon>Doctor_Patient_Nurse_Employee_Visit_Dataset.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -209,17 +208,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="_cs6232_g5DataSet.xsc">
-      <DependentUpon>_cs6232_g5DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="_cs6232_g5DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>_cs6232_g5DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="_cs6232_g5DataSet.xss">
-      <DependentUpon>_cs6232_g5DataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
