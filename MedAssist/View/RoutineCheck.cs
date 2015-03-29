@@ -10,14 +10,24 @@ using System.Windows.Forms;
 
 namespace MedAssist.View
 {
-    public partial class Login : Form
+    public partial class RoutineCheck : Form
     {
-        public Login()
+        public RoutineCheck()
         {
             InitializeComponent();
         }
 
-        private void Login_Load(object sender, EventArgs e)
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RoutineCheck_Load(object sender, EventArgs e)
         {
 
         }

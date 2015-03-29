@@ -2,22 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 
-namespace MedAssist.Controller
+
+
+namespace MedAssist.View
 {
     class Validator
     {
-
         private static string title = "Entry Error";
 
         public static string Title
         {
-            get { return title; }
-            set { title = value; }
+            get
+            {
+                return title;
+            }
+            set
+            {
+                title = value;
+            }
         }
 
+        // validates if an object is present in the control
         public static bool IsPresent(Control control)
         {
             if (control.GetType().ToString() == "System.Windows.Forms.TextBox")
@@ -29,20 +37,27 @@ namespace MedAssist.Controller
                     textBox.Focus();
                     return false;
                 }
-                return true;
-            }
-            if (control.GetType().ToString() == "System.Windows.Forms.ComboBox")
-            {
-                ComboBox comboBox = (ComboBox)control;
-                if (comboBox.SelectedIndex == -1)
+                else
                 {
-                    MessageBox.Show(comboBox.Tag.ToString() + " is a required field.", Title);
-                    comboBox.Focus();
-                    return false;
+                    return true;
                 }
-                return true;
+                
             }
             return true;
+        }
+        public static bool IsDate(TextBox textBox)
+        {
+            try
+            {
+                Convert.ToDateTime(textBox.Text);
+                return true;
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show(textBox.Tag.ToString() + " must be in formate mm-dd-yy.", Title);
+                textBox.Focus();
+                return false;
+            }
         }
 
         public static bool IsInt32(TextBox textBox)
@@ -59,6 +74,5 @@ namespace MedAssist.Controller
                 return false;
             }
         }
-
     }
 }
