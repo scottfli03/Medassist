@@ -38,12 +38,20 @@ namespace MedAssist.View
             {
                 np = new NewPatient();
                 np.MdiParent = this;
+
+                np.FormClosed += np_FormClosed;
                 np.Show();
             }
             else
             {
                 np.Activate();
             }
+        }
+
+        void np_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.np = null;
+            //throw new NotImplementedException();
         }
 
         private void searchPatientToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,12 +65,24 @@ namespace MedAssist.View
             {
                 up = new UpdatePatientForm();
                 up.MdiParent = this;
+                this.up.FormClosed += up_FormClosed;
                 up.Show();
             }
             else
             {
                 up.Activate();
             }
+        }
+
+        void up_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.up = null;
+            //throw new NotImplementedException();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }
