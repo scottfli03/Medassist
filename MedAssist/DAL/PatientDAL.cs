@@ -127,14 +127,12 @@ namespace MedAssist.DAL
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@PatientID", patientID);
-
             try
             {
                 connection.Open();
                 SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
                 if (reader.Read())
                 {
-
                     patient.PatientID = (int)reader["PatientID"];
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.LastName = reader["LastName"].ToString();
@@ -148,12 +146,12 @@ namespace MedAssist.DAL
                     patient.State = reader["State"].ToString();
                     patient.ZipCode = reader["ZipCode"].ToString();
                     patient.Phone = reader["Phone"].ToString();
-
                 }
                 else
                 {
                     patient = null;
                 }
+                //TODO: Possibly close reader in finally statement.  It's just how Dr. Yang had it.  
                 reader.Close();
             }
             catch (SqlException ex)

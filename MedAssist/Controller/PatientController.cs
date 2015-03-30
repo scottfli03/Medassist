@@ -12,6 +12,10 @@ namespace MedAssist.Controller
     {
         public PatientController() { }
 
+        /// <summary>
+        /// Returns a list of Patients
+        /// </summary>
+        /// <returns>The list of Patients</returns>
         public List<Patient> GetPatientList()
         {
             return PatientDAL.GetPatientList();

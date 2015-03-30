@@ -14,6 +14,7 @@ namespace MedAssist.View
 {
     public partial class SearchPatient : Form
     {
+        //TODO: Make sure main form is large enough to fit this form
         private Patient patient;
         private List<Visit> visitList;
         private String fName;
@@ -25,7 +26,13 @@ namespace MedAssist.View
 
         private void SearchPatientForm_Load(object sender, EventArgs e)
         {
+
             
+
+
+            // TODO: This line of code loads data into the 'patientsAndVisits.PatientVisitSearch' table. You can move, or remove it, as needed.
+           // this.patientVisitSearchTableAdapter.Fill(this.patientsAndVisits.PatientVisitSearch);
+            this.GetPatientData();
 
         }
 

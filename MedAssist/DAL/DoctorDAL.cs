@@ -8,6 +8,9 @@ using System.Data.SqlClient;
 
 namespace MedAssist.DAL
 {
+    /// <summary>
+    /// Used to interact with the data in the Doctor Table
+    /// </summary>
     class DoctorDAL
     {
         public DoctorDAL() { }

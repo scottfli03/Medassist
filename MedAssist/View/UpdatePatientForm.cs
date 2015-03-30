@@ -49,6 +49,7 @@ namespace MedAssist.View
 
         private void DisplayPatient()
         {
+            //TODO: Add Try Catch block.
             txtFirstName.Text = patient.FirstName;
             txtMiddleInit.Text = patient.MInit.ToString();
             txtLastName.Text = patient.LastName;
@@ -67,9 +68,7 @@ namespace MedAssist.View
         {
             Patient newPatient = new Patient();
             newPatient.PatientID = patient.PatientID;
-
             this.PutPatientData(newPatient);
-
             try
             {
                if (!PatientDAL.UpdatePatient(patient, newPatient))
@@ -90,7 +89,6 @@ namespace MedAssist.View
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-
         }
  
         private void PutPatientData(Patient patient)
@@ -104,7 +102,6 @@ namespace MedAssist.View
             patient.State = txtState.Text;
             patient.Phone = txtPhone.Text;
             patient.ZipCode = txtZip.Text;
- 
         }
  
         private void btnGetPatient_Click(object sender, EventArgs e)
@@ -113,14 +110,14 @@ namespace MedAssist.View
             if (Validator.IsPresent(txtPatientID) &&
                 Validator.IsInt32(txtPatientID))
             {
-                
-                 int patientID = Convert.ToInt32((txtPatientID.Text));
+                int patientID = Convert.ToInt32((txtPatientID.Text));
                 this.GetPatient(patientID);
             }
          }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            //TODO: Add Message Box checking if the user wants to exit.
             this.Close();
         }
     }
