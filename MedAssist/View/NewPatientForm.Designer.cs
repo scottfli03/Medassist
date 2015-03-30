@@ -134,6 +134,8 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(100, 20);
             this.txtLastName.TabIndex = 3;
+            this.txtLastName.Tag = "Last Name";
+
             // 
             // txtMiddleInit
             // 
@@ -141,6 +143,8 @@
             this.txtMiddleInit.Name = "txtMiddleInit";
             this.txtMiddleInit.Size = new System.Drawing.Size(25, 20);
             this.txtMiddleInit.TabIndex = 2;
+            this.txtMiddleInit.Tag = "Middle Initial";
+
             // 
             // txtAddress1
             // 
@@ -148,6 +152,7 @@
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.Size = new System.Drawing.Size(170, 20);
             this.txtAddress1.TabIndex = 7;
+            this.txtAddress1.Tag = "Address 1";
             // 
             // txtPhone
             // 
@@ -155,6 +160,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(100, 20);
             this.txtPhone.TabIndex = 11;
+            this.txtPhone.Tag = "Phone";
             // 
             // txtState
             // 
@@ -162,6 +168,7 @@
             this.txtState.Name = "txtState";
             this.txtState.Size = new System.Drawing.Size(100, 20);
             this.txtState.TabIndex = 10;
+            this.txtState.Tag = "State";
             // 
             // txtAddress2
             // 
@@ -169,6 +176,7 @@
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(170, 20);
             this.txtAddress2.TabIndex = 9;
+            this.txtAddress2.Tag = "Address 2";
             // 
             // label11
             // 
@@ -178,6 +186,7 @@
             this.label11.Size = new System.Drawing.Size(24, 13);
             this.label11.TabIndex = 23;
             this.label11.Text = "City";
+          
             // 
             // label12
             // 
@@ -194,6 +203,7 @@
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(100, 20);
             this.txtCity.TabIndex = 8;
+            this.txtCity.Tag = "City";
             // 
             // txtZip
             // 
@@ -201,6 +211,7 @@
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(100, 20);
             this.txtZip.TabIndex = 12;
+            this.txtZip.Tag = "Zip";
             // 
             // label1
             // 
@@ -226,6 +237,7 @@
             this.txtSSN.Name = "txtSSN";
             this.txtSSN.Size = new System.Drawing.Size(100, 20);
             this.txtSSN.TabIndex = 6;
+            this.txtSSN.Tag = "SSN";
             // 
             // txtGender
             // 
@@ -233,6 +245,7 @@
             this.txtGender.Name = "txtGender";
             this.txtGender.Size = new System.Drawing.Size(27, 20);
             this.txtGender.TabIndex = 5;
+            this.txtGender.Tag = "Gender";
             // 
             // label7
             // 

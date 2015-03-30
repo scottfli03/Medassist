@@ -73,6 +73,7 @@
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(100, 20);
             this.txtZip.TabIndex = 13;
+            this.txtZip.Tag = "Zip";
             // 
             // txtCity
             // 
@@ -80,6 +81,7 @@
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(100, 20);
             this.txtCity.TabIndex = 9;
+            this.txtCity.Tag = "City";
             // 
             // txtState
             // 
@@ -87,6 +89,7 @@
             this.txtState.Name = "txtState";
             this.txtState.Size = new System.Drawing.Size(100, 20);
             this.txtState.TabIndex = 11;
+            this.txtState.Tag = "State";
             // 
             // txtAddress2
             // 
@@ -94,6 +97,7 @@
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(170, 20);
             this.txtAddress2.TabIndex = 10;
+            this.txtAddress1.Tag = "Address 2";
             // 
             // label11
             // 
@@ -103,6 +107,7 @@
             this.label11.Size = new System.Drawing.Size(24, 13);
             this.label11.TabIndex = 52;
             this.label11.Text = "City";
+            
             // 
             // label12
             // 
@@ -119,6 +124,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(100, 20);
             this.txtPhone.TabIndex = 12;
+            this.txtPhone.Tag = "Phone";
             // 
             // txtAddress1
             // 
@@ -126,6 +132,7 @@
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.Size = new System.Drawing.Size(170, 20);
             this.txtAddress1.TabIndex = 8;
+            this.txtAddress1.Tag = "Address 1";
             // 
             // txtMiddleInit
             // 
@@ -133,6 +140,7 @@
             this.txtMiddleInit.Name = "txtMiddleInit";
             this.txtMiddleInit.Size = new System.Drawing.Size(25, 20);
             this.txtMiddleInit.TabIndex = 6;
+            this.txtMiddleInit.Tag = "Middle Initial";
             // 
             // txtLastName
             // 
@@ -140,6 +148,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(100, 20);
             this.txtLastName.TabIndex = 7;
+            this.txtLastName.Tag = "Last Name";
             // 
             // txtFirstName
             // 
@@ -148,6 +157,7 @@
             this.txtFirstName.Size = new System.Drawing.Size(100, 20);
             this.txtFirstName.TabIndex = 5;
             this.txtFirstName.Tag = "First Name";
+
             // 
             // btnCancel
             // 
