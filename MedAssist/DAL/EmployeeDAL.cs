@@ -15,11 +15,10 @@ namespace MedAssist.DAL
 
         public List<Employee> GetListOfDoctorEmployees()
         {
-            //TODO: Problem with database's 'State' attribute.  Add after fixed.
             List<Employee> employeeList = new List<Employee>();
             SqlConnection connection = MedassistDB.GetConnection();
             String selectStatement = "SELECT EmployeeID, SSN, FirstName, MInit, LastName, DOB, Gender, " +
-	            "StreetAddress1, StreetAddress2, Phone, City, ZipCode " +
+	            "StreetAddress1, StreetAddress2, Phone, City, State, ZipCode " +
                 "FROM Employees e JOIN Doctors d ON e.EmployeeID = d.DoctorID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
@@ -41,6 +40,7 @@ namespace MedAssist.DAL
                     employee.StreetAddr2 = reader["StreetAddress2"].ToString();
                     employee.Phone = reader["Phone"].ToString();
                     employee.City = reader["City"].ToString();
+                    employee.State = reader["State"].ToString();
                     employee.ZipCode = reader["ZipCode"].ToString();
                     employeeList.Add(employee);
                 }

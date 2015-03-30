@@ -174,11 +174,10 @@ namespace MedAssist.DAL
         /// <returns></returns>
         public static List<Patient> GetPatientList()
         {
-            //TODO: Problem with database's 'State' attribute.  Add after fixed.
             List<Patient> patientList = new List<Patient>();
             SqlConnection connection = MedassistDB.GetConnection();
             String selectStatement = "SELECT PatientID, SSN, FirstName, MInit, LastName, DOB, Gender, " +
-                "StreetAddress1, StreetAddress2, Phone, City, ZipCode FROM Patients";
+                "StreetAddress1, StreetAddress2, Phone, City, State, ZipCode FROM Patients";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
             try
@@ -199,6 +198,7 @@ namespace MedAssist.DAL
                     patient.StreetAddr2 = reader["StreetAddress2"].ToString();
                     patient.Phone = reader["Phone"].ToString();
                     patient.City = reader["City"].ToString();
+                    patient.State = reader["State"].ToString();
                     patient.ZipCode = reader["ZipCode"].ToString();
                     patientList.Add(patient);
                 }
@@ -217,7 +217,7 @@ namespace MedAssist.DAL
             return patientList;
         }
      
-    /// <summary>
+        /// <summary>
         /// Gets List of Patients when searching with fName and lName
         /// Added by Greene
         /// </summary>
