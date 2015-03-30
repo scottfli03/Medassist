@@ -25,9 +25,7 @@ namespace MedAssist.View
 
         private void SearchPatientForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'patientsAndVisits.PatientVisitSearch' table. You can move, or remove it, as needed.
-           // this.patientVisitSearchTableAdapter.Fill(this.patientsAndVisits.PatientVisitSearch);
-            this.GetPatientData();
+            
 
         }
 
@@ -52,27 +50,15 @@ namespace MedAssist.View
         //This method will search for the patient by their first name and last name
         private void GetPatientData()
         {
-            if (txtFName.Text == null && txtLName.Text == null)
-            {
-                MessageBox.Show(txtFName.Tag.ToString() + " is a required field.", fName);
-            }
-            else fName = txtFName.Text;
+                 fName = txtFName.Text;
                  lName = txtLName.Text;
-                 //int patientID = (int)txtFName.Text;
-                 
-
+                
             try
             {
                 //get a patient object for the typed Patient
-                //will bind the datagrid to that object    
-
-                //**scott I'm trying to take the first name and last name of the patient to create a patient object for the datagrid view
-                //to use inorder to populate the list.** 
-                //patient = PatientDAL.GetPatientListWithFNameLName(fName,  lName);
-                //patientVisitSearchBindingSource.Add();
+                //will bind the datagrid to that object
                 visitList = VisitDAL.GetVisitForPatient(fName, lName);
                 patientVisitSearchDataGridView.DataSource = visitList;
-
 
             }
             catch (Exception ex)
@@ -80,9 +66,6 @@ namespace MedAssist.View
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
-
-                
-    
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -97,6 +80,16 @@ namespace MedAssist.View
             if (Validator.IsDate(txtDOB)) {
 
             }
+        }
+
+        //Search button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (Validator.IsPresent(txtFName) || Validator.IsPresent(txtLName))
+            {
+                 this.GetPatientData();
+            }
+            
         }
     }
 }

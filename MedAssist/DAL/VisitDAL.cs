@@ -69,16 +69,34 @@ namespace MedAssist.DAL
         /// Added by Greene
         /// </summary>
         /// <returns></returns>
-        public static List<Visit> GetVisitForPatient(String fName, String lName)
+        public static List<Visit> GetVisitForPatient(string fName, string lName)
         {
             List<Visit> visitList = new List<Visit>();
             SqlConnection connection = MedassistDB.GetConnection();
-            String selectStatement = @"SELECT        
-            Visits.VisitID, Visits.VisitDate, Visits.PatientID, Visits.Diagnosis, Visits.Systolic, 
-            Visits.Diastolic, Visits.Temperature, Visits.RespirationRate, Visits.HeartRate, Visits.Symptoms, 
-            Patients.FirstName, Patients.MInit, Patients.LastName, Patients.DOB
-            FROM Visits 
-            INNER JOIN Patients ON Visits.PatientID = Patients.PatientID";
+
+            var selectStatement = string.Format(@"
+                SELECT        
+                    Visits.VisitID
+                    ,Visits.VisitDate
+                    ,Visits.PatientID
+                    ,Visits.Diagnosis
+                    ,Visits.Systolic
+                    ,Visits.Diastolic
+                    ,Visits.Temperature
+                    ,Visits.RespirationRate
+                    ,Visits.HeartRate
+                    ,Visits.Symptoms
+                    ,Patients.FirstName
+                    ,Patients.MInit
+                    ,Patients.LastName
+                    ,Patients.DOB
+                FROM Visits 
+                INNER JOIN Patients
+                ON Visits.PatientID = Patients.PatientID
+                WHERE
+                    Patients.FirstName = '{0}'
+                    AND Patients.LastName = '{1}'", fName, lName);
+
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
             try
@@ -98,7 +116,7 @@ namespace MedAssist.DAL
                     visit.DOB = (DateTime)reader["DOB"];
                     visit.Systolic = (int)reader["Systolic"];
                     visit.Diastolic = (int)reader["Diastolic"];
-                    visit.Temperature = (int)reader["Temperature"];
+                    visit.Temperature = (decimal)reader["Temperature"];
                     visit.RespirationRate = (int)reader["RespirationRate"];
                     visit.HeartRate = (int)reader["HeartRate"];
                     visit.Symptoms = reader["Symptoms"].ToString();
