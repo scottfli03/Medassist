@@ -110,6 +110,7 @@
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(157, 20);
             this.txtFName.TabIndex = 3;
+            this.txtFName.Tag = "fName";
             this.txtFName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label4
@@ -126,6 +127,7 @@
             this.txtLName.Name = "txtLName";
             this.txtLName.Size = new System.Drawing.Size(157, 20);
             this.txtLName.TabIndex = 5;
+            this.txtLName.Tag = "lName";
             this.txtLName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // txtDOB

@@ -21,6 +21,12 @@ namespace MedAssist.Model
         private int heartRate;
         private string symptoms;
 
+        //added by greene
+        private DateTime dOB;
+        private string lastName;
+        private string firstName;
+        private string mInit;
+
 
         public Visit() { }
 
@@ -165,6 +171,54 @@ namespace MedAssist.Model
             set
             {
                 symptoms = value;
+            }
+        }
+
+        public DateTime DOB
+        {
+            get
+            {
+                return dOB;
+            }
+            set
+            {
+                dOB = value;
+            }
+        }
+
+        public String LastName
+        {
+            get
+            {
+                return lastName;
+            }
+            set
+            {
+                lastName = value;
+            }
+        }
+
+        public String FirstName
+        {
+            get
+            {
+                return firstName;
+            }
+            set
+            {
+                firstName = value;
+            }
+        }
+
+        public String MInit
+        {
+            get
+            {
+                return mInit;
+            }
+            set
+            {
+                mInit = value;
             }
         }
     }

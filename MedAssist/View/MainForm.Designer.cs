@@ -40,9 +40,10 @@
             this.patientTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updatePatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newVisitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newVisitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newVisitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,6 +111,7 @@
             this.patientTestToolStripMenuItem,
             this.updatePatientToolStripMenuItem,
             this.registerPatientToolStripMenuItem,
+            this.searchPatientToolStripMenuItem,
             this.newVisitToolStripMenuItem1});
             this.nurseToolStripMenuItem.Name = "nurseToolStripMenuItem";
             this.nurseToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
@@ -142,6 +144,13 @@
             this.registerPatientToolStripMenuItem.Text = "Register Patient";
             this.registerPatientToolStripMenuItem.Click += new System.EventHandler(this.registerPatientToolStripMenuItem_Click);
             // 
+            // newVisitToolStripMenuItem1
+            // 
+            this.newVisitToolStripMenuItem1.Name = "newVisitToolStripMenuItem1";
+            this.newVisitToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
+            this.newVisitToolStripMenuItem1.Text = "New Visit";
+            this.newVisitToolStripMenuItem1.Click += new System.EventHandler(this.newVisitToolStripMenuItem1_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
@@ -154,12 +163,12 @@
             this.newVisitToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.newVisitToolStripMenuItem.Text = "New Visit";
             // 
-            // newVisitToolStripMenuItem1
+            // searchPatientToolStripMenuItem
             // 
-            this.newVisitToolStripMenuItem1.Name = "newVisitToolStripMenuItem1";
-            this.newVisitToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
-            this.newVisitToolStripMenuItem1.Text = "New Visit";
-            this.newVisitToolStripMenuItem1.Click += new System.EventHandler(this.newVisitToolStripMenuItem1_Click);
+            this.searchPatientToolStripMenuItem.Name = "searchPatientToolStripMenuItem";
+            this.searchPatientToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.searchPatientToolStripMenuItem.Text = "Search Patient";
+            this.searchPatientToolStripMenuItem.Click += new System.EventHandler(this.searchPatientToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -197,5 +206,6 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newVisitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newVisitToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem searchPatientToolStripMenuItem;
     }
 }

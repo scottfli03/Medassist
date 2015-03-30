@@ -15,6 +15,9 @@ namespace MedAssist.View
     public partial class SearchPatient : Form
     {
         private Patient patient;
+        private List<Visit> visitList;
+        private String fName;
+        private String lName;
         public SearchPatient()
         {
             InitializeComponent();
@@ -23,7 +26,8 @@ namespace MedAssist.View
         private void SearchPatientForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'patientsAndVisits.PatientVisitSearch' table. You can move, or remove it, as needed.
-            this.patientVisitSearchTableAdapter.Fill(this.patientsAndVisits.PatientVisitSearch);
+           // this.patientVisitSearchTableAdapter.Fill(this.patientsAndVisits.PatientVisitSearch);
+            this.GetPatientData();
 
         }
 
@@ -46,9 +50,9 @@ namespace MedAssist.View
         }
 
         //This method will search for the patient by their first name and last name
-        private void GetPatientData(string fName, string lName)
+        private void GetPatientData()
         {
-            if (txtFName.Text == null && txtLName == null)
+            if (txtFName.Text == null && txtLName.Text == null)
             {
                 MessageBox.Show(txtFName.Tag.ToString() + " is a required field.", fName);
             }
@@ -65,10 +69,15 @@ namespace MedAssist.View
                 //**scott I'm trying to take the first name and last name of the patient to create a patient object for the datagrid view
                 //to use inorder to populate the list.** 
                 //patient = PatientDAL.GetPatientListWithFNameLName(fName,  lName);
-            }
-            finally
-            {
+                //patientVisitSearchBindingSource.Add();
+                visitList = VisitDAL.GetVisitForPatient(fName, lName);
+                patientVisitSearchDataGridView.DataSource = visitList;
 
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
 
