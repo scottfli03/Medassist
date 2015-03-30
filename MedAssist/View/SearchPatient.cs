@@ -28,7 +28,6 @@ namespace MedAssist.View
             // TODO: This line of code loads data into the 'patientsAndVisits.PatientVisitSearch' table. You can move, or remove it, as needed.
            // this.patientVisitSearchTableAdapter.Fill(this.patientsAndVisits.PatientVisitSearch);
             this.GetPatientData();
-
         }
 
         private void patientVisitSearchDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

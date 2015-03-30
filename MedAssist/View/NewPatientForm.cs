@@ -1,4 +1,5 @@
 ﻿using MedAssist.Controller;
+using MedAssist.View;
 using MedAssist.DAL;
 using MedAssist.Model;
 using System;
@@ -15,16 +16,22 @@ namespace MedAssist
 {
     public partial class NewPatient : Form
     {
-
         private Patient patient;
 
+        //TODO: Add Tags so that validation messages show names of what is not correct.
         public NewPatient()
         {
             InitializeComponent();
         }
 
+        private void NewPatient_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            //TODO: Display message asking them if they want to cancel
             Close();
         }
 
@@ -34,8 +41,6 @@ namespace MedAssist
             {
                 patient = new Patient();
                 PutPatientData(patient);
-
-
                 try
                 {
                     patient.PatientID = PatientDAL.AddPatient(patient); 
@@ -48,6 +53,7 @@ namespace MedAssist
                         MessageBox.Show(ex.Message, ex.GetType().ToString());
                     }
                 }
+                //TODO: Possibly move this into the try statement. 
                 Close();
             }
         }
@@ -64,6 +70,8 @@ namespace MedAssist
                 Validator.IsPresent(txtState) &&
                 Validator.IsPresent(txtPhone) &&
                 Validator.IsPresent(txtZip))
+                //TODO: Add a radio button group or a statement validating gender was entered correctly.
+                //TODO: Check if MInits length is only one char long. Display message if not.  You may be able to set the textbox to only allow one char.
             {
                 return true;
             }
@@ -72,7 +80,6 @@ namespace MedAssist
 
         private void PutPatientData(Patient patient)
         {
-            
             patient.FirstName = txtFirstName.Text;
             patient.LastName = txtLastName.Text;
             patient.MInit = txtMiddleInit.Text[0];
@@ -85,18 +92,6 @@ namespace MedAssist
             patient.Gender = txtGender.Text[0];
             patient.ZipCode = txtZip.Text;
             patient.DOB = dateTimePickerDOB.Value.Date;
-
-
         }
-
-        private void NewPatient_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
-
     }
 }

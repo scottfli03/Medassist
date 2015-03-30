@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MedAssist.Controller;
 using MedAssist.Model;
+using System.Text.RegularExpressions;
 
 namespace MedAssist.View
 {
@@ -88,7 +89,13 @@ namespace MedAssist.View
                 Validator.IsPresent(txtDiastolic) &&
                 Validator.IsPresent(cmbDoctor) &&
                 Validator.IsPresent(txtBoxDiagnosis) &&
-                Validator.IsPresent(txtTemp))
+                Validator.IsPresent(txtTemp) &&
+                Validator.IsInt32(txtDiastolic) &&
+                Validator.IsInt32(txtHeartRate) &&
+                Validator.IsInt32(txtRespRate) &&
+                Validator.IsInt32(txtSystolic) &&
+                Validator.IsDecimal(txtTemp))
+
             {
                 return true;
             }
@@ -108,10 +115,17 @@ namespace MedAssist.View
         {
             if (IsValidData())
             {
-                Visit visit = GetVisitData();
-                int visitID = VisitController.CreateVisit(visit);
-                MessageBox.Show("Visit " + visitID + " was successfully entered in.", "Visit Completed");
-                this.Close();
+                try
+                {
+                    Visit visit = GetVisitData();
+                    int visitID = VisitController.CreateVisit(visit);
+                    MessageBox.Show("Visit " + visitID + " was successfully entered in.", "Visit Completed");
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
             }
             else
             {
