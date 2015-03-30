@@ -63,7 +63,7 @@ namespace MedAssist.DAL
         /// </summary>
         /// <param name="oldPatient"></param>
         /// <param name="newPatient"></param>
-        /// <returns></returns>
+        /// <returns>If the update is successful or not</returns>
         public static bool UpdatePatient(Patient oldPatient, Patient newPatient)
         {
             SqlConnection connection = MedassistDB.GetConnection();
@@ -114,7 +114,7 @@ namespace MedAssist.DAL
         /// Gets patient to Update
         /// </summary>
         /// <param name="patientID"></param>
-        /// <returns></returns>
+        /// <returns>The Patient</returns>
         public static Patient GetPatientToUpdate(int patientID)
         {
             Patient patient = new Patient();
@@ -171,7 +171,7 @@ namespace MedAssist.DAL
         /// <summary>
         /// Gets List of Patients
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of Patient Objects</returns>
         public static List<Patient> GetPatientList()
         {
             List<Patient> patientList = new List<Patient>();

@@ -8,11 +8,18 @@ using System.Data.SqlClient;
 
 namespace MedAssist.DAL
 {
+    /// <summary>
+    /// Interacts with the Visit Table
+    /// </summary>
     class VisitDAL
     {
         public VisitDAL() { }
 
-        
+        /// <summary>
+        /// Inserts a visit into the Visit Table
+        /// </summary>
+        /// <param name="visit">The Visit to enter into the table</param>
+        /// <returns>The visit ID that was inserted</returns>
         public int createVisit(Visit visit)
         {
             SqlConnection connection = MedassistDB.GetConnection();
