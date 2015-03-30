@@ -14,6 +14,7 @@ namespace MedAssist.View
 {
     public partial class SearchPatient : Form
     {
+        //TODO: Make sure main form is large enough to fit this form
         private Patient patient;
         private List<Visit> visitList;
         private String fName;
