@@ -9,10 +9,17 @@ using System.Data.SqlClient;
 
 namespace MedAssist.DAL
 {
+    /// <summary>
+    /// Used to interact with the Employee Table of the database
+    /// </summary>
     class EmployeeDAL
     {
         public EmployeeDAL() { }
 
+        /// <summary>
+        /// Gets a list of Employees that are doctors and returns that list.
+        /// </summary>
+        /// <returns>Employee List of Doctor Employees</returns>
         public List<Employee> GetListOfDoctorEmployees()
         {
             List<Employee> employeeList = new List<Employee>();

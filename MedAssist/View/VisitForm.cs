@@ -12,6 +12,9 @@ using MedAssist.Model;
 
 namespace MedAssist.View
 {
+    /// <summary>
+    /// Form that allows a nurse to enter Visit information including the Checkup information
+    /// </summary>
     public partial class VisitForm : Form
     {
         private List<Patient> patientList;
@@ -21,6 +24,11 @@ namespace MedAssist.View
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Carries out actions when the VisitForm loads, including loading the ComboBoxes and assigning Tags.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VisitForm_Load(object sender, EventArgs e)
         {
             this.loadComboBoxes();
@@ -36,6 +44,10 @@ namespace MedAssist.View
             cmbPatient.Tag = "Patient";
         }
 
+        /// <summary>
+        /// Gets the data from the form and returns it in the form of a Visit Object
+        /// </summary>
+        /// <returns>The Visit Object</returns>
         private Visit GetVisitData()
         {
             Visit visit = new Visit();
@@ -61,6 +73,10 @@ namespace MedAssist.View
             return visit;
         }
 
+        /// <summary>
+        /// Checks if the data entered into the form is valid.
+        /// </summary>
+        /// <returns></returns>
         private bool IsValidData()
         {
             if (Validator.IsPresent(txtHeartRate) &&
@@ -82,12 +98,20 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// When the submit button is clicked it checks if the data is valid, 
+        /// gets the data, and creates a new visit in the Visit table.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (IsValidData())
             {
                 Visit visit = GetVisitData();
-                VisitController.CreateVisit(visit);
+                int visitID = VisitController.CreateVisit(visit);
+                MessageBox.Show("Visit " + visitID + " was successfully entered in.", "Visit Completed");
+                this.Close();
             }
             else
             {
@@ -95,6 +119,12 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// When the cancel button is clicked the user is asked if they are sure they
+        /// want to cancel their form.  If confirmed the Form closes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Are you sure you would like to exit the form?", "Form Closing", MessageBoxButtons.YesNo);
@@ -108,6 +138,9 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Loads the information into the Doctor ComboBox and the Patient ComboBox.
+        /// </summary>
         private void loadComboBoxes()
         {
             EmployeeController empCont = new EmployeeController();
@@ -127,6 +160,26 @@ namespace MedAssist.View
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        /// <summary>
+        /// Decides the actions taken when the Order Test Button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnOrderTest_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature will be implemented soon", "Under Construction");
+        }
+
+        /// <summary>
+        /// Decides the actions taken when the Update/View Button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnViewUpdateTest_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature will be implemented soon", "Under Construction");
         }
     }
 }

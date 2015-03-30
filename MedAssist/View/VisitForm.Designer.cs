@@ -269,6 +269,7 @@
             this.btnOrderTest.TabIndex = 33;
             this.btnOrderTest.Text = "Order";
             this.btnOrderTest.UseVisualStyleBackColor = true;
+            this.btnOrderTest.Click += new System.EventHandler(this.btnOrderTest_Click);
             // 
             // label10
             // 
@@ -287,6 +288,7 @@
             this.btnViewUpdateTest.TabIndex = 35;
             this.btnViewUpdateTest.Text = "View/Update";
             this.btnViewUpdateTest.UseVisualStyleBackColor = true;
+            this.btnViewUpdateTest.Click += new System.EventHandler(this.btnViewUpdateTest_Click);
             // 
             // txtBoxFnlDiagnosis
             // 
