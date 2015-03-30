@@ -14,14 +14,18 @@ using System.Windows.Forms;
 
 namespace MedAssist
 {
+    /// <summary>
+    /// Shows Update Patient Form
+    /// </summary>
     public partial class NewPatient : Form
     {
         private Patient patient;
 
-        //TODO: Add Tags so that validation messages show names of what is not correct.
         public NewPatient()
         {
             InitializeComponent();
+            txtMiddleInit.MaxLength = 1;
+            txtGender.MaxLength = 1;
         }
 
         private void NewPatient_Load(object sender, EventArgs e)
@@ -31,8 +35,16 @@ namespace MedAssist
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            //TODO: Display message asking them if they want to cancel
-            Close();
+            var result = MessageBox.Show("Are you sure you would like to exit the form?", "Form Closing", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            else
+            {
+                this.Close();
+            }
+            
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -46,6 +58,7 @@ namespace MedAssist
                     patient.PatientID = PatientDAL.AddPatient(patient); 
                     DialogResult = DialogResult.OK;
                     MessageBox.Show("Patient Accepted");
+                    Close();
                 }
                 catch (Exception ex)
                 {
@@ -53,8 +66,7 @@ namespace MedAssist
                         MessageBox.Show(ex.Message, ex.GetType().ToString());
                     }
                 }
-                //TODO: Possibly move this into the try statement. 
-                Close();
+
             }
         }
 
@@ -70,8 +82,7 @@ namespace MedAssist
                 Validator.IsPresent(txtState) &&
                 Validator.IsPresent(txtPhone) &&
                 Validator.IsPresent(txtZip))
-                //TODO: Add a radio button group or a statement validating gender was entered correctly.
-                //TODO: Check if MInits length is only one char long. Display message if not.  You may be able to set the textbox to only allow one char.
+            
             {
                 return true;
             }
