@@ -15,9 +15,15 @@ namespace MedAssist.View
     public partial class VisitForm : Form
     {
         private List<Patient> patientList;
+        private List<Employee> doctorList;
         public VisitForm()
         {
             InitializeComponent();
+        }
+
+        private void VisitForm_Load(object sender, EventArgs e)
+        {
+            this.loadComboBoxes();
             txtDiastolic.Tag = "Diastolic Reading";
             txtBoxDiagnosis.Tag = "Diagnosis";
             txtHeartRate.Tag = "Heart Rate";
@@ -28,13 +34,6 @@ namespace MedAssist.View
             txtTemp.Tag = "Temperature";
             cmbDoctor.Tag = "Doctor";
             cmbPatient.Tag = "Patient";
-
-        }
-
-        private void VisitForm_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'doctor_Patient_Nurse_Employee_Visit_Dataset.Visits' table. You can move, or remove it, as needed.
-            this.visitsTableAdapter.Fill(this.doctor_Patient_Nurse_Employee_Visit_Dataset.Visits);
         }
 
         private Visit GetVisitData()
@@ -45,13 +44,12 @@ namespace MedAssist.View
             {
                 visit.NurseID = 1;
                 visit.HeartRate = Int32.Parse(txtHeartRate.Text);
-                String test = cmbPatient.SelectedItem.ToString();
-                visit.PatientID = Int32.Parse(cmbPatient.SelectedItem.ToString());
+                visit.PatientID = (int)cmbPatient.SelectedValue;
                 visit.RespirationRate = Int32.Parse(txtRespRate.Text);
                 visit.Symptoms = txtSymptoms.Text;
                 visit.Systolic = Int32.Parse(txtSystolic.Text);
                 visit.Diastolic = Int32.Parse(txtDiastolic.Text);
-                visit.DoctorID = Int32.Parse(cmbDoctor.SelectedItem.ToString());
+                visit.DoctorID = (int)cmbDoctor.SelectedValue;
                 visit.Diagnosis = txtBoxDiagnosis.Text + " " + txtBoxFnlDiagnosis.Text;
                 visit.VisitDate = DateTime.Today;
                 visit.Temperature = Decimal.Parse(txtTemp.Text);
@@ -110,9 +108,25 @@ namespace MedAssist.View
             }
         }
 
-        private void cmbDoctor_SelectedIndexChanged(object sender, EventArgs e)
+        private void loadComboBoxes()
         {
-
+            EmployeeController empCont = new EmployeeController();
+            PatientController patCont = new PatientController();
+            try
+            {
+                doctorList = empCont.GetListOfDoctorEmployees();
+                cmbDoctor.DataSource = doctorList;
+                cmbDoctor.DisplayMember = "FullName";
+                cmbDoctor.ValueMember = "EmployeeID";
+                patientList = patCont.GetPatientList();
+                cmbPatient.DataSource = patientList;
+                cmbPatient.DisplayMember = "FullName";
+                cmbPatient.ValueMember = "PatientID";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }

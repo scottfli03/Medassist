@@ -11,10 +11,6 @@ namespace MedAssist.DAL
 {
     class PatientDAL
     {
-
-        
-
-
         /// <summary>
         /// Query to add patients
         /// </summary>
@@ -22,7 +18,6 @@ namespace MedAssist.DAL
         /// <returns>incident added</returns>
         public static int AddPatient(Patient patient)
         {
-
             SqlConnection connection = MedassistDB.GetConnection();
             string insertStatement =
                 "Insert Patients " +
@@ -42,8 +37,6 @@ namespace MedAssist.DAL
             insertCommand.Parameters.AddWithValue("@Phone", patient.Phone);
             insertCommand.Parameters.AddWithValue("@DOB", patient.DOB);
             insertCommand.Parameters.AddWithValue("@Gender", patient.Gender);
-
-
             try
             {
                 connection.Open();
@@ -86,7 +79,6 @@ namespace MedAssist.DAL
                 "State = @NewState, " +
                 "ZipCode = @NewZipCode " +
                 "WHERE PatientID = @OldPatientID";
-
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             updateCommand.Parameters.AddWithValue("@NewFirstName", newPatient.FirstName);
             updateCommand.Parameters.AddWithValue("@NewLastName", newPatient.LastName);
@@ -97,9 +89,7 @@ namespace MedAssist.DAL
             updateCommand.Parameters.AddWithValue("@NewCity", newPatient.City);
             updateCommand.Parameters.AddWithValue("@NewState", newPatient.State);
             updateCommand.Parameters.AddWithValue("@NewZipCode", newPatient.ZipCode);
-
             updateCommand.Parameters.AddWithValue("@OldPatientID", oldPatient.PatientID);
-
             try
             {
                 connection.Open();
@@ -184,10 +174,11 @@ namespace MedAssist.DAL
         /// <returns></returns>
         public static List<Patient> GetPatientList()
         {
+            //TODO: Problem with database's 'State' attribute.  Add after fixed.
             List<Patient> patientList = new List<Patient>();
             SqlConnection connection = MedassistDB.GetConnection();
             String selectStatement = "SELECT PatientID, SSN, FirstName, MInit, LastName, DOB, Gender, " +
-                "StreetAddress1, StreetAddress2, Phone, City, State, ZipCode FROM Patients";
+                "StreetAddress1, StreetAddress2, Phone, City, ZipCode FROM Patients";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
             try
@@ -208,10 +199,8 @@ namespace MedAssist.DAL
                     patient.StreetAddr2 = reader["StreetAddress2"].ToString();
                     patient.Phone = reader["Phone"].ToString();
                     patient.City = reader["City"].ToString();
-                    patient.State = reader["State"].ToString();
                     patient.ZipCode = reader["ZipCode"].ToString();
                     patientList.Add(patient);
-
                 }
             }
             catch (SqlException ex)

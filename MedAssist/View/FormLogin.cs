@@ -53,9 +53,10 @@ namespace MedAssist.View
                     if (this.nurse != null)
                     {
                         //displays the main form
-                            this.mainForm = new MainForm();
-                            this.mainForm.Text = "Logged in as " + userName;
-                            this.mainForm.Show(); 
+                        this.mainForm = new MainForm();
+                        this.mainForm.Text = "Logged in as " + userName;
+                        this.mainForm.Show(); 
+                        //TODO: Close login once main form opens.
                         
                     }
 

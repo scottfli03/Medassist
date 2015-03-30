@@ -177,5 +177,13 @@ namespace MedAssist.Model
                 zip = value;
             }
         }
+
+        public string FullName
+        {
+            get
+            {
+                return LastName + ", " + FirstName;
+            }
+        }
     }
 }
