@@ -55,7 +55,7 @@ namespace MedAssist.View
             //TODO: Get the NurseID of the nurse currently logged in.
             try
             {
-                visit.NurseID = 1;
+                visit.NurseID = (int)UserSecurityController.NurseLoggedIn.NurseID;
                 visit.HeartRate = Int32.Parse(txtHeartRate.Text);
                 visit.PatientID = (int)cmbPatient.SelectedValue;
                 visit.RespirationRate = Int32.Parse(txtRespRate.Text);
