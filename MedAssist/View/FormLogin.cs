@@ -43,27 +43,36 @@ namespace MedAssist.View
         {
             string userName = textBoxUserName.Text;
             string password = textBoxPassword.Text;
-            if(Validator.IsPresent(textBoxUserName) &&
+            if (Validator.IsPresent(textBoxUserName) &&
                 Validator.IsPresent(textBoxPassword))
             {
                 try
                 {
-                    this.nurse = this.controllerNurse.GetNurse(userName, password);
 
-                    if (this.nurse != null)
+                    if (Validator.IsPresent(textBoxUserName) &&
+                Validator.IsPresent(textBoxPassword))
                     {
-                        this.mainForm = new MainForm();
-                        this.mainForm.Text = "Logged in as " + userName;
-                        this.mainForm.Show(); 
-                        //TODO: Close login once main form opens.
-                        
+                        this.nurse = this.controllerNurse.GetNurse(userName, password);
+
+                        if (this.nurse != null)
+                        {
+                            this.mainForm = new MainForm();
+                            this.mainForm.Text = "Logged in as " + userName;
+
+                            this.mainForm.Show();
+                            this.Hide();
+
+
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("Invalid user name or passoword.");
+                        }
                     }
 
-                    else
-                    {
-                        MessageBox.Show("Invalid user name or passoword.");
-                    }
                 }
+
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
@@ -81,5 +90,32 @@ namespace MedAssist.View
             //TODO: Display message asking them if they are sure they want to exit.  If yes, exit, if no, do nothing.
             this.Close();
         }
+
+        //struct UserInfo
+        //{
+        //    private string nurseUserName;
+        //    private string nursePasswrod;
+        //    public  string NurseUserName
+        //    {
+        //        get
+        //        {
+        //            return nurseUserName;
+        //        }
+
+               
+        //    }
+
+        //    public string NursePassword
+        //    {
+        //        get
+        //        {
+        //            return nursePasswrod;
+        //        }
+        //    }
+        //}
+        //public bool IsUserAuthenticated
+        //{
+        //    get { return  }
+        //}
     }
 }

@@ -51,6 +51,7 @@
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(130, 20);
             this.textBoxUserName.TabIndex = 1;
+            this.textBoxUserName.Tag = "User Name";
             // 
             // label2
             // 
@@ -67,6 +68,7 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(130, 20);
             this.textBoxPassword.TabIndex = 3;
+            this.textBoxPassword.Tag = "Password";
             // 
             // button1
             // 
@@ -102,6 +104,7 @@
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -9,7 +9,7 @@ namespace MedAssist.Model
     /// <summary>
     /// A Nurse Object that has a NurseID and 
     /// </summary>
-    class Nurse
+      class Nurse
     {
         private int nurseID;
         private string userName;
