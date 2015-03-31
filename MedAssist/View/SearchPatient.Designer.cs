@@ -38,7 +38,7 @@
             this.txtLName = new System.Windows.Forms.TextBox();
             this.txtDOB = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.patientsAndVisits = new MedAssist.PatientsAndVisits();
             this.patientVisitSearchBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -148,15 +148,15 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnClose
             // 
-            this.button2.Location = new System.Drawing.Point(842, 379);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnClose.Location = new System.Drawing.Point(842, 379);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 8;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -431,7 +431,7 @@
             this.Controls.Add(this.patientVisitSearchDataGridView);
             this.Controls.Add(this.patientVisitSearchBindingNavigator);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtDOB);
             this.Controls.Add(this.txtLName);
@@ -465,7 +465,7 @@
         private System.Windows.Forms.TextBox txtLName;
         private System.Windows.Forms.TextBox txtDOB;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnClose;
        // private PatientsAndVisitsTableAdapters.VisitsTableAdapter visitsTableAdapter;
         private System.Windows.Forms.Button button3;
         private PatientsAndVisits patientsAndVisits;

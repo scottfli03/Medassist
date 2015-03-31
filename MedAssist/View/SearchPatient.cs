@@ -14,11 +14,12 @@ namespace MedAssist.View
 {
     public partial class SearchPatient : Form
     {
-        //TODO: Make sure main form is large enough to fit this form
-        private Patient patient;
+
+
         private List<Visit> visitList;
         private String fName;
         private String lName;
+        private DateTime patientDob;
         public SearchPatient()
         {
             InitializeComponent();
@@ -26,13 +27,7 @@ namespace MedAssist.View
 
         private void SearchPatientForm_Load(object sender, EventArgs e)
         {
-
-            
-
-
-            // TODO: This line of code loads data into the 'patientsAndVisits.PatientVisitSearch' table. You can move, or remove it, as needed.
-           // this.patientVisitSearchTableAdapter.Fill(this.patientsAndVisits.PatientVisitSearch);
-            this.GetPatientData();
+            //this.GetPatientData();
 
         }
 
@@ -41,6 +36,7 @@ namespace MedAssist.View
 
         }
 
+        //Close button
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -48,18 +44,16 @@ namespace MedAssist.View
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (Validator.IsPresent(txtFName))
-            {
 
-            }
         }
+
 
         //This method will search for the patient by their first name and last name
         private void GetPatientData()
         {
-                 fName = txtFName.Text;
-                 lName = txtLName.Text;
-                
+            fName = txtFName.Text;
+            lName = txtLName.Text;
+
             try
             {
                 //get a patient object for the typed Patient
@@ -74,29 +68,72 @@ namespace MedAssist.View
             }
         }
 
+        private void GetPatientDataWithDOB()
+        {
+            lName = txtLName.Text;
+            DateTime patientDob = Convert.ToDateTime(txtDOB.Text);
+
+            try
+            {
+                visitList = VisitDAL.GetVisitForPatientWithDobAndLName(lName, patientDob);
+                patientVisitSearchDataGridView.DataSource = visitList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            if (Validator.IsPresent(txtFName))
-            {
 
-            }
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            if (Validator.IsDate(txtDOB)) {
 
-            }
         }
 
         //Search button
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Validator.IsPresent(txtFName) || Validator.IsPresent(txtLName))
+            if ((txtFName.Text != null && txtFName.Text != "") && (txtLName.Text != null && txtLName.Text != ""))
             {
-                 this.GetPatientData();
+                this.GetPatientData();
             }
-            
+
+            else if ((txtLName.Text != null && txtLName.Text != "") && (txtDOB.Text != null && txtDOB.Text != ""))
+            {
+                this.GetPatientDataWithDOB();
+            }
+
+            else if ((txtFName.Text == null || txtFName.Text == ""))
+            {
+                MessageBox.Show(txtFName.Tag.ToString() + " is a required field.", "First Name Required");
+
+            }
+
+            else if ((txtLName.Text == null || txtLName.Text == ""))
+            {
+                MessageBox.Show(txtLName.Tag.ToString() + " is a required field.", "Last Name Required");
+
+            }
+
+
+            else if (txtLName.Text == null || txtLName.Text == "")
+            {
+                MessageBox.Show(txtLName.Tag.ToString() + " is a required field.", "Last Name Required");
+
+            }
+
+            else if (txtDOB.Text == null || txtDOB.Text == "")
+            {
+                MessageBox.Show(txtDOB.Tag.ToString() + " is a required field.", "Date of Birth is Required");
+
+            }
         }
+
     }
 }
+
+
