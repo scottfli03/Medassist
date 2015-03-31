@@ -70,6 +70,7 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblDateFormat = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.patientsAndVisits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingNavigator)).BeginInit();
@@ -80,7 +81,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(342, 42);
+            this.label1.Location = new System.Drawing.Point(308, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 0;
@@ -89,7 +90,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(725, 42);
+            this.label2.Location = new System.Drawing.Point(631, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 1;
@@ -123,7 +124,7 @@
             // 
             // txtLName
             // 
-            this.txtLName.Location = new System.Drawing.Point(406, 39);
+            this.txtLName.Location = new System.Drawing.Point(372, 39);
             this.txtLName.Name = "txtLName";
             this.txtLName.Size = new System.Drawing.Size(157, 20);
             this.txtLName.TabIndex = 5;
@@ -132,7 +133,7 @@
             // 
             // txtDOB
             // 
-            this.txtDOB.Location = new System.Drawing.Point(761, 39);
+            this.txtDOB.Location = new System.Drawing.Point(667, 39);
             this.txtDOB.Name = "txtDOB";
             this.txtDOB.Size = new System.Drawing.Size(157, 20);
             this.txtDOB.TabIndex = 6;
@@ -423,11 +424,22 @@
             this.dataGridViewTextBoxColumn12.HeaderText = "Symp";
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             // 
+            // lblDateFormat
+            // 
+            this.lblDateFormat.AutoSize = true;
+            this.lblDateFormat.ForeColor = System.Drawing.Color.Red;
+            this.lblDateFormat.Location = new System.Drawing.Point(831, 42);
+            this.lblDateFormat.Name = "lblDateFormat";
+            this.lblDateFormat.Size = new System.Drawing.Size(61, 13);
+            this.lblDateFormat.TabIndex = 12;
+            this.lblDateFormat.Text = "yyyy-mm-dd";
+            // 
             // SearchPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(929, 422);
+            this.Controls.Add(this.lblDateFormat);
             this.Controls.Add(this.patientVisitSearchDataGridView);
             this.Controls.Add(this.patientVisitSearchBindingNavigator);
             this.Controls.Add(this.button3);
@@ -498,5 +510,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.Label lblDateFormat;
     }
 }

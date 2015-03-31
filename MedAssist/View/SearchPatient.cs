@@ -27,7 +27,7 @@ namespace MedAssist.View
 
         private void SearchPatientForm_Load(object sender, EventArgs e)
         {
-            //this.GetPatientData();
+            
 
         }
 
@@ -59,8 +59,14 @@ namespace MedAssist.View
                 //get a patient object for the typed Patient
                 //will bind the datagrid to that object
                 visitList = VisitDAL.GetVisitForPatient(fName, lName);
-                patientVisitSearchDataGridView.DataSource = visitList;
-
+                if (visitList.Count == 0)
+                {
+                    MessageBox.Show("No Patient/Visit Found!", "Create a New Patient");
+                }
+                else
+                {
+                    patientVisitSearchDataGridView.DataSource = visitList;
+                }
             }
             catch (Exception ex)
             {
@@ -76,7 +82,15 @@ namespace MedAssist.View
             try
             {
                 visitList = VisitDAL.GetVisitForPatientWithDobAndLName(lName, patientDob);
-                patientVisitSearchDataGridView.DataSource = visitList;
+
+                if (visitList.Count == 0)
+                {
+                    MessageBox.Show("No Patient/Visit Info Found!", "Create a New Patient");
+                }
+                else
+                {
+                    patientVisitSearchDataGridView.DataSource = visitList;
+                }
             }
             catch (Exception ex)
             {
