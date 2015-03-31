@@ -27,8 +27,9 @@ namespace MedAssist.View
         public MainForm()
         {
             InitializeComponent();
-           
+
         }
+
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -36,7 +37,16 @@ namespace MedAssist.View
 
         private void registerPatientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.displayNewPatientForm();
+            if (UserSecurityController.NurseLoggedIn != null)
+            {
+                this.displayNewPatientForm();
+            }
+            else
+            {
+                this.DisplayLoginWarning();
+            }
+
+
         }
 
         void np_FormClosed(object sender, FormClosedEventArgs e)
@@ -47,8 +57,17 @@ namespace MedAssist.View
 
         private void updatePatientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            this.DisplayUpdatePatientForm();
+
+            if (UserSecurityController.NurseLoggedIn != null)
+            {
+                this.DisplayUpdatePatientForm();
+            }
+            else
+            {
+                this.DisplayLoginWarning();
+            }
+
+
         }
 
         /// <summary>
@@ -64,7 +83,7 @@ namespace MedAssist.View
                 this.up.FormClosed += up_FormClosed;
 
                 up.Show();
-               
+
             }
             else
             {
@@ -101,10 +120,26 @@ namespace MedAssist.View
         {
             this.Close();
         }
-       
+
+        private void DisplayLoginWarning()
+        {
+            MessageBox.Show("You must login to get access. Go to the Account menu to login", "Access denied");
+        }
+
         private void searchPatientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.DisplaySearchPatientForm();
+
+
+            if (UserSecurityController.NurseLoggedIn != null)
+            {
+                this.DisplaySearchPatientForm();
+            }
+            else
+            {
+                this.DisplayLoginWarning();
+            }
+
+
         }
 
         private void DisplaySearchPatientForm()
@@ -128,17 +163,21 @@ namespace MedAssist.View
 
         private void loginToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+
             this.login = new FormLogin();
+
             if (this.login.ShowDialog() == DialogResult.OK)
             {
-                this.login.Close();
+
+                this.Show();
+
             }
             else
             {
                 this.Close();
             }
-           
-           
+
+
         }
 
         private void logoutToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -152,11 +191,30 @@ namespace MedAssist.View
 
             this.DisplaySearchPatientForm();
             this.sp.Hide();
+
+            this.DisplayVisitForm();
+            this.vf.Hide();
             this.Text = "You are logged off";
+            UserSecurityController.NurseLoggedIn = null;
         }
 
         private void newVisitToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
+            if (UserSecurityController.NurseLoggedIn != null)
+            {
+                this.DisplayVisitForm();
+            }
+            else
+            {
+
+                this.DisplayLoginWarning();
+            }
+
+        }
+
+        private void DisplayVisitForm()
+        {
+
             if (vf == null)
             {
                 vf = new VisitForm();
@@ -170,7 +228,6 @@ namespace MedAssist.View
                 vf.Activate();
             }
         }
-
         void vf_FormClosed(object sender, FormClosedEventArgs e)
         {
             vf = null;

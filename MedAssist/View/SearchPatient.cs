@@ -103,7 +103,37 @@ namespace MedAssist.View
                     MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
             }
+       }
+
+        private void GetPatientDataByDOB()
+        {
+            if (Validator.IsDate(txtDOB) != null)
+            {
+                DateTime patientDob = Convert.ToDateTime(txtDOB.Text);
+
+                try
+                {
+                    visitList = VisitDAL.GetPatientsByDOB(patientDob);
+
+
+                    if (visitList.Count == 0)
+                    {
+                        MessageBox.Show("No Patient/Visit Info Found!", "Create a New Patient");
+                    }
+                    else
+                    {
+                        patientVisitSearchDataGridView.DataSource = visitList;
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+            }
         }
+
+       
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -122,36 +152,16 @@ namespace MedAssist.View
             {
                 this.GetPatientData();
             }
-
             else if ((txtLName.Text != null && txtLName.Text != "") && (txtDOB.Text != null && txtDOB.Text != ""))
             {
                 this.GetPatientDataWithDOB();
             }
-
-            else if ((txtFName.Text == null || txtFName.Text == ""))
+            else if (txtDOB.Text != null)
             {
-                MessageBox.Show(txtFName.Tag.ToString() + " is a required field.", "First Name Required");
-
-            }
-
-            else if ((txtLName.Text == null || txtLName.Text == ""))
-            {
-                MessageBox.Show(txtLName.Tag.ToString() + " is a required field.", "Last Name Required");
-
+                this.GetPatientDataByDOB();
             }
 
 
-            else if (txtLName.Text == null || txtLName.Text == "")
-            {
-                MessageBox.Show(txtLName.Tag.ToString() + " is a required field.", "Last Name Required");
-
-            }
-
-            else if (txtDOB.Text == null || txtDOB.Text == "")
-            {
-                MessageBox.Show(txtDOB.Tag.ToString() + " is a required field.", "Date of Birth is Required");
-
-            }
         }
         //New Patient Button
         private void button3_Click(object sender, EventArgs e)
