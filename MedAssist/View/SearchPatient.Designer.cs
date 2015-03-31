@@ -42,6 +42,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.patientVisitSearchBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.patientVisitSearchBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientsAndVisits = new MedAssist.PatientsAndVisits();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -54,11 +56,6 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.patientVisitSearchBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.patientVisitSearchDataGridView = new System.Windows.Forms.DataGridView();
-            this.lblDateFormat = new System.Windows.Forms.Label();
-            this.patientVisitSearchBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientsAndVisits = new MedAssist.PatientsAndVisits();
-            this.patientVisitSearchTableAdapter = new MedAssist.PatientsAndVisitsTableAdapters.PatientVisitSearchTableAdapter();
-            this.tableAdapterManager = new MedAssist.PatientsAndVisitsTableAdapters.TableAdapterManager();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,11 +70,14 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Diagnosis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblDateFormat = new System.Windows.Forms.Label();
+            this.patientVisitSearchTableAdapter = new MedAssist.PatientsAndVisitsTableAdapters.PatientVisitSearchTableAdapter();
+            this.tableAdapterManager = new MedAssist.PatientsAndVisitsTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingNavigator)).BeginInit();
             this.patientVisitSearchBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientsAndVisits)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -113,7 +113,7 @@
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(157, 20);
             this.txtFName.TabIndex = 3;
-            this.txtFName.Tag = "fName";
+            this.txtFName.Tag = "First Name";
             this.txtFName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label4
@@ -130,7 +130,7 @@
             this.txtLName.Name = "txtLName";
             this.txtLName.Size = new System.Drawing.Size(157, 20);
             this.txtLName.TabIndex = 5;
-            this.txtLName.Tag = "lName";
+            this.txtLName.Tag = "Last Name";
             this.txtLName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // txtDOB
@@ -210,6 +210,16 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // patientVisitSearchBindingSource
+            // 
+            this.patientVisitSearchBindingSource.DataMember = "PatientVisitSearch";
+            this.patientVisitSearchBindingSource.DataSource = this.patientsAndVisits;
+            // 
+            // patientsAndVisits
+            // 
+            this.patientsAndVisits.DataSetName = "PatientsAndVisits";
+            this.patientsAndVisits.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -322,36 +332,6 @@
             this.patientVisitSearchDataGridView.TabIndex = 11;
             this.patientVisitSearchDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.patientVisitSearchDataGridView_CellContentClick);
             // 
-            // lblDateFormat
-            // 
-            this.lblDateFormat.AutoSize = true;
-            this.lblDateFormat.ForeColor = System.Drawing.Color.Red;
-            this.lblDateFormat.Location = new System.Drawing.Point(1039, 42);
-            this.lblDateFormat.Name = "lblDateFormat";
-            this.lblDateFormat.Size = new System.Drawing.Size(61, 13);
-            this.lblDateFormat.TabIndex = 12;
-            this.lblDateFormat.Text = "yyyy-mm-dd";
-            // 
-            // patientVisitSearchBindingSource
-            // 
-            this.patientVisitSearchBindingSource.DataMember = "PatientVisitSearch";
-            this.patientVisitSearchBindingSource.DataSource = this.patientsAndVisits;
-            // 
-            // patientsAndVisits
-            // 
-            this.patientsAndVisits.DataSetName = "PatientsAndVisits";
-            this.patientsAndVisits.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // patientVisitSearchTableAdapter
-            // 
-            this.patientVisitSearchTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.Connection = null;
-            this.tableAdapterManager.UpdateOrder = MedAssist.PatientsAndVisitsTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -449,6 +429,26 @@
             this.Result.HeaderText = "Result";
             this.Result.Name = "Result";
             // 
+            // lblDateFormat
+            // 
+            this.lblDateFormat.AutoSize = true;
+            this.lblDateFormat.ForeColor = System.Drawing.Color.Red;
+            this.lblDateFormat.Location = new System.Drawing.Point(1039, 42);
+            this.lblDateFormat.Name = "lblDateFormat";
+            this.lblDateFormat.Size = new System.Drawing.Size(61, 13);
+            this.lblDateFormat.TabIndex = 12;
+            this.lblDateFormat.Text = "yyyy-mm-dd";
+            // 
+            // patientVisitSearchTableAdapter
+            // 
+            this.patientVisitSearchTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.UpdateOrder = MedAssist.PatientsAndVisitsTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // SearchPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -474,9 +474,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingNavigator)).EndInit();
             this.patientVisitSearchBindingNavigator.ResumeLayout(false);
             this.patientVisitSearchBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientsAndVisits)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
