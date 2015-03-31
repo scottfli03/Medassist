@@ -43,6 +43,7 @@ namespace MedAssist.View
         {
             string userName = textBoxUserName.Text;
             string password = textBoxPassword.Text;
+
             if (Validator.IsPresent(textBoxUserName) &&
                 Validator.IsPresent(textBoxPassword))
             {
@@ -59,10 +60,17 @@ namespace MedAssist.View
                             this.mainForm = new MainForm();
                             this.mainForm.Text = "Logged in as " + userName;
 
-                            this.mainForm.Show();
-                            this.Hide();
+                            
+                           
+                            if (this.mainForm.ShowDialog() == DialogResult.OK)
+                            {
+                                this.mainForm.Show();
 
-
+                            }
+                            else
+                            {
+                                Application.Exit();
+                            }
                         }
 
                         else
