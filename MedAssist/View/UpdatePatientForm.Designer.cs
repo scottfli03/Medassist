@@ -97,7 +97,6 @@
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(170, 20);
             this.txtAddress2.TabIndex = 10;
-            this.txtAddress1.Tag = "Address 2";
             // 
             // label11
             // 
@@ -107,7 +106,6 @@
             this.label11.Size = new System.Drawing.Size(24, 13);
             this.label11.TabIndex = 52;
             this.label11.Text = "City";
-            
             // 
             // label12
             // 
@@ -157,7 +155,6 @@
             this.txtFirstName.Size = new System.Drawing.Size(100, 20);
             this.txtFirstName.TabIndex = 5;
             this.txtFirstName.Tag = "First Name";
-
             // 
             // btnCancel
             // 
@@ -253,6 +250,7 @@
             // txtSSN
             // 
             this.txtSSN.Location = new System.Drawing.Point(311, 85);
+            this.txtSSN.MaxLength = 10;
             this.txtSSN.Name = "txtSSN";
             this.txtSSN.Size = new System.Drawing.Size(100, 20);
             this.txtSSN.TabIndex = 4;

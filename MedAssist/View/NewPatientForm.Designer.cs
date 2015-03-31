@@ -135,7 +135,6 @@
             this.txtLastName.Size = new System.Drawing.Size(100, 20);
             this.txtLastName.TabIndex = 3;
             this.txtLastName.Tag = "Last Name";
-
             // 
             // txtMiddleInit
             // 
@@ -144,7 +143,6 @@
             this.txtMiddleInit.Size = new System.Drawing.Size(25, 20);
             this.txtMiddleInit.TabIndex = 2;
             this.txtMiddleInit.Tag = "Middle Initial";
-
             // 
             // txtAddress1
             // 
@@ -186,7 +184,6 @@
             this.label11.Size = new System.Drawing.Size(24, 13);
             this.label11.TabIndex = 23;
             this.label11.Text = "City";
-          
             // 
             // label12
             // 
@@ -234,6 +231,7 @@
             // txtSSN
             // 
             this.txtSSN.Location = new System.Drawing.Point(323, 47);
+            this.txtSSN.MaxLength = 10;
             this.txtSSN.Name = "txtSSN";
             this.txtSSN.Size = new System.Drawing.Size(100, 20);
             this.txtSSN.TabIndex = 6;

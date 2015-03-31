@@ -43,6 +43,7 @@ namespace MedAssist.View
             txtTemp.Tag = "Temperature";
             cmbDoctor.Tag = "Doctor";
             cmbPatient.Tag = "Patient";
+            txtNurse.Text = EmployeeController.GetEmployeeByID(UserSecurityController.NurseLoggedIn.NurseID).FullName;
         }
 
         /// <summary>

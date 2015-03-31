@@ -17,5 +17,10 @@ namespace MedAssist.Controller
         {
             return empDAL.GetListOfDoctorEmployees();
         }
+
+        public static Employee GetEmployeeByID(int id)
+        {
+            return EmployeeDAL.GetEmployeeByID(id);
+        }
     }
 }

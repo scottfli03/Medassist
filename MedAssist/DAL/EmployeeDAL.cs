@@ -39,7 +39,7 @@ namespace MedAssist.DAL
                     employee.EmployeeID = (int)reader["EmployeeID"];
                     employee.SSN = reader["SSN"].ToString();
                     employee.FirstName = reader["FirstName"].ToString();
-                    employee.Phone = reader["MInit"].ToString();
+                    employee.MInit = reader["MInit"].ToString();
                     employee.LastName = reader["LastName"].ToString();
                     employee.DOB = (DateTime)reader["DOB"];
                     employee.Gender = reader["Gender"].ToString()[0];
@@ -68,6 +68,59 @@ namespace MedAssist.DAL
                     reader.Close();
             }
             return employeeList;
+        }
+
+        public static Employee GetEmployeeByID(int employeeID)
+        {
+            Employee employee = new Employee();
+            SqlConnection connection = MedassistDB.GetConnection();
+            string selectStatement =
+
+                   "SELECT EmployeeID, FirstName, MInit, DOB, Gender, SSN, LastName, StreetAddress1, StreetAddress2, City, State, ZipCode, Phone " +
+                   "FROM Employees " +
+                   "WHERE EmployeeID = @EmployeeID";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@EmployeeID", employeeID);
+            SqlDataReader reader = null;
+            try
+            {
+                connection.Open();
+                reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                if (reader.Read())
+                {
+                    employee.EmployeeID = (int)reader["EmployeeID"];
+                    employee.FirstName = reader["FirstName"].ToString();
+                    employee.LastName = reader["LastName"].ToString();
+                    employee.MInit = reader["Minit"].ToString();
+                    employee.DOB = (DateTime)reader["DOB"];
+                    employee.Gender = Convert.ToChar(reader["Gender"]);
+                    employee.SSN = reader["SSN"].ToString();
+                    employee.StreetAddr1 = reader["StreetAddress1"].ToString();
+                    employee.StreetAddr2 = reader["StreetAddress2"].ToString();
+                    employee.City = reader["City"].ToString();
+                    employee.State = reader["State"].ToString();
+                    employee.ZipCode = reader["ZipCode"].ToString();
+                    employee.Phone = reader["Phone"].ToString();
+                }
+                else
+                {
+                    employee = null;
+                } 
+                
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return employee;
         }
     }
 }
