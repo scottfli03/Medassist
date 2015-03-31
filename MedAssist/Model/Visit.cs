@@ -26,6 +26,9 @@ namespace MedAssist.Model
         private string lastName;
         private string firstName;
         private string mInit;
+        private string result;
+        private int testID;
+        private string testName;
 
 
         public Visit() { }
@@ -219,6 +222,42 @@ namespace MedAssist.Model
             set
             {
                 mInit = value;
+            }
+        }
+        
+        public String Result
+        {
+            get
+            {
+                return result;
+            }
+            set
+            {
+                result = value;
+            }
+        }
+
+        public String TestName
+        {
+            get
+            {
+                return testName;
+            }
+            set
+            {
+                testName = value;
+            }
+        }
+
+        public int TestID
+        {
+            get
+            {
+                return testID;
+            }
+            set
+            {
+                testID = value;
             }
         }
     }

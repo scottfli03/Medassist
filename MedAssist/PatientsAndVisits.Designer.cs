@@ -311,6 +311,12 @@ namespace MedAssist {
             
             private global::System.Data.DataColumn columnDOB;
             
+            private global::System.Data.DataColumn columnResult;
+            
+            private global::System.Data.DataColumn columnTestID;
+            
+            private global::System.Data.DataColumn columnTestName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PatientVisitSearchDataTable() {
@@ -474,6 +480,30 @@ namespace MedAssist {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ResultColumn {
+                get {
+                    return this.columnResult;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TestIDColumn {
+                get {
+                    return this.columnTestID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TestNameColumn {
+                get {
+                    return this.columnTestName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -509,7 +539,25 @@ namespace MedAssist {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PatientVisitSearchRow AddPatientVisitSearchRow(System.DateTime VisitDate, int NurseID, int PatientID, int DoctorID, string Diagnosis, int Systolic, int Diastolic, decimal Temperature, int RespirationRate, int HeartRate, string Symptoms, string FirstName, string MInit, string LastName, System.DateTime DOB) {
+            public PatientVisitSearchRow AddPatientVisitSearchRow(
+                        System.DateTime VisitDate, 
+                        int NurseID, 
+                        int PatientID, 
+                        int DoctorID, 
+                        string Diagnosis, 
+                        int Systolic, 
+                        int Diastolic, 
+                        decimal Temperature, 
+                        int RespirationRate, 
+                        int HeartRate, 
+                        string Symptoms, 
+                        string FirstName, 
+                        string MInit, 
+                        string LastName, 
+                        System.DateTime DOB, 
+                        string Result, 
+                        int TestID, 
+                        string TestName) {
                 PatientVisitSearchRow rowPatientVisitSearchRow = ((PatientVisitSearchRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -527,7 +575,10 @@ namespace MedAssist {
                         FirstName,
                         MInit,
                         LastName,
-                        DOB};
+                        DOB,
+                        Result,
+                        TestID,
+                        TestName};
                 rowPatientVisitSearchRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPatientVisitSearchRow);
                 return rowPatientVisitSearchRow;
@@ -573,6 +624,9 @@ namespace MedAssist {
                 this.columnMInit = base.Columns["MInit"];
                 this.columnLastName = base.Columns["LastName"];
                 this.columnDOB = base.Columns["DOB"];
+                this.columnResult = base.Columns["Result"];
+                this.columnTestID = base.Columns["TestID"];
+                this.columnTestName = base.Columns["TestName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -610,6 +664,12 @@ namespace MedAssist {
                 base.Columns.Add(this.columnLastName);
                 this.columnDOB = new global::System.Data.DataColumn("DOB", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDOB);
+                this.columnResult = new global::System.Data.DataColumn("Result", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnResult);
+                this.columnTestID = new global::System.Data.DataColumn("TestID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTestID);
+                this.columnTestName = new global::System.Data.DataColumn("TestName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTestName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnVisitID}, true));
                 this.columnVisitID.AutoIncrement = true;
@@ -637,6 +697,10 @@ namespace MedAssist {
                 this.columnLastName.AllowDBNull = false;
                 this.columnLastName.MaxLength = 50;
                 this.columnDOB.AllowDBNull = false;
+                this.columnResult.MaxLength = 1;
+                this.columnTestID.AllowDBNull = false;
+                this.columnTestName.AllowDBNull = false;
+                this.columnTestName.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -960,6 +1024,44 @@ namespace MedAssist {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Result {
+                get {
+                    try {
+                        return ((string)(this[this.tablePatientVisitSearch.ResultColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Result\' in table \'PatientVisitSearch\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePatientVisitSearch.ResultColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int TestID {
+                get {
+                    return ((int)(this[this.tablePatientVisitSearch.TestIDColumn]));
+                }
+                set {
+                    this[this.tablePatientVisitSearch.TestIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TestName {
+                get {
+                    return ((string)(this[this.tablePatientVisitSearch.TestNameColumn]));
+                }
+                set {
+                    this[this.tablePatientVisitSearch.TestNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsMInitNull() {
                 return this.IsNull(this.tablePatientVisitSearch.MInitColumn);
             }
@@ -968,6 +1070,18 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMInitNull() {
                 this[this.tablePatientVisitSearch.MInitColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsResultNull() {
+                return this.IsNull(this.tablePatientVisitSearch.ResultColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetResultNull() {
+                this[this.tablePatientVisitSearch.ResultColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1146,6 +1260,9 @@ namespace MedAssist.PatientsAndVisitsTableAdapters {
             tableMapping.ColumnMappings.Add("MInit", "MInit");
             tableMapping.ColumnMappings.Add("LastName", "LastName");
             tableMapping.ColumnMappings.Add("DOB", "DOB");
+            tableMapping.ColumnMappings.Add("Result", "Result");
+            tableMapping.ColumnMappings.Add("TestID", "TestID");
+            tableMapping.ColumnMappings.Add("TestName", "TestName");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1163,9 +1280,11 @@ namespace MedAssist.PatientsAndVisitsTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        Visits.VisitID, Visits.VisitDate, Visits.NurseID, Visits.PatientID, Visits.DoctorID, Visits.Diagnosis, Visits.Systolic, Visits.Diastolic, Visits.Temperature, Visits.RespirationRate, Visits.HeartRate, Visits.Symptoms, 
-                         Patients.FirstName, Patients.MInit, Patients.LastName, Patients.DOB
+                         Patients.FirstName, Patients.MInit, Patients.LastName, Patients.DOB, Orders.Result, Orders.TestID, Tests.TestName
 FROM            Visits INNER JOIN
-                         Patients ON Visits.PatientID = Patients.PatientID";
+                         Patients ON Visits.PatientID = Patients.PatientID INNER JOIN
+                         Orders ON Visits.VisitID = Orders.VisitID INNER JOIN
+                         Tests ON Orders.TestID = Tests.TestID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

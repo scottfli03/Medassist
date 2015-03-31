@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MedAssist.Model;
 using MedAssist.DAL;
+using MedAssist.View;
 
 namespace MedAssist.View
 {
     public partial class SearchPatient : Form
     {
 
-
+        NewPatient np;
         private List<Visit> visitList;
         private String fName;
         private String lName;
@@ -27,7 +28,7 @@ namespace MedAssist.View
 
         private void SearchPatientForm_Load(object sender, EventArgs e)
         {
-            
+
 
         }
 
@@ -74,27 +75,33 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// gets patient data with dob and last name
+        /// </summary>
         private void GetPatientDataWithDOB()
         {
             lName = txtLName.Text;
-            DateTime patientDob = Convert.ToDateTime(txtDOB.Text);
-
-            try
+            if (Validator.IsDate(txtDOB) != null)
             {
-                visitList = VisitDAL.GetVisitForPatientWithDobAndLName(lName, patientDob);
+                DateTime patientDob = Convert.ToDateTime(txtDOB.Text);
 
-                if (visitList.Count == 0)
+                try
                 {
-                    MessageBox.Show("No Patient/Visit Info Found!", "Create a New Patient");
+                    visitList = VisitDAL.GetVisitForPatientWithDobAndLName(lName, patientDob);
+
+                    if (visitList.Count == 0)
+                    {
+                        MessageBox.Show("No Patient/Visit Info Found!", "Create a New Patient");
+                    }
+                    else
+                    {
+                        patientVisitSearchDataGridView.DataSource = visitList;
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    patientVisitSearchDataGridView.DataSource = visitList;
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
 
@@ -145,6 +152,36 @@ namespace MedAssist.View
                 MessageBox.Show(txtDOB.Tag.ToString() + " is a required field.", "Date of Birth is Required");
 
             }
+        }
+        //New Patient Button
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.displayNewPatientForm();
+        }
+
+        /// <summary>
+        /// Displays new Patient form 
+        /// </summary>
+        private void displayNewPatientForm()
+        {
+
+            if (np == null)
+            {
+                np = new NewPatient();
+                // np.MdiParent = this;
+                np.FormClosed += new FormClosedEventHandler(np_FormClosed);
+                np.Show();
+            }
+            else
+            {
+                np.Activate();
+            }
+        }
+
+        void np_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.np = null;
+            //throw new NotImplementedException();
         }
 
     }

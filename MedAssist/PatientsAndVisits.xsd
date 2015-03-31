@@ -13,9 +13,11 @@
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Visits.VisitID, Visits.VisitDate, Visits.NurseID, Visits.PatientID, Visits.DoctorID, Visits.Diagnosis, Visits.Systolic, Visits.Diastolic, Visits.Temperature, Visits.RespirationRate, Visits.HeartRate, Visits.Symptoms, 
-                         Patients.FirstName, Patients.MInit, Patients.LastName, Patients.DOB
+                         Patients.FirstName, Patients.MInit, Patients.LastName, Patients.DOB, Orders.Result, Orders.TestID, Tests.TestName
 FROM            Visits INNER JOIN
-                         Patients ON Visits.PatientID = Patients.PatientID</CommandText>
+                         Patients ON Visits.PatientID = Patients.PatientID INNER JOIN
+                         Orders ON Visits.VisitID = Orders.VisitID INNER JOIN
+                         Tests ON Orders.TestID = Tests.TestID</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -38,6 +40,9 @@ FROM            Visits INNER JOIN
               <Mapping SourceColumn="MInit" DataSetColumn="MInit" />
               <Mapping SourceColumn="LastName" DataSetColumn="LastName" />
               <Mapping SourceColumn="DOB" DataSetColumn="DOB" />
+              <Mapping SourceColumn="Result" DataSetColumn="Result" />
+              <Mapping SourceColumn="TestID" DataSetColumn="TestID" />
+              <Mapping SourceColumn="TestName" DataSetColumn="TestName" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -49,7 +54,7 @@ FROM            Visits INNER JOIN
   <xs:element name="PatientsAndVisits" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="PatientsAndVisits" msprop:Generator_UserDSName="PatientsAndVisits">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PatientVisitSearch" msprop:Generator_TableClassName="PatientVisitSearchDataTable" msprop:Generator_TableVarName="tablePatientVisitSearch" msprop:Generator_RowChangedName="PatientVisitSearchRowChanged" msprop:Generator_TablePropName="PatientVisitSearch" msprop:Generator_RowDeletingName="PatientVisitSearchRowDeleting" msprop:Generator_RowChangingName="PatientVisitSearchRowChanging" msprop:Generator_RowEvHandlerName="PatientVisitSearchRowChangeEventHandler" msprop:Generator_RowDeletedName="PatientVisitSearchRowDeleted" msprop:Generator_RowClassName="PatientVisitSearchRow" msprop:Generator_UserTableName="PatientVisitSearch" msprop:Generator_RowEvArgName="PatientVisitSearchRowChangeEvent">
+        <xs:element name="PatientVisitSearch" msprop:Generator_TableClassName="PatientVisitSearchDataTable" msprop:Generator_TableVarName="tablePatientVisitSearch" msprop:Generator_TablePropName="PatientVisitSearch" msprop:Generator_RowDeletingName="PatientVisitSearchRowDeleting" msprop:Generator_RowChangingName="PatientVisitSearchRowChanging" msprop:Generator_RowEvHandlerName="PatientVisitSearchRowChangeEventHandler" msprop:Generator_RowDeletedName="PatientVisitSearchRowDeleted" msprop:Generator_UserTableName="PatientVisitSearch" msprop:Generator_RowChangedName="PatientVisitSearchRowChanged" msprop:Generator_RowEvArgName="PatientVisitSearchRowChangeEvent" msprop:Generator_RowClassName="PatientVisitSearchRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="VisitID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnVisitID" msprop:Generator_ColumnPropNameInRow="VisitID" msprop:Generator_ColumnPropNameInTable="VisitIDColumn" msprop:Generator_UserColumnName="VisitID" type="xs:int" />
@@ -98,6 +103,21 @@ FROM            Visits INNER JOIN
                 </xs:simpleType>
               </xs:element>
               <xs:element name="DOB" msprop:Generator_ColumnVarNameInTable="columnDOB" msprop:Generator_ColumnPropNameInRow="DOB" msprop:Generator_ColumnPropNameInTable="DOBColumn" msprop:Generator_UserColumnName="DOB" type="xs:dateTime" />
+              <xs:element name="Result" msprop:Generator_ColumnVarNameInTable="columnResult" msprop:Generator_ColumnPropNameInRow="Result" msprop:Generator_ColumnPropNameInTable="ResultColumn" msprop:Generator_UserColumnName="Result" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TestID" msprop:Generator_ColumnVarNameInTable="columnTestID" msprop:Generator_ColumnPropNameInRow="TestID" msprop:Generator_ColumnPropNameInTable="TestIDColumn" msprop:Generator_UserColumnName="TestID" type="xs:int" />
+              <xs:element name="TestName" msprop:Generator_ColumnVarNameInTable="columnTestName" msprop:Generator_ColumnPropNameInRow="TestName" msprop:Generator_ColumnPropNameInTable="TestNameColumn" msprop:Generator_UserColumnName="TestName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

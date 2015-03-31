@@ -72,6 +72,11 @@
     <Compile Include="Model\Test.cs" />
     <Compile Include="Model\UserSecurity.cs" />
     <Compile Include="Model\Visit.cs" />
+    <Compile Include="PatientsAndAllVisitInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientsAndAllVisitInfo.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PatientsAndVisits.cs">
       <DependentUpon>PatientsAndVisits.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -214,6 +219,17 @@
     </None>
     <None Include="MedAssist.Model.Patient.datasource" />
     <None Include="MedAssist.Model.Visit.datasource" />
+    <None Include="PatientsAndAllVisitInfo.xsc">
+      <DependentUpon>PatientsAndAllVisitInfo.xsd</DependentUpon>
+    </None>
+    <None Include="PatientsAndAllVisitInfo.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PatientsAndAllVisitInfo.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PatientsAndAllVisitInfo.xss">
+      <DependentUpon>PatientsAndAllVisitInfo.xsd</DependentUpon>
+    </None>
     <None Include="PatientsAndVisits.xsc">
       <DependentUpon>PatientsAndVisits.xsd</DependentUpon>
     </None>
