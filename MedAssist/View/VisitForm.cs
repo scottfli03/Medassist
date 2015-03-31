@@ -53,7 +53,6 @@ namespace MedAssist.View
         private Visit GetVisitData()
         {
             Visit visit = new Visit();
-            //TODO: Get the NurseID of the nurse currently logged in.
             try
             {
                 visit.NurseID = (int)UserSecurityController.NurseLoggedIn.NurseID;

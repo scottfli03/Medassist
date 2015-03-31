@@ -64,7 +64,7 @@ namespace MedAssist.DAL
             }
         }
 
-     /// <summary>
+        /// <summary>
         /// Gets List of visits for patients by there first and last name
         /// Added by Greene
         /// </summary>
@@ -280,7 +280,6 @@ namespace MedAssist.DAL
                 reader = selectCommand.ExecuteReader();
                 while (reader.Read())
                 {
-
                     Visit visit = new Visit();
                     visit.VisitID = (int)reader["VisitID"];
                     visit.VisitDate = (DateTime)reader["VisitDate"];
@@ -299,10 +298,7 @@ namespace MedAssist.DAL
                     visit.TestID = (int)reader["TestID"];
                     visit.TestName = reader["TestName"].ToString();
                     visit.Diagnosis = reader["Diagnosis"].ToString();
-
-
                     visitList.Add(visit);
-
                 }
             }
             catch (SqlException ex)
@@ -319,6 +315,5 @@ namespace MedAssist.DAL
             return visitList;
         }
      }
-
 }
 

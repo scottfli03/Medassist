@@ -70,6 +70,11 @@ namespace MedAssist.DAL
             return employeeList;
         }
 
+        /// <summary>
+        /// Gets the employees information using the EmployeeID
+        /// </summary>
+        /// <param name="employeeID">EmployeeID</param>
+        /// <returns>Employee</returns>
         public static Employee GetEmployeeByID(int employeeID)
         {
             Employee employee = new Employee();

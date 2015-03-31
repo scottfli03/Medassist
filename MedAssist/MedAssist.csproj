@@ -89,16 +89,16 @@
     </Compile>
     <Compile Include="Controller\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\Admin.cs">
+    <Compile Include="View\ViewsNotUsedYet\Admin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Admin.Designer.cs">
+    <Compile Include="View\ViewsNotUsedYet\Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FullReport.cs">
+    <Compile Include="View\ViewsNotUsedYet\FullReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FullReport.Designer.cs">
+    <Compile Include="View\ViewsNotUsedYet\FullReport.Designer.cs">
       <DependentUpon>FullReport.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormLogin.cs">
@@ -119,16 +119,16 @@
     <Compile Include="View\NewPatientForm.Designer.cs">
       <DependentUpon>NewPatientForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\PatientMessageBox.cs">
+    <Compile Include="View\ViewsNotUsedYet\PatientMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\PatientMessageBox.Designer.cs">
+    <Compile Include="View\ViewsNotUsedYet\PatientMessageBox.Designer.cs">
       <DependentUpon>PatientMessageBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Report.cs">
+    <Compile Include="View\ViewsNotUsedYet\Report.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Report.Designer.cs">
+    <Compile Include="View\ViewsNotUsedYet\Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SearchPatient.cs">
@@ -137,10 +137,10 @@
     <Compile Include="View\SearchPatient.Designer.cs">
       <DependentUpon>SearchPatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Test.cs">
+    <Compile Include="View\ViewsNotUsedYet\Test.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Test.Designer.cs">
+    <Compile Include="View\ViewsNotUsedYet\Test.Designer.cs">
       <DependentUpon>Test.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UpdatePatientForm.cs">
@@ -156,10 +156,10 @@
     <Compile Include="View\VisitForm.Designer.cs">
       <DependentUpon>VisitForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\VisitHistory.cs">
+    <Compile Include="View\ViewsNotUsedYet\VisitHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\VisitHistory.Designer.cs">
+    <Compile Include="View\ViewsNotUsedYet\VisitHistory.Designer.cs">
       <DependentUpon>VisitHistory.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -171,10 +171,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\Admin.resx">
+    <EmbeddedResource Include="View\ViewsNotUsedYet\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FullReport.resx">
+    <EmbeddedResource Include="View\ViewsNotUsedYet\FullReport.resx">
       <DependentUpon>FullReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormLogin.resx">
@@ -186,16 +186,16 @@
     <EmbeddedResource Include="View\NewPatientForm.resx">
       <DependentUpon>NewPatientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\PatientMessageBox.resx">
+    <EmbeddedResource Include="View\ViewsNotUsedYet\PatientMessageBox.resx">
       <DependentUpon>PatientMessageBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Report.resx">
+    <EmbeddedResource Include="View\ViewsNotUsedYet\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SearchPatient.resx">
       <DependentUpon>SearchPatient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Test.resx">
+    <EmbeddedResource Include="View\ViewsNotUsedYet\Test.resx">
       <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UpdatePatientForm.resx">
@@ -204,7 +204,7 @@
     <EmbeddedResource Include="View\VisitForm.resx">
       <DependentUpon>VisitForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\VisitHistory.resx">
+    <EmbeddedResource Include="View\ViewsNotUsedYet\VisitHistory.resx">
       <DependentUpon>VisitHistory.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Doctor_Patient_Nurse_Employee_Visit_Dataset.xsc">

@@ -126,17 +126,24 @@ namespace MedAssist.DAL
                    "WHERE PatientID = @PatientID";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
             selectCommand.Parameters.AddWithValue("@PatientID", patientID);
             try
             {
                 connection.Open();
-                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
                 if (reader.Read())
                 {
                     patient.PatientID = (int)reader["PatientID"];
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.LastName = reader["LastName"].ToString();
-                    patient.MInit = Convert.ToChar(reader["Minit"]);
+                    if (reader["MInit"] == DBNull.Value) {
+                        patient.MInit = '\0';
+                    }
+                    else
+                    {
+                        patient.MInit = Convert.ToChar(reader["Minit"]);
+                    }
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = Convert.ToChar(reader["Gender"]);
                     patient.SSN = reader["SSN"].ToString();
@@ -151,8 +158,6 @@ namespace MedAssist.DAL
                 {
                     patient = null;
                 }
-                //TODO: Possibly close reader in finally statement.  It's just how Dr. Yang had it.  
-                reader.Close();
             }
             catch (SqlException ex)
             {
@@ -162,6 +167,8 @@ namespace MedAssist.DAL
             {
                 if (connection != null)
                     connection.Close();
+                if (reader != null)
+                    reader.Close();
             }
             return patient;
         }
