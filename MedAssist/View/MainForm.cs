@@ -45,12 +45,6 @@ namespace MedAssist.View
             //throw new NotImplementedException();
         }
 
-        void vf_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            vf = null;
-            //throw new NotImplementedException();
-        }
-
         private void updatePatientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
@@ -107,24 +101,6 @@ namespace MedAssist.View
         {
             this.Close();
         }
-
-        private void newVisitToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (vf == null)
-            {
-                vf = new VisitForm();
-                vf.MdiParent = this;
-                vf.FormClosed += new FormClosedEventHandler(vf_FormClosed);
-                vf.Show();
-
-            }
-            else
-            {
-                vf.Activate();
-            }
-        }
-
-        
        
         private void searchPatientToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -170,6 +146,28 @@ namespace MedAssist.View
             this.DisplaySearchPatientForm();
             this.sp.Hide();
             this.Text = "You are logged off";
+        }
+
+        private void newVisitToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            if (vf == null)
+            {
+                vf = new VisitForm();
+                vf.MdiParent = this;
+                vf.FormClosed += new FormClosedEventHandler(vf_FormClosed);
+                vf.Show();
+
+            }
+            else
+            {
+                vf.Activate();
+            }
+        }
+
+        void vf_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            vf = null;
+            //throw new NotImplementedException();
         }
     }
 }
