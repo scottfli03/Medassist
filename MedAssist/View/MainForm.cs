@@ -129,9 +129,16 @@ namespace MedAssist.View
         private void loginToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             this.login = new FormLogin();
-
-            this.login.Show();
-            this.Hide();
+            if (this.login.ShowDialog() == DialogResult.OK)
+            {
+                this.login.Close();
+            }
+            else
+            {
+                this.Close();
+            }
+           
+           
         }
 
         private void logoutToolStripMenuItem_Click_1(object sender, EventArgs e)
