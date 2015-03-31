@@ -47,12 +47,12 @@
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtZip = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePickerDOB = new System.Windows.Forms.DateTimePicker();
             this.txtSSN = new System.Windows.Forms.TextBox();
             this.txtGender = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtDate = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label3
@@ -219,15 +219,6 @@
             this.label1.TabIndex = 28;
             this.label1.Text = "Zip";
             // 
-            // dateTimePickerDOB
-            // 
-            this.dateTimePickerDOB.CustomFormat = "yyyy-mm-dd";
-            this.dateTimePickerDOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerDOB.Location = new System.Drawing.Point(83, 50);
-            this.dateTimePickerDOB.Name = "dateTimePickerDOB";
-            this.dateTimePickerDOB.Size = new System.Drawing.Size(100, 20);
-            this.dateTimePickerDOB.TabIndex = 4;
-            // 
             // txtSSN
             // 
             this.txtSSN.Location = new System.Drawing.Point(323, 47);
@@ -272,12 +263,20 @@
             this.label2.TabIndex = 41;
             this.label2.Text = "SSN";
             // 
+            // txtDate
+            // 
+            this.txtDate.Location = new System.Drawing.Point(83, 51);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(100, 20);
+            this.txtDate.TabIndex = 47;
+            this.txtDate.Tag = "\"Date Of Birth\"";
+            // 
             // NewPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 233);
-            this.Controls.Add(this.dateTimePickerDOB);
+            this.Controls.Add(this.txtDate);
             this.Controls.Add(this.txtSSN);
             this.Controls.Add(this.txtGender);
             this.Controls.Add(this.label7);
@@ -332,12 +331,12 @@
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.TextBox txtZip;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDOB;
         private System.Windows.Forms.TextBox txtSSN;
         private System.Windows.Forms.TextBox txtGender;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtDate;
     }
 }
 

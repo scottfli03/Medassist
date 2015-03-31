@@ -76,13 +76,13 @@ namespace MedAssist
             if (Validator.IsPresent(txtFirstName) &&
                 Validator.IsPresent(txtLastName) &&
                 Validator.IsPresent(txtSSN) &&
-                Validator.IsPresent(dateTimePickerDOB) &&
+                Validator.IsPresent(txtDate) &&
                 Validator.IsPresent(txtAddress1) &&
                 Validator.IsPresent(txtCity) &&
                 Validator.IsPresent(txtState) &&
                 Validator.IsPresent(txtPhone) &&
-                Validator.IsPresent(txtZip))
-            
+                Validator.IsPresent(txtZip) &&
+                Validator.IsDate(txtDate))
             {
                 return true;
             }
@@ -91,18 +91,25 @@ namespace MedAssist
 
         private void PutPatientData(Patient patient)
         {
-            patient.FirstName = txtFirstName.Text;
-            patient.LastName = txtLastName.Text;
-            patient.MInit = txtMiddleInit.Text[0];
-            patient.StreetAddr1 = txtAddress1.Text;
-            patient.StreetAddr2 = txtAddress2.Text;
-            patient.City = txtCity.Text;
-            patient.State = txtState.Text;
-            patient.SSN = txtSSN.Text;
-            patient.Phone = txtPhone.Text;
-            patient.Gender = txtGender.Text[0];
-            patient.ZipCode = txtZip.Text;
-            patient.DOB = dateTimePickerDOB.Value.Date;
+            try
+            {
+                patient.FirstName = txtFirstName.Text;
+                patient.LastName = txtLastName.Text;
+                patient.MInit = txtMiddleInit.Text[0];
+                patient.StreetAddr1 = txtAddress1.Text;
+                patient.StreetAddr2 = txtAddress2.Text;
+                patient.City = txtCity.Text;
+                patient.State = txtState.Text;
+                patient.SSN = txtSSN.Text;
+                patient.Phone = txtPhone.Text;
+                patient.Gender = txtGender.Text[0];
+                patient.ZipCode = txtZip.Text;
+                patient.DOB = Convert.ToDateTime(txtDate.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }
