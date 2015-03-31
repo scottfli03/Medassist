@@ -21,17 +21,13 @@ namespace MedAssist.View
         NewPatient np;
         UpdatePatientForm up;
         VisitForm vf;
+        SearchPatient sp;
         FormLogin login;
 
         public MainForm()
         {
             InitializeComponent();
            
-        }
-
-        private void patientToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -155,10 +151,25 @@ namespace MedAssist.View
                this.login.Show();
                this.Hide();
         }
-
         
+        private void searchPatientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sp == null)
+            {
+                sp = new MedAssist.View.SearchPatient();
+                sp.StartPosition = FormStartPosition.Manual;
+                sp.MdiParent = this;
+                sp.FormClosed += new FormClosedEventHandler(sp_FormClosed);
+                sp.Show();
+            }
+            else
+                sp.Activate();
+        }
 
-        
+        private void sp_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            sp = null;
+        }
     }
 }
 

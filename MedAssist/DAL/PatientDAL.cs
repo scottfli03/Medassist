@@ -11,10 +11,6 @@ namespace MedAssist.DAL
 {
     class PatientDAL
     {
-
-        
-
-
         /// <summary>
         /// Query to add patients
         /// </summary>
@@ -22,7 +18,6 @@ namespace MedAssist.DAL
         /// <returns>incident added</returns>
         public static int AddPatient(Patient patient)
         {
-
             SqlConnection connection = MedassistDB.GetConnection();
             string insertStatement =
                 "Insert Patients " +
@@ -42,8 +37,6 @@ namespace MedAssist.DAL
             insertCommand.Parameters.AddWithValue("@Phone", patient.Phone);
             insertCommand.Parameters.AddWithValue("@DOB", patient.DOB);
             insertCommand.Parameters.AddWithValue("@Gender", patient.Gender);
-
-
             try
             {
                 connection.Open();
@@ -64,13 +57,13 @@ namespace MedAssist.DAL
             }
         }
 
-        
+
         /// <summary>
         /// Update Patient Info
         /// </summary>
         /// <param name="oldPatient"></param>
         /// <param name="newPatient"></param>
-        /// <returns></returns>
+        /// <returns>If the update is successful or not</returns>
         public static bool UpdatePatient(Patient oldPatient, Patient newPatient)
         {
             SqlConnection connection = MedassistDB.GetConnection();
@@ -86,7 +79,6 @@ namespace MedAssist.DAL
                 "State = @NewState, " +
                 "ZipCode = @NewZipCode " +
                 "WHERE PatientID = @OldPatientID";
-
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             updateCommand.Parameters.AddWithValue("@NewFirstName", newPatient.FirstName);
             updateCommand.Parameters.AddWithValue("@NewLastName", newPatient.LastName);
@@ -97,9 +89,7 @@ namespace MedAssist.DAL
             updateCommand.Parameters.AddWithValue("@NewCity", newPatient.City);
             updateCommand.Parameters.AddWithValue("@NewState", newPatient.State);
             updateCommand.Parameters.AddWithValue("@NewZipCode", newPatient.ZipCode);
-
             updateCommand.Parameters.AddWithValue("@OldPatientID", oldPatient.PatientID);
-
             try
             {
                 connection.Open();
@@ -124,7 +114,7 @@ namespace MedAssist.DAL
         /// Gets patient to Update
         /// </summary>
         /// <param name="patientID"></param>
-        /// <returns></returns>
+        /// <returns>The Patient</returns>
         public static Patient GetPatientToUpdate(int patientID)
         {
             Patient patient = new Patient();
@@ -137,14 +127,12 @@ namespace MedAssist.DAL
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@PatientID", patientID);
-
             try
             {
                 connection.Open();
                 SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
                 if (reader.Read())
                 {
-                   
                     patient.PatientID = (int)reader["PatientID"];
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.LastName = reader["LastName"].ToString();
@@ -158,12 +146,12 @@ namespace MedAssist.DAL
                     patient.State = reader["State"].ToString();
                     patient.ZipCode = reader["ZipCode"].ToString();
                     patient.Phone = reader["Phone"].ToString();
-
                 }
                 else
                 {
                     patient = null;
                 }
+                //TODO: Possibly close reader in finally statement.  It's just how Dr. Yang had it.  
                 reader.Close();
             }
             catch (SqlException ex)
@@ -181,7 +169,7 @@ namespace MedAssist.DAL
         /// <summary>
         /// Gets List of Patients
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of Patient Objects</returns>
         public static List<Patient> GetPatientList()
         {
             List<Patient> patientList = new List<Patient>();
@@ -211,7 +199,6 @@ namespace MedAssist.DAL
                     patient.State = reader["State"].ToString();
                     patient.ZipCode = reader["ZipCode"].ToString();
                     patientList.Add(patient);
-
                 }
             }
             catch (SqlException ex)
@@ -227,56 +214,6 @@ namespace MedAssist.DAL
             }
             return patientList;
         }
-     
-    /// <summary>
-        /// Gets List of Patients when searching with fName and lName
-        /// Added by Greene
-        /// </summary>
-        /// <returns></returns>
-        public static List<Patient> GetPatientListWithFNameLName(String fName, String lName)
-        {
-            List<Patient> patientList = new List<Patient>();
-            SqlConnection connection = MedassistDB.GetConnection();
-            String selectStatement = "SELECT PatientID, SSN, FirstName, MInit, LastName, DOB, Gender, " +
-                "StreetAddress1, StreetAddress2, Phone, City, State, ZipCode FROM Patients";
-            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-            SqlDataReader reader = null;
-            try
-            {
-                connection.Open();
-                reader = selectCommand.ExecuteReader();
-                while (reader.Read())
-                {
-                    Patient patient = new Patient();
-                    patient.PatientID = (int)reader["TechID"];
-                    patient.SSN = reader["SSN"].ToString();
-                    patient.FirstName = reader["FirstName"].ToString();
-                    patient.Phone = reader["MInit"].ToString();
-                    patient.LastName = reader["LastName"].ToString();
-                    patient.DOB = (DateTime)reader["DOB"];
-                    patient.Gender = reader["Gender"].ToString()[0];
-                    patient.StreetAddr1 = reader["StreetAddress1"].ToString();
-                    patient.StreetAddr2 = reader["StreetAddress2"].ToString();
-                    patient.Phone = reader["Phone"].ToString();
-                    patient.City = reader["City"].ToString();
-                    patient.State = reader["State"].ToString();
-                    patient.ZipCode = reader["ZipCode"].ToString();
-                    patientList.Add(patient);
 
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                if (connection != null)
-                    connection.Close();
-                if (reader != null)
-                    reader.Close();
-            }
-            return patientList;
-        }
-     }
+    }
 }

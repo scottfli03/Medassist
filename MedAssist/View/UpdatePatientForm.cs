@@ -13,6 +13,9 @@ using System.Windows.Forms;
 
 namespace MedAssist.View
 {
+    /// <summary>
+    /// Update Patient form
+    /// </summary>
     public partial class UpdatePatientForm : Form
     {
 
@@ -24,6 +27,7 @@ namespace MedAssist.View
             txtDOB.Enabled = false;
             txtSSN.Enabled = false;
             txtGender.Enabled = false;
+            txtMiddleInit.MaxLength = 1;
         }
 
         private void GetPatient(int patientID)
@@ -48,7 +52,7 @@ namespace MedAssist.View
         }
 
         private void DisplayPatient()
-        {
+        {           
             txtFirstName.Text = patient.FirstName;
             txtMiddleInit.Text = patient.MInit.ToString();
             txtLastName.Text = patient.LastName;
@@ -66,35 +70,54 @@ namespace MedAssist.View
        private void btnSubmit_Click(object sender, EventArgs e)
         {
             Patient newPatient = new Patient();
-            newPatient.PatientID = patient.PatientID;
 
-            this.PutPatientData(newPatient);
 
-            try
+            if (IsValidData())
             {
-               if (!PatientDAL.UpdatePatient(patient, newPatient))
+                newPatient.PatientID = patient.PatientID;
+                this.PutPatientData(newPatient);
+
+                try
                 {
-                    MessageBox.Show("Another user has updated or " +
-                                    "deleted that patientt.", "Database Error");
-                                       this.DialogResult = DialogResult.Retry;
+                    if (!PatientDAL.UpdatePatient(patient, newPatient))
+                    {
+                        MessageBox.Show("Another user has updated or " +
+                                        "deleted that patient.", "Database Error");
+                        this.DialogResult = DialogResult.Retry;
+                    }
+                    else
+                    {
+                        patient = newPatient;
+                        this.DialogResult = DialogResult.OK;
+                        MessageBox.Show("Patient Updated");
+                        this.Close();
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    patient = newPatient;
-                    this.DialogResult = DialogResult.OK;
-                    MessageBox.Show("Patient Updated");
-                    this.Close();
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-
         }
+
+       private bool IsValidData()
+       {
+           if (Validator.IsPresent(txtFirstName) &&
+               Validator.IsPresent(txtLastName) &&
+               Validator.IsPresent(txtAddress1) &&
+               Validator.IsPresent(txtCity) &&
+               Validator.IsPresent(txtState) &&
+               Validator.IsPresent(txtPhone) &&
+               Validator.IsPresent(txtZip))
+           {
+               return true;
+           }
+           return false;
+       }
  
         private void PutPatientData(Patient patient)
         {
+            txtMiddleInit.MaxLength = 1;
             patient.FirstName = txtFirstName.Text;
             patient.LastName = txtLastName.Text;
             patient.MInit = txtMiddleInit.Text[0];
@@ -104,7 +127,6 @@ namespace MedAssist.View
             patient.State = txtState.Text;
             patient.Phone = txtPhone.Text;
             patient.ZipCode = txtZip.Text;
- 
         }
  
         private void btnGetPatient_Click(object sender, EventArgs e)
@@ -113,15 +135,22 @@ namespace MedAssist.View
             if (Validator.IsPresent(txtPatientID) &&
                 Validator.IsInt32(txtPatientID))
             {
-                
-                 int patientID = Convert.ToInt32((txtPatientID.Text));
+                int patientID = Convert.ToInt32((txtPatientID.Text));
                 this.GetPatient(patientID);
             }
          }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            var result = MessageBox.Show("Are you sure you would like to exit the form?", "Form Closing", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            else
+            {
+                this.Close();
+            }
         }
     }
 }

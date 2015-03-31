@@ -37,7 +37,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtLName = new System.Windows.Forms.TextBox();
             this.txtDOB = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.patientsAndVisits = new MedAssist.PatientsAndVisits();
@@ -110,6 +110,7 @@
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(157, 20);
             this.txtFName.TabIndex = 3;
+            this.txtFName.Tag = "fName";
             this.txtFName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label4
@@ -126,6 +127,7 @@
             this.txtLName.Name = "txtLName";
             this.txtLName.Size = new System.Drawing.Size(157, 20);
             this.txtLName.TabIndex = 5;
+            this.txtLName.Tag = "lName";
             this.txtLName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // txtDOB
@@ -136,14 +138,15 @@
             this.txtDOB.TabIndex = 6;
             this.txtDOB.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.Location = new System.Drawing.Point(680, 379);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSearch.Location = new System.Drawing.Point(680, 379);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 7;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -429,7 +432,7 @@
             this.Controls.Add(this.patientVisitSearchBindingNavigator);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtDOB);
             this.Controls.Add(this.txtLName);
             this.Controls.Add(this.label4);
@@ -461,7 +464,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtLName;
         private System.Windows.Forms.TextBox txtDOB;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button button2;
        // private PatientsAndVisitsTableAdapters.VisitsTableAdapter visitsTableAdapter;
         private System.Windows.Forms.Button button3;

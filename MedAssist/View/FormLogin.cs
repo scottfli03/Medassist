@@ -13,6 +13,9 @@ using MedAssist.Model;
 
 namespace MedAssist.View
 {
+    //TODO: Create Static Class that keeps track of Employee logged in.
+    //TODO: Display which employee is logged in.
+    //TODO: Create method that can be used to check if a nurse is logged in.   ----   I can help with some of this stuff.  Let me know.
     public partial class FormLogin : Form
     {
         private ControllerNurse controllerNurse;
@@ -22,6 +25,7 @@ namespace MedAssist.View
         {
             InitializeComponent();
             this.controllerNurse = new ControllerNurse();
+            //TODO: Add Tags, so that Validation displays a title for the different fields.
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -39,44 +43,40 @@ namespace MedAssist.View
         {
             string userName = textBoxUserName.Text;
             string password = textBoxPassword.Text;
-           
-
-
-
-
-
-
-            try
+            if (Validator.IsPresent(textBoxUserName) &&
+                Validator.IsPresent(textBoxPassword))
             {
-
-                if (Validator.IsPresent(textBoxUserName) &&
-            Validator.IsPresent(textBoxPassword))
+                try
                 {
-                    this.nurse = this.controllerNurse.GetNurse(userName, password);
 
-                    if (this.nurse != null)
+                    if (Validator.IsPresent(textBoxUserName) &&
+                Validator.IsPresent(textBoxPassword))
                     {
-                        //displays the main form
-                        this.mainForm = new MainForm();
-                        this.mainForm.Text = "Logged in as " + userName;
-                        
-                        this.mainForm.Show();
-                        this.Hide();                       
-                        
+                        this.nurse = this.controllerNurse.GetNurse(userName, password);
 
+                        if (this.nurse != null)
+                        {
+                            this.mainForm = new MainForm();
+                            this.mainForm.Text = "Logged in as " + userName;
+
+                            this.mainForm.Show();
+                            this.Hide();
+
+
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("Invalid user name or passoword.");
+                        }
                     }
 
-                    else
-                    {
-                        MessageBox.Show("Invalid user name or passoword.");
-                    }
                 }
 
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -87,6 +87,7 @@ namespace MedAssist.View
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
+            //TODO: Display message asking them if they are sure they want to exit.  If yes, exit, if no, do nothing.
             this.Close();
         }
 

@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Threading.Tasks;
-
-
 
 namespace MedAssist.View
 {
@@ -15,17 +12,10 @@ namespace MedAssist.View
 
         public static string Title
         {
-            get
-            {
-                return title;
-            }
-            set
-            {
-                title = value;
-            }
+            get { return title; }
+            set { title = value; }
         }
 
-        // validates if an object is present in the control
         public static bool IsPresent(Control control)
         {
             if (control.GetType().ToString() == "System.Windows.Forms.TextBox")
@@ -37,14 +27,22 @@ namespace MedAssist.View
                     textBox.Focus();
                     return false;
                 }
-                else
+                return true;
+            }
+            if (control.GetType().ToString() == "System.Windows.Forms.ComboBox")
+            {
+                ComboBox comboBox = (ComboBox)control;
+                if (comboBox.SelectedIndex == -1)
                 {
-                    return true;
+                    MessageBox.Show(comboBox.Tag.ToString() + " is a required field.", Title);
+                    comboBox.Focus();
+                    return false;
                 }
-                
+                return true;
             }
             return true;
         }
+
         public static bool IsDate(TextBox textBox)
         {
             try
@@ -70,6 +68,21 @@ namespace MedAssist.View
             catch (FormatException)
             {
                 MessageBox.Show(textBox.Tag.ToString() + " must be an integer value.", Title);
+                textBox.Focus();
+                return false;
+            }
+        }
+
+        public static bool IsDecimal(TextBox textBox)
+        {
+            try
+            {
+                Convert.ToDecimal(textBox.Text);
+                return true;
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show(textBox.Tag.ToString() + " must be an Decimal value.", Title);
                 textBox.Focus();
                 return false;
             }

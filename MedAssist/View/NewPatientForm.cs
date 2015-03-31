@@ -1,4 +1,5 @@
 ﻿using MedAssist.Controller;
+using MedAssist.View;
 using MedAssist.DAL;
 using MedAssist.Model;
 using System;
@@ -13,19 +14,37 @@ using System.Windows.Forms;
 
 namespace MedAssist
 {
+    /// <summary>
+    /// Shows Update Patient Form
+    /// </summary>
     public partial class NewPatient : Form
     {
-
         private Patient patient;
 
         public NewPatient()
         {
             InitializeComponent();
+            txtMiddleInit.MaxLength = 1;
+            txtGender.MaxLength = 1;
+        }
+
+        private void NewPatient_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            var result = MessageBox.Show("Are you sure you would like to exit the form?", "Form Closing", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            else
+            {
+                this.Close();
+            }
+            
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -34,13 +53,12 @@ namespace MedAssist
             {
                 patient = new Patient();
                 PutPatientData(patient);
-
-
                 try
                 {
                     patient.PatientID = PatientDAL.AddPatient(patient); 
                     DialogResult = DialogResult.OK;
                     MessageBox.Show("Patient Accepted");
+                    Close();
                 }
                 catch (Exception ex)
                 {
@@ -48,7 +66,7 @@ namespace MedAssist
                         MessageBox.Show(ex.Message, ex.GetType().ToString());
                     }
                 }
-                Close();
+
             }
         }
 
@@ -64,6 +82,7 @@ namespace MedAssist
                 Validator.IsPresent(txtState) &&
                 Validator.IsPresent(txtPhone) &&
                 Validator.IsPresent(txtZip))
+            
             {
                 return true;
             }
@@ -72,7 +91,6 @@ namespace MedAssist
 
         private void PutPatientData(Patient patient)
         {
-            
             patient.FirstName = txtFirstName.Text;
             patient.LastName = txtLastName.Text;
             patient.MInit = txtMiddleInit.Text[0];
@@ -85,18 +103,6 @@ namespace MedAssist
             patient.Gender = txtGender.Text[0];
             patient.ZipCode = txtZip.Text;
             patient.DOB = dateTimePickerDOB.Value.Date;
-
-
         }
-
-        private void NewPatient_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
-
     }
 }

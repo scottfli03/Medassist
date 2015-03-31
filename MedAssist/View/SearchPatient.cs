@@ -14,7 +14,11 @@ namespace MedAssist.View
 {
     public partial class SearchPatient : Form
     {
+        //TODO: Make sure main form is large enough to fit this form
         private Patient patient;
+        private List<Visit> visitList;
+        private String fName;
+        private String lName;
         public SearchPatient()
         {
             InitializeComponent();
@@ -22,8 +26,13 @@ namespace MedAssist.View
 
         private void SearchPatientForm_Load(object sender, EventArgs e)
         {
+
+            
+
+
             // TODO: This line of code loads data into the 'patientsAndVisits.PatientVisitSearch' table. You can move, or remove it, as needed.
-            this.patientVisitSearchTableAdapter.Fill(this.patientsAndVisits.PatientVisitSearch);
+           // this.patientVisitSearchTableAdapter.Fill(this.patientsAndVisits.PatientVisitSearch);
+            this.GetPatientData();
 
         }
 
@@ -46,34 +55,24 @@ namespace MedAssist.View
         }
 
         //This method will search for the patient by their first name and last name
-        private void GetPatientData(string fName, string lName)
+        private void GetPatientData()
         {
-            if (txtFName.Text == null && txtLName == null)
-            {
-                MessageBox.Show(txtFName.Tag.ToString() + " is a required field.", fName);
-            }
-            else fName = txtFName.Text;
+                 fName = txtFName.Text;
                  lName = txtLName.Text;
-                 //int patientID = (int)txtFName.Text;
-                 
-
+                
             try
             {
                 //get a patient object for the typed Patient
-                //will bind the datagrid to that object    
+                //will bind the datagrid to that object
+                visitList = VisitDAL.GetVisitForPatient(fName, lName);
+                patientVisitSearchDataGridView.DataSource = visitList;
 
-                //**scott I'm trying to take the first name and last name of the patient to create a patient object for the datagrid view
-                //to use inorder to populate the list.** 
-                //patient = PatientDAL.GetPatientListWithFNameLName(fName,  lName);
             }
-            finally
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
-
-                
-    
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -88,6 +87,16 @@ namespace MedAssist.View
             if (Validator.IsDate(txtDOB)) {
 
             }
+        }
+
+        //Search button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (Validator.IsPresent(txtFName) || Validator.IsPresent(txtLName))
+            {
+                 this.GetPatientData();
+            }
+            
         }
     }
 }
