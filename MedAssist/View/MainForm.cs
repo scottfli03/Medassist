@@ -131,11 +131,11 @@ namespace MedAssist.View
             this.login = new FormLogin();
             if (this.login.ShowDialog() == DialogResult.OK)
             {
-                this.login.Show();
+                this.login.Close();
             }
             else
             {
-                Application.Exit();
+                this.Close();
             }
            
            
