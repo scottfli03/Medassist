@@ -21,7 +21,7 @@ namespace MedAssist.DAL
         {
             Nurse nurse = null;
 
-            String selectStatement = " SELECT n.UserName, u.Password " +
+            String selectStatement = " SELECT n.UserName, u.Password, n.NurseID " +
                 " FROM Nurses n JOIN UserSecurity u ON n.UserName = u.UserName "+
                 " WHERE n.UserName = @UserName AND u.Password = @Password ";
             try
@@ -40,6 +40,7 @@ namespace MedAssist.DAL
                                 nurse = new Nurse();
                                 nurse.UserName = reader["UserName"].ToString();
                                 nurse.Password = reader["Password"].ToString();
+                                nurse.NurseID = (int)reader["NurseID"];
                             }
                         }
                     }

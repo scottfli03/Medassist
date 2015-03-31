@@ -14,7 +14,6 @@ using MedAssist.Model;
 namespace MedAssist.View
 {
     //TODO: Create Static Class that keeps track of Employee logged in.
-    //TODO: Display which employee is logged in.
     //TODO: Create method that can be used to check if a nurse is logged in.   ----   I can help with some of this stuff.  Let me know.
     public partial class FormLogin : Form
     {
@@ -25,7 +24,8 @@ namespace MedAssist.View
         {
             InitializeComponent();
             this.controllerNurse = new ControllerNurse();
-            //TODO: Add Tags, so that Validation displays a title for the different fields.
+            textBoxUserName.Tag = "User Name";
+            textBoxPassword.Tag = "Password";
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -53,7 +53,9 @@ namespace MedAssist.View
                 Validator.IsPresent(textBoxPassword))
                     {
                         this.nurse = this.controllerNurse.GetNurse(userName, password);
-
+                        /////////////////////// ADD This \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+                        UserSecurityController.NurseLoggedIn = this.nurse;
+                        //\\\\\\\\\\\\\\\\\\\\\^^^^^^^^^^////////////////////////////
                         if (this.nurse != null)
                         {
                             this.mainForm = new MainForm();
@@ -87,8 +89,15 @@ namespace MedAssist.View
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            //TODO: Display message asking them if they are sure they want to exit.  If yes, exit, if no, do nothing.
-            this.Close();
+            var result = MessageBox.Show("Are you sure you would like to exit?", "Exit Login?", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         //struct UserInfo
