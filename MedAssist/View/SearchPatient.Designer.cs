@@ -40,12 +40,10 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.patientsAndVisits = new MedAssist.PatientsAndVisits();
-            this.patientVisitSearchBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientVisitSearchTableAdapter = new MedAssist.PatientsAndVisitsTableAdapters.PatientVisitSearchTableAdapter();
-            this.tableAdapterManager = new MedAssist.PatientsAndVisitsTableAdapters.TableAdapterManager();
             this.patientVisitSearchBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.patientVisitSearchBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientsAndVisits = new MedAssist.PatientsAndVisits();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -59,29 +57,33 @@
             this.patientVisitSearchBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.patientVisitSearchDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Diagnosis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDateFormat = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.patientsAndVisits)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingSource)).BeginInit();
+            this.patientVisitSearchTableAdapter = new MedAssist.PatientsAndVisitsTableAdapters.PatientVisitSearchTableAdapter();
+            this.tableAdapterManager = new MedAssist.PatientsAndVisitsTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingNavigator)).BeginInit();
             this.patientVisitSearchBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientsAndVisits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(308, 42);
+            this.label1.Location = new System.Drawing.Point(449, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 0;
@@ -90,7 +92,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(631, 42);
+            this.label2.Location = new System.Drawing.Point(839, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 1;
@@ -111,7 +113,7 @@
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(157, 20);
             this.txtFName.TabIndex = 3;
-            this.txtFName.Tag = "fName";
+            this.txtFName.Tag = "First Name";
             this.txtFName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label4
@@ -124,24 +126,25 @@
             // 
             // txtLName
             // 
-            this.txtLName.Location = new System.Drawing.Point(372, 39);
+            this.txtLName.Location = new System.Drawing.Point(513, 39);
             this.txtLName.Name = "txtLName";
             this.txtLName.Size = new System.Drawing.Size(157, 20);
             this.txtLName.TabIndex = 5;
-            this.txtLName.Tag = "lName";
+            this.txtLName.Tag = "Last Name";
             this.txtLName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // txtDOB
             // 
-            this.txtDOB.Location = new System.Drawing.Point(667, 39);
+            this.txtDOB.Location = new System.Drawing.Point(875, 39);
             this.txtDOB.Name = "txtDOB";
             this.txtDOB.Size = new System.Drawing.Size(157, 20);
             this.txtDOB.TabIndex = 6;
+            this.txtDOB.Tag = "Date of Birth";
             this.txtDOB.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(680, 379);
+            this.btnSearch.Location = new System.Drawing.Point(928, 387);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 7;
@@ -151,7 +154,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(842, 379);
+            this.btnClose.Location = new System.Drawing.Point(1090, 387);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 8;
@@ -161,32 +164,13 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(761, 379);
+            this.button3.Location = new System.Drawing.Point(1009, 387);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 10;
             this.button3.Text = "New Patient";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // patientsAndVisits
-            // 
-            this.patientsAndVisits.DataSetName = "PatientsAndVisits";
-            this.patientsAndVisits.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // patientVisitSearchBindingSource
-            // 
-            this.patientVisitSearchBindingSource.DataMember = "PatientVisitSearch";
-            this.patientVisitSearchBindingSource.DataSource = this.patientsAndVisits;
-            // 
-            // patientVisitSearchTableAdapter
-            // 
-            this.patientVisitSearchTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.Connection = null;
-            this.tableAdapterManager.UpdateOrder = MedAssist.PatientsAndVisitsTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // patientVisitSearchBindingNavigator
             // 
@@ -214,7 +198,7 @@
             this.patientVisitSearchBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.patientVisitSearchBindingNavigator.Name = "patientVisitSearchBindingNavigator";
             this.patientVisitSearchBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.patientVisitSearchBindingNavigator.Size = new System.Drawing.Size(929, 25);
+            this.patientVisitSearchBindingNavigator.Size = new System.Drawing.Size(1175, 25);
             this.patientVisitSearchBindingNavigator.TabIndex = 11;
             this.patientVisitSearchBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -226,6 +210,16 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // patientVisitSearchBindingSource
+            // 
+            this.patientVisitSearchBindingSource.DataMember = "PatientVisitSearch";
+            this.patientVisitSearchBindingSource.DataSource = this.patientsAndVisits;
+            // 
+            // patientsAndVisits
+            // 
+            this.patientsAndVisits.DataSetName = "PatientsAndVisits";
+            this.patientsAndVisits.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -318,21 +312,23 @@
             this.patientVisitSearchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.patientVisitSearchDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn15,
             this.DOB,
+            this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
+            this.TestName,
             this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12});
+            this.Diagnosis,
+            this.Result});
             this.patientVisitSearchDataGridView.DataSource = this.patientVisitSearchBindingSource;
             this.patientVisitSearchDataGridView.Location = new System.Drawing.Point(12, 76);
             this.patientVisitSearchDataGridView.Name = "patientVisitSearchDataGridView";
-            this.patientVisitSearchDataGridView.Size = new System.Drawing.Size(905, 297);
+            this.patientVisitSearchDataGridView.Size = new System.Drawing.Size(1155, 297);
             this.patientVisitSearchDataGridView.TabIndex = 11;
             this.patientVisitSearchDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.patientVisitSearchDataGridView_CellContentClick);
             // 
@@ -344,15 +340,6 @@
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ToolTipText = "Date of Visit";
             this.dataGridViewTextBoxColumn2.Width = 55;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "PatientID";
-            this.dataGridViewTextBoxColumn4.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ToolTipText = "Patient ID Number";
-            this.dataGridViewTextBoxColumn4.Width = 43;
             // 
             // dataGridViewTextBoxColumn13
             // 
@@ -381,6 +368,12 @@
             this.DOB.HeaderText = "DOB";
             this.DOB.Name = "DOB";
             this.DOB.Width = 55;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "Symptoms";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Symp";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -412,33 +405,55 @@
             this.dataGridViewTextBoxColumn10.HeaderText = "ResRate";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             // 
+            // TestName
+            // 
+            this.TestName.DataPropertyName = "TestName";
+            this.TestName.HeaderText = "TestName";
+            this.TestName.Name = "TestName";
+            // 
             // dataGridViewTextBoxColumn11
             // 
             this.dataGridViewTextBoxColumn11.DataPropertyName = "HeartRate";
             this.dataGridViewTextBoxColumn11.HeaderText = "HeartRate";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             // 
-            // dataGridViewTextBoxColumn12
+            // Diagnosis
             // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "Symptoms";
-            this.dataGridViewTextBoxColumn12.HeaderText = "Symp";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.Diagnosis.DataPropertyName = "Diagnosis";
+            this.Diagnosis.HeaderText = "Diagnosis";
+            this.Diagnosis.Name = "Diagnosis";
+            // 
+            // Result
+            // 
+            this.Result.DataPropertyName = "Result";
+            this.Result.HeaderText = "Result";
+            this.Result.Name = "Result";
             // 
             // lblDateFormat
             // 
             this.lblDateFormat.AutoSize = true;
             this.lblDateFormat.ForeColor = System.Drawing.Color.Red;
-            this.lblDateFormat.Location = new System.Drawing.Point(831, 42);
+            this.lblDateFormat.Location = new System.Drawing.Point(1039, 42);
             this.lblDateFormat.Name = "lblDateFormat";
             this.lblDateFormat.Size = new System.Drawing.Size(61, 13);
             this.lblDateFormat.TabIndex = 12;
             this.lblDateFormat.Text = "yyyy-mm-dd";
             // 
+            // patientVisitSearchTableAdapter
+            // 
+            this.patientVisitSearchTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.UpdateOrder = MedAssist.PatientsAndVisitsTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // SearchPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 422);
+            this.ClientSize = new System.Drawing.Size(1175, 422);
             this.Controls.Add(this.lblDateFormat);
             this.Controls.Add(this.patientVisitSearchDataGridView);
             this.Controls.Add(this.patientVisitSearchBindingNavigator);
@@ -456,11 +471,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patient Search";
             this.Load += new System.EventHandler(this.SearchPatientForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.patientsAndVisits)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingNavigator)).EndInit();
             this.patientVisitSearchBindingNavigator.ResumeLayout(false);
             this.patientVisitSearchBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientsAndVisits)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -498,18 +513,20 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton patientVisitSearchBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView patientVisitSearchDataGridView;
+        private System.Windows.Forms.Label lblDateFormat;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn DOB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TestName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.Label lblDateFormat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Diagnosis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Result;
     }
 }

@@ -90,9 +90,14 @@ namespace MedAssist.DAL
                     ,Patients.MInit
                     ,Patients.LastName
                     ,Patients.DOB
+                    ,Orders.Result
+                    ,Orders.TestID
+                    ,Tests.TestName
                 FROM Visits 
                 INNER JOIN Patients
                 ON Visits.PatientID = Patients.PatientID
+                INNER JOIN Orders ON Visits.VisitID = Orders.VisitID
+                INNER JOIN Tests ON Orders.TestID = Tests.TestID
                 WHERE
                     Patients.FirstName = '{0}'
                     AND Patients.LastName = '{1}'", fName, lName);
@@ -120,7 +125,10 @@ namespace MedAssist.DAL
                     visit.RespirationRate = (int)reader["RespirationRate"];
                     visit.HeartRate = (int)reader["HeartRate"];
                     visit.Symptoms = reader["Symptoms"].ToString();
-
+                    visit.Result = reader["Result"].ToString();
+                    visit.TestID = (int)reader["TestID"];
+                    visit.TestName = reader["TestName"].ToString();
+                    visit.Diagnosis = reader["Diagnosis"].ToString();
                   
 
                     visitList.Add(visit);
@@ -168,9 +176,14 @@ namespace MedAssist.DAL
                     ,Patients.MInit
                     ,Patients.LastName
                     ,Patients.DOB
+                    ,Orders.Result
+                    ,Orders.TestID
+                    ,Tests.TestName
                 FROM Visits 
                 INNER JOIN Patients
                 ON Visits.PatientID = Patients.PatientID
+                INNER JOIN Orders ON Visits.VisitID = Orders.VisitID
+                INNER JOIN Tests ON Orders.TestID = Tests.TestID
                 WHERE
                     Patients.LastName = '{0}'
                     AND Patients.DOB = '{1}'", lName, patientDob);
@@ -198,7 +211,10 @@ namespace MedAssist.DAL
                     visit.RespirationRate = (int)reader["RespirationRate"];
                     visit.HeartRate = (int)reader["HeartRate"];
                     visit.Symptoms = reader["Symptoms"].ToString();
-
+                    visit.Result = reader["Result"].ToString();
+                    visit.TestID = (int)reader["TestID"];
+                    visit.TestName = reader["TestName"].ToString();
+                    visit.Diagnosis = reader["Diagnosis"].ToString();
                   
 
                     visitList.Add(visit);

@@ -56,7 +56,9 @@ namespace MedAssist.View
                 Validator.IsPresent(textBoxPassword))
                     {
                         this.nurse = this.controllerNurse.GetNurse(userName, password);
-
+                        /////////////////////// ADD This \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+                        UserSecurityController.NurseLoggedIn = this.nurse;
+                        //\\\\\\\\\\\\\\\\\\\\\^^^^^^^^^^////////////////////////////
                         if (this.nurse != null)
                         {
                             this.mainForm = new MainForm();

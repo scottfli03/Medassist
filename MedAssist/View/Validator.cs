@@ -52,7 +52,7 @@ namespace MedAssist.View
             }
             catch (FormatException)
             {
-                MessageBox.Show(textBox.Tag.ToString() + " must be in formate mm-dd-yy.", Title);
+                MessageBox.Show(textBox.Tag.ToString() + " must be in formate mm-dd-yy.", "Incorrect Date");
                 textBox.Focus();
                 return false;
             }
