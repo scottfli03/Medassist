@@ -124,35 +124,14 @@ namespace MedAssist.View
             }
         }
 
-        /// <summary>
-        /// Logout from the application and make the subfiles to hide
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            this.DisplayUpdatePatientForm();
-
-            this.up.Hide();
-
-            this.displayNewPatientForm();
-            this.np.Hide();
-            this.Text = "You are logged off";
-           
-            
-
-        }
-   
-        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           this.login = new FormLogin();
-               
-               this.login.Show();
-               this.Hide();
-        }
         
+       
         private void searchPatientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.DisplaySearchPatientForm();
+        }
+
+        private void DisplaySearchPatientForm()
         {
             if (sp == null)
             {
@@ -169,6 +148,28 @@ namespace MedAssist.View
         private void sp_FormClosed(object sender, FormClosedEventArgs e)
         {
             sp = null;
+        }
+
+        private void loginToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.login = new FormLogin();
+
+            this.login.Show();
+            this.Hide();
+        }
+
+        private void logoutToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.DisplayUpdatePatientForm();
+
+            this.up.Hide();
+
+            this.displayNewPatientForm();
+            this.np.Hide();
+
+            this.DisplaySearchPatientForm();
+            this.sp.Hide();
+            this.Text = "You are logged off";
         }
     }
 }

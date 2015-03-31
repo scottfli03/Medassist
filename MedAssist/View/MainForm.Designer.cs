@@ -37,6 +37,9 @@
             this.searchPatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newVisitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.newVisitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +47,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.nurseToolStripMenuItem});
+            this.nurseToolStripMenuItem,
+            this.acountToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(855, 24);
@@ -62,7 +66,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -98,18 +102,39 @@
             this.searchPatientToolStripMenuItem.Text = "Search Patient";
             this.searchPatientToolStripMenuItem.Click += new System.EventHandler(this.searchPatientToolStripMenuItem_Click);
             // 
-            // loginToolStripMenuItem
+            // newVisitToolStripMenuItem1
             // 
-            //this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            //this.loginToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            //this.loginToolStripMenuItem.Text = "Login";
-            //this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
+            this.newVisitToolStripMenuItem1.Name = "newVisitToolStripMenuItem1";
+            this.newVisitToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
             // 
             // newVisitToolStripMenuItem
             // 
             this.newVisitToolStripMenuItem.Name = "newVisitToolStripMenuItem";
             this.newVisitToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.newVisitToolStripMenuItem.Text = "New Visit";
+            // 
+            // acountToolStripMenuItem
+            // 
+            this.acountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loginToolStripMenuItem,
+            this.logoutToolStripMenuItem});
+            this.acountToolStripMenuItem.Name = "acountToolStripMenuItem";
+            this.acountToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.acountToolStripMenuItem.Text = "Account";
+            // 
+            // loginToolStripMenuItem
+            // 
+            this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loginToolStripMenuItem.Text = "Login";
+            this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click_1);
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click_1);
             // 
             // MainForm
             // 
@@ -142,5 +167,8 @@
         private System.Windows.Forms.ToolStripMenuItem newVisitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newVisitToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem searchPatientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem acountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
     }
 }
