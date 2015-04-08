@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MedAssist.View
 {
-    public partial class Admin : Form
+    public partial class UpdateDeleteEmployeeForm : Form
     {
-        public Admin()
+        public UpdateDeleteEmployeeForm()
         {
             InitializeComponent();
         }

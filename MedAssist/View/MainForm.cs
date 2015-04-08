@@ -233,6 +233,144 @@ namespace MedAssist.View
             vf = null;
             //throw new NotImplementedException();
         }
+
+        ChangePasswordForm cpf;
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cpf == null)
+            {
+                cpf = new ChangePasswordForm();
+                cpf.MdiParent = this;
+                cpf.FormClosed += new FormClosedEventHandler(cpf_FormClosed);
+                cpf.Show();
+
+            }
+            else
+            {
+                cpf.Activate();
+            }
+        }
+
+        void cpf_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            cpf = null;
+            //throw new NotImplementedException();
+        }
+
+        UpdateVisitForm uvf;
+        private void updateVisitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (uvf == null)
+            {
+                uvf = new UpdateVisitForm();
+                uvf.MdiParent = this;
+                uvf.FormClosed += new FormClosedEventHandler(uvf_FormClosed);
+                uvf.Show();
+
+            }
+            else
+            {
+                uvf.Activate();
+            }
+        }
+
+        void uvf_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            uvf = null;
+            //throw new NotImplementedException();
+        }
+
+        ReportForm rf;
+        private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rf == null)
+            {
+                rf = new ReportForm();
+                rf.MdiParent = this;
+                rf.FormClosed += new FormClosedEventHandler(rf_FormClosed);
+                rf.Show();
+
+            }
+            else
+            {
+                rf.Activate();
+            }
+        }
+
+        void rf_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            rf = null;
+            //throw new NotImplementedException();
+        }
+
+        UpdateDeleteEmployeeForm udef;
+        private void updateEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (udef == null)
+            {
+                udef = new UpdateDeleteEmployeeForm();
+                udef.MdiParent = this;
+                udef.FormClosed += new FormClosedEventHandler(udef_FormClosed);
+                udef.Show();
+
+            }
+            else
+            {
+                udef.Activate();
+            }
+        }
+
+        void udef_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            udef = null;
+            //throw new NotImplementedException();
+        }
+
+        AddEmployeeForm aef;
+        private void addEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (aef == null)
+            {
+                aef = new AddEmployeeForm();
+                aef.MdiParent = this;
+                aef.FormClosed += new FormClosedEventHandler(aef_FormClosed);
+                aef.Show();
+
+            }
+            else
+            {
+                aef.Activate();
+            }
+        }
+
+        void aef_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            aef = null;
+            //throw new NotImplementedException();
+        }
+
+        AddTestForm atf;
+        private void addTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (atf == null)
+            {
+                atf = new AddTestForm();
+                atf.MdiParent = this;
+                atf.FormClosed += new FormClosedEventHandler(atf_FormClosed);
+                atf.Show();
+
+            }
+            else
+            {
+                atf.Activate();
+            }
+        }
+
+        void atf_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            atf = null;
+            //throw new NotImplementedException();
+        }
     }
 }
 
