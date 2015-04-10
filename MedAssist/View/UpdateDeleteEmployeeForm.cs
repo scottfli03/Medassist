@@ -109,6 +109,7 @@ namespace MedAssist.View
                 try
                 {
                     employee = EmployeeController.GetEmployeeByID(Int32.Parse(txtEmployeeID.Text));
+                    fillEmployeeData(employee);
                 }
                 catch (Exception ex)
                 {
