@@ -138,6 +138,14 @@ namespace MedAssist.View
                     txtStreet.Text = employee.StreetAddr1;
                     txtStreet2.Text = employee.StreetAddr2;
                     dtpDOB.Value = employee.DOB;
+                    if (employee.Gender == 'm' || employee.Gender == 'M')
+                    {
+                        rBtnMale.Checked = true;
+                    }
+                    if (employee.Gender == 'f' || employee.Gender == 'F')
+                    {
+                        rBtnMale.Checked = true;
+                    }
                 }
                 catch (Exception ex)
                 {
