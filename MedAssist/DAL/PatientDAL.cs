@@ -146,13 +146,13 @@ namespace MedAssist.DAL
                     }
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = Convert.ToChar(reader["Gender"]);
-                    patient.SSN = reader["SSN"].ToString();
+                    patient.SSN = (int)reader["SSN"];
                     patient.StreetAddr1 = reader["StreetAddress1"].ToString();
                     patient.StreetAddr2 = reader["StreetAddress2"].ToString();
                     patient.City = reader["City"].ToString();
                     patient.State = reader["State"].ToString();
-                    patient.ZipCode = reader["ZipCode"].ToString();
-                    patient.Phone = reader["Phone"].ToString();
+                    patient.ZipCode = (int)reader["ZipCode"];
+                    patient.Phone = (int)reader["Phone"];
                 }
                 else
                 {
@@ -193,18 +193,18 @@ namespace MedAssist.DAL
                 {
                     Patient patient = new Patient();
                     patient.PatientID = (int)reader["PatientID"];
-                    patient.SSN = reader["SSN"].ToString();
+                    patient.SSN = (int)reader["SSN"];
                     patient.FirstName = reader["FirstName"].ToString();
-                    patient.Phone = reader["MInit"].ToString();
+                    patient.Phone = (int)reader["MInit"];
+                    patient.MInit = reader["MInit"].ToString()[0];
                     patient.LastName = reader["LastName"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = reader["Gender"].ToString()[0];
                     patient.StreetAddr1 = reader["StreetAddress1"].ToString();
                     patient.StreetAddr2 = reader["StreetAddress2"].ToString();
-                    patient.Phone = reader["Phone"].ToString();
                     patient.City = reader["City"].ToString();
                     patient.State = reader["State"].ToString();
-                    patient.ZipCode = reader["ZipCode"].ToString();
+                    patient.ZipCode = (int)reader["ZipCode"];
                     patientList.Add(patient);
                 }
             }
