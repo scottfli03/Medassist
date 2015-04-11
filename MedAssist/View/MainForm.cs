@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MedAssist.Controller;
@@ -22,12 +23,13 @@ namespace MedAssist.View
         UpdatePatientForm up;
         VisitForm vf;
         SearchPatient sp;
-        FormLogin login;
+        ChangePasswordForm cpf;
+        Thread th;
 
         public MainForm()
         {
             InitializeComponent();
-
+            
         }
 
 
@@ -37,13 +39,16 @@ namespace MedAssist.View
 
         private void registerPatientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (UserSecurityController.NurseLoggedIn != null)
+            if (np == null)
             {
-                this.displayNewPatientForm();
+                np = new NewPatient();
+                np.MdiParent = this;
+                np.FormClosed += new FormClosedEventHandler(np_FormClosed);
+                np.Show();
             }
             else
             {
-                this.DisplayLoginWarning();
+                np.Activate();
             }
 
 
@@ -56,24 +61,6 @@ namespace MedAssist.View
         }
 
         private void updatePatientToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            if (UserSecurityController.NurseLoggedIn != null)
-            {
-                this.DisplayUpdatePatientForm();
-            }
-            else
-            {
-                this.DisplayLoginWarning();
-            }
-
-
-        }
-
-        /// <summary>
-        /// Displays update patient form 
-        /// </summary>
-        private void DisplayUpdatePatientForm()
         {
 
             if (up == null)
@@ -89,26 +76,10 @@ namespace MedAssist.View
             {
                 up.Activate();
             }
+
+
         }
 
-        /// <summary>
-        /// Displays new Patient form 
-        /// </summary>
-        private void displayNewPatientForm()
-        {
-
-            if (np == null)
-            {
-                np = new NewPatient();
-                np.MdiParent = this;
-                np.FormClosed += new FormClosedEventHandler(np_FormClosed);
-                np.Show();
-            }
-            else
-            {
-                np.Activate();
-            }
-        }
 
         void up_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -130,20 +101,6 @@ namespace MedAssist.View
         {
 
 
-            if (UserSecurityController.NurseLoggedIn != null)
-            {
-                this.DisplaySearchPatientForm();
-            }
-            else
-            {
-                this.DisplayLoginWarning();
-            }
-
-
-        }
-
-        private void DisplaySearchPatientForm()
-        {
             if (sp == null)
             {
                 sp = new MedAssist.View.SearchPatient();
@@ -154,67 +111,35 @@ namespace MedAssist.View
             }
             else
                 sp.Activate();
+
+
         }
+
 
         private void sp_FormClosed(object sender, FormClosedEventArgs e)
         {
             sp = null;
         }
 
-        private void loginToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-
-            this.login = new FormLogin();
-
-            if (this.login.ShowDialog() == DialogResult.OK)
-            {
-
-                this.Show();
-
-            }
-            else
-            {
-                this.Close();
-            }
-
-
-        }
 
         private void logoutToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            this.DisplayUpdatePatientForm();
+           
+            
+            this.Close();
+            this.th = new Thread(openLoginForm);
+            this.th.SetApartmentState(ApartmentState.STA);
+            this.th.Start();
+           
+        }
 
-            this.up.Hide();
-
-            this.displayNewPatientForm();
-            this.np.Hide();
-
-            this.DisplaySearchPatientForm();
-            this.sp.Hide();
-
-            this.DisplayVisitForm();
-            this.vf.Hide();
-            this.Text = "You are logged off";
-            UserSecurityController.NurseLoggedIn = null;
+        private void openLoginForm(object obj)
+        {
+            Application.Run(new FormLogin());
         }
 
         private void newVisitToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            if (UserSecurityController.NurseLoggedIn != null)
-            {
-                this.DisplayVisitForm();
-            }
-            else
-            {
-
-                this.DisplayLoginWarning();
-            }
-
-        }
-
-        private void DisplayVisitForm()
-        {
-
             if (vf == null)
             {
                 vf = new VisitForm();
@@ -227,14 +152,16 @@ namespace MedAssist.View
             {
                 vf.Activate();
             }
+
         }
+
         void vf_FormClosed(object sender, FormClosedEventArgs e)
         {
             vf = null;
             //throw new NotImplementedException();
         }
 
-        ChangePasswordForm cpf;
+        
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (cpf == null)
