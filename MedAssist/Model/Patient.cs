@@ -9,7 +9,7 @@ namespace MedAssist.Model
     class Patient
     {
         private int patientID;
-        private int ssn;
+        private string ssn;
         private string fName;
         private char? mInit;
         private string lName;

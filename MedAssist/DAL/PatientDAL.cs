@@ -193,7 +193,7 @@ namespace MedAssist.DAL
                 {
                     Patient patient = new Patient();
                     patient.PatientID = (int)reader["PatientID"];
-                    patient.SSN = (int)reader["SSN"];
+                    patient.SSN = reader["SSN"].ToString();
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.Phone = (int)reader["MInit"];
                     patient.MInit = reader["MInit"].ToString()[0];
@@ -204,7 +204,7 @@ namespace MedAssist.DAL
                     patient.StreetAddr2 = reader["StreetAddress2"].ToString();
                     patient.City = reader["City"].ToString();
                     patient.State = reader["State"].ToString();
-                    patient.ZipCode = (int)reader["ZipCode"];
+                    patient.ZipCode = (long)reader["ZipCode"];
                     patientList.Add(patient);
                 }
             }
