@@ -44,7 +44,7 @@ namespace MedAssist.DAL
         }
 
 
-        public static List<Test> GetTestID()
+        public static List<Test> GetTest()
         {
             List<Test> testList = new List<Test>();
             SqlConnection connection = MedassistDB.GetConnection();
@@ -80,8 +80,79 @@ namespace MedAssist.DAL
             }
             return testList;
         }
-    
 
+        public static Test GetTestWithID(int testID)
+        {
+            Test test  = new Test();
+            SqlConnection connection = MedassistDB.GetConnection();
+            string selectStatement = @"Select
+            Tests.TestID, Tests.TestName 
+            FROM Tests";
+            SqlCommand selectCommand =
+                new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@TestID", testID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader =
+                    selectCommand.ExecuteReader();
+                if (reader.Read())
+                {
+                   
+                    test.TestName = reader["TestName"].ToString();
+                    test.TestID = (int)reader["TestID"];
+                    
+                }
+                else
+                {
+                    test = null;
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return test;
+        }
+
+        public static bool UpdateTest(Test oldTest, Test newTest)
+        {
+            SqlConnection connection = MedassistDB.GetConnection();
+            string updateStatement =
+                "UPDATE Tests SET " +
+                "TestID = @TestID, " +
+                "TestName = @TestName " +
+                "WHERE TestID = @OldTestID " +
+                "AND TestName = @OldTestName";
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@TestID", newTest.TestID);
+            updateCommand.Parameters.AddWithValue("@TestName", newTest.TestName);
+            updateCommand.Parameters.AddWithValue("@OldTestID", oldTest.TestID);
+            updateCommand.Parameters.AddWithValue("@OldTestName", oldTest.TestName);
+            
+            try
+            {
+                connection.Open();
+                int count = updateCommand.ExecuteNonQuery();
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     
     
     

@@ -10,8 +10,7 @@ namespace MedAssist.Model
     {
         private int testID;
         private string testName;
-        private string patientName;
-        private int patientID;
+        
 
         public Test() { }
 
@@ -39,29 +38,8 @@ namespace MedAssist.Model
                 testName = value;
             }
         }
-
-        public string PatientName
-        {
-            get
-            {
-                return patientName;
-            }
-            set
-            {
-                patientName = value;
-            }
-        }
-
-        public int PatientID
-        {
-            get
-            {
-                return patientID;
-            }
-            set 
-            {
-                patientID = value;
-            }
-        }
     }
+
+        
+ 
 }
