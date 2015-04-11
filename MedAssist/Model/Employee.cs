@@ -9,7 +9,7 @@ namespace MedAssist.Model
     class Employee
     {
         private int employeeID;
-        private int ssn;
+        private string ssn;
         private string fName;
         private string mInit;
         private string lName;
@@ -18,9 +18,9 @@ namespace MedAssist.Model
         private string street1;
         private string street2;
         private string city;
-        private long phone;
+        private string phone;
         private string state;
-        private long zip;
+        private string zip;
 
         public int EmployeeID
         {
@@ -34,7 +34,7 @@ namespace MedAssist.Model
             }
         }
 
-        public int SSN 
+        public string SSN 
         {
             get
             {
@@ -154,7 +154,7 @@ namespace MedAssist.Model
             }
         }
 
-        public long Phone
+        public string Phone
         {
             get
             {
@@ -166,7 +166,7 @@ namespace MedAssist.Model
             }
         }
 
-        public long ZipCode
+        public string ZipCode
         {
             get
             {

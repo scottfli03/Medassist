@@ -104,10 +104,10 @@ namespace MedAssist
                 patient.StreetAddr2 = txtAddress2.Text;
                 patient.City = txtCity.Text;
                 patient.State = cboState.Text;
-                patient.SSN = Int32.Parse(txtSSN.Text);
-                patient.Phone = Int64.Parse(txtPhone.Text);
+                patient.SSN = txtSSN.Text;
+                patient.Phone = txtPhone.Text;
                 patient.Gender = cboGender.Text[0];
-                patient.ZipCode = Int64.Parse(txtZip.Text);
+                patient.ZipCode = txtZip.Text;
                 patient.DOB = dateTimePickerDOB.Value.Date;
                 
             }

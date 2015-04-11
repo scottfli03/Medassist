@@ -36,10 +36,10 @@ namespace MedAssist.View
                 employee.StreetAddr2 = txtStreetAddress2.Text;
                 employee.City = txtCity.Text;
                 employee.State = cboState.Text;
-                employee.SSN = Int32.Parse(txtSSN.Text);
-                employee.Phone = Int64.Parse(txtPhone.Text);
+                employee.SSN = txtSSN.Text;
+                employee.Phone = txtPhone.Text;
                 employee.Gender = cboGender.Text[0];
-                employee.ZipCode = Int64.Parse(txtZip.Text);
+                employee.ZipCode = txtZip.Text;
                 employee.DOB = dateTimePickerDOB.Value.Date;
          }
 

@@ -171,8 +171,8 @@ namespace MedAssist.View
             patient.StreetAddr2 = txtAddress2.Text;
             patient.City = txtCity.Text;
             patient.State = cboState.Text;
-            patient.Phone = Int64.Parse(txtPhone.Text);
-            patient.ZipCode = Int64.Parse(txtZip.Text);
+            patient.Phone = txtPhone.Text;
+            patient.ZipCode = txtZip.Text;
         }
         
         /// <summary>

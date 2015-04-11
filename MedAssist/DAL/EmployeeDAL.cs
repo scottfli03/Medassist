@@ -37,7 +37,7 @@ namespace MedAssist.DAL
                 {
                     Employee employee = new Employee();
                     employee.EmployeeID = (int)reader["EmployeeID"];
-                    employee.SSN = Convert.ToInt32(reader["SSN"]);
+                    employee.SSN = reader["SSN"].ToString();
                     employee.FirstName = reader["FirstName"].ToString();
                     employee.MInit = reader["MInit"].ToString();
                     employee.LastName = reader["LastName"].ToString();
@@ -45,10 +45,10 @@ namespace MedAssist.DAL
                     employee.Gender = reader["Gender"].ToString()[0];
                     employee.StreetAddr1 = reader["StreetAddress1"].ToString();
                     employee.StreetAddr2 = reader["StreetAddress2"].ToString();
-                    employee.Phone = Convert.ToInt64(reader["SSN"]);
+                    employee.Phone = reader["SSN"].ToString();
                     employee.City = reader["City"].ToString();
                     employee.State = reader["State"].ToString();
-                    employee.ZipCode = Convert.ToInt64(reader["SSN"]);
+                    employee.ZipCode = reader["SSN"].ToString();
                     employeeList.Add(employee);
                 }
             }
@@ -100,13 +100,13 @@ namespace MedAssist.DAL
                     employee.MInit = reader["Minit"].ToString();
                     employee.DOB = (DateTime)reader["DOB"];
                     employee.Gender = Convert.ToChar(reader["Gender"]);
-                    employee.SSN = Convert.ToInt32(reader["SSN"]);
+                    employee.SSN = reader["SSN"].ToString();
                     employee.StreetAddr1 = reader["StreetAddress1"].ToString();
                     employee.StreetAddr2 = reader["StreetAddress2"].ToString();
                     employee.City = reader["City"].ToString();
                     employee.State = reader["State"].ToString();
-                    employee.ZipCode = Convert.ToInt64(reader["ZipCode"].ToString());
-                    employee.Phone = Convert.ToInt64(reader["Phone"].ToString());
+                    employee.ZipCode = reader["ZipCode"].ToString();
+                    employee.Phone = reader["Phone"].ToString();
                 }
                 else
                 {

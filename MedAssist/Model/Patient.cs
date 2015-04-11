@@ -9,7 +9,7 @@ namespace MedAssist.Model
     class Patient
     {
         private int patientID;
-        private int ssn;
+        private string ssn;
         private string fName;
         private string mInit;
         private string lName;
@@ -18,9 +18,9 @@ namespace MedAssist.Model
         private string street1;
         private string street2;
         private string city;
-        private long phone;
+        private string phone;
         private string state;
-        private long zip;
+        private string zip;
 
         private int? visitID;
         private DateTime visitDate;
@@ -47,7 +47,7 @@ namespace MedAssist.Model
             }
         }
 
-        public int SSN
+        public string SSN
         {
             get
             {
@@ -155,7 +155,7 @@ namespace MedAssist.Model
             }
         }
 
-        public long Phone
+        public string Phone
         {
             get
             {
@@ -167,7 +167,7 @@ namespace MedAssist.Model
             }
         }
 
-        public long ZipCode
+        public string ZipCode
         {
             get
             {
