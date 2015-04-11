@@ -298,6 +298,31 @@ namespace MedAssist.View
             atf = null;
             //throw new NotImplementedException();
         }
+
+        UpdateTestForm utf;
+        private void updateTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (utf == null)
+            {
+                utf = new UpdateTestForm();
+                utf.MdiParent = this;
+                utf.FormClosed += new FormClosedEventHandler(utf_FormClosed);
+                utf.Show();
+
+            }
+            else
+            {
+                utf.Activate();
+            }
+        }
+
+        void utf_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            utf = null;
+            //throw new NotImplementedException();
+        }
+
+        
     }
 }
 

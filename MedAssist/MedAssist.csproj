@@ -54,7 +54,7 @@
     <Compile Include="DAL\MedassistDB.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
-    <Compile Include="DAL\UserSecurityDAL.cs" />
+    <Compile Include="DAL\TestDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
     <Compile Include="Doctor_Patient_Nurse_Employee_Visit_Dataset.cs">
       <DependentUpon>Doctor_Patient_Nurse_Employee_Visit_Dataset.xsd</DependentUpon>
@@ -74,6 +74,11 @@
     <Compile Include="Model\Test.cs" />
     <Compile Include="Model\UserSecurity.cs" />
     <Compile Include="Model\Visit.cs" />
+    <Compile Include="OrderTestDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderTestDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PatientsAndAllVisitInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,6 +161,12 @@
     <Compile Include="View\UpdatePatientForm.Designer.cs">
       <DependentUpon>UpdatePatientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UpdateTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UpdateTestForm.Designer.cs">
+      <DependentUpon>UpdateTestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UpdateVisitForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,11 +179,6 @@
     </Compile>
     <Compile Include="View\VisitForm.Designer.cs">
       <DependentUpon>VisitForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_cs6232_g5DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_cs6232_g5DataSet.xsd</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -189,8 +195,8 @@
     <EmbeddedResource Include="View\AddTestForm.resx">
       <DependentUpon>AddTestForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ChangePasswordForm.resx">
-      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UpdateDeleteEmployeeForm.resx">
       <DependentUpon>UpdateDeleteEmployeeForm.cs</DependentUpon>
@@ -210,6 +216,9 @@
     <EmbeddedResource Include="View\UpdatePatientForm.resx">
       <DependentUpon>UpdatePatientForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\UpdateTestForm.resx">
+      <DependentUpon>UpdateTestForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\VisitForm.resx">
       <DependentUpon>VisitForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +235,17 @@
     </None>
     <None Include="MedAssist.Model.Patient.datasource" />
     <None Include="MedAssist.Model.Visit.datasource" />
+    <None Include="OrderTestDataSet.xsc">
+      <DependentUpon>OrderTestDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OrderTestDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OrderTestDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OrderTestDataSet.xss">
+      <DependentUpon>OrderTestDataSet.xsd</DependentUpon>
+    </None>
     <None Include="PatientsAndAllVisitInfo.xsc">
       <DependentUpon>PatientsAndAllVisitInfo.xsd</DependentUpon>
     </None>
@@ -259,22 +279,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="_cs6232_g5DataSet.xsc">
-      <DependentUpon>_cs6232_g5DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="_cs6232_g5DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>_cs6232_g5DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="_cs6232_g5DataSet.xss">
-      <DependentUpon>_cs6232_g5DataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="DB\UseToBuild_cs6232-g5.sql" />
   </ItemGroup>

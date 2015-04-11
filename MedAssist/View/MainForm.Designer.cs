@@ -46,6 +46,7 @@
             this.addEmployeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newVisitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -153,7 +154,8 @@
             this.reportsToolStripMenuItem,
             this.updateEmployeeToolStripMenuItem,
             this.addEmployeeToolStripMenuItem,
-            this.addTestToolStripMenuItem});
+            this.addTestToolStripMenuItem,
+            this.updateTestToolStripMenuItem});
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.adminToolStripMenuItem.Text = "Admin";
@@ -232,5 +234,6 @@
         private System.Windows.Forms.ToolStripMenuItem updateEmployeeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addEmployeeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addTestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateTestToolStripMenuItem;
     }
 }

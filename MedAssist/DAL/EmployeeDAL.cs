@@ -127,5 +127,128 @@ namespace MedAssist.DAL
             }
             return employee;
         }
+
+        /// <summary>
+        /// Returns if employee is a Doctor. 
+        /// </summary>
+        /// <param name="employee">Employee's ID</param>
+        /// <returns>True if Doctor, false if not</returns>
+        public static bool isEmployeeDoctor(int employeeID)
+        {
+            Employee employee = new Employee();
+            bool isDoctor = false;
+            SqlConnection connection = MedassistDB.GetConnection();
+            string selectStatement1 =
+                   "SELECT DoctorID " +
+                   "FROM Employees e JOIN Doctors d ON e.EmployeeID = d.DoctorID " +
+                   "WHERE EmployeeID = @EmployeeID";
+            SqlCommand selectCommand1 = new SqlCommand(selectStatement1, connection);
+            selectCommand1.Parameters.AddWithValue("@EmployeeID", employeeID);
+            SqlDataReader reader = null;
+            try
+            {
+                connection.Open();
+                reader = selectCommand1.ExecuteReader(CommandBehavior.SingleRow);
+                if (reader.Read())
+                {
+                    employee.EmployeeID = (int)reader["DoctorID"];
+                    isDoctor = true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+                return isDoctor;
+        }
+
+        /// <summary>
+        /// Returns if Employee is a Nurse. 
+        /// </summary>
+        /// <param name="employee">Employee's ID</param>
+        /// <returns>True if Nurse, False if not</returns>
+        public static bool isEmployeeNurse(int employeeID)
+        {
+            Employee employee = new Employee();
+            bool isNurse = false;
+            SqlConnection connection = MedassistDB.GetConnection();
+            string selectStatement1 =
+                   "SELECT NurseID " +
+                   "FROM Employees e JOIN Nurses n ON e.EmployeeID = n.NurseID " +
+                   "WHERE EmployeeID = @EmployeeID";
+            SqlCommand selectCommand1 = new SqlCommand(selectStatement1, connection);
+            selectCommand1.Parameters.AddWithValue("@EmployeeID", employeeID);
+            SqlDataReader reader = null;
+            try
+            {
+                connection.Open();
+                reader = selectCommand1.ExecuteReader(CommandBehavior.SingleRow);
+                if (reader.Read())
+                {
+                    employee.EmployeeID = (int)reader["NurseID"];
+                    isNurse = true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return isNurse;
+        }
+
+        /// <summary>
+        /// Returns if Employee is an Admin. 
+        /// </summary>
+        /// <param name="employee">Employee's ID</param>
+        /// <returns>True if Admin, False if not</returns>
+        public static bool isEmployeeAdmin(int employeeID)
+        {
+            Employee employee = new Employee();
+            bool isAdmin = false;
+            SqlConnection connection = MedassistDB.GetConnection();
+            string selectStatement1 =
+                   "SELECT AdminID " +
+                   "FROM Employees e JOIN Administrators a ON e.EmployeeID = a.AdminID " +
+                   "WHERE EmployeeID = @EmployeeID";
+            SqlCommand selectCommand1 = new SqlCommand(selectStatement1, connection);
+            selectCommand1.Parameters.AddWithValue("@EmployeeID", employeeID);
+            SqlDataReader reader = null;
+            try
+            {
+                connection.Open();
+                reader = selectCommand1.ExecuteReader(CommandBehavior.SingleRow);
+                if (reader.Read())
+                {
+                    employee.EmployeeID = (int)reader["AdminID"];
+                    isAdmin = true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return isAdmin;
+        }
     }
 }

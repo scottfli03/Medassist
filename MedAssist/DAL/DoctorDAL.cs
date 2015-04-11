@@ -14,5 +14,7 @@ namespace MedAssist.DAL
     class DoctorDAL
     {
         public DoctorDAL() { }
+
+        
     }
 }

@@ -34,5 +34,35 @@ namespace MedAssist.Controller
         {
             return EmployeeDAL.GetEmployeeByID(id);
         }
+
+        /// <summary>
+        /// Returns if employee is a Doctor. 
+        /// </summary>
+        /// <param name="employee">Employee's ID</param>
+        /// <returns>True if Doctor, false if not</returns>
+        public static bool isEmployeeDoctor(int employeeID)
+        {
+            return EmployeeDAL.isEmployeeDoctor(employeeID);
+        }
+
+        /// <summary>
+        /// Returns if Employee is a Nurse. 
+        /// </summary>
+        /// <param name="employee">Employee's ID</param>
+        /// <returns>True if Nurse, False if not</returns>
+        public static bool isEmployeeNurse(int employeeID)
+        {
+            return EmployeeDAL.isEmployeeNurse(employeeID);
+        }
+
+        /// <summary>
+        /// Returns if Employee is an Admin. 
+        /// </summary>
+        /// <param name="employee">Employee's ID</param>
+        /// <returns>True if Admin, False if not</returns>
+        public static bool isEmployeeAdmin(int employeeID)
+        {
+            return EmployeeDAL.isEmployeeAdmin(employeeID);
+        }
     }
 }
