@@ -11,16 +11,16 @@ namespace MedAssist.Model
         private int patientID;
         private string ssn;
         private string fName;
-        private char? mInit;
+        private string mInit;
         private string lName;
         private DateTime dob;
-        private char gender;
+        private char? gender;
         private string street1;
         private string street2;
         private string city;
-        private long phone;
+        private string phone;
         private string state;
-        private long zip;
+        private string zip;
 
         private int? visitID;
         private DateTime visitDate;
@@ -47,7 +47,7 @@ namespace MedAssist.Model
             }
         }
 
-        public int SSN
+        public string SSN
         {
             get
             {
@@ -71,7 +71,7 @@ namespace MedAssist.Model
             }
         }
 
-        public char? MInit
+        public string MInit
         {
             get
             {
@@ -107,7 +107,7 @@ namespace MedAssist.Model
             }
         }
 
-        public char Gender
+        public char? Gender
         {
             get
             {
@@ -155,7 +155,7 @@ namespace MedAssist.Model
             }
         }
 
-        public long Phone
+        public string Phone
         {
             get
             {
@@ -167,7 +167,7 @@ namespace MedAssist.Model
             }
         }
 
-        public long ZipCode
+        public string ZipCode
         {
             get
             {
@@ -230,7 +230,6 @@ namespace MedAssist.Model
             set;
         }
             
-
         public decimal? Temperature
         {
             get;
@@ -238,6 +237,7 @@ namespace MedAssist.Model
             set;
            
         }
+
         public int? RespirationRate
         {
             get;
@@ -245,6 +245,7 @@ namespace MedAssist.Model
             set;
 
         }
+        
         public int? HeartRate
         {
             get;
@@ -252,6 +253,7 @@ namespace MedAssist.Model
             set;
 
         }
+        
         public string Symptoms
         {
             get;
@@ -259,6 +261,7 @@ namespace MedAssist.Model
             set;
 
         }
+        
         public int? TestID
         {
             get;
@@ -266,6 +269,7 @@ namespace MedAssist.Model
             set;
 
         }
+        
         public string TestName
         {
             get;
@@ -273,6 +277,7 @@ namespace MedAssist.Model
             set;
 
         }
+        
         public string Diagnosis
         {
             get;
