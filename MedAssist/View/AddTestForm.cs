@@ -95,7 +95,15 @@ namespace MedAssist.View
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            var result = MessageBox.Show("Are you sure you would like to cancel?", "Cancel Adding Test?", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
 
