@@ -201,6 +201,9 @@
     <EmbeddedResource Include="View\UpdatePatientForm.resx">
       <DependentUpon>UpdatePatientForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\UpdateVisitForm.resx">
+      <DependentUpon>UpdateVisitForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\VisitForm.resx">
       <DependentUpon>VisitForm.cs</DependentUpon>
     </EmbeddedResource>

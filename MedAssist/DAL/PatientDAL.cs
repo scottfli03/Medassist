@@ -6,11 +6,79 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MedAssist.DAL
 {
     class PatientDAL
     {
+
+        /// <summary>
+        /// Gets patient to Update
+        /// </summary>
+        /// <param name="patientID"></param>
+        /// <returns>The Patient</returns>
+        public static Patient GetPatientToUpdateWithNoID(string FirstName, string LastName, DateTime DOB)
+        {
+            Patient patient = new Patient();
+            SqlConnection connection = MedassistDB.GetConnection();
+            string selectStatement =
+
+                   "SELECT PatientID, FirstName, MInit, DOB, Gender, SSN, LastName, StreetAddress1, StreetAddress2, City, State, ZipCode, Phone " +
+                   "FROM Patients " +
+                   "WHERE FirstName = @FirstName AND LastName = @LastName AND DOB = @DOB";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
+            selectCommand.Parameters.AddWithValue("@FirstName", FirstName);
+            selectCommand.Parameters.AddWithValue("@LastName", LastName);
+            selectCommand.Parameters.AddWithValue("@DOB", DOB);
+            try
+            {
+                connection.Open();
+                reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                if (reader.Read())
+                {
+                    patient.PatientID = (int)reader["PatientID"];
+                    patient.FirstName = reader["FirstName"].ToString();
+                    patient.LastName = reader["LastName"].ToString();
+                    if (reader["MInit"] == DBNull.Value)
+                    {
+                        patient.MInit = '\0';
+                    }
+                    else
+                    {
+                        patient.MInit = Convert.ToChar(reader["Minit"]);
+                    }
+                    patient.DOB = (DateTime)reader["DOB"];
+                    patient.Gender = Convert.ToChar(reader["Gender"]);
+                    patient.SSN = Convert.ToInt32(reader["SSN"]);
+                    patient.StreetAddr1 = reader["StreetAddress1"].ToString();
+                    patient.StreetAddr2 = reader["StreetAddress2"].ToString();
+                    patient.City = reader["City"].ToString();
+                    patient.State = reader["State"].ToString();
+                    patient.ZipCode = Convert.ToInt64(reader["ZipCode"]);
+                    patient.Phone = Convert.ToInt64(reader["Phone"]);
+                }
+                else
+                {
+                    patient = null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return patient;
+        }
+        
         /// <summary>
         /// Query to add patients
         /// </summary>
@@ -146,13 +214,13 @@ namespace MedAssist.DAL
                     }
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = Convert.ToChar(reader["Gender"]);
-                    patient.SSN = (int)reader["SSN"];
+                    patient.SSN =  Convert.ToInt32(reader["SSN"]);
                     patient.StreetAddr1 = reader["StreetAddress1"].ToString();
                     patient.StreetAddr2 = reader["StreetAddress2"].ToString();
                     patient.City = reader["City"].ToString();
                     patient.State = reader["State"].ToString();
-                    patient.ZipCode = (int)reader["ZipCode"];
-                    patient.Phone = (int)reader["Phone"];
+                    patient.ZipCode = Convert.ToInt64(reader["ZipCode"]);
+                    patient.Phone = Convert.ToInt64(reader["Phone"]);
                 }
                 else
                 {

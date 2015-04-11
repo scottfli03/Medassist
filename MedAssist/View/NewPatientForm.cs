@@ -55,6 +55,7 @@ namespace MedAssist
             {
                 patient = new Patient();
                 PutPatientData(patient);
+
                 try
                 {
                     patient.PatientID = PatientDAL.AddPatient(patient); 
@@ -77,7 +78,6 @@ namespace MedAssist
         {
             if (Validator.IsPresent(txtFirstName) &&
                 Validator.IsPresent(txtLastName) &&
-                Validator.IsPresent(txtSSN) &&
                 Validator.IsPresent(txtAddress1) &&
                 Validator.IsPresent(txtCity) &&
                 Validator.IsPresent(cboState) &&
