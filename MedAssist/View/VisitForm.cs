@@ -181,9 +181,12 @@ namespace MedAssist.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        TestForm tf;
         private void btnOrderTest_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This feature will be implemented soon", "Under Construction");
+            tf = new TestForm();
+            tf.Show();
         }
 
         /// <summary>

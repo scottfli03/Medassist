@@ -73,6 +73,11 @@
     <Compile Include="Model\Test.cs" />
     <Compile Include="Model\UserSecurity.cs" />
     <Compile Include="Model\Visit.cs" />
+    <Compile Include="OrderTestDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderTestDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PatientsAndAllVisitInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -183,6 +188,9 @@
     <EmbeddedResource Include="View\AddTestForm.resx">
       <DependentUpon>AddTestForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\UpdateDeleteEmployeeForm.resx">
       <DependentUpon>UpdateDeleteEmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -217,6 +225,17 @@
     </None>
     <None Include="MedAssist.Model.Patient.datasource" />
     <None Include="MedAssist.Model.Visit.datasource" />
+    <None Include="OrderTestDataSet.xsc">
+      <DependentUpon>OrderTestDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OrderTestDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OrderTestDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OrderTestDataSet.xss">
+      <DependentUpon>OrderTestDataSet.xsd</DependentUpon>
+    </None>
     <None Include="PatientsAndAllVisitInfo.xsc">
       <DependentUpon>PatientsAndAllVisitInfo.xsd</DependentUpon>
     </None>
@@ -254,7 +273,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="DB\UseToBuild_cs6232-g5.sql" />
   </ItemGroup>
