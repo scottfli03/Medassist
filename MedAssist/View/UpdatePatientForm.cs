@@ -31,6 +31,8 @@ namespace MedAssist.View
             txtSSN.Enabled = false;
             txtGender.Enabled = false;
             txtMiddleInit.MaxLength = 1;
+            txtPhone.MaxLength = 10;
+            txtZip.MaxLength = 10;
         }
 
         /// <summary>
@@ -58,6 +60,27 @@ namespace MedAssist.View
             }
         }
 
+        private void GetPatientWithNoID(string firstName, string lastName, DateTime DOB)
+        {
+            try
+            {
+                patient = PatientDAL.GetPatientToUpdateWithNoID(firstName, lastName, DOB);
+                if (patient == null)
+                    MessageBox.Show("No Patient found with this First Name, Last Name or Date of Birth. " +
+                                    "Please try again.", "Patient Not Found");
+                else
+                {
+                    this.DisplayPatient();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
         /// <summary>
         /// Loads the Patient information to the form
         /// </summary>
@@ -69,7 +92,7 @@ namespace MedAssist.View
             txtAddress1.Text = patient.StreetAddr1;
             txtAddress2.Text = patient.StreetAddr2;
             txtCity.Text = patient.City;
-            txtState.Text = patient.State;
+            cboState.Text = patient.State;
             txtZip.Text = patient.ZipCode.ToString();
             txtPhone.Text = patient.Phone.ToString();
             txtDOB.Text = patient.DOB.ToString();
@@ -125,9 +148,9 @@ namespace MedAssist.View
                Validator.IsPresent(txtLastName) &&
                Validator.IsPresent(txtAddress1) &&
                Validator.IsPresent(txtCity) &&
-               Validator.IsPresent(txtState) &&
-               Validator.IsPresent(txtPhone) &&
-               Validator.IsPresent(txtZip))
+               Validator.IsPresent(cboState) &&
+               Validator.IsInt64(txtPhone) &&
+               Validator.IsInt64(txtZip))
            {
                return true;
            }
@@ -143,13 +166,13 @@ namespace MedAssist.View
             txtMiddleInit.MaxLength = 1;
             patient.FirstName = txtFirstName.Text;
             patient.LastName = txtLastName.Text;
-            patient.MInit = txtMiddleInit.Text[0];
+            patient.MInit = txtMiddleInit.Text;
             patient.StreetAddr1 = txtAddress1.Text;
             patient.StreetAddr2 = txtAddress2.Text;
             patient.City = txtCity.Text;
-            patient.State = txtState.Text;
-            patient.Phone = Int64.Parse(txtPhone.Text);
-            patient.ZipCode = Int64.Parse(txtZip.Text);
+            patient.State = cboState.Text;
+            patient.Phone = txtPhone.Text;
+            patient.ZipCode = txtZip.Text;
         }
         
         /// <summary>
@@ -163,10 +186,11 @@ namespace MedAssist.View
             if (Validator.IsPresent(txtPatientID) &&
                 Validator.IsInt32(txtPatientID))
             {
-                int patientID = Convert.ToInt32((txtPatientID.Text));
+                int patientID = Convert.ToInt32(txtPatientID.Text);
                 this.GetPatient(patientID);
             }
          }
+
 
         /// <summary>
         /// Sets the actions taken when the Cancel Button is clicked.
@@ -186,9 +210,26 @@ namespace MedAssist.View
             }
         }
 
+<<<<<<< HEAD
         private void txtPatientID_TextChanged(object sender, EventArgs e)
         {
 
+=======
+        
+        private void btnPatientInfo_Click(object sender, EventArgs e)
+        {
+
+            if (Validator.IsPresent(txtSearchFirstName) &&
+                Validator.IsPresent(txtSearchLastName) &&
+                Validator.IsPresent(dateTimePickerSearchDOB))
+            {
+                string firstName = txtSearchFirstName.Text;
+                string lastName = txtSearchLastName.Text;
+                DateTime dob = dateTimePickerSearchDOB.Value.Date;
+                this.GetPatientWithNoID(firstName, lastName, dob);
+            }
+ 
+>>>>>>> 17f4f4009f8f8bdee39cc66da715af116876700a
         }
     }
 }

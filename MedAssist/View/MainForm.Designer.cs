@@ -38,7 +38,6 @@
             this.newVisitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.updateVisitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -129,19 +128,11 @@
             // acountToolStripMenuItem
             // 
             this.acountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loginToolStripMenuItem,
             this.logoutToolStripMenuItem,
             this.changePasswordToolStripMenuItem});
             this.acountToolStripMenuItem.Name = "acountToolStripMenuItem";
             this.acountToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.acountToolStripMenuItem.Text = "Account";
-            // 
-            // loginToolStripMenuItem
-            // 
-            this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.loginToolStripMenuItem.Text = "Login";
-            this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click_1);
             // 
             // logoutToolStripMenuItem
             // 
@@ -203,13 +194,6 @@
             this.newVisitToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.newVisitToolStripMenuItem.Text = "New Visit";
             // 
-            // updateTestToolStripMenuItem
-            // 
-            this.updateTestToolStripMenuItem.Name = "updateTestToolStripMenuItem";
-            this.updateTestToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.updateTestToolStripMenuItem.Text = "Update Test";
-            this.updateTestToolStripMenuItem.Click += new System.EventHandler(this.updateTestToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,7 +225,6 @@
         private System.Windows.Forms.ToolStripMenuItem newVisitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchPatientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acountToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newVisitToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem updateVisitToolStripMenuItem;

@@ -16,5 +16,15 @@ namespace MedAssist.View
         {
             InitializeComponent();
         }
+
+        private void GetPatientWithNoID(string firstName, string lastName, DateTime DOB)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

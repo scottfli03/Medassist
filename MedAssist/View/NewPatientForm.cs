@@ -55,6 +55,7 @@ namespace MedAssist
             {
                 patient = new Patient();
                 PutPatientData(patient);
+
                 try
                 {
                     patient.PatientID = PatientDAL.AddPatient(patient); 
@@ -77,7 +78,6 @@ namespace MedAssist
         {
             if (Validator.IsPresent(txtFirstName) &&
                 Validator.IsPresent(txtLastName) &&
-                Validator.IsPresent(txtSSN) &&
                 Validator.IsPresent(txtAddress1) &&
                 Validator.IsPresent(txtCity) &&
                 Validator.IsPresent(cboState) &&
@@ -99,15 +99,15 @@ namespace MedAssist
             { 
                 patient.FirstName = txtFirstName.Text;
                 patient.LastName = txtLastName.Text;
-                patient.MInit = txtMiddleInit.Text[0];
+                patient.MInit = txtMiddleInit.Text;
                 patient.StreetAddr1 = txtAddress1.Text;
                 patient.StreetAddr2 = txtAddress2.Text;
                 patient.City = txtCity.Text;
                 patient.State = cboState.Text;
-                patient.SSN = Int32.Parse(txtSSN.Text);
-                patient.Phone = Int64.Parse(txtPhone.Text);
+                patient.SSN = txtSSN.Text;
+                patient.Phone = txtPhone.Text;
                 patient.Gender = cboGender.Text[0];
-                patient.ZipCode = Int64.Parse(txtZip.Text);
+                patient.ZipCode = txtZip.Text;
                 patient.DOB = dateTimePickerDOB.Value.Date;
                 
             }

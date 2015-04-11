@@ -13,6 +13,10 @@ namespace MedAssist.DAL
     /// </summary>
     class DoctorDAL
     {
-        public DoctorDAL() { }
+
+
+                         
+
+        
     }
 }

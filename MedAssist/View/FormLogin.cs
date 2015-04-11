@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using MedAssist.Controller;
 using MedAssist.DAL;
@@ -51,9 +52,7 @@ namespace MedAssist.View
                 try
                 {
 
-                    if (Validator.IsPresent(textBoxUserName) &&
-                Validator.IsPresent(textBoxPassword))
-                    {
+                   
                         this.nurse = this.controllerNurse.GetNurse(userName, password);
 
                         UserSecurityController.NurseLoggedIn = this.nurse;
@@ -82,7 +81,7 @@ namespace MedAssist.View
                         }
                     }
 
-                }
+               
 
                 catch (Exception ex)
                 {
@@ -91,6 +90,7 @@ namespace MedAssist.View
             }
         }
 
+        
 
 
         /// <summary>

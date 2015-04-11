@@ -226,7 +226,6 @@
             // 
             this.cboState.FormattingEnabled = true;
             this.cboState.Items.AddRange(new object[] {
-            "",
             "Alabama",
             "Alaska",
             "Arizona",
