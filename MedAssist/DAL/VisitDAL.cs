@@ -185,6 +185,7 @@ namespace MedAssist.DAL
                 INNER JOIN Orders ON Visits.VisitID = Orders.VisitID
                 INNER JOIN Tests ON Orders.TestID = Tests.TestID
                 WHERE
+                    
                     Patients.LastName = '{0}'
                     AND Patients.DOB = '{1}'", lName, patientDob);
 
@@ -264,13 +265,14 @@ namespace MedAssist.DAL
                     ,Orders.Result
                     ,Orders.TestID
                     ,Tests.TestName
-                FROM Visits 
+                FROM Visits
                 LEFT JOIN Patients
                 ON Visits.PatientID = Patients.PatientID
-                INNER JOIN Orders ON Visits.VisitID = Orders.VisitID
-                INNER JOIN Tests ON Orders.TestID = Tests.TestID
+                LEFT JOIN Orders ON Visits.VisitID = Orders.VisitID
+                LEFT JOIN Tests ON Orders.TestID = Tests.TestID
                 WHERE
-                  Patients.DOB = '{0}'", patientDob);
+                  
+                   Patients.DOB = '{0}'", patientDob);
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
