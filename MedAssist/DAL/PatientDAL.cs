@@ -54,13 +54,13 @@ namespace MedAssist.DAL
 
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = Convert.ToChar(reader["Gender"]);
-                    patient.SSN = Convert.ToInt32(reader["SSN"]);
+                    patient.SSN = reader["SSN"].ToString();
                     patient.StreetAddr1 = reader["StreetAddress1"].ToString();
                     patient.StreetAddr2 = reader["StreetAddress2"].ToString();
                     patient.City = reader["City"].ToString();
                     patient.State = reader["State"].ToString();
-                    patient.ZipCode = Convert.ToInt64(reader["ZipCode"]);
-                    patient.Phone = Convert.ToInt64(reader["Phone"]);
+                    patient.ZipCode = reader["ZipCode"].ToString();
+                    patient.Phone = reader["Phone"].ToString();
                 }
                 else
                 {
@@ -218,13 +218,13 @@ namespace MedAssist.DAL
                     //}
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = Convert.ToChar(reader["Gender"]);
-                    patient.SSN =  Convert.ToInt32(reader["SSN"]);
+                    patient.SSN =  reader["SSN"].ToString();
                     patient.StreetAddr1 = reader["StreetAddress1"].ToString();
                     patient.StreetAddr2 = reader["StreetAddress2"].ToString();
                     patient.City = reader["City"].ToString();
                     patient.State = reader["State"].ToString();
-                    patient.ZipCode = Convert.ToInt64(reader["ZipCode"]);
-                    patient.Phone = Convert.ToInt64(reader["Phone"]);
+                    patient.ZipCode = reader["ZipCode"].ToString();
+                    patient.Phone = reader["Phone"].ToString();
                 }
                 else
                 {
@@ -267,7 +267,7 @@ namespace MedAssist.DAL
                     patient.PatientID = (int)reader["PatientID"];
                     patient.SSN = reader["SSN"].ToString();
                     patient.FirstName = reader["FirstName"].ToString();
-                    patient.Phone = (int)reader["MInit"];
+                    patient.Phone = reader["MInit"].ToString();
                     //patient.MInit = reader["MInit"].ToString()[0];
                     patient.MInit = reader["MInit"].ToString();
                     patient.LastName = reader["LastName"].ToString();
@@ -277,7 +277,7 @@ namespace MedAssist.DAL
                     patient.StreetAddr2 = reader["StreetAddress2"].ToString();
                     patient.City = reader["City"].ToString();
                     patient.State = reader["State"].ToString();
-                    patient.ZipCode = (long)reader["ZipCode"];
+                    patient.ZipCode = reader["ZipCode"].ToString();
                     patientList.Add(patient);
                 }
             }
