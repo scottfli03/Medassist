@@ -185,5 +185,10 @@ namespace MedAssist.View
                 this.Close();
             }
         }
+
+        private void txtPatientID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
