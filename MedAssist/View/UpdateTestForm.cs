@@ -135,5 +135,10 @@ namespace MedAssist.View
                 return false;
 
         }
+
+        private void txtTestID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
