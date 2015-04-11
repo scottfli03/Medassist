@@ -23,5 +23,10 @@ namespace MedAssist.Controller
         {
             return NurseDAL.GetNurse(userName, password);
         }
+
+        public  bool UpdatePassword(string oldUser, string newUser)
+        {
+            return UpdatePassword(oldUser, newUser);
+        }
     }
 }
