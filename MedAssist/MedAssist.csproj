@@ -54,6 +54,7 @@
     <Compile Include="DAL\MedassistDB.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
+    <Compile Include="DAL\TestDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
     <Compile Include="Doctor_Patient_Nurse_Employee_Visit_Dataset.cs">
       <DependentUpon>Doctor_Patient_Nurse_Employee_Visit_Dataset.xsd</DependentUpon>
