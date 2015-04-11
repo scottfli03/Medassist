@@ -70,10 +70,10 @@ namespace MedAssist.View
             txtAddress2.Text = patient.StreetAddr2;
             txtCity.Text = patient.City;
             txtState.Text = patient.State;
-            txtZip.Text = patient.ZipCode;
-            txtPhone.Text = patient.Phone;
+            txtZip.Text = patient.ZipCode.ToString();
+            txtPhone.Text = patient.Phone.ToString();
             txtDOB.Text = patient.DOB.ToString();
-            txtSSN.Text = patient.SSN;
+            txtSSN.Text = patient.SSN.ToString();
             txtGender.Text = patient.Gender.ToString();
         }
         
@@ -148,8 +148,8 @@ namespace MedAssist.View
             patient.StreetAddr2 = txtAddress2.Text;
             patient.City = txtCity.Text;
             patient.State = txtState.Text;
-            patient.Phone = txtPhone.Text;
-            patient.ZipCode = txtZip.Text;
+            patient.Phone = Int64.Parse(txtPhone.Text);
+            patient.ZipCode = Int64.Parse(txtZip.Text);
         }
         
         /// <summary>

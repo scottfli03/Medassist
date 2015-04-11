@@ -54,6 +54,7 @@
     <Compile Include="DAL\MedassistDB.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
+    <Compile Include="DAL\TestDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
     <Compile Include="Doctor_Patient_Nurse_Employee_Visit_Dataset.cs">
       <DependentUpon>Doctor_Patient_Nurse_Employee_Visit_Dataset.xsd</DependentUpon>
@@ -160,6 +161,12 @@
     <Compile Include="View\UpdatePatientForm.Designer.cs">
       <DependentUpon>UpdatePatientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UpdateTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UpdateTestForm.Designer.cs">
+      <DependentUpon>UpdateTestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UpdateVisitForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\UpdatePatientForm.resx">
       <DependentUpon>UpdatePatientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UpdateTestForm.resx">
+      <DependentUpon>UpdateTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\VisitForm.resx">
       <DependentUpon>VisitForm.cs</DependentUpon>

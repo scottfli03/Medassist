@@ -74,6 +74,21 @@ namespace MedAssist.View
             }
         }
 
+        public static bool IsInt64(TextBox textBox)
+        {
+            try
+            {
+                Convert.ToInt64(textBox.Text);
+                return true;
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show(textBox.Tag.ToString() + " must be an integer value.", Title);
+                textBox.Focus();
+                return false;
+            }
+        }
+
         public static bool IsDecimal(TextBox textBox)
         {
             try
