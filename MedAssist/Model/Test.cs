@@ -10,6 +10,7 @@ namespace MedAssist.Model
     {
         private int testID;
         private string testName;
+        
 
         public Test() { }
 
@@ -25,7 +26,8 @@ namespace MedAssist.Model
             }
         }
 
-        public string DoctorID
+        // this was DoctorID. Changed by Greene. 
+        public string TestName
         {
             get
             {
@@ -37,4 +39,7 @@ namespace MedAssist.Model
             }
         }
     }
+
+        
+ 
 }

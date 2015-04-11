@@ -14,6 +14,10 @@ namespace MedAssist.View
 {
     public partial class UpdateDeleteEmployeeForm : Form
     {
+        private bool wasDoctor;
+        private bool wasNurse;
+        private bool wasAdmin;
+
         public UpdateDeleteEmployeeForm()
         {
             InitializeComponent();
@@ -42,6 +46,7 @@ namespace MedAssist.View
             rBtnNurse.Enabled = false;
             btnDelete.Enabled = false;
             btnUpdate.Enabled = false;
+            dtpDOB.Enabled = false;
         }
 
         private void enableFields()
@@ -62,6 +67,7 @@ namespace MedAssist.View
             rBtnNurse.Enabled = true;
             btnDelete.Enabled = true;
             btnUpdate.Enabled = true;
+            dtpDOB.Enabled = true;
         }
 
         /// <summary>
@@ -109,7 +115,9 @@ namespace MedAssist.View
                 try
                 {
                     employee = EmployeeController.GetEmployeeByID(Int32.Parse(txtEmployeeID.Text));
-                    fillEmployeeData(employee);
+                    this.fillEmployeeData(employee);
+                    fillEmployeePosition(employee.EmployeeID);
+                    this.enableFields();
                 }
                 catch (Exception ex)
                 {
@@ -120,7 +128,6 @@ namespace MedAssist.View
             {
                 return;
             }
-            
         }
 
         private void fillEmployeeData(Employee employee)
@@ -145,13 +152,82 @@ namespace MedAssist.View
                     }
                     if (employee.Gender == 'f' || employee.Gender == 'F')
                     {
-                        rBtnMale.Checked = true;
+                        rBtnFemale.Checked = true;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
+            }
+        }
+
+        private void fillEmployeePosition(int employeeID) 
+        {
+            if (EmployeeController.isEmployeeDoctor(employeeID))
+            {
+                rBtnDoctor.Checked = true;
+                this.wasDoctor = true;
+            }
+            else if (EmployeeController.isEmployeeNurse(employeeID))
+            {
+                rBtnNurse.Checked = true;
+                this.wasNurse = true;
+            }
+            else if (EmployeeController.isEmployeeAdmin(employeeID))
+            {
+                rBtnAdmin.Checked = true;
+                this.wasAdmin = true;
+            }
+            else
+            {
+                MessageBox.Show("Employee\'s position has not been established yet.  Please select one and update it.");
+            }
+        }
+
+        /// <summary>
+        /// Sees if the Employees position is being updated.
+        /// </summary>
+        /// <returns>1 if changed from Doctor, 2 changed from Nurse, 
+        /// 3 changed from admin, 4 unchanged</returns>
+        private int isPositionChanged()
+        {
+            //TODO: Test that this works.
+            if (this.wasDoctor == true && !rBtnDoctor.Checked)
+            {
+                return 1;
+            }
+            else if (this.wasNurse == true && !rBtnNurse.Checked)
+            {
+                return 2;
+            }
+            else if (this.wasAdmin == true && !rBtnAdmin.Checked)
+            {
+                return 3;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            //TODO: make sure admin count will not become zero
+            //TODO: check if position changed. Delete last position if it was.
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            //TODO: make sure admin count will not become zero
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you'd like to close the form?", "Close Form?", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
             }
         }
     }

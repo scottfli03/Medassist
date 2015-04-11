@@ -20,5 +20,20 @@ namespace MedAssist.Controller
         {
             return PatientDAL.GetPatientList();
         }
+
+        public static List<Patient> GetVisitForPatient(string fName, string lName) {
+            
+            return PatientDAL.GetVisitForPatient(fName, lName);
+        }
+
+        public static List<Patient> GetPatientsByDOB(DateTime patientDob)
+        {
+            return PatientDAL.GetPatientsByDOB(patientDob);
+        }
+
+        public static List<Patient> GetVisitForPatientWithDobAndLName(string lName, DateTime patientDob)
+        {
+            return PatientDAL.GetVisitForPatientWithDobAndLName(lName, patientDob);
+        }
     }
 }

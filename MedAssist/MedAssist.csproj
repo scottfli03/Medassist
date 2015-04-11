@@ -54,6 +54,7 @@
     <Compile Include="DAL\MedassistDB.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
+    <Compile Include="DAL\TestDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
     <Compile Include="Doctor_Patient_Nurse_Employee_Visit_Dataset.cs">
       <DependentUpon>Doctor_Patient_Nurse_Employee_Visit_Dataset.xsd</DependentUpon>
@@ -73,6 +74,11 @@
     <Compile Include="Model\Test.cs" />
     <Compile Include="Model\UserSecurity.cs" />
     <Compile Include="Model\Visit.cs" />
+    <Compile Include="OrderTestDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderTestDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PatientsAndAllVisitInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -155,6 +161,12 @@
     <Compile Include="View\UpdatePatientForm.Designer.cs">
       <DependentUpon>UpdatePatientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UpdateTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UpdateTestForm.Designer.cs">
+      <DependentUpon>UpdateTestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UpdateVisitForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +195,9 @@
     <EmbeddedResource Include="View\AddTestForm.resx">
       <DependentUpon>AddTestForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\UpdateDeleteEmployeeForm.resx">
       <DependentUpon>UpdateDeleteEmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,8 +216,8 @@
     <EmbeddedResource Include="View\UpdatePatientForm.resx">
       <DependentUpon>UpdatePatientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\UpdateVisitForm.resx">
-      <DependentUpon>UpdateVisitForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\UpdateTestForm.resx">
+      <DependentUpon>UpdateTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\VisitForm.resx">
       <DependentUpon>VisitForm.cs</DependentUpon>
@@ -220,6 +235,17 @@
     </None>
     <None Include="MedAssist.Model.Patient.datasource" />
     <None Include="MedAssist.Model.Visit.datasource" />
+    <None Include="OrderTestDataSet.xsc">
+      <DependentUpon>OrderTestDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OrderTestDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OrderTestDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OrderTestDataSet.xss">
+      <DependentUpon>OrderTestDataSet.xsd</DependentUpon>
+    </None>
     <None Include="PatientsAndAllVisitInfo.xsc">
       <DependentUpon>PatientsAndAllVisitInfo.xsd</DependentUpon>
     </None>
@@ -257,7 +283,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="DB\UseToBuild_cs6232-g5.sql" />
   </ItemGroup>

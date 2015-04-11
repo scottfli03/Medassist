@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MedAssist.Model;
-using MedAssist.DAL;
+using MedAssist.Controller;
 using MedAssist.View;
 
 namespace MedAssist.View
@@ -63,7 +63,7 @@ namespace MedAssist.View
                 //get a patient object for the typed Patient
                 //will bind the datagrid to that object
                 //visitList = VisitDAL.GetVisitForPatient(fName, lName);
-                patientList = PatientDAL.GetVisitForPatient(fName, lName);
+                patientList = PatientController.GetVisitForPatient(fName, lName);
                 if (patientList.Count == 0) //was visitList
                 {
                     MessageBox.Show("No Patient/Visit Found!", "Create a New Patient");
@@ -92,7 +92,7 @@ namespace MedAssist.View
                 try
                 {
                     //visitList = VisitDAL.GetVisitForPatientWithDobAndLName(lName, patientDob);
-                    patientList = PatientDAL.GetVisitForPatientWithDobAndLName(lName, patientDob);
+                    patientList = PatientController.GetVisitForPatientWithDobAndLName(lName, patientDob);
 
                     if (patientList.Count == 0) //was visitList
                     {
@@ -122,7 +122,7 @@ namespace MedAssist.View
                 try
                 {
                     // visitList = VisitDAL.GetPatientsByDOB(patientDob);
-                    patientList = PatientDAL.GetPatientsByDOB(patientDob);
+                    patientList = PatientController.GetPatientsByDOB(patientDob);
 
                     if (patientList.Count == 0) //was visitList
                     {
