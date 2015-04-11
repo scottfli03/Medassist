@@ -25,7 +25,7 @@ namespace MedAssist.DAL
             List<Employee> employeeList = new List<Employee>();
             SqlConnection connection = MedassistDB.GetConnection();
             String selectStatement = "SELECT EmployeeID, SSN, FirstName, MInit, LastName, DOB, Gender, " +
-	            "StreetAddress1, StreetAddress2, Phone, City, State, ZipCode " +
+                "StreetAddress1, StreetAddress2, Phone, City, State, ZipCode " +
                 "FROM Employees e JOIN Doctors d ON e.EmployeeID = d.DoctorID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
@@ -37,7 +37,7 @@ namespace MedAssist.DAL
                 {
                     Employee employee = new Employee();
                     employee.EmployeeID = (int)reader["EmployeeID"];
-                    employee.SSN = reader["SSN"].ToString();
+                    employee.SSN = Convert.ToInt32(reader["SSN"]);
                     employee.FirstName = reader["FirstName"].ToString();
                     employee.MInit = reader["MInit"].ToString();
                     employee.LastName = reader["LastName"].ToString();
@@ -45,10 +45,10 @@ namespace MedAssist.DAL
                     employee.Gender = reader["Gender"].ToString()[0];
                     employee.StreetAddr1 = reader["StreetAddress1"].ToString();
                     employee.StreetAddr2 = reader["StreetAddress2"].ToString();
-                    employee.Phone = reader["Phone"].ToString();
+                    employee.Phone = Convert.ToInt64(reader["SSN"]);
                     employee.City = reader["City"].ToString();
                     employee.State = reader["State"].ToString();
-                    employee.ZipCode = reader["ZipCode"].ToString();
+                    employee.ZipCode = Convert.ToInt64(reader["SSN"]);
                     employeeList.Add(employee);
                 }
             }
@@ -100,19 +100,19 @@ namespace MedAssist.DAL
                     employee.MInit = reader["Minit"].ToString();
                     employee.DOB = (DateTime)reader["DOB"];
                     employee.Gender = Convert.ToChar(reader["Gender"]);
-                    employee.SSN = reader["SSN"].ToString();
+                    employee.SSN = Convert.ToInt32(reader["SSN"]); ;
                     employee.StreetAddr1 = reader["StreetAddress1"].ToString();
                     employee.StreetAddr2 = reader["StreetAddress2"].ToString();
                     employee.City = reader["City"].ToString();
                     employee.State = reader["State"].ToString();
-                    employee.ZipCode = reader["ZipCode"].ToString();
-                    employee.Phone = reader["Phone"].ToString();
+                    employee.ZipCode = Convert.ToInt64(reader["SSN"]);
+                    employee.Phone = Convert.ToInt64(reader["SSN"]);
                 }
                 else
                 {
                     employee = null;
-                } 
-                
+                }
+
             }
             catch (SqlException ex)
             {
@@ -127,5 +127,56 @@ namespace MedAssist.DAL
             }
             return employee;
         }
+
+
+        public static int AddEmployeeDoctor(Employee employee)
+        {
+            SqlConnection connection = MedassistDB.GetConnection();
+            string insertStatement =
+                "Insert Employees " +
+                "(FirstName, MInit, LastName, SSN, StreetAddress1, StreetAddress2, City, State, ZipCode, Phone, DOB, Gender) " +
+                "Values (@FirstName, @MInit, @LastName, @SSN, @StreetAddress1, @StreetAddress2, @City, @State, @ZipCode, @Phone, @DOB, @Gender)";
+
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+            insertCommand.Parameters.AddWithValue("@SSN", employee.SSN);
+            insertCommand.Parameters.AddWithValue("@FirstName", employee.FirstName);
+            insertCommand.Parameters.AddWithValue("@LastName", employee.LastName);
+            insertCommand.Parameters.AddWithValue("@MInit", employee.MInit);
+            insertCommand.Parameters.AddWithValue("@StreetAddress1", employee.StreetAddr1);
+            insertCommand.Parameters.AddWithValue("@StreetAddress2", employee.StreetAddr2);
+            insertCommand.Parameters.AddWithValue("@City", employee.City);
+            insertCommand.Parameters.AddWithValue("@State", employee.State);
+            insertCommand.Parameters.AddWithValue("@ZipCode", employee.ZipCode);
+            insertCommand.Parameters.AddWithValue("@Phone", employee.Phone);
+            insertCommand.Parameters.AddWithValue("@DOB", employee.DOB);
+            insertCommand.Parameters.AddWithValue("@Gender", employee.Gender);
+            try
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+                string selectStatement =
+                    "Select Ident_Current('Employees') FROM Employees";
+                SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                int employeeID = Convert.ToInt32(selectCommand.ExecuteScalar());
+
+                Doctor doctor = new Doctor();
+                insertStatement =
+                "Insert Doctors (DoctorID) Values (employeeID)";
+                insertCommand = new SqlCommand(insertStatement, connection);
+                insertCommand.Parameters.AddWithValue("@EmployeeID", doctor.DoctorID);
+
+                return employeeID;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
     }
+
 }

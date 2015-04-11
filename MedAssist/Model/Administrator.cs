@@ -13,7 +13,7 @@ namespace MedAssist.Model
 
         public Administrator() { }
 
-        public int NurseID
+        public int AdminID
         {
             get
             {

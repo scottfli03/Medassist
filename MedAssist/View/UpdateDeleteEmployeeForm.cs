@@ -133,8 +133,8 @@ namespace MedAssist.View
                     txtFirstName.Text = employee.FirstName;
                     txtLastName.Text = employee.LastName;
                     txtMinit.Text = employee.MInit;
-                    txtPhone.Text = employee.Phone;
-                    txtSSN.Text = employee.SSN;
+                    txtPhone.Text = employee.Phone.ToString();
+                    txtSSN.Text = employee.SSN.ToString();
                     txtState.Text = employee.State;
                     txtStreet.Text = employee.StreetAddr1;
                     txtStreet2.Text = employee.StreetAddr2;

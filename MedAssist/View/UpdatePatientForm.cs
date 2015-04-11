@@ -166,7 +166,7 @@ namespace MedAssist.View
             txtMiddleInit.MaxLength = 1;
             patient.FirstName = txtFirstName.Text;
             patient.LastName = txtLastName.Text;
-            patient.MInit = txtMiddleInit.Text[0];
+            patient.MInit = txtMiddleInit.Text;
             patient.StreetAddr1 = txtAddress1.Text;
             patient.StreetAddr2 = txtAddress2.Text;
             patient.City = txtCity.Text;

@@ -42,14 +42,16 @@ namespace MedAssist.DAL
                     patient.PatientID = (int)reader["PatientID"];
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.LastName = reader["LastName"].ToString();
-                    if (reader["MInit"] == DBNull.Value)
-                    {
-                        patient.MInit = '\0';
-                    }
-                    else
-                    {
-                        patient.MInit = Convert.ToChar(reader["Minit"]);
-                    }
+                    
+                    //if (reader["MInit"] == DBNull.Value)
+                    //{
+                    //    patient.MInit = '\0';
+                    //}
+                    //else
+                    //{
+                    //    patient.MInit = Convert.ToChar(reader["Minit"]);
+                    //}
+
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = Convert.ToChar(reader["Gender"]);
                     patient.SSN = Convert.ToInt32(reader["SSN"]);
@@ -205,13 +207,15 @@ namespace MedAssist.DAL
                     patient.PatientID = (int)reader["PatientID"];
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.LastName = reader["LastName"].ToString();
-                    if (reader["MInit"] == DBNull.Value) {
-                        patient.MInit = '\0';
-                    }
-                    else
-                    {
-                        patient.MInit = Convert.ToChar(reader["Minit"]);
-                    }
+                    patient.MInit = reader["Minit"].ToString();
+
+                    //if (reader["MInit"] == DBNull.Value) {
+                    //    patient.MInit = '\0';
+                    //}
+                    //else
+                    //{
+                    //    patient.MInit = Convert.ToChar(reader["Minit"]);
+                    //}
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = Convert.ToChar(reader["Gender"]);
                     patient.SSN =  Convert.ToInt32(reader["SSN"]);
@@ -264,7 +268,8 @@ namespace MedAssist.DAL
                     patient.SSN = (int)reader["SSN"];
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.Phone = (int)reader["MInit"];
-                    patient.MInit = reader["MInit"].ToString()[0];
+                    //patient.MInit = reader["MInit"].ToString()[0];
+                    patient.MInit = reader["MInit"].ToString();
                     patient.LastName = reader["LastName"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = reader["Gender"].ToString()[0];
@@ -337,14 +342,17 @@ namespace MedAssist.DAL
 
                     Patient patient = new Patient();
                     patient.FirstName = reader["FirstName"].ToString();
-                    if (patient.MInit != null)
-                    {
-                        patient.MInit = (char)reader["MInit"];
-                    }
-                    else
-                    {
-                        patient.MInit = null;
-                    }
+
+                    patient.MInit = reader["MInit"].ToString();
+                    //if (patient.MInit != null)
+                    //{
+                    //    patient.MInit = (char)reader["MInit"];
+                    //}
+                    //else
+                    //{
+                    //    patient.MInit = null;
+                    //}
+
                     patient.LastName = reader["LastName"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];
                     if (patient.VisitDate != null)
@@ -543,14 +551,15 @@ namespace MedAssist.DAL
                     //patient.PatientID = (int)reader["PatientID"];
 
                     patient.FirstName = reader["FirstName"].ToString();
-                    if (patient.MInit != null)
-                    {
-                        patient.MInit = (char)reader["MInit"];
-                    }
-                    else
-                    {
-                        patient.MInit = null;
-                    }
+                    patient.MInit = reader["MInit"].ToString();
+                    //if (patient.MInit != null)
+                    //{
+                    //    patient.MInit = (char)reader["MInit"];
+                    //}
+                    //else
+                    //{
+                    //    patient.MInit = null;
+                    //}
 
                     patient.LastName = reader["LastName"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];
@@ -720,14 +729,15 @@ namespace MedAssist.DAL
                     //patient.PatientID = (int)reader["PatientID"];
                     
                     patient.FirstName = reader["FirstName"].ToString();
-                    if (patient.MInit != null)
-                    {
-                       patient.MInit = (char)reader["MInit"];
-                    }
-                    else
-                    {
-                        patient.MInit = null;
-                    }
+                    patient.MInit = reader["MInit"].ToString();
+                    //if (patient.MInit != null)
+                    //{
+                    //   patient.MInit = (char)reader["MInit"];
+                    //}
+                    //else
+                    //{
+                    //    patient.MInit = null;
+                    //}
                     
                     patient.LastName = reader["LastName"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];
