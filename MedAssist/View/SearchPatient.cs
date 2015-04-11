@@ -18,6 +18,7 @@ namespace MedAssist.View
 
         NewPatient np;
         private List<Visit> visitList;
+        private List<Patient> patientList;
         private String fName;
         private String lName;
         private DateTime patientDob;
@@ -28,6 +29,8 @@ namespace MedAssist.View
 
         private void SearchPatientForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'patientsAndAllVisitInfo.Patients' table. You can move, or remove it, as needed.
+            this.patientsTableAdapter.Fill(this.patientsAndAllVisitInfo.Patients);
 
 
         }
@@ -59,14 +62,15 @@ namespace MedAssist.View
             {
                 //get a patient object for the typed Patient
                 //will bind the datagrid to that object
-                visitList = VisitDAL.GetVisitForPatient(fName, lName);
-                if (visitList.Count == 0)
+                //visitList = VisitDAL.GetVisitForPatient(fName, lName);
+                patientList = PatientDAL.GetVisitForPatient(fName, lName);
+                if (patientList.Count == 0) //was visitList
                 {
                     MessageBox.Show("No Patient/Visit Found!", "Create a New Patient");
                 }
                 else
                 {
-                    patientVisitSearchDataGridView.DataSource = visitList;
+                    patientVisitSearchDataGridView.DataSource = patientList;
                 }
             }
             catch (Exception ex)
@@ -78,24 +82,25 @@ namespace MedAssist.View
         /// <summary>
         /// gets patient data with dob and last name
         /// </summary>
-        private void GetPatientDataWithDOB()
+        private void GetPatientDataLnameWithDOB()
         {
             lName = txtLName.Text;
-            if (Validator.IsDate(txtDOB) != null)
+            if (Validator.IsDate(txtDOB) == true)
             {
                 DateTime patientDob = Convert.ToDateTime(txtDOB.Text);
 
                 try
                 {
-                    visitList = VisitDAL.GetVisitForPatientWithDobAndLName(lName, patientDob);
+                    //visitList = VisitDAL.GetVisitForPatientWithDobAndLName(lName, patientDob);
+                    patientList = PatientDAL.GetVisitForPatientWithDobAndLName(lName, patientDob);
 
-                    if (visitList.Count == 0)
+                    if (patientList.Count == 0) //was visitList
                     {
                         MessageBox.Show("No Patient/Visit Info Found!", "Create a New Patient");
                     }
                     else
                     {
-                        patientVisitSearchDataGridView.DataSource = visitList;
+                        patientVisitSearchDataGridView.DataSource = patientList;
                     }
                 }
                 catch (Exception ex)
@@ -105,24 +110,27 @@ namespace MedAssist.View
             }
        }
 
+        /// <summary>
+        /// Get patients with only the DOB
+        /// </summary>
         private void GetPatientDataByDOB()
         {
-            if (Validator.IsDate(txtDOB) != null)
+            if (Validator.IsDate(txtDOB) == true)
             {
                 DateTime patientDob = Convert.ToDateTime(txtDOB.Text);
 
                 try
                 {
-                    visitList = VisitDAL.GetPatientsByDOB(patientDob);
+                    // visitList = VisitDAL.GetPatientsByDOB(patientDob);
+                    patientList = PatientDAL.GetPatientsByDOB(patientDob);
 
-
-                    if (visitList.Count == 0)
+                    if (patientList.Count == 0) //was visitList
                     {
                         MessageBox.Show("No Patient/Visit Info Found!", "Create a New Patient");
                     }
                     else
                     {
-                        patientVisitSearchDataGridView.DataSource = visitList;
+                        patientVisitSearchDataGridView.DataSource = patientList;
 
                     }
                 }
@@ -154,7 +162,7 @@ namespace MedAssist.View
             }
             else if ((txtLName.Text != null && txtLName.Text != "") && (txtDOB.Text != null && txtDOB.Text != ""))
             {
-                this.GetPatientDataWithDOB();
+                this.GetPatientDataLnameWithDOB();
             }
             else if (txtDOB.Text != null)
             {

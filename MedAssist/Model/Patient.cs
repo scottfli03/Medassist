@@ -11,7 +11,7 @@ namespace MedAssist.Model
         private int patientID;
         private int ssn;
         private string fName;
-        private char mInit;
+        private char? mInit;
         private string lName;
         private DateTime dob;
         private char gender;
@@ -21,6 +21,19 @@ namespace MedAssist.Model
         private long phone;
         private string state;
         private long zip;
+
+        private int? visitID;
+        private DateTime visitDate;
+        private int? systolic;
+        private int? diastolic;
+        private decimal? temperature;
+        private int? respirationRate;
+        private int? heartRate;
+        private string symptoms;
+        private int? testID;
+        private string testName;
+        private string diagnosis;
+        private string result;
 
         public int PatientID
         {
@@ -58,7 +71,7 @@ namespace MedAssist.Model
             }
         }
 
-        public char MInit
+        public char? MInit
         {
             get
             {
@@ -184,6 +197,97 @@ namespace MedAssist.Model
             {
                 return LastName + ", " + FirstName;
             }
+        }
+
+        public int? VisitID
+        {
+            get;
+
+            set;
+
+        }
+
+        public DateTime? VisitDate
+        {
+            get;
+
+            set;
+            
+        }
+
+        public int? Systolic
+        {
+            get;
+            
+            set;
+         
+        }
+
+        public int? Diastolic
+        {
+            get;
+
+            set;
+        }
+            
+
+        public decimal? Temperature
+        {
+            get;
+            
+            set;
+           
+        }
+        public int? RespirationRate
+        {
+            get;
+
+            set;
+
+        }
+        public int? HeartRate
+        {
+            get;
+
+            set;
+
+        }
+        public string Symptoms
+        {
+            get;
+
+            set;
+
+        }
+        public int? TestID
+        {
+            get;
+
+            set;
+
+        }
+        public string TestName
+        {
+            get;
+
+            set;
+
+        }
+        public string Diagnosis
+        {
+            get;
+            
+            set;
+           
+        }
+
+        public string Result
+        {
+            get;
+
+            set;
+
+
         }
     }
 }

@@ -290,7 +290,544 @@ namespace MedAssist.DAL
             return patientList;
         }
 
+        /// <summary>
+        /// Gets patients in the db by Date of birth
+        /// </summary>
+        /// <param name="patientDob"></param>
+        /// <returns></returns>
+        public static List<Patient> GetPatientsByDOB(DateTime patientDob)
+        {
+            List<Patient> patientList = new List<Patient>();
+            SqlConnection connection = MedassistDB.GetConnection();
+
+            var selectStatement = string.Format(@"
+                SELECT  
+                     Patients.FirstName
+                    ,Patients.MInit
+                    ,Patients.LastName
+                    ,Patients.DOB      
+                    ,Visits.VisitID
+                    ,Visits.VisitDate
+                    ,Visits.PatientID
+                    ,Visits.Diagnosis
+                    ,Visits.Systolic
+                    ,Visits.Diastolic
+                    ,Visits.Temperature
+                    ,Visits.RespirationRate
+                    ,Visits.HeartRate
+                    ,Visits.Symptoms
+                    ,Orders.Result
+                    ,Orders.TestID
+                    ,Tests.TestName
+                FROM Patients
+                LEFT JOIN Visits
+                ON Patients.PatientID = Visits.PatientID 
+                LEFT OUTER JOIN Orders ON Visits.VisitID = Orders.VisitID
+                LEFT OUTER JOIN Tests ON Orders.TestID = Tests.TestID
+                WHERE Patients.DOB = '{0}'", patientDob);
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
+            try
+            {
+                connection.Open();
+                reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    Patient patient = new Patient();
+                    patient.FirstName = reader["FirstName"].ToString();
+                    if (patient.MInit != null)
+                    {
+                        patient.MInit = (char)reader["MInit"];
+                    }
+                    else
+                    {
+                        patient.MInit = null;
+                    }
+                    patient.LastName = reader["LastName"].ToString();
+                    patient.DOB = (DateTime)reader["DOB"];
+                    if (patient.VisitDate != null)
+                    {
+                        patient.VisitDate = (DateTime?)reader["VisitDate"];
+                    }
+                    else
+                    {
+                        patient.VisitDate = null;
+                    }
+                    
+                    //patient.PatientID = (int)reader["PatientID"];
+                    if (patient.Systolic != null)
+                    {
+                        patient.Systolic = (int?)reader["Systolic"];
+                    }
+                    else
+                    {
+                        patient.Systolic = null;
+                    }
+                    if (patient.Diastolic != null)
+                    {
+                        patient.Diastolic = (int)reader["Diastolic"];
+                    }
+                    else
+                    {
+                        patient.Diastolic = null;
+                    }
+
+                    if (patient.Temperature != null)
+                    {
+                        patient.Temperature = (decimal)reader["Temperature"];
+                    }
+
+                    if (patient.RespirationRate != null)
+                    {
+                        patient.RespirationRate = (int)reader["RespirationRate"];
+                    }
+                    else
+                    {
+                        patient.RespirationRate = null;
+                    }
+
+                    if (patient.HeartRate != null)
+                    {
+                        patient.HeartRate = (int)reader["HeartRate"];
+                    }
+                    else
+                    {
+                        patient.HeartRate = null;
+                    }
+
+                    if (patient.Symptoms != null)
+                    {
+                       patient.Symptoms = reader["Symptoms"].ToString(); 
+                    }
+                    else
+                    {
+                        patient.Symptoms = null;
+                    }
+
+                    if (patient.Result != null)
+                    {
+                        patient.Result = reader["Result"].ToString();
+                    }
+                    else
+                    {
+                        patient.Result = null;
+                    }
+                    if (patient.TestID != null)
+                    {
+                        patient.TestID = (int)reader["TestID"];
+                    }
+                    else
+                    {
+                        patient.TestID = null;
+                    }
+
+                    if (patient.TestName != null)
+                    {
+                        patient.TestName = reader["TestName"].ToString();
+                    }
+                    else
+                    {
+                        patient.TestName = null;
+                    }
+
+                    if (patient.Diagnosis != null)
+                    {
+                        patient.Diagnosis = reader["Diagnosis"].ToString();
+                    }
+                    else
+                    {
+                        patient.Diagnosis = null;
+                    }
+
+                    if (patient.VisitID != null)
+                    {
+                        patient.VisitID = (int)reader["VisitID"];
+                    }
+                    else
+                    {
+                        patient.VisitID = null;
+                    }
+                    
+
+
+                    patientList.Add(patient);
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return patientList;
+        }
+
+
+        /// <summary>
+        /// Gets List of visits for patients by there first and last name
+        /// Added by Greene
+        /// </summary>
+        /// <returns></returns>
+        public static List<Patient> GetVisitForPatientWithDobAndLName(string lName, DateTime patientDob)
+        {
+            List<Patient> patientList = new List<Patient>();
+            SqlConnection connection = MedassistDB.GetConnection();
+
+            var selectStatement = string.Format(@"
+                SELECT        
+                    Visits.VisitID
+                    ,Visits.VisitDate
+                    ,Visits.PatientID
+                    ,Visits.Diagnosis
+                    ,Visits.Systolic
+                    ,Visits.Diastolic
+                    ,Visits.Temperature
+                    ,Visits.RespirationRate
+                    ,Visits.HeartRate
+                    ,Visits.Symptoms
+                    ,Patients.FirstName
+                    ,Patients.MInit
+                    ,Patients.LastName
+                    ,Patients.DOB
+                    ,Orders.Result
+                    ,Orders.TestID
+                    ,Tests.TestName
+                FROM Patients 
+                LEFT JOIN Visits
+                ON Visits.PatientID = Patients.PatientID
+                LEFT JOIN Orders ON Visits.VisitID = Orders.VisitID
+                LEFT JOIN Tests ON Orders.TestID = Tests.TestID
+                WHERE
+                    
+                    Patients.LastName = '{0}'
+                    AND Patients.DOB = '{1}'", lName, patientDob);
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
+            try
+            {
+                connection.Open();
+                reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+     
+                    Patient patient = new Patient();
+
+                    if (patient.VisitID != null)
+                    {
+                        patient.VisitID = (int?)reader["VisitID"];
+                    }
+                    else
+                    {
+                        patient.VisitID = null;
+                    }
+
+
+                    if (patient.VisitDate != null)
+                    {
+                        patient.VisitDate = (DateTime?)reader["VisitDate"];
+                    }
+                    else
+                    {
+                        patient.VisitDate = null;
+                    }
+
+                    //patient.PatientID = (int)reader["PatientID"];
+
+                    patient.FirstName = reader["FirstName"].ToString();
+                    if (patient.MInit != null)
+                    {
+                        patient.MInit = (char)reader["MInit"];
+                    }
+                    else
+                    {
+                        patient.MInit = null;
+                    }
+
+                    patient.LastName = reader["LastName"].ToString();
+                    patient.DOB = (DateTime)reader["DOB"];
+                    if (patient.Systolic != null)
+                    {
+                        patient.Systolic = (int)reader["Systolic"];
+                    }
+                    else
+                    {
+                        patient.Systolic = null;
+                    }
+
+                    if (patient.Diastolic != null)
+                    {
+                        patient.Diastolic = (int)reader["Diastolic"];
+                    }
+                    else
+                    {
+                        patient.Diastolic = null;
+                    }
+
+                    if (patient.Temperature != null)
+                    {
+                        patient.Temperature = (int)reader["Temperature"];
+                    }
+                    else
+                    {
+                        patient.Temperature = null;
+                    }
+
+                    if (patient.RespirationRate != null)
+                    {
+                        patient.RespirationRate = (int)reader["RespirationRate"];
+                    }
+                    else
+                    {
+                        patient.RespirationRate = null;
+                    }
+
+                    if (patient.HeartRate != null)
+                    {
+                        patient.HeartRate = (int)reader["HeartRate"];
+                    }
+                    else
+                    {
+                        patient.HeartRate = null;
+                    }
+
+
+                    patient.Symptoms = reader["Symptoms"].ToString();
+                    patient.Result = reader["Result"].ToString();
+
+                    if (patient.TestID != null)
+                    {
+                        patient.TestID = (int?)reader["TestID"];
+                    }
+                    else
+                    {
+                        patient.TestID = null;
+                    }
+
+                    if (patient.TestName != null)
+                    {
+                        patient.TestName = reader["TestName"].ToString();
+                    }
+                    else
+                    {
+                        patient.TestName = null;
+                    }
+
+                    if (patient.Diagnosis != null)
+                    {
+                        patient.Diagnosis = reader["Diagnosis"].ToString();
+                    }
+                    else
+                    {
+                        patient.Diagnosis = null;
+                    }
+
+                    patientList.Add(patient);
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return patientList;
+        }
+
+
+
+        /// <summary>
+        /// Gets List of visits for patients by there first and last name
+        /// Added by Greene
+        /// </summary>
+        /// <returns></returns>
+        public static List<Patient> GetVisitForPatient(string fName, string lName)
+        {
+            List<Patient> patientList = new List<Patient>();
+            SqlConnection connection = MedassistDB.GetConnection();
+
+            var selectStatement = string.Format(@"
+                SELECT        
+                    Visits.VisitID
+                    ,Visits.VisitDate
+                    ,Visits.PatientID
+                    ,Visits.Diagnosis
+                    ,Visits.Systolic
+                    ,Visits.Diastolic
+                    ,Visits.Temperature
+                    ,Visits.RespirationRate
+                    ,Visits.HeartRate
+                    ,Visits.Symptoms
+                    ,Patients.FirstName
+                    ,Patients.MInit
+                    ,Patients.LastName
+                    ,Patients.DOB
+                    ,Orders.Result
+                    ,Orders.TestID
+                    ,Tests.TestName
+                FROM Patients 
+                LEFT JOIN Visits
+                ON Visits.PatientID = Patients.PatientID
+                LEFT JOIN Orders ON Visits.VisitID = Orders.VisitID
+                LEFT JOIN Tests ON Orders.TestID = Tests.TestID
+                WHERE
+                    Patients.FirstName = '{0}'
+                    AND Patients.LastName = '{1}'", fName, lName);
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
+            try
+            {
+                connection.Open();
+                reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    Patient patient = new Patient();
+                    
+                    if (patient.VisitID != null)
+                    {
+                        patient.VisitID = (int?)reader["VisitID"];
+                    }
+                    else
+                    {
+                        patient.VisitID = null;
+                    }
+                    
+                    
+                    if (patient.VisitDate != null)
+                    {
+                        patient.VisitDate = (DateTime?)reader["VisitDate"];
+                    }
+                    else
+                    {
+                        patient.VisitDate = null;
+                    }
+                   
+                    //patient.PatientID = (int)reader["PatientID"];
+                    
+                    patient.FirstName = reader["FirstName"].ToString();
+                    if (patient.MInit != null)
+                    {
+                       patient.MInit = (char)reader["MInit"];
+                    }
+                    else
+                    {
+                        patient.MInit = null;
+                    }
+                    
+                    patient.LastName = reader["LastName"].ToString();
+                    patient.DOB = (DateTime)reader["DOB"];
+                    if (patient.Systolic != null)
+                    {
+                        patient.Systolic = (int)reader["Systolic"];
+                    }
+                    else
+                    {
+                        patient.Systolic = null;
+                    }
+
+                    if (patient.Diastolic != null)
+                    {
+                        patient.Diastolic = (int)reader["Diastolic"];
+                    }
+                    else
+                    {
+                        patient.Diastolic = null;
+                    }
+
+                    if (patient.Temperature != null)
+                    {
+                        patient.Temperature = (int)reader["Temperature"];
+                    }
+                    else
+                    {
+                        patient.Temperature = null;
+                    }
+
+                    if (patient.RespirationRate != null)
+                    {
+                        patient.RespirationRate = (int)reader["RespirationRate"];
+                    }
+                    else
+                    {
+                        patient.RespirationRate = null;
+                    }
+
+                    if (patient.HeartRate != null)
+                    {
+                        patient.HeartRate = (int)reader["HeartRate"];
+                    }
+                    else
+                    {
+                        patient.HeartRate = null;
+                    }
+
+                    
+                    patient.Symptoms = reader["Symptoms"].ToString();
+                    patient.Result = reader["Result"].ToString();
+
+                    if (patient.TestID != null)
+                    {
+                        patient.TestID = (int?)reader["TestID"];
+                    }
+                    else
+                    {
+                        patient.TestID = null;
+                    }
+
+                    if (patient.TestName != null)
+                    {
+                        patient.TestName = reader["TestName"].ToString();
+                    }
+                    else
+                    {
+                        patient.TestName = null;
+                    }
+                        
+                    if (patient.Diagnosis != null)
+                    {
+                        patient.Diagnosis = reader["Diagnosis"].ToString();
+                    }
+                    else
+                    {
+                        patient.Diagnosis = null;
+                    }
+                    
+
+
+                    patientList.Add(patient);
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return patientList;
+        }
     }
 }
+
 
 
