@@ -8,6 +8,7 @@ namespace MedAssist.View
 {
     class Validator
     {
+        private static String states = "|AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY|";
         private static string title = "Entry Error";
 
         public static string Title
@@ -73,6 +74,21 @@ namespace MedAssist.View
             }
         }
 
+        public static bool IsInt64(TextBox textBox)
+        {
+            try
+            {
+                Convert.ToInt64(textBox.Text);
+                return true;
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show(textBox.Tag.ToString() + " must be an integer value.", Title);
+                textBox.Focus();
+                return false;
+            }
+        }
+
         public static bool IsDecimal(TextBox textBox)
         {
             try
@@ -84,6 +100,28 @@ namespace MedAssist.View
             {
                 MessageBox.Show(textBox.Tag.ToString() + " must be an Decimal value.", Title);
                 textBox.Focus();
+                return false;
+            }
+        }
+
+        public bool IsState(TextBox textBox)
+        {
+            try
+            {
+                if (textBox.Text.Length == 2 && states.IndexOf(textBox.Text.ToUpper()) > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show(textBox.Tag.ToString() + " must be a Valid State Abbreviation.", Title);
+                    textBox.Focus();
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
                 return false;
             }
         }

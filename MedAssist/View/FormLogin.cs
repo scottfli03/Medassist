@@ -24,8 +24,7 @@ namespace MedAssist.View
         {
             InitializeComponent();
             this.controllerNurse = new ControllerNurse();
-            textBoxUserName.Tag = "User Name";
-            textBoxPassword.Tag = "Password";
+
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -39,7 +38,7 @@ namespace MedAssist.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             string userName = textBoxUserName.Text;
             string password = textBoxPassword.Text;
@@ -56,9 +55,10 @@ namespace MedAssist.View
                 Validator.IsPresent(textBoxPassword))
                     {
                         this.nurse = this.controllerNurse.GetNurse(userName, password);
-                        /////////////////////// ADD This \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
                         UserSecurityController.NurseLoggedIn = this.nurse;
-                        //\\\\\\\\\\\\\\\\\\\\\^^^^^^^^^^////////////////////////////
+
+
                         if (this.nurse != null)
                         {
                             this.mainForm = new MainForm();
@@ -71,6 +71,7 @@ namespace MedAssist.View
                             else
                             {
                                 this.Close();
+
                             }
 
                         }
@@ -90,6 +91,8 @@ namespace MedAssist.View
             }
         }
 
+
+
         /// <summary>
         /// Closes login form
         /// </summary>
@@ -108,31 +111,6 @@ namespace MedAssist.View
             }
         }
 
-        //struct UserInfo
-        //{
-        //    private string nurseUserName;
-        //    private string nursePasswrod;
-        //    public  string NurseUserName
-        //    {
-        //        get
-        //        {
-        //            return nurseUserName;
-        //        }
-
                
-        //    }
-
-        //    public string NursePassword
-        //    {
-        //        get
-        //        {
-        //            return nursePasswrod;
-        //        }
-        //    }
-        //}
-        //public bool IsUserAuthenticated
-        //{
-        //    get { return  }
-        //}
     }
 }

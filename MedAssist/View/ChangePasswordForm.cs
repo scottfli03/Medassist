@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace MedAssist.View
 {
-    public partial class FullReport : Form
+    public partial class ChangePasswordForm : Form
     {
-        public FullReport()
+        public ChangePasswordForm()
         {
             InitializeComponent();
-        }
-
-        private void FullReport_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

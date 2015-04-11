@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace MedAssist.View
 {
-    public partial class VisitHistory : Form
+    public partial class UpdateVisitForm : Form
     {
-        public VisitHistory()
+        public UpdateVisitForm()
         {
             InitializeComponent();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void VisitHistory_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -126,33 +126,38 @@ namespace MedAssist.DAL
                    "WHERE PatientID = @PatientID";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
             selectCommand.Parameters.AddWithValue("@PatientID", patientID);
             try
             {
                 connection.Open();
-                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
                 if (reader.Read())
                 {
                     patient.PatientID = (int)reader["PatientID"];
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.LastName = reader["LastName"].ToString();
-                    patient.MInit = Convert.ToChar(reader["Minit"]);
+                    if (reader["MInit"] == DBNull.Value) {
+                        patient.MInit = '\0';
+                    }
+                    else
+                    {
+                        patient.MInit = Convert.ToChar(reader["Minit"]);
+                    }
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = Convert.ToChar(reader["Gender"]);
-                    patient.SSN = reader["SSN"].ToString();
+                    patient.SSN = (int)reader["SSN"];
                     patient.StreetAddr1 = reader["StreetAddress1"].ToString();
                     patient.StreetAddr2 = reader["StreetAddress2"].ToString();
                     patient.City = reader["City"].ToString();
                     patient.State = reader["State"].ToString();
-                    patient.ZipCode = reader["ZipCode"].ToString();
-                    patient.Phone = reader["Phone"].ToString();
+                    patient.ZipCode = (int)reader["ZipCode"];
+                    patient.Phone = (int)reader["Phone"];
                 }
                 else
                 {
                     patient = null;
                 }
-                //TODO: Possibly close reader in finally statement.  It's just how Dr. Yang had it.  
-                reader.Close();
             }
             catch (SqlException ex)
             {
@@ -162,6 +167,8 @@ namespace MedAssist.DAL
             {
                 if (connection != null)
                     connection.Close();
+                if (reader != null)
+                    reader.Close();
             }
             return patient;
         }
@@ -186,18 +193,18 @@ namespace MedAssist.DAL
                 {
                     Patient patient = new Patient();
                     patient.PatientID = (int)reader["PatientID"];
-                    patient.SSN = reader["SSN"].ToString();
+                    patient.SSN = (int)reader["SSN"];
                     patient.FirstName = reader["FirstName"].ToString();
-                    patient.Phone = reader["MInit"].ToString();
+                    patient.Phone = (int)reader["MInit"];
+                    patient.MInit = reader["MInit"].ToString()[0];
                     patient.LastName = reader["LastName"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = reader["Gender"].ToString()[0];
                     patient.StreetAddr1 = reader["StreetAddress1"].ToString();
                     patient.StreetAddr2 = reader["StreetAddress2"].ToString();
-                    patient.Phone = reader["Phone"].ToString();
                     patient.City = reader["City"].ToString();
                     patient.State = reader["State"].ToString();
-                    patient.ZipCode = reader["ZipCode"].ToString();
+                    patient.ZipCode = (int)reader["ZipCode"];
                     patientList.Add(patient);
                 }
             }

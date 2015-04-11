@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace MedAssist.View
 {
-    public partial class PatientMessageBox : Form
+    public partial class AddTestForm : Form
     {
-        public PatientMessageBox()
+        public AddTestForm()
         {
             InitializeComponent();
-        }
-
-        private void PatientMessageBox_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

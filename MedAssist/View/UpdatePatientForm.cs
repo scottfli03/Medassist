@@ -21,6 +21,9 @@ namespace MedAssist.View
 
         private Patient patient;
 
+        /// <summary>
+        /// Initializes the form
+        /// </summary>
         public UpdatePatientForm()
         {
             InitializeComponent();
@@ -30,6 +33,10 @@ namespace MedAssist.View
             txtMiddleInit.MaxLength = 1;
         }
 
+        /// <summary>
+        /// Gets a Patient using their ID and displays their info.
+        /// </summary>
+        /// <param name="patientID"></param>
         private void GetPatient(int patientID)
         {
             try
@@ -51,6 +58,9 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Loads the Patient information to the form
+        /// </summary>
         private void DisplayPatient()
         {           
             txtFirstName.Text = patient.FirstName;
@@ -60,14 +70,19 @@ namespace MedAssist.View
             txtAddress2.Text = patient.StreetAddr2;
             txtCity.Text = patient.City;
             txtState.Text = patient.State;
-            txtZip.Text = patient.ZipCode;
-            txtPhone.Text = patient.Phone;
+            txtZip.Text = patient.ZipCode.ToString();
+            txtPhone.Text = patient.Phone.ToString();
             txtDOB.Text = patient.DOB.ToString();
-            txtSSN.Text = patient.SSN;
+            txtSSN.Text = patient.SSN.ToString();
             txtGender.Text = patient.Gender.ToString();
         }
-
-       private void btnSubmit_Click(object sender, EventArgs e)
+        
+        /// <summary>
+        /// Designates the actions carried out when the Submit button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
             Patient newPatient = new Patient();
 
@@ -100,8 +115,12 @@ namespace MedAssist.View
             }
         }
 
-       private bool IsValidData()
-       {
+        /// <summary>
+        /// Checks if the data is valid
+        /// </summary>
+        /// <returns>True if it is, false if it isn't</returns>
+        private bool IsValidData()
+        {
            if (Validator.IsPresent(txtFirstName) &&
                Validator.IsPresent(txtLastName) &&
                Validator.IsPresent(txtAddress1) &&
@@ -114,7 +133,11 @@ namespace MedAssist.View
            }
            return false;
        }
- 
+        
+        /// <summary>
+        /// Sets the patients attributesbfrom the fields in the form
+        /// </summary>
+        /// <param name="patient">the Patient</param>
         private void PutPatientData(Patient patient)
         {
             txtMiddleInit.MaxLength = 1;
@@ -125,10 +148,15 @@ namespace MedAssist.View
             patient.StreetAddr2 = txtAddress2.Text;
             patient.City = txtCity.Text;
             patient.State = txtState.Text;
-            patient.Phone = txtPhone.Text;
-            patient.ZipCode = txtZip.Text;
+            patient.Phone = Int64.Parse(txtPhone.Text);
+            patient.ZipCode = Int64.Parse(txtZip.Text);
         }
- 
+        
+        /// <summary>
+        /// Sets the actions taken when Get Patient button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGetPatient_Click(object sender, EventArgs e)
         {
             
@@ -140,6 +168,11 @@ namespace MedAssist.View
             }
          }
 
+        /// <summary>
+        /// Sets the actions taken when the Cancel Button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Are you sure you would like to exit the form?", "Form Closing", MessageBoxButtons.YesNo);

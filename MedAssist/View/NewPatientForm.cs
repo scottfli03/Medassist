@@ -25,7 +25,9 @@ namespace MedAssist
         {
             InitializeComponent();
             txtMiddleInit.MaxLength = 1;
-            txtGender.MaxLength = 1;
+            txtPhone.MaxLength = 10;
+            txtZip.MaxLength = 10;
+            txtSSN.MaxLength = 9;
         }
 
         private void NewPatient_Load(object sender, EventArgs e)
@@ -76,13 +78,15 @@ namespace MedAssist
             if (Validator.IsPresent(txtFirstName) &&
                 Validator.IsPresent(txtLastName) &&
                 Validator.IsPresent(txtSSN) &&
-                Validator.IsPresent(dateTimePickerDOB) &&
                 Validator.IsPresent(txtAddress1) &&
                 Validator.IsPresent(txtCity) &&
-                Validator.IsPresent(txtState) &&
+                Validator.IsPresent(cboState) &&
                 Validator.IsPresent(txtPhone) &&
-                Validator.IsPresent(txtZip))
-            
+                Validator.IsPresent(txtZip) &&
+                Validator.IsPresent(dateTimePickerDOB) &&
+                Validator.IsInt64(txtPhone) &&
+                Validator.IsInt64(txtZip) &&
+                Validator.IsInt32(txtSSN))
             {
                 return true;
             }
@@ -91,18 +95,26 @@ namespace MedAssist
 
         private void PutPatientData(Patient patient)
         {
-            patient.FirstName = txtFirstName.Text;
-            patient.LastName = txtLastName.Text;
-            patient.MInit = txtMiddleInit.Text[0];
-            patient.StreetAddr1 = txtAddress1.Text;
-            patient.StreetAddr2 = txtAddress2.Text;
-            patient.City = txtCity.Text;
-            patient.State = txtState.Text;
-            patient.SSN = txtSSN.Text;
-            patient.Phone = txtPhone.Text;
-            patient.Gender = txtGender.Text[0];
-            patient.ZipCode = txtZip.Text;
-            patient.DOB = dateTimePickerDOB.Value.Date;
+            try
+            { 
+                patient.FirstName = txtFirstName.Text;
+                patient.LastName = txtLastName.Text;
+                patient.MInit = txtMiddleInit.Text[0];
+                patient.StreetAddr1 = txtAddress1.Text;
+                patient.StreetAddr2 = txtAddress2.Text;
+                patient.City = txtCity.Text;
+                patient.State = cboState.Text;
+                patient.SSN = Int32.Parse(txtSSN.Text);
+                patient.Phone = Int64.Parse(txtPhone.Text);
+                patient.Gender = cboGender.Text[0];
+                patient.ZipCode = Int64.Parse(txtZip.Text);
+                patient.DOB = dateTimePickerDOB.Value.Date;
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }
