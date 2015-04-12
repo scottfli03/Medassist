@@ -31,26 +31,15 @@ namespace MedAssist.View
             this.ordersTableAdapter.Fill(this.orderTestDataSet.Orders);
             // TODO: This line of code loads data into the 'orderTestDataSet.Orders' table. You can move, or remove it, as needed.
             this.ordersTableAdapter.Fill(this.orderTestDataSet.Orders);
+            // TODO: This line of code loads data into the 'orderTestDataSet.Orders' table. You can move, or remove it, as needed.
+            this.ordersTableAdapter.Fill(this.orderTestDataSet.Orders);
         }
 
-        private void fillByPatientIDToolStripButton_Click(object sender, EventArgs e)
+        private void fillByTestsToolStripButton_Click(object sender, EventArgs e)
         {
             try
             {
-                this.ordersTableAdapter.FillByPatientID(this.orderTestDataSet.Orders, ((int)(System.Convert.ChangeType(patientIDToolStripTextBox.Text, typeof(int)))));
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
-
-        private void fillByPatientIDToolStripButton_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                this.ordersTableAdapter.FillByPatientID(this.orderTestDataSet.Orders, ((int)(System.Convert.ChangeType(patientIDToolStripTextBox.Text, typeof(int)))));
+                this.testsTableAdapter.FillByTests(this.orderTestDataSet.Tests);
             }
             catch (System.Exception ex)
             {

@@ -32,11 +32,11 @@ namespace MedAssist {
         
         private PatientsDataTable tablePatients;
         
-        private global::System.Data.DataRelation relationFK_Visits_Patients;
+        private global::System.Data.DataRelation relationFK_Orders_Tests;
         
         private global::System.Data.DataRelation relationFK_Orders_Visits;
         
-        private global::System.Data.DataRelation relationFK_Orders_Tests;
+        private global::System.Data.DataRelation relationFK_Visits_Patients;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -272,9 +272,9 @@ namespace MedAssist {
                     this.tablePatients.InitVars();
                 }
             }
-            this.relationFK_Visits_Patients = this.Relations["FK_Visits_Patients"];
-            this.relationFK_Orders_Visits = this.Relations["FK_Orders_Visits"];
             this.relationFK_Orders_Tests = this.Relations["FK_Orders_Tests"];
+            this.relationFK_Orders_Visits = this.Relations["FK_Orders_Visits"];
+            this.relationFK_Visits_Patients = this.Relations["FK_Visits_Patients"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -293,18 +293,18 @@ namespace MedAssist {
             base.Tables.Add(this.tableVisits);
             this.tablePatients = new PatientsDataTable();
             base.Tables.Add(this.tablePatients);
-            this.relationFK_Visits_Patients = new global::System.Data.DataRelation("FK_Visits_Patients", new global::System.Data.DataColumn[] {
-                        this.tablePatients.PatientIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableVisits.PatientIDColumn}, false);
-            this.Relations.Add(this.relationFK_Visits_Patients);
-            this.relationFK_Orders_Visits = new global::System.Data.DataRelation("FK_Orders_Visits", new global::System.Data.DataColumn[] {
-                        this.tableVisits.VisitIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableOrders.VisitIDColumn}, false);
-            this.Relations.Add(this.relationFK_Orders_Visits);
             this.relationFK_Orders_Tests = new global::System.Data.DataRelation("FK_Orders_Tests", new global::System.Data.DataColumn[] {
                         this.tableTests.TestIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableOrders.TestIDColumn}, false);
             this.Relations.Add(this.relationFK_Orders_Tests);
+            this.relationFK_Orders_Visits = new global::System.Data.DataRelation("FK_Orders_Visits", new global::System.Data.DataColumn[] {
+                        this.tableVisits.VisitIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableOrders.VisitIDColumn}, false);
+            this.Relations.Add(this.relationFK_Orders_Visits);
+            this.relationFK_Visits_Patients = new global::System.Data.DataRelation("FK_Visits_Patients", new global::System.Data.DataColumn[] {
+                        this.tablePatients.PatientIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableVisits.PatientIDColumn}, false);
+            this.Relations.Add(this.relationFK_Visits_Patients);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1767,23 +1767,23 @@ namespace MedAssist {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsRow VisitsRow {
-                get {
-                    return ((VisitsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Orders_Visits"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Orders_Visits"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TestsRow TestsRow {
                 get {
                     return ((TestsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Orders_Tests"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Orders_Tests"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public VisitsRow VisitsRow {
+                get {
+                    return ((VisitsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Orders_Visits"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Orders_Visits"]);
                 }
             }
             
@@ -2290,7 +2290,7 @@ namespace MedAssist.OrderTestDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT OrderID, OrderDate, DatePerformed, Result, o.TestID, t.TestName, o.VisitID, v.VisitDate, (p.LastName + ', ' + p.FirstName) AS Patient FROM dbo.Orders o JOIN Tests t ON o.TestID = t.TestID
@@ -2304,6 +2304,16 @@ JOIN Patients p ON v.PatientID = p.PatientID";
                 " v ON v.VisitID = o.VisitID\r\nWhere v.PatientID = @patientID";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@patientID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "PatientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT OrderID, OrderDate, DatePerformed, Result, o.TestID, t.TestName, o.VisitID, v.VisitDate, (p.LastName + ', ' + p.FirstName) AS Patient FROM dbo.Orders o JOIN Tests t ON o.TestID = t.TestID
+JOIN Visits v ON v.VisitID = o.VisitID
+JOIN Patients p ON v.PatientID = p.PatientID
+Where v.PatientID = @patientID AND
+v.VisitDate = @visitDate";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@patientID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "PatientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@visitDate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "VisitDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2337,6 +2347,26 @@ JOIN Patients p ON v.PatientID = p.PatientID";
         public virtual int FillByPatientID(OrderTestDataSet.OrdersDataTable dataTable, int patientID) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(patientID));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByPatientIDandVisitDate(OrderTestDataSet.OrdersDataTable dataTable, int patientID, string visitDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(patientID));
+            if ((visitDate == null)) {
+                throw new global::System.ArgumentNullException("visitDate");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(visitDate));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -2505,11 +2535,15 @@ JOIN Patients p ON v.PatientID = p.PatientID";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT TestID, TestName FROM dbo.Tests";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT TestID, TestName FROM dbo.Tests";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2534,6 +2568,19 @@ JOIN Patients p ON v.PatientID = p.PatientID";
             OrderTestDataSet.TestsDataTable dataTable = new OrderTestDataSet.TestsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByTests(OrderTestDataSet.TestsDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

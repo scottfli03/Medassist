@@ -317,9 +317,37 @@ namespace MedAssist.DAL
             return visitList;
         }
 
-
-
-
+        public static bool UpdateDiagnosis(Visit visit, Visit oldVisit)
+        {
+            SqlConnection connection = MedassistDB.GetConnection();
+            string updateStatement =
+                "UPDATE Visits SET " +
+                "Diagnosis = @Diagnosis " +
+                "WHERE VisitID = @VisitID " +
+                "AND Diagnosis = @OldDiagnosis";
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@OldDiagnosis", oldVisit.Diagnosis);
+            updateCommand.Parameters.AddWithValue("@VisitID", oldVisit.VisitID);
+            updateCommand.Parameters.AddWithValue("@Diagnosis", visit.Diagnosis);
+            try
+            {
+                connection.Open();
+                int count = updateCommand.ExecuteNonQuery();
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+        }
      }
 }
 

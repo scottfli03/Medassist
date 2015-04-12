@@ -67,7 +67,6 @@ namespace MedAssist.View
                 catch (Exception ex)
                 {
                     MessageBox.Show("Id already in use. Please select another");
-                    
                 }
 
                 finally

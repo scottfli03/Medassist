@@ -20,9 +20,17 @@ namespace MedAssist.View
     {
         private List<Patient> patientList;
         private List<Employee> doctorList;
+        private Visit oldVisit;
+        private int visitID;
+        private Visit visit;
+        private BindingList<Test> tests;
+
         public VisitForm()
         {
             InitializeComponent();
+            oldVisit = null;
+            visit = new Visit();
+            tests = new BindingList<Test>();
         }
 
         /// <summary>
@@ -32,6 +40,8 @@ namespace MedAssist.View
         /// <param name="e"></param>
         private void VisitForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'orderTestDataSet.Tests' table. You can move, or remove it, as needed.
+            this.testsTableAdapter.Fill(this.orderTestDataSet.Tests);
             this.loadComboBoxes();
             txtDiastolic.Tag = "Diastolic Reading";
             txtBoxDiagnosis.Tag = "Diagnosis";
@@ -52,26 +62,33 @@ namespace MedAssist.View
         /// <returns>The Visit Object</returns>
         private Visit GetVisitData()
         {
-            Visit visit = new Visit();
+            Visit aVisit = new Visit();
             try
             {
-                visit.NurseID = (int)UserSecurityController.NurseLoggedIn.NurseID;
-                visit.HeartRate = Int32.Parse(txtHeartRate.Text);
-                visit.PatientID = (int)cmbPatient.SelectedValue;
-                visit.RespirationRate = Int32.Parse(txtRespRate.Text);
-                visit.Symptoms = txtSymptoms.Text;
-                visit.Systolic = Int32.Parse(txtSystolic.Text);
-                visit.Diastolic = Int32.Parse(txtDiastolic.Text);
-                visit.DoctorID = (int)cmbDoctor.SelectedValue;
-                visit.Diagnosis = txtBoxDiagnosis.Text + " " + txtBoxFnlDiagnosis.Text;
-                visit.VisitDate = DateTime.Today;
-                visit.Temperature = Decimal.Parse(txtTemp.Text);
+                aVisit.NurseID = (int)UserSecurityController.NurseLoggedIn.NurseID;
+                aVisit.HeartRate = Int32.Parse(txtHeartRate.Text);
+                aVisit.PatientID = (int)cmbPatient.SelectedValue;
+                aVisit.RespirationRate = Int32.Parse(txtRespRate.Text);
+                aVisit.Symptoms = txtSymptoms.Text;
+                aVisit.Systolic = Int32.Parse(txtSystolic.Text);
+                aVisit.Diastolic = Int32.Parse(txtDiastolic.Text);
+                aVisit.DoctorID = (int)cmbDoctor.SelectedValue;
+                if (!string.IsNullOrWhiteSpace(txtBoxDiagnosis.Text)) 
+                {
+                    aVisit.Diagnosis = txtBoxDiagnosis.Text;
+                }
+                else
+                {
+                    aVisit.Diagnosis = string.Empty;
+                }
+                aVisit.VisitDate = DateTime.Today;
+                aVisit.Temperature = Decimal.Parse(txtTemp.Text);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-            return visit;
+            return aVisit;
         }
 
         /// <summary>
@@ -88,7 +105,6 @@ namespace MedAssist.View
                 Validator.IsPresent(txtSystolic) &&
                 Validator.IsPresent(txtDiastolic) &&
                 Validator.IsPresent(cmbDoctor) &&
-                Validator.IsPresent(txtBoxDiagnosis) &&
                 Validator.IsPresent(txtTemp) &&
                 Validator.IsInt32(txtDiastolic) &&
                 Validator.IsInt32(txtHeartRate) &&
@@ -113,23 +129,49 @@ namespace MedAssist.View
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (IsValidData())
+            if (visitID == 0)
             {
-                try
+                if (IsValidData())
                 {
-                    Visit visit = GetVisitData();
-                    int visitID = VisitController.CreateVisit(visit);
-                    MessageBox.Show("Visit " + visitID + " was successfully entered in.", "Visit Completed");
-                    this.Close();
+                    try
+                    {
+                        visit = this.GetVisitData();
+                        visitID = VisitController.CreateVisit(visit);
+                        MessageBox.Show("Visit " + visitID + " was successfully created.", "Visit Created");
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    return;
                 }
             }
             else
             {
-                return;
+                if (IsValidData())
+                {
+                    try
+                    {
+                        visit = this.GetVisitData();
+                        bool result = VisitController.UpdateDiagnosis(visit, oldVisit);
+                        if (result == false)
+                        {
+                            MessageBox.Show("Sorry, the visit has already been updated.", "Visit already updated.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Visit " + visitID + "'s diagnosis has been updated.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    }
+                }
             }
         }
 
@@ -197,6 +239,95 @@ namespace MedAssist.View
         private void btnViewUpdateTest_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This feature will be implemented soon", "Under Construction");
+        }
+
+        private void btnSubmitVitals_Click(object sender, EventArgs e)
+        {
+            if (IsValidData())
+            {
+                try
+                {
+                    visit = GetVisitData();
+                    oldVisit = GetVisitData();
+                    visitID = VisitController.CreateVisit(visit);
+                    MessageBox.Show("Visit " + visitID + " was successfully created.", "Visit Created");
+                    visit.VisitID = visitID;
+                    oldVisit.VisitID = visitID;
+                    this.disableFields();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void disableFields()
+        {
+            txtDiastolic.Enabled = false;
+            txtHeartRate.Enabled = false;
+            txtNurse.Enabled = false;
+            txtRespRate.Enabled = false;
+            txtSymptoms.Enabled = false;
+            txtSystolic.Enabled = false;
+            txtTemp.Enabled = false;
+            cmbPatient.Enabled = false;
+            cmbDoctor.Enabled = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Test test = this.GetTestData();
+            tests.Add(test);
+            this.buildDGV();
+        }
+
+        private Test GetTestData()
+        {
+            int testID = (int)cmbTest.SelectedValue;
+            Test test = TestController.GetTestWithID(testID);
+            return test;
+        }
+
+        private void buildDGV()
+        {
+            dgvTests.DataSource = tests;
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            tests = new BindingList<Test>();
+            dgvTests.Rows.Clear();
+            dgvTests.Refresh();
+        }
+
+        private void diagnosisLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBoxDiagnosis_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbTest_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvTests_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

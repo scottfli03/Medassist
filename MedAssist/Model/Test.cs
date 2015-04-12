@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace MedAssist.Model
 {
-    class Test
+    class Test : INotifyPropertyChanged
     {
         private int testID;
         private string testName;
-        
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Test() { }
 
@@ -37,6 +39,12 @@ namespace MedAssist.Model
             {
                 testName = value;
             }
+        }
+
+        private void NotifyPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
     }
 
