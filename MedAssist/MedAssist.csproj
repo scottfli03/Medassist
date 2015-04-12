@@ -73,15 +73,11 @@
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Nurse.cs" />
     <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrderDetails.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Test.cs" />
     <Compile Include="Model\UserSecurity.cs" />
     <Compile Include="Model\Visit.cs" />
-    <Compile Include="OrderTestDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrderTestDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="PatientsAndAllVisitInfo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -241,17 +237,6 @@
     </None>
     <None Include="MedAssist.Model.Patient.datasource" />
     <None Include="MedAssist.Model.Visit.datasource" />
-    <None Include="OrderTestDataSet.xsc">
-      <DependentUpon>OrderTestDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="OrderTestDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OrderTestDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="OrderTestDataSet.xss">
-      <DependentUpon>OrderTestDataSet.xsd</DependentUpon>
-    </None>
     <None Include="PatientsAndAllVisitInfo.xsc">
       <DependentUpon>PatientsAndAllVisitInfo.xsd</DependentUpon>
     </None>
