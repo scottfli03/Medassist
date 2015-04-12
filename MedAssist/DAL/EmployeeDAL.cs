@@ -291,6 +291,8 @@ namespace MedAssist.DAL
             {
                 connection.Close();
             }
+
+            
         }
 
        
