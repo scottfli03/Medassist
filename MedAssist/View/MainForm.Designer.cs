@@ -45,8 +45,8 @@
             this.updateEmployeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addEmployeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newVisitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newVisitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -187,6 +187,13 @@
             this.addTestToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.addTestToolStripMenuItem.Text = "Add Test";
             this.addTestToolStripMenuItem.Click += new System.EventHandler(this.addTestToolStripMenuItem_Click);
+            // 
+            // updateTestToolStripMenuItem
+            // 
+            this.updateTestToolStripMenuItem.Name = "updateTestToolStripMenuItem";
+            this.updateTestToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.updateTestToolStripMenuItem.Text = "Update Test";
+            this.updateTestToolStripMenuItem.Click += new System.EventHandler(this.updateTestToolStripMenuItem_Click_1);
             // 
             // newVisitToolStripMenuItem
             // 

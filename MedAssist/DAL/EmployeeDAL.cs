@@ -25,8 +25,9 @@ namespace MedAssist.DAL
             List<Employee> employeeList = new List<Employee>();
             SqlConnection connection = MedassistDB.GetConnection();
             String selectStatement = "SELECT EmployeeID, SSN, FirstName, MInit, LastName, DOB, Gender, " +
-	            "StreetAddress1, StreetAddress2, Phone, City, State, ZipCode " +
-                "FROM Employees e JOIN Doctors d ON e.EmployeeID = d.DoctorID";
+	            "StreetAddress1, StreetAddress2, Phone, City, State, ZipCode, Inactive " +
+                "FROM Employees e JOIN Doctors d ON e.EmployeeID = d.DoctorID " +
+                "WHERE Inactive = 0";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
             try
@@ -48,7 +49,8 @@ namespace MedAssist.DAL
                     employee.Phone = reader["SSN"].ToString();
                     employee.City = reader["City"].ToString();
                     employee.State = reader["State"].ToString();
-                    employee.ZipCode = reader["SSN"].ToString();
+                    employee.ZipCode = reader["ZipCode"].ToString();
+                    employee.Inactive = Convert.ToBoolean(reader["Inactive"]);
                     employeeList.Add(employee);
                 }
             }

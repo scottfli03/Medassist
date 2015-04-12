@@ -210,7 +210,12 @@ namespace MedAssist.View
             }
         }
 
-        
+
+        private void txtPatientID_TextChanged(object sender, EventArgs e)
+        {
+
+
+        }
         private void btnPatientInfo_Click(object sender, EventArgs e)
         {
 
@@ -224,6 +229,7 @@ namespace MedAssist.View
                 this.GetPatientWithNoID(firstName, lastName, dob);
             }
  
+
         }
     }
 }
