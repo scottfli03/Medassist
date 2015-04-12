@@ -107,7 +107,16 @@ SELECT TestID, TestName FROM Tests WHERE (TestID = @TestID)</CommandText>
               <Mapping SourceColumn="TestID" DataSetColumn="TestID" />
               <Mapping SourceColumn="TestName" DataSetColumn="TestName" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="cs6232_g5ConnectionString (Settings)" DbObjectName="[cs6232-g5].dbo.Tests" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByTests" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByTests" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByTests">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT TestID, TestName FROM dbo.Tests</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VisitsTableAdapter" GeneratorDataComponentClassName="VisitsTableAdapter" Name="Visits" UserDataComponentName="VisitsTableAdapter">
             <MainSource>
@@ -184,7 +193,7 @@ SELECT VisitID, VisitDate, PatientID FROM Visits WHERE (VisitID = @VisitID)</Com
   <xs:element name="OrderTestDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="OrderTestDataSet" msprop:Generator_UserDSName="OrderTestDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Orders" msprop:Generator_TableClassName="OrdersDataTable" msprop:Generator_TableVarName="tableOrders" msprop:Generator_RowChangedName="OrdersRowChanged" msprop:Generator_TablePropName="Orders" msprop:Generator_RowDeletingName="OrdersRowDeleting" msprop:Generator_RowChangingName="OrdersRowChanging" msprop:Generator_RowEvHandlerName="OrdersRowChangeEventHandler" msprop:Generator_RowDeletedName="OrdersRowDeleted" msprop:Generator_RowClassName="OrdersRow" msprop:Generator_UserTableName="Orders" msprop:Generator_RowEvArgName="OrdersRowChangeEvent">
+        <xs:element name="Orders" msprop:Generator_TableClassName="OrdersDataTable" msprop:Generator_TableVarName="tableOrders" msprop:Generator_TablePropName="Orders" msprop:Generator_RowDeletingName="OrdersRowDeleting" msprop:Generator_RowChangingName="OrdersRowChanging" msprop:Generator_RowEvHandlerName="OrdersRowChangeEventHandler" msprop:Generator_RowDeletedName="OrdersRowDeleted" msprop:Generator_UserTableName="Orders" msprop:Generator_RowChangedName="OrdersRowChanged" msprop:Generator_RowEvArgName="OrdersRowChangeEvent" msprop:Generator_RowClassName="OrdersRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="OrderID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnOrderID" msprop:Generator_ColumnPropNameInRow="OrderID" msprop:Generator_ColumnPropNameInTable="OrderIDColumn" msprop:Generator_UserColumnName="OrderID" type="xs:int" />
@@ -217,7 +226,7 @@ SELECT VisitID, VisitDate, PatientID FROM Visits WHERE (VisitID = @VisitID)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tests" msprop:Generator_TableClassName="TestsDataTable" msprop:Generator_TableVarName="tableTests" msprop:Generator_RowChangedName="TestsRowChanged" msprop:Generator_TablePropName="Tests" msprop:Generator_RowDeletingName="TestsRowDeleting" msprop:Generator_RowChangingName="TestsRowChanging" msprop:Generator_RowEvHandlerName="TestsRowChangeEventHandler" msprop:Generator_RowDeletedName="TestsRowDeleted" msprop:Generator_RowClassName="TestsRow" msprop:Generator_UserTableName="Tests" msprop:Generator_RowEvArgName="TestsRowChangeEvent">
+        <xs:element name="Tests" msprop:Generator_TableClassName="TestsDataTable" msprop:Generator_TableVarName="tableTests" msprop:Generator_TablePropName="Tests" msprop:Generator_RowDeletingName="TestsRowDeleting" msprop:Generator_RowChangingName="TestsRowChanging" msprop:Generator_RowEvHandlerName="TestsRowChangeEventHandler" msprop:Generator_RowDeletedName="TestsRowDeleted" msprop:Generator_UserTableName="Tests" msprop:Generator_RowChangedName="TestsRowChanged" msprop:Generator_RowEvArgName="TestsRowChangeEvent" msprop:Generator_RowClassName="TestsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="TestID" msprop:Generator_ColumnVarNameInTable="columnTestID" msprop:Generator_ColumnPropNameInRow="TestID" msprop:Generator_ColumnPropNameInTable="TestIDColumn" msprop:Generator_UserColumnName="TestID" type="xs:int" />
@@ -231,7 +240,7 @@ SELECT VisitID, VisitDate, PatientID FROM Visits WHERE (VisitID = @VisitID)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Visits" msprop:Generator_TableClassName="VisitsDataTable" msprop:Generator_TableVarName="tableVisits" msprop:Generator_RowChangedName="VisitsRowChanged" msprop:Generator_TablePropName="Visits" msprop:Generator_RowDeletingName="VisitsRowDeleting" msprop:Generator_RowChangingName="VisitsRowChanging" msprop:Generator_RowEvHandlerName="VisitsRowChangeEventHandler" msprop:Generator_RowDeletedName="VisitsRowDeleted" msprop:Generator_RowClassName="VisitsRow" msprop:Generator_UserTableName="Visits" msprop:Generator_RowEvArgName="VisitsRowChangeEvent">
+        <xs:element name="Visits" msprop:Generator_TableClassName="VisitsDataTable" msprop:Generator_TableVarName="tableVisits" msprop:Generator_TablePropName="Visits" msprop:Generator_RowDeletingName="VisitsRowDeleting" msprop:Generator_RowChangingName="VisitsRowChanging" msprop:Generator_RowEvHandlerName="VisitsRowChangeEventHandler" msprop:Generator_RowDeletedName="VisitsRowDeleted" msprop:Generator_UserTableName="Visits" msprop:Generator_RowChangedName="VisitsRowChanged" msprop:Generator_RowEvArgName="VisitsRowChangeEvent" msprop:Generator_RowClassName="VisitsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="VisitID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnVisitID" msprop:Generator_ColumnPropNameInRow="VisitID" msprop:Generator_ColumnPropNameInTable="VisitIDColumn" msprop:Generator_UserColumnName="VisitID" type="xs:int" />
@@ -240,7 +249,7 @@ SELECT VisitID, VisitDate, PatientID FROM Visits WHERE (VisitID = @VisitID)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Patients" msprop:Generator_TableClassName="PatientsDataTable" msprop:Generator_TableVarName="tablePatients" msprop:Generator_TablePropName="Patients" msprop:Generator_RowDeletingName="PatientsRowDeleting" msprop:Generator_RowChangingName="PatientsRowChanging" msprop:Generator_RowEvHandlerName="PatientsRowChangeEventHandler" msprop:Generator_RowDeletedName="PatientsRowDeleted" msprop:Generator_UserTableName="Patients" msprop:Generator_RowChangedName="PatientsRowChanged" msprop:Generator_RowEvArgName="PatientsRowChangeEvent" msprop:Generator_RowClassName="PatientsRow">
+        <xs:element name="Patients" msprop:Generator_TableClassName="PatientsDataTable" msprop:Generator_TableVarName="tablePatients" msprop:Generator_RowChangedName="PatientsRowChanged" msprop:Generator_TablePropName="Patients" msprop:Generator_RowDeletingName="PatientsRowDeleting" msprop:Generator_RowChangingName="PatientsRowChanging" msprop:Generator_RowEvHandlerName="PatientsRowChangeEventHandler" msprop:Generator_RowDeletedName="PatientsRowDeleted" msprop:Generator_RowClassName="PatientsRow" msprop:Generator_UserTableName="Patients" msprop:Generator_RowEvArgName="PatientsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PatientID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnPatientID" msprop:Generator_ColumnPropNameInRow="PatientID" msprop:Generator_ColumnPropNameInTable="PatientIDColumn" msprop:Generator_UserColumnName="PatientID" type="xs:int" />
@@ -277,9 +286,9 @@ SELECT VisitID, VisitDate, PatientID FROM Visits WHERE (VisitID = @VisitID)</Com
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Orders_Tests" msdata:parent="Tests" msdata:child="Orders" msdata:parentkey="TestID" msdata:childkey="TestID" msprop:Generator_UserChildTable="Orders" msprop:Generator_ChildPropName="GetOrdersRows" msprop:Generator_UserRelationName="FK_Orders_Tests" msprop:Generator_ParentPropName="TestsRow" msprop:Generator_RelationVarName="relationFK_Orders_Tests" msprop:Generator_UserParentTable="Tests" />
-      <msdata:Relationship name="FK_Orders_Visits" msdata:parent="Visits" msdata:child="Orders" msdata:parentkey="VisitID" msdata:childkey="VisitID" msprop:Generator_UserChildTable="Orders" msprop:Generator_ChildPropName="GetOrdersRows" msprop:Generator_UserRelationName="FK_Orders_Visits" msprop:Generator_ParentPropName="VisitsRow" msprop:Generator_RelationVarName="relationFK_Orders_Visits" msprop:Generator_UserParentTable="Visits" />
-      <msdata:Relationship name="FK_Visits_Patients" msdata:parent="Patients" msdata:child="Visits" msdata:parentkey="PatientID" msdata:childkey="PatientID" msprop:Generator_UserChildTable="Visits" msprop:Generator_ChildPropName="GetVisitsRows" msprop:Generator_UserRelationName="FK_Visits_Patients" msprop:Generator_RelationVarName="relationFK_Visits_Patients" msprop:Generator_UserParentTable="Patients" msprop:Generator_ParentPropName="PatientsRow" />
+      <msdata:Relationship name="FK_Orders_Tests" msdata:parent="Tests" msdata:child="Orders" msdata:parentkey="TestID" msdata:childkey="TestID" msprop:Generator_UserChildTable="Orders" msprop:Generator_ChildPropName="GetOrdersRows" msprop:Generator_UserRelationName="FK_Orders_Tests" msprop:Generator_RelationVarName="relationFK_Orders_Tests" msprop:Generator_UserParentTable="Tests" msprop:Generator_ParentPropName="TestsRow" />
+      <msdata:Relationship name="FK_Orders_Visits" msdata:parent="Visits" msdata:child="Orders" msdata:parentkey="VisitID" msdata:childkey="VisitID" msprop:Generator_UserChildTable="Orders" msprop:Generator_ChildPropName="GetOrdersRows" msprop:Generator_UserRelationName="FK_Orders_Visits" msprop:Generator_RelationVarName="relationFK_Orders_Visits" msprop:Generator_UserParentTable="Visits" msprop:Generator_ParentPropName="VisitsRow" />
+      <msdata:Relationship name="FK_Visits_Patients" msdata:parent="Patients" msdata:child="Visits" msdata:parentkey="PatientID" msdata:childkey="PatientID" msprop:Generator_UserChildTable="Visits" msprop:Generator_ChildPropName="GetVisitsRows" msprop:Generator_UserRelationName="FK_Visits_Patients" msprop:Generator_ParentPropName="PatientsRow" msprop:Generator_RelationVarName="relationFK_Visits_Patients" msprop:Generator_UserParentTable="Patients" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
