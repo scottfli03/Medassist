@@ -317,6 +317,72 @@ namespace MedAssist.DAL
             return visitList;
         }
 
+        public static List<Visit> GetVisitForPatientWithDobAndLName(string fName, string lName, DateTime patientDOB)
+        {
+            List<Visit> visitList = new List<Visit>();
+            SqlConnection connection = MedassistDB.GetConnection();
+            string selectStatement =
+                   "SELECT Visits.VisitID, Visits.VisitDate, Visits.PatientID, Visits.Diagnosis, Visits.Systolic, Visits.Diastolic, " +
+                   "Visits.Temperature, Visits.RespirationRate, Visits.HeartRate, Visits.Symptoms, Patients.FirstName, Patients.MInit, Patients.LastName " +
+                   "Patients.DOB, Orders.Result, Orders.TestID, Tests.TestName " +
+                    "FROM Visits " +
+                    "Join Doctors ON Visits.DoctorID = Doctors.DoctorID " +
+                    "Join Visits.DoctorID ON Employees.DoctorID = Visits.DoctorID " +
+                    "Join Nurses ON Visits.NurseID = Nurses.NurseID " +
+                    "Join Visits.NurseID ON Employees.NurseID = Visits.NurseID " +
+                    "Join Patients ON Visits.PatientID = Patients.PatientID " +
+                    "Join Visits.PatientID ON Patients.PatientID = Visits.PatientID " +
+                   "WHERE FirstName = @FirstName AND LastName = @LastName AND DOB = @DOB";
+
+
+               
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
+            try
+            {
+                connection.Open();
+                reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    Visit visit = new Visit();
+                    visit.VisitID = (int)reader["VisitID"];
+                    visit.VisitDate = (DateTime)reader["VisitDate"];
+                    visit.PatientID = (int)reader["PatientID"];
+                    visit.FirstName = reader["FirstName"].ToString();
+                    visit.MInit = reader["MInit"].ToString();
+                    visit.LastName = reader["LastName"].ToString();
+                    visit.DOB = (DateTime)reader["DOB"];
+                    visit.Systolic = (int)reader["Systolic"];
+                    visit.Diastolic = (int)reader["Diastolic"];
+                    visit.Temperature = (decimal)reader["Temperature"];
+                    visit.RespirationRate = (int)reader["RespirationRate"];
+                    visit.HeartRate = (int)reader["HeartRate"];
+                    visit.Symptoms = reader["Symptoms"].ToString();
+                    visit.Result = reader["Result"].ToString();
+                    visit.TestID = (int)reader["TestID"];
+                    visit.TestName = reader["TestName"].ToString();
+                    visit.Diagnosis = reader["Diagnosis"].ToString();
+
+
+                    visitList.Add(visit);
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return visitList;
+        }
 
 
 

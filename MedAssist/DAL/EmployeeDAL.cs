@@ -253,7 +253,7 @@ namespace MedAssist.DAL
             return isAdmin;
         }
 
-        public static int AddEmployee(Employee employee)
+        public static int AddEmployeeDoctor(Employee employee)
         {
             SqlConnection connection = MedassistDB.GetConnection();
             string insertStatement =

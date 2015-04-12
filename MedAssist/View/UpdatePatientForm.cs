@@ -87,16 +87,16 @@ namespace MedAssist.View
         private void DisplayPatient()
         {           
             txtFirstName.Text = patient.FirstName;
-            txtMiddleInit.Text = patient.MInit.ToString();
+            txtMiddleInit.Text = patient.MInit;
             txtLastName.Text = patient.LastName;
             txtAddress1.Text = patient.StreetAddr1;
             txtAddress2.Text = patient.StreetAddr2;
             txtCity.Text = patient.City;
             cboState.Text = patient.State;
-            txtZip.Text = patient.ZipCode.ToString();
-            txtPhone.Text = patient.Phone.ToString();
+            txtZip.Text = patient.ZipCode;
+            txtPhone.Text = patient.Phone;
             txtDOB.Text = patient.DOB.ToString();
-            txtSSN.Text = patient.SSN.ToString();
+            txtSSN.Text = patient.SSN;
             txtGender.Text = patient.Gender.ToString();
         }
         
@@ -150,6 +150,7 @@ namespace MedAssist.View
                Validator.IsPresent(txtCity) &&
                Validator.IsPresent(cboState) &&
                Validator.IsInt64(txtPhone) &&
+               Validator.IsInt32(txtSSN) &&
                Validator.IsInt64(txtZip))
            {
                return true;

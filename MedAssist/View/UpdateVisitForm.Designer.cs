@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label doctorNameLabel;
-            System.Windows.Forms.Label patientNameLabel;
-            System.Windows.Forms.Label diagnosisLabel;
-            System.Windows.Forms.Label nurseIDLabel;
-            System.Windows.Forms.Label label11;
-            System.Windows.Forms.Label label12;
+            this.doctorNameLabel = new System.Windows.Forms.Label();
+            this.patientNameLabel = new System.Windows.Forms.Label();
+            this.diagnosisLabel = new System.Windows.Forms.Label();
+            this.nurseIDLabel = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.cmbDoctor = new System.Windows.Forms.ComboBox();
             this.cmbPatient = new System.Windows.Forms.ComboBox();
             this.txtBoxFnlDiagnosis = new System.Windows.Forms.TextBox();
@@ -67,67 +67,61 @@
             this.label15 = new System.Windows.Forms.Label();
             this.dateTimePickerSearchVisit = new System.Windows.Forms.DateTimePicker();
             this.btnSearchVisit = new System.Windows.Forms.Button();
-            doctorNameLabel = new System.Windows.Forms.Label();
-            patientNameLabel = new System.Windows.Forms.Label();
-            diagnosisLabel = new System.Windows.Forms.Label();
-            nurseIDLabel = new System.Windows.Forms.Label();
-            label11 = new System.Windows.Forms.Label();
-            label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // doctorNameLabel
             // 
-            doctorNameLabel.AutoSize = true;
-            doctorNameLabel.Location = new System.Drawing.Point(16, -32);
-            doctorNameLabel.Name = "doctorNameLabel";
-            doctorNameLabel.Size = new System.Drawing.Size(42, 13);
-            doctorNameLabel.TabIndex = 65;
-            doctorNameLabel.Text = "Doctor:";
+            this.doctorNameLabel.AutoSize = true;
+            this.doctorNameLabel.Location = new System.Drawing.Point(16, -32);
+            this.doctorNameLabel.Name = "doctorNameLabel";
+            this.doctorNameLabel.Size = new System.Drawing.Size(42, 13);
+            this.doctorNameLabel.TabIndex = 65;
+            this.doctorNameLabel.Text = "Doctor:";
             // 
             // patientNameLabel
             // 
-            patientNameLabel.AutoSize = true;
-            patientNameLabel.Location = new System.Drawing.Point(37, 127);
-            patientNameLabel.Name = "patientNameLabel";
-            patientNameLabel.Size = new System.Drawing.Size(43, 13);
-            patientNameLabel.TabIndex = 64;
-            patientNameLabel.Text = "Patient:";
+            this.patientNameLabel.AutoSize = true;
+            this.patientNameLabel.Location = new System.Drawing.Point(37, 127);
+            this.patientNameLabel.Name = "patientNameLabel";
+            this.patientNameLabel.Size = new System.Drawing.Size(43, 13);
+            this.patientNameLabel.TabIndex = 64;
+            this.patientNameLabel.Text = "Patient:";
             // 
             // diagnosisLabel
             // 
-            diagnosisLabel.AutoSize = true;
-            diagnosisLabel.Location = new System.Drawing.Point(309, -32);
-            diagnosisLabel.Name = "diagnosisLabel";
-            diagnosisLabel.Size = new System.Drawing.Size(56, 13);
-            diagnosisLabel.TabIndex = 57;
-            diagnosisLabel.Text = "Diagnosis:";
+            this.diagnosisLabel.AutoSize = true;
+            this.diagnosisLabel.Location = new System.Drawing.Point(309, -32);
+            this.diagnosisLabel.Name = "diagnosisLabel";
+            this.diagnosisLabel.Size = new System.Drawing.Size(56, 13);
+            this.diagnosisLabel.TabIndex = 57;
+            this.diagnosisLabel.Text = "Diagnosis:";
             // 
             // nurseIDLabel
             // 
-            nurseIDLabel.AutoSize = true;
-            nurseIDLabel.Location = new System.Drawing.Point(37, 101);
-            nurseIDLabel.Name = "nurseIDLabel";
-            nurseIDLabel.Size = new System.Drawing.Size(38, 13);
-            nurseIDLabel.TabIndex = 46;
-            nurseIDLabel.Text = "Nurse:";
+            this.nurseIDLabel.AutoSize = true;
+            this.nurseIDLabel.Location = new System.Drawing.Point(37, 101);
+            this.nurseIDLabel.Name = "nurseIDLabel";
+            this.nurseIDLabel.Size = new System.Drawing.Size(38, 13);
+            this.nurseIDLabel.TabIndex = 46;
+            this.nurseIDLabel.Text = "Nurse:";
             // 
             // label11
             // 
-            label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(334, 91);
-            label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(56, 13);
-            label11.TabIndex = 70;
-            label11.Text = "Diagnosis:";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(334, 91);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 13);
+            this.label11.TabIndex = 70;
+            this.label11.Text = "Diagnosis:";
             // 
             // label12
             // 
-            label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(37, 74);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(42, 13);
-            label12.TabIndex = 72;
-            label12.Text = "Doctor:";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(37, 74);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(42, 13);
+            this.label12.TabIndex = 72;
+            this.label12.Text = "Doctor:";
             // 
             // cmbDoctor
             // 
@@ -159,7 +153,7 @@
             // 
             // btnViewUpdateTest
             // 
-            this.btnViewUpdateTest.Location = new System.Drawing.Point(553, 255);
+            this.btnViewUpdateTest.Location = new System.Drawing.Point(553, 266);
             this.btnViewUpdateTest.Name = "btnViewUpdateTest";
             this.btnViewUpdateTest.Size = new System.Drawing.Size(108, 23);
             this.btnViewUpdateTest.TabIndex = 62;
@@ -177,7 +171,7 @@
             // 
             // btnOrderTest
             // 
-            this.btnOrderTest.Location = new System.Drawing.Point(421, 255);
+            this.btnOrderTest.Location = new System.Drawing.Point(421, 271);
             this.btnOrderTest.Name = "btnOrderTest";
             this.btnOrderTest.Size = new System.Drawing.Size(108, 23);
             this.btnOrderTest.TabIndex = 60;
@@ -422,16 +416,16 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtSearchFirstName);
-            this.Controls.Add(label12);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(label11);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtSymptoms);
             this.Controls.Add(this.label5);
-            this.Controls.Add(doctorNameLabel);
+            this.Controls.Add(this.doctorNameLabel);
             this.Controls.Add(this.cmbDoctor);
-            this.Controls.Add(patientNameLabel);
+            this.Controls.Add(this.patientNameLabel);
             this.Controls.Add(this.cmbPatient);
             this.Controls.Add(this.txtBoxFnlDiagnosis);
             this.Controls.Add(this.btnViewUpdateTest);
@@ -439,7 +433,7 @@
             this.Controls.Add(this.btnOrderTest);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtBoxDiagnosis);
-            this.Controls.Add(diagnosisLabel);
+            this.Controls.Add(this.diagnosisLabel);
             this.Controls.Add(this.txtSystolic);
             this.Controls.Add(this.txtRespRate);
             this.Controls.Add(this.label8);
@@ -452,7 +446,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(nurseIDLabel);
+            this.Controls.Add(this.nurseIDLabel);
             this.Controls.Add(this.txtNurse);
             this.Name = "UpdateVisitForm";
             this.Text = "UpdateVisitForm";
@@ -496,5 +490,11 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DateTimePicker dateTimePickerSearchVisit;
         private System.Windows.Forms.Button btnSearchVisit;
+        private System.Windows.Forms.Label doctorNameLabel;
+        private System.Windows.Forms.Label patientNameLabel;
+        private System.Windows.Forms.Label diagnosisLabel;
+        private System.Windows.Forms.Label nurseIDLabel;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }
