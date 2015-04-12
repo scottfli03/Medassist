@@ -129,6 +129,12 @@ namespace MedAssist.View
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            DialogResult yORn = MessageBox.Show("This form will close after submission. Are you sure you wouldn't like " +
+                "to add anything or order more tests?", "Submit and Close?", MessageBoxButtons.YesNo);
+            if (yORn == DialogResult.No)
+            {
+                return;
+            }
             if (visitID == 0)
             {
                 if (IsValidData())
@@ -183,7 +189,8 @@ namespace MedAssist.View
         /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Are you sure you would like to exit the form?", "Form Closing", MessageBoxButtons.YesNo);
+            var result = MessageBox.Show("Are you sure you would like to exit the form? Information that " +
+                "was confirmed has already been processed.", "Form Closing", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
             {
                 return;
@@ -223,12 +230,36 @@ namespace MedAssist.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        TestForm tf;
         private void btnOrderTest_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This feature will be implemented soon", "Under Construction");
-            tf = new TestForm();
-            tf.Show();
+            if (visitID == 0)
+            {
+                MessageBox.Show("Please submit Routine Check information before ordering Tests.", "Enter Routine Check");
+            }
+            else if (dgvTests.RowCount == 0)
+            {
+                MessageBox.Show("There are no tests added to be ordered. Please select test and " +
+                    "add it to the list before submission.", "Enter Routine Check");
+            }
+            else 
+            {
+                try
+                {
+                    bool result = OrderController.OrderTests(tests, visitID);
+                    if (result == true)
+                    {
+                        MessageBox.Show("Orders were successfully placed and may be updated in Update Visit.", "Orders Placed");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Whoops, something went wrong. Try again.", "Order Not Placed");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+            } 
         }
 
         /// <summary>
@@ -303,31 +334,6 @@ namespace MedAssist.View
             tests = new BindingList<Test>();
             dgvTests.Rows.Clear();
             dgvTests.Refresh();
-        }
-
-        private void diagnosisLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtBoxDiagnosis_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbTest_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvTests_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
