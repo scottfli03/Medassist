@@ -63,8 +63,6 @@
             this.txtSystolic = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvTests = new System.Windows.Forms.DataGridView();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnOrderTest = new System.Windows.Forms.Button();
             this.cmbTest = new System.Windows.Forms.ComboBox();
             this.btnAddTest = new System.Windows.Forms.Button();
             this.txtBoxDiagnosis = new System.Windows.Forms.TextBox();
@@ -386,8 +384,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvTests);
-            this.groupBox1.Controls.Add(this.btnClear);
-            this.groupBox1.Controls.Add(this.btnOrderTest);
             this.groupBox1.Controls.Add(this.cmbTest);
             this.groupBox1.Controls.Add(this.btnAddTest);
             this.groupBox1.Controls.Add(testNameLabel);
@@ -405,24 +401,6 @@
             this.dgvTests.Name = "dgvTests";
             this.dgvTests.Size = new System.Drawing.Size(242, 182);
             this.dgvTests.TabIndex = 43;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(164, 278);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(108, 23);
-            this.btnClear.TabIndex = 44;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            // 
-            // btnOrderTest
-            // 
-            this.btnOrderTest.Location = new System.Drawing.Point(30, 278);
-            this.btnOrderTest.Name = "btnOrderTest";
-            this.btnOrderTest.Size = new System.Drawing.Size(108, 23);
-            this.btnOrderTest.TabIndex = 33;
-            this.btnOrderTest.Text = "Order";
-            this.btnOrderTest.UseVisualStyleBackColor = true;
             // 
             // cmbTest
             // 
@@ -540,8 +518,6 @@
         private System.Windows.Forms.TextBox txtSystolic;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvTests;
-        private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnOrderTest;
         private System.Windows.Forms.ComboBox cmbTest;
         private System.Windows.Forms.Button btnAddTest;
         private System.Windows.Forms.TextBox txtBoxDiagnosis;
