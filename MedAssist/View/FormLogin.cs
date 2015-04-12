@@ -19,12 +19,15 @@ namespace MedAssist.View
     public partial class FormLogin : Form
     {
         private ControllerNurse controllerNurse;
+        private ControllerAdmin adminController;
+        private Administrator admin;
         private Nurse nurse;
         private MainForm mainForm;
         public FormLogin()
         {
             InitializeComponent();
             this.controllerNurse = new ControllerNurse();
+            this.adminController = new ControllerAdmin();
 
         }
 
@@ -54,14 +57,15 @@ namespace MedAssist.View
 
                    
                         this.nurse = this.controllerNurse.GetNurse(userName, password);
-
+                        this.admin = this.adminController.GetAdmin(userName, password);
+                        UserSecurityController.AdminLoggedIn = this.admin;
                         UserSecurityController.NurseLoggedIn = this.nurse;
 
 
-                        if (this.nurse != null)
+                        if (this.nurse != null || this.admin != null)
                         {
                             this.mainForm = new MainForm();
-                            this.mainForm.Text = "You are logged in as " + userName;
+                            this.mainForm.Text = "You are logged in as  " + userName;
                             if (this.mainForm.ShowDialog() == DialogResult.OK)
                             {
                                 this.mainForm.Show();

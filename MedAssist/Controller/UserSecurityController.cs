@@ -13,6 +13,8 @@ namespace MedAssist.Controller
     {
         public static Nurse NurseLoggedIn = null;
 
+        public static Administrator AdminLoggedIn = null;
+
         public static bool UpdatePassword(UserSecurity oldUser, UserSecurity newUser)
         {
             return UpdatePassword(oldUser, newUser);

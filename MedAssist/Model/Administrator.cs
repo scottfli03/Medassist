@@ -10,6 +10,7 @@ namespace MedAssist.Model
     {
         private int adminID;
         private string userName;
+        private string password;
 
         public Administrator() { }
 
@@ -34,6 +35,19 @@ namespace MedAssist.Model
             set
             {
                 userName = value;
+            }
+        }
+
+        public string Password
+        {
+            get
+            {
+                return password;
+            }
+
+            set
+            {
+                password = value;
             }
         }
     }

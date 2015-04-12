@@ -44,11 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ControllerAdmin.cs" />
     <Compile Include="Controller\ControllerNurse.cs" />
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\UserSecurityController.cs" />
     <Compile Include="Controller\VisitController.cs" />
+    <Compile Include="DAL\AdminDAL.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\MedassistDB.cs" />
