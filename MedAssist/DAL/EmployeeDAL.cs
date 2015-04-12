@@ -274,6 +274,7 @@ namespace MedAssist.DAL
             insertCommand.Parameters.AddWithValue("@Phone", employee.Phone);
             insertCommand.Parameters.AddWithValue("@DOB", employee.DOB);
             insertCommand.Parameters.AddWithValue("@Gender", employee.Gender);
+            
             try
             {
                 connection.Open();
@@ -283,6 +284,17 @@ namespace MedAssist.DAL
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
                 int employeeID = Convert.ToInt32(selectCommand.ExecuteScalar());
 
+                Doctor doctor = new Doctor();
+                if (employeeID == null)
+                {
+                    insertCommand.Parameters.AddWithValue("@EmployeeID", DBNull.Value);
+                }
+                else
+                {
+                    insertCommand.Parameters.AddWithValue("@EmployeeID", doctor.DoctorID);
+                }
+
+                
                 return employeeID;
             }
             catch (SqlException ex)

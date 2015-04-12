@@ -348,6 +348,130 @@ namespace MedAssist.DAL
                     connection.Close();
             }
         }
+
+
+        public static bool UpdateVisit(Visit newVisit, Visit oldVisit)
+        {
+            SqlConnection connection = MedassistDB.GetConnection();
+            string updateStatement =
+                 "Update Visits SET " +
+                 "NurseID = @NewNurseID, " +
+                 "PatientID = @NewPatientID " +
+                 "DoctorID = @NewDoctorID, " +
+                 "Diagnosis = @NewDiagnosis " + 
+                 "WHERE VisitID = @OldVisitID";
+
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@NewNurseID", newVisit.NurseID);
+            updateCommand.Parameters.AddWithValue("@NewPatientID", newVisit.PatientID);
+            updateCommand.Parameters.AddWithValue("@NewDoctorID", newVisit.DoctorID);
+            updateCommand.Parameters.AddWithValue("@NewDiagnosis", newVisit.Diagnosis);
+
+            try
+            {
+                connection.Open();
+                int count = updateCommand.ExecuteNonQuery();
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+        }
+
+
+        public static Visit GetVisitToUpdate(string fName, string lName, DateTime visitDate)
+        {
+            Visit visit = new Visit();
+            SqlConnection connection = MedassistDB.GetConnection();
+
+            var selectStatement = string.Format(@"
+                SELECT        
+                    Visits.VisitID
+                    ,Visits.VisitDate
+                    ,Visits.PatientID
+                    ,Visits.Diagnosis
+                    ,Visits.Systolic
+                    ,Visits.Diastolic
+                    ,Visits.Temperature
+                    ,Visits.RespirationRate
+                    ,Visits.HeartRate
+                    ,Visits.Symptoms
+                    ,Patients.FirstName
+                    ,Patients.MInit
+                    ,Patients.LastName
+                    ,Patients.DOB
+                    ,Orders.Result
+                    ,Orders.TestID
+                    ,Tests.TestName
+                FROM Visits 
+                INNER JOIN Patients
+                ON Visits.PatientID = Patients.PatientID
+                INNER JOIN Orders ON Visits.VisitID = Orders.VisitID
+                INNER JOIN Tests ON Orders.TestID = Tests.TestID
+                WHERE
+                    
+                    Patients.LastName = '{0}'
+                    AND Patients.DOB = '{1}'
+                    AND Patients.FirstName = '{0}'", lName, visitDate, fName);
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
+            try
+            {
+                connection.Open();
+                reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    
+                    visit.VisitID = (int)reader["VisitID"];
+                    visit.VisitDate = (DateTime)reader["VisitDate"];
+                    visit.PatientID = (int)reader["PatientID"];
+                    visit.FirstName = reader["FirstName"].ToString();
+                    visit.MInit = reader["MInit"].ToString();
+                    visit.LastName = reader["LastName"].ToString();
+                    visit.DOB = (DateTime)reader["DOB"];
+                    visit.Systolic = (int)reader["Systolic"];
+                    visit.Diastolic = (int)reader["Diastolic"];
+                    visit.Temperature = (decimal)reader["Temperature"];
+                    visit.RespirationRate = (int)reader["RespirationRate"];
+                    visit.HeartRate = (int)reader["HeartRate"];
+                    visit.Symptoms = reader["Symptoms"].ToString();
+                    visit.Result = reader["Result"].ToString();
+                    visit.TestID = (int)reader["TestID"];
+                    visit.TestName = reader["TestName"].ToString();
+                    visit.Diagnosis = reader["Diagnosis"].ToString();
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return visit;
+        }
+
+
+
+
+
+
      }
 }
 
