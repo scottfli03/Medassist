@@ -33,8 +33,8 @@
             System.Windows.Forms.Label patientNameLabel;
             System.Windows.Forms.Label doctorNameLabel;
             System.Windows.Forms.Label testNameLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisitForm));
             System.Windows.Forms.Label diagnosisLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisitForm));
             this.txtNurse = new System.Windows.Forms.TextBox();
             this.txtRespRate = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -136,6 +136,15 @@
             testNameLabel.Size = new System.Drawing.Size(31, 13);
             testNameLabel.TabIndex = 41;
             testNameLabel.Text = "Test:";
+            // 
+            // diagnosisLabel
+            // 
+            diagnosisLabel.AutoSize = true;
+            diagnosisLabel.Location = new System.Drawing.Point(380, 40);
+            diagnosisLabel.Name = "diagnosisLabel";
+            diagnosisLabel.Size = new System.Drawing.Size(56, 13);
+            diagnosisLabel.TabIndex = 30;
+            diagnosisLabel.Text = "Diagnosis:";
             // 
             // txtNurse
             // 
@@ -257,7 +266,6 @@
             this.txtBoxDiagnosis.Name = "txtBoxDiagnosis";
             this.txtBoxDiagnosis.Size = new System.Drawing.Size(240, 170);
             this.txtBoxDiagnosis.TabIndex = 31;
-            this.txtBoxDiagnosis.TextChanged += new System.EventHandler(this.txtBoxDiagnosis_TextChanged);
             // 
             // btnOrderTest
             // 
@@ -462,9 +470,9 @@
             // 
             this.btnSubmitVitals.Location = new System.Drawing.Point(119, 305);
             this.btnSubmitVitals.Name = "btnSubmitVitals";
-            this.btnSubmitVitals.Size = new System.Drawing.Size(98, 22);
+            this.btnSubmitVitals.Size = new System.Drawing.Size(135, 22);
             this.btnSubmitVitals.TabIndex = 41;
-            this.btnSubmitVitals.Text = "Submit Vitals";
+            this.btnSubmitVitals.Text = "Submit Vitals/Participants";
             this.btnSubmitVitals.UseVisualStyleBackColor = true;
             this.btnSubmitVitals.Click += new System.EventHandler(this.btnSubmitVitals_Click);
             // 
@@ -501,7 +509,6 @@
             this.cmbTest.Size = new System.Drawing.Size(206, 21);
             this.cmbTest.TabIndex = 42;
             this.cmbTest.ValueMember = "TestID";
-            this.cmbTest.SelectedIndexChanged += new System.EventHandler(this.cmbTest_SelectedIndexChanged);
             // 
             // btnAddTest
             // 
@@ -520,7 +527,6 @@
             this.dgvTests.Name = "dgvTests";
             this.dgvTests.Size = new System.Drawing.Size(242, 182);
             this.dgvTests.TabIndex = 43;
-            this.dgvTests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTests_CellContentClick);
             // 
             // btnClear
             // 
@@ -546,7 +552,6 @@
             this.groupBox1.TabIndex = 45;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order Tests";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox2
             // 
@@ -585,16 +590,6 @@
             this.groupBox3.TabIndex = 47;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Participants";
-            // 
-            // diagnosisLabel
-            // 
-            diagnosisLabel.AutoSize = true;
-            diagnosisLabel.Location = new System.Drawing.Point(380, 40);
-            diagnosisLabel.Name = "diagnosisLabel";
-            diagnosisLabel.Size = new System.Drawing.Size(56, 13);
-            diagnosisLabel.TabIndex = 30;
-            diagnosisLabel.Text = "Diagnosis:";
-            diagnosisLabel.Click += new System.EventHandler(this.diagnosisLabel_Click);
             // 
             // VisitForm
             // 
