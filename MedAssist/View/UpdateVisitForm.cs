@@ -31,6 +31,7 @@ namespace MedAssist.View
             txtTemp.Enabled = false;
             cboPatient.Enabled = false;
             txtNurse.Text = EmployeeController.GetEmployeeByID(UserSecurityController.NurseLoggedIn.NurseID).FullName;
+            CurrentPatientController.currentPatient = null;
             this.loadComboBoxes();
         }
 
@@ -40,7 +41,6 @@ namespace MedAssist.View
             cboVisits.DataSource = visitDates;
             cboVisits.DisplayMember = "VisitDate";
             cboVisits.ValueMember = "VisitID";
-
         }
 
         private void GetVisitInfo(string firstName, string lastName, DateTime visitDate)
@@ -96,6 +96,7 @@ namespace MedAssist.View
             visit.DoctorID = (int)cboDoctor.SelectedValue;
             //visit.Diagnosis = txtBoxDiagnosis.Text;
             visit.PatientID = (int)cboPatient.SelectedValue;
+            CurrentPatientController.currentPatient = PatientController.GetPatientWithID(visit.PatientID);
                 if (!string.IsNullOrWhiteSpace(txtBoxDiagnosis.Text))
                 {
                     visit.Diagnosis = txtBoxDiagnosis.Text;
@@ -212,6 +213,25 @@ namespace MedAssist.View
         private void txtBoxFnlDiagnosis_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        private void btnViewUpdateTest_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CurrentPatientController.currentPatient != null)
+                {
+                    TestForm tf = new TestForm();
+                    tf.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please select a patient and visit before reviewing tests", "Patient Selection Needed.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
     }
 }

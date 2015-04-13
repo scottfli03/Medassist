@@ -820,6 +820,58 @@ namespace MedAssist.DAL
             }
             return patientList;
         }
+
+        public static Patient GetPatientWithID(int patientID)
+        {
+            Patient patient = new Patient();
+            SqlConnection connection = MedassistDB.GetConnection();
+            string selectStatement =
+
+                   "SELECT PatientID, FirstName, MInit, DOB, Gender, SSN, LastName, StreetAddress1, StreetAddress2, City, State, ZipCode, Phone " +
+                   "FROM Patients " +
+                   "WHERE PatientID = @PatientID";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
+            selectCommand.Parameters.AddWithValue("@Patient", patientID);
+            try
+            {
+                connection.Open();
+                reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                if (reader.Read())
+                {
+                    patient.PatientID = (int)reader["PatientID"];
+                    patient.FirstName = reader["FirstName"].ToString();
+                    patient.LastName = reader["LastName"].ToString();
+                    patient.MInit = reader["MInit"].ToString();
+                    patient.DOB = (DateTime)reader["DOB"];
+                    patient.Gender = Convert.ToChar(reader["Gender"]);
+                    patient.SSN = reader["SSN"].ToString();
+                    patient.StreetAddr1 = reader["StreetAddress1"].ToString();
+                    patient.StreetAddr2 = reader["StreetAddress2"].ToString();
+                    patient.City = reader["City"].ToString();
+                    patient.State = reader["State"].ToString();
+                    patient.ZipCode = reader["ZipCode"].ToString();
+                    patient.Phone = reader["Phone"].ToString();
+                }
+                else
+                {
+                    patient = null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return patient;
+        }
     }
 }
 
