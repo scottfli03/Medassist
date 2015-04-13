@@ -7,44 +7,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MedAssist.Controller;
+using MedAssist.Model;
 
 namespace MedAssist.View
 {
     public partial class TestForm : Form
     {
+        private BindingList<OrderDetails> orders;
+        private Order newOrder;
+        private Order oldOrder;
         public TestForm()
         {
             InitializeComponent();
         }
 
-        private void ordersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.ordersBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.orderTestDataSet);
-
-        }
-
         private void TestForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'orderTestDataSet.Orders' table. You can move, or remove it, as needed.
-            this.ordersTableAdapter.Fill(this.orderTestDataSet.Orders);
-            // TODO: This line of code loads data into the 'orderTestDataSet.Orders' table. You can move, or remove it, as needed.
-            this.ordersTableAdapter.Fill(this.orderTestDataSet.Orders);
-            // TODO: This line of code loads data into the 'orderTestDataSet.Orders' table. You can move, or remove it, as needed.
-            this.ordersTableAdapter.Fill(this.orderTestDataSet.Orders);
+            txtPatient.Text = CurrentPatientController.currentPatient.FullName;
+            this.FillComboBoxes();
+            orders = OrderController.GetPatientsOrders(CurrentPatientController.currentPatient.PatientID);
         }
 
-        private void fillByTestsToolStripButton_Click(object sender, EventArgs e)
+        private void FillComboBoxes()
         {
-            try
-            {
-                this.testsTableAdapter.FillByTests(this.orderTestDataSet.Tests);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
+            cmbOrderID.DisplayMember = "OrderID";
+            cmbOrderID.ValueMember = "OrderID";
+            cmbOrderID.DataSource = orders;
+        }
+
+        private void buildDGV()
+        {
+            dgvOrders.DataSource = orders;
+        }
+
+        private void getOrderAdjustments()
+        {
 
         }
     }

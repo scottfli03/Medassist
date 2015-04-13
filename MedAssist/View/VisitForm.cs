@@ -40,8 +40,10 @@ namespace MedAssist.View
         /// <param name="e"></param>
         private void VisitForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'orderTestDataSet.Tests' table. You can move, or remove it, as needed.
-            this.testsTableAdapter.Fill(this.orderTestDataSet.Tests);
+            // TODO: This line of code loads data into the 'testDataSet.Tests' table. You can move, or remove it, as needed.
+            this.testsTableAdapter.Fill(this.testDataSet.Tests);
+            // TODO: This line of code loads data into the 'testDataSet.Tests' table. You can move, or remove it, as needed.
+            this.testsTableAdapter.Fill(this.testDataSet.Tests);
             this.loadComboBoxes();
             txtDiastolic.Tag = "Diastolic Reading";
             txtBoxDiagnosis.Tag = "Diagnosis";
@@ -218,6 +220,8 @@ namespace MedAssist.View
                 cmbPatient.DataSource = patientList;
                 cmbPatient.DisplayMember = "FullName";
                 cmbPatient.ValueMember = "PatientID";
+                cmbTest.DisplayMember = "TestName";
+                cmbTest.ValueMember = "TestID";
             }
             catch (Exception ex)
             {

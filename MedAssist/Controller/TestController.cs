@@ -16,5 +16,10 @@ namespace MedAssist.Controller
         {
             return TestDAL.GetTestWithID(testID);
         }
+
+        public static List<Test> GetTest()
+        {
+            return TestDAL.GetTest();
+        }
     }
 }

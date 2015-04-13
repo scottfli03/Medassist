@@ -73,17 +73,19 @@
             this.cmbPatient = new System.Windows.Forms.ComboBox();
             this.cmbDoctor = new System.Windows.Forms.ComboBox();
             this.btnSubmitVitals = new System.Windows.Forms.Button();
-            this.orderTestDataSet = new MedAssist.OrderTestDataSet();
             this.testsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.testsTableAdapter = new MedAssist.OrderTestDataSetTableAdapters.TestsTableAdapter();
-            this.tableAdapterManager1 = new MedAssist.OrderTestDataSetTableAdapters.TableAdapterManager();
-            this.cmbTest = new System.Windows.Forms.ComboBox();
             this.btnAddTest = new System.Windows.Forms.Button();
             this.dgvTests = new System.Windows.Forms.DataGridView();
             this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbTest = new System.Windows.Forms.ComboBox();
+            this.testBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.testDataSet = new MedAssist.TestDataSet();
+            this.testsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.testsTableAdapter = new MedAssist.TestDataSetTableAdapters.TestsTableAdapter();
+            this.tableAdapterManager1 = new MedAssist.TestDataSetTableAdapters.TableAdapterManager();
             nurseIDLabel = new System.Windows.Forms.Label();
             patientNameLabel = new System.Windows.Forms.Label();
             doctorNameLabel = new System.Windows.Forms.Label();
@@ -93,12 +95,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.visitsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitsBindingNavigator)).BeginInit();
             this.visitsBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.orderTestDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTests)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.testDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // nurseIDLabel
@@ -346,7 +350,7 @@
             this.visitsBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.visitsBindingNavigator.Name = "visitsBindingNavigator";
             this.visitsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.visitsBindingNavigator.Size = new System.Drawing.Size(721, 25);
+            this.visitsBindingNavigator.Size = new System.Drawing.Size(731, 25);
             this.visitsBindingNavigator.TabIndex = 39;
             this.visitsBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -476,39 +480,9 @@
             this.btnSubmitVitals.UseVisualStyleBackColor = true;
             this.btnSubmitVitals.Click += new System.EventHandler(this.btnSubmitVitals_Click);
             // 
-            // orderTestDataSet
-            // 
-            this.orderTestDataSet.DataSetName = "OrderTestDataSet";
-            this.orderTestDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // testsBindingSource
             // 
             this.testsBindingSource.DataMember = "Tests";
-            this.testsBindingSource.DataSource = this.orderTestDataSet;
-            // 
-            // testsTableAdapter
-            // 
-            this.testsTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.PatientsTableAdapter = null;
-            this.tableAdapterManager1.TestsTableAdapter = this.testsTableAdapter;
-            this.tableAdapterManager1.UpdateOrder = MedAssist.OrderTestDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager1.VisitsTableAdapter = null;
-            // 
-            // cmbTest
-            // 
-            this.cmbTest.DataSource = this.testsBindingSource;
-            this.cmbTest.DisplayMember = "TestName";
-            this.cmbTest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTest.FormattingEnabled = true;
-            this.cmbTest.Location = new System.Drawing.Point(64, 31);
-            this.cmbTest.Name = "cmbTest";
-            this.cmbTest.Size = new System.Drawing.Size(206, 21);
-            this.cmbTest.TabIndex = 42;
-            this.cmbTest.ValueMember = "TestID";
             // 
             // btnAddTest
             // 
@@ -540,18 +514,30 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbTest);
             this.groupBox1.Controls.Add(this.dgvTests);
             this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.btnOrderTest);
-            this.groupBox1.Controls.Add(this.cmbTest);
             this.groupBox1.Controls.Add(this.btnAddTest);
             this.groupBox1.Controls.Add(testNameLabel);
             this.groupBox1.Location = new System.Drawing.Point(410, 213);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(288, 317);
+            this.groupBox1.Size = new System.Drawing.Size(301, 321);
             this.groupBox1.TabIndex = 45;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order Tests";
+            // 
+            // cmbTest
+            // 
+            this.cmbTest.DataSource = this.testsBindingSource1;
+            this.cmbTest.DisplayMember = "TestName";
+            this.cmbTest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTest.FormattingEnabled = true;
+            this.cmbTest.Location = new System.Drawing.Point(64, 30);
+            this.cmbTest.Name = "cmbTest";
+            this.cmbTest.Size = new System.Drawing.Size(206, 21);
+            this.cmbTest.TabIndex = 45;
+            this.cmbTest.ValueMember = "TestID";
             // 
             // groupBox2
             // 
@@ -591,11 +577,31 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Participants";
             // 
+            // testDataSet
+            // 
+            this.testDataSet.DataSetName = "TestDataSet";
+            this.testDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // testsBindingSource1
+            // 
+            this.testsBindingSource1.DataMember = "Tests";
+            this.testsBindingSource1.DataSource = this.testDataSet;
+            // 
+            // testsTableAdapter
+            // 
+            this.testsTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.TestsTableAdapter = this.testsTableAdapter;
+            this.tableAdapterManager1.UpdateOrder = MedAssist.TestDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // VisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(721, 580);
+            this.ClientSize = new System.Drawing.Size(731, 580);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -613,15 +619,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.visitsBindingNavigator)).EndInit();
             this.visitsBindingNavigator.ResumeLayout(false);
             this.visitsBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.orderTestDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTests)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.testDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -667,16 +675,18 @@
         private System.Windows.Forms.ComboBox cmbPatient;
         private System.Windows.Forms.ComboBox cmbDoctor;
         private System.Windows.Forms.Button btnSubmitVitals;
-        private OrderTestDataSet orderTestDataSet;
         private System.Windows.Forms.BindingSource testsBindingSource;
-        private OrderTestDataSetTableAdapters.TestsTableAdapter testsTableAdapter;
-        private OrderTestDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
-        private System.Windows.Forms.ComboBox cmbTest;
         private System.Windows.Forms.Button btnAddTest;
         private System.Windows.Forms.DataGridView dgvTests;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.BindingSource testBindingSource;
+        private TestDataSet testDataSet;
+        private System.Windows.Forms.BindingSource testsBindingSource1;
+        private TestDataSetTableAdapters.TestsTableAdapter testsTableAdapter;
+        private TestDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
+        private System.Windows.Forms.ComboBox cmbTest;
     }
 }

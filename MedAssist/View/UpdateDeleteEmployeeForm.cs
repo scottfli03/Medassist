@@ -14,9 +14,11 @@ namespace MedAssist.View
 {
     public partial class UpdateDeleteEmployeeForm : Form
     {
-        private bool wasDoctor;
-        private bool wasNurse;
-        private bool wasAdmin;
+        private bool isDoctor;
+        private bool isNurse;
+        private bool isAdmin;
+        private Employee employee;
+        private Employee oldEmployee;
 
         public UpdateDeleteEmployeeForm()
         {
@@ -44,9 +46,9 @@ namespace MedAssist.View
             rBtnFemale.Enabled = false;
             rBtnMale.Enabled = false;
             rBtnNurse.Enabled = false;
-            btnDelete.Enabled = false;
             btnUpdate.Enabled = false;
             dtpDOB.Enabled = false;
+            chkEnabled.Enabled = false;
         }
 
         private void enableFields()
@@ -60,14 +62,11 @@ namespace MedAssist.View
             txtState.Enabled = true;
             txtStreet.Enabled = true;
             txtStreet2.Enabled = true;
-            rBtnAdmin.Enabled = true;
-            rBtnDoctor.Enabled = true;
             rBtnFemale.Enabled = true;
             rBtnMale.Enabled = true;
-            rBtnNurse.Enabled = true;
-            btnDelete.Enabled = true;
             btnUpdate.Enabled = true;
             dtpDOB.Enabled = true;
+            chkEnabled.Enabled = true;
         }
 
         /// <summary>
@@ -83,6 +82,10 @@ namespace MedAssist.View
                 Validator.IsPresent(txtSSN) &&
                 Validator.IsPresent(txtState) &&
                 Validator.IsPresent(txtStreet) &&
+                Validator.IsPresent(txtZip) &&
+                Validator.IsInt64(txtZip) &&
+                Validator.IsInt64(txtPhone) &&
+                Validator.IsState(txtState) &&
                 Validator.IsInt32(txtSSN) &&
                 this.IsValidEmployeeID())
             {
@@ -109,14 +112,14 @@ namespace MedAssist.View
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            Employee employee = null;
+            oldEmployee = null;
             if (this.IsValidEmployeeID()) 
             {
                 try
                 {
-                    employee = EmployeeController.GetEmployeeByID(Int32.Parse(txtEmployeeID.Text));
-                    this.fillEmployeeData(employee);
-                    fillEmployeePosition(employee.EmployeeID);
+                    oldEmployee = EmployeeController.GetEmployeeByID(Int32.Parse(txtEmployeeID.Text));
+                    this.fillEmployeeData();
+                    fillEmployeePosition(oldEmployee.EmployeeID);
                     this.enableFields();
                 }
                 catch (Exception ex)
@@ -130,29 +133,38 @@ namespace MedAssist.View
             }
         }
 
-        private void fillEmployeeData(Employee employee)
+        private void fillEmployeeData()
         {
-            if (employee != null)
+            if (oldEmployee != null)
             {
                 try
                 {
-                    txtCity.Text = employee.City;
-                    txtFirstName.Text = employee.FirstName;
-                    txtLastName.Text = employee.LastName;
-                    txtMinit.Text = employee.MInit;
-                    txtPhone.Text = employee.Phone.ToString();
-                    txtSSN.Text = employee.SSN.ToString();
-                    txtState.Text = employee.State;
-                    txtStreet.Text = employee.StreetAddr1;
-                    txtStreet2.Text = employee.StreetAddr2;
-                    dtpDOB.Value = employee.DOB;
-                    if (employee.Gender == 'm' || employee.Gender == 'M')
+                    txtCity.Text = oldEmployee.City;
+                    txtFirstName.Text = oldEmployee.FirstName;
+                    txtLastName.Text = oldEmployee.LastName;
+                    txtMinit.Text = oldEmployee.MInit;
+                    txtPhone.Text = oldEmployee.Phone.ToString();
+                    txtSSN.Text = oldEmployee.SSN.ToString();
+                    txtState.Text = oldEmployee.State;
+                    txtStreet.Text = oldEmployee.StreetAddr1;
+                    txtStreet2.Text = oldEmployee.StreetAddr2;
+                    txtZip.Text = oldEmployee.ZipCode;
+                    dtpDOB.Value = oldEmployee.DOB;
+                    if (oldEmployee.Gender == 'm' || oldEmployee.Gender == 'M')
                     {
                         rBtnMale.Checked = true;
                     }
-                    if (employee.Gender == 'f' || employee.Gender == 'F')
+                    if (oldEmployee.Gender == 'f' || oldEmployee.Gender == 'F')
                     {
                         rBtnFemale.Checked = true;
+                    }
+                    if (oldEmployee.Inactive)
+                    {
+                        chkEnabled.Checked = false;
+                    }
+                    else
+                    {
+                        chkEnabled.Checked = true;
                     }
                 }
                 catch (Exception ex)
@@ -167,17 +179,17 @@ namespace MedAssist.View
             if (EmployeeController.isEmployeeDoctor(employeeID))
             {
                 rBtnDoctor.Checked = true;
-                this.wasDoctor = true;
+                this.isDoctor = true;
             }
             else if (EmployeeController.isEmployeeNurse(employeeID))
             {
                 rBtnNurse.Checked = true;
-                this.wasNurse = true;
+                this.isNurse = true;
             }
             else if (EmployeeController.isEmployeeAdmin(employeeID))
             {
                 rBtnAdmin.Checked = true;
-                this.wasAdmin = true;
+                this.isAdmin = true;
             }
             else
             {
@@ -185,36 +197,27 @@ namespace MedAssist.View
             }
         }
 
-        /// <summary>
-        /// Sees if the Employees position is being updated.
-        /// </summary>
-        /// <returns>1 if changed from Doctor, 2 changed from Nurse, 
-        /// 3 changed from admin, 4 unchanged</returns>
-        private int isPositionChanged()
-        {
-            //TODO: Test that this works.
-            if (this.wasDoctor == true && !rBtnDoctor.Checked)
-            {
-                return 1;
-            }
-            else if (this.wasNurse == true && !rBtnNurse.Checked)
-            {
-                return 2;
-            }
-            else if (this.wasAdmin == true && !rBtnAdmin.Checked)
-            {
-                return 3;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //TODO: make sure admin count will not become zero
-            //TODO: check if position changed. Delete last position if it was.
+            try
+            {
+                getEmployeeData();
+                bool success = EmployeeController.UpdateEmployee(oldEmployee, employee);
+                if (success)
+                {
+                    MessageBox.Show("Employee " + " " + txtEmployeeID + " was updated properly.", "Employee Updated");
+                }
+                else
+                {
+                    MessageBox.Show("Either the Employee was already updated or there was another conflict. " + 
+                        "Employee was not updated.", "Employee Not Updated!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -228,6 +231,48 @@ namespace MedAssist.View
             if (result == DialogResult.Yes)
             {
                 this.Close();
+            }
+        }
+
+        private void getEmployeeData()
+        {
+            if (IsValidEmployeeData())
+            {
+                try
+                {
+                    employee = new Employee();
+                    employee.City = txtCity.Text;
+                    employee.FirstName = txtFirstName.Text;
+                    employee.LastName = txtLastName.Text;
+                    employee.MInit = txtMinit.Text;
+                    employee.Phone = txtPhone.Text;
+                    employee.SSN = txtSSN.Text;
+                    employee.State = txtState.Text;
+                    employee.ZipCode = txtZip.Text;
+                    employee.StreetAddr1 = txtStreet.Text;
+                    employee.StreetAddr2 = txtStreet2.Text;
+                    employee.DOB = dtpDOB.Value;
+                    if (rBtnMale.Checked)
+                    {
+                        employee.Gender = 'M';
+                    }
+                    if (rBtnFemale.Checked)
+                    {
+                        employee.Gender = 'F';
+                    }
+                    if (chkEnabled.Checked)
+                    {
+                        employee.Inactive = false;
+                    }
+                    else
+                    {
+                        employee.Inactive = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
             }
         }
     }

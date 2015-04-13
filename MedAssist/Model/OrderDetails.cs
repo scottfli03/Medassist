@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MedAssist.Model
 {
-    class Order
+    class OrderDetails
     {
         private int orderID;
         private DateTime orderDate;
@@ -14,8 +14,8 @@ namespace MedAssist.Model
         private char? result;
         private int testID;
         private int visitID;
-
-        public Order() { }
+        private string patientName;
+        private string testName;
 
         public int OrderID
         {
@@ -86,6 +86,30 @@ namespace MedAssist.Model
             set
             {
                 visitID = value;
+            }
+        }
+
+        public string PatientName
+        {
+            get
+            {
+                return patientName;
+            }
+            set
+            {
+                patientName = value;
+            }
+        }
+
+        public string TestName
+        {
+            get
+            {
+                return testName;
+            }
+            set
+            {
+                testName = value;
             }
         }
     }

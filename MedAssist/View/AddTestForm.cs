@@ -120,5 +120,42 @@ namespace MedAssist.View
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (IsValidData())
+            {
+                Test oldTest = new Test();
+                this.PutTestData(oldTest);
+
+                try
+                {
+                    if (!TestDAL.DeleteTestWithIDAndName(oldTest)) 
+                    {
+                        MessageBox.Show("No test found");
+                        this.DialogResult = DialogResult.Retry;
+                    }
+                    else
+                    {
+                        test = oldTest;
+
+                        this.DialogResult = DialogResult.OK;
+                        MessageBox.Show("Test has been deleted");
+
+                    }
+
+                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Id already in use. Please select another");
+                }
+
+                finally
+                {
+                    this.Close();
+                }
+            }
+        }
     }
 }

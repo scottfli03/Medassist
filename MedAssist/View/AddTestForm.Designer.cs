@@ -34,6 +34,7 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTestID = new System.Windows.Forms.TextBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTestName
@@ -55,7 +56,7 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(247, 99);
+            this.addButton.Location = new System.Drawing.Point(164, 99);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
             this.addButton.TabIndex = 2;
@@ -90,11 +91,22 @@
             this.txtTestID.Size = new System.Drawing.Size(198, 20);
             this.txtTestID.TabIndex = 5;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(245, 99);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.button1_Click);
+            // 
             // AddTestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 146);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtTestID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cancelButton);
@@ -102,7 +114,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTestName);
             this.Name = "AddTestForm";
-            this.Text = "Add Test Form";
+            this.Text = "Add/Delete Test Form";
             this.Load += new System.EventHandler(this.AddTestForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -117,5 +129,6 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTestID;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
