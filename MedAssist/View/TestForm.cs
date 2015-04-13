@@ -14,6 +14,9 @@ namespace MedAssist.View
 {
     public partial class TestForm : Form
     {
+        private BindingList<OrderDetails> orders;
+        private Order newOrder;
+        private Order oldOrder;
         public TestForm()
         {
             InitializeComponent();
@@ -23,10 +26,24 @@ namespace MedAssist.View
         {
             txtPatient.Text = CurrentPatientController.currentPatient.FullName;
             this.FillComboBoxes();
+            orders = OrderController.GetPatientsOrders(CurrentPatientController.currentPatient.PatientID);
         }
 
         private void FillComboBoxes()
         {
+            cmbOrderID.DisplayMember = "OrderID";
+            cmbOrderID.ValueMember = "OrderID";
+            cmbOrderID.DataSource = orders;
+        }
+
+        private void buildDGV()
+        {
+            dgvOrders.DataSource = orders;
+        }
+
+        private void getOrderAdjustments()
+        {
+
         }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gdvTests = new System.Windows.Forms.DataGridView();
+            this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.txtPatient = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -36,16 +36,17 @@
             this.cmbOrderID = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.gdvTests)).BeginInit();
+            this.btnClose = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.SuspendLayout();
             // 
-            // gdvTests
+            // dgvOrders
             // 
-            this.gdvTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gdvTests.Location = new System.Drawing.Point(12, 128);
-            this.gdvTests.Name = "gdvTests";
-            this.gdvTests.Size = new System.Drawing.Size(911, 258);
-            this.gdvTests.TabIndex = 0;
+            this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrders.Location = new System.Drawing.Point(12, 128);
+            this.dgvOrders.Name = "dgvOrders";
+            this.dgvOrders.Size = new System.Drawing.Size(911, 258);
+            this.dgvOrders.TabIndex = 0;
             // 
             // txtPatient
             // 
@@ -66,6 +67,9 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "\"-\"",
+            "\"+\""});
             this.comboBox1.Location = new System.Drawing.Point(70, 69);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
@@ -99,18 +103,28 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(241, 67);
+            this.btnSubmit.Location = new System.Drawing.Point(70, 96);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 7;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(161, 96);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 8;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(940, 402);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbOrderID);
@@ -118,11 +132,11 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPatient);
-            this.Controls.Add(this.gdvTests);
+            this.Controls.Add(this.dgvOrders);
             this.Name = "TestForm";
             this.Text = "TestForm";
             this.Load += new System.EventHandler(this.TestForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gdvTests)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,7 +144,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView gdvTests;
+        private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.TextBox txtPatient;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -138,6 +152,7 @@
         private System.Windows.Forms.ComboBox cmbOrderID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnClose;
 
 
 

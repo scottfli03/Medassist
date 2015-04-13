@@ -39,7 +39,6 @@
             this.txtStreet = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.txtEmployeeID = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -60,6 +59,10 @@
             this.RadioGroupGender = new System.Windows.Forms.GroupBox();
             this.rBtnFemale = new System.Windows.Forms.RadioButton();
             this.rBtnMale = new System.Windows.Forms.RadioButton();
+            this.chkEnabled = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtZip = new System.Windows.Forms.TextBox();
             this.radioGroupPosition.SuspendLayout();
             this.RadioGroupGender.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +70,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 50);
+            this.label1.Location = new System.Drawing.Point(32, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 0;
@@ -76,6 +79,7 @@
             // txtFirstName
             // 
             this.txtFirstName.Location = new System.Drawing.Point(120, 85);
+            this.txtFirstName.MaxLength = 50;
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(148, 20);
             this.txtFirstName.TabIndex = 1;
@@ -84,7 +88,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 118);
+            this.label2.Location = new System.Drawing.Point(32, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 3;
@@ -93,7 +97,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(44, 88);
+            this.label3.Location = new System.Drawing.Point(32, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 4;
@@ -102,6 +106,7 @@
             // txtMinit
             // 
             this.txtMinit.Location = new System.Drawing.Point(310, 85);
+            this.txtMinit.MaxLength = 1;
             this.txtMinit.Name = "txtMinit";
             this.txtMinit.Size = new System.Drawing.Size(19, 20);
             this.txtMinit.TabIndex = 6;
@@ -110,6 +115,7 @@
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(120, 111);
+            this.txtLastName.MaxLength = 50;
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(148, 20);
             this.txtLastName.TabIndex = 7;
@@ -127,7 +133,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(38, 166);
+            this.label6.Location = new System.Drawing.Point(32, 166);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 13);
             this.label6.TabIndex = 10;
@@ -136,6 +142,7 @@
             // txtStreet
             // 
             this.txtStreet.Location = new System.Drawing.Point(120, 163);
+            this.txtStreet.MaxLength = 100;
             this.txtStreet.Name = "txtStreet";
             this.txtStreet.Size = new System.Drawing.Size(148, 20);
             this.txtStreet.TabIndex = 11;
@@ -144,7 +151,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(81, 222);
+            this.label7.Location = new System.Drawing.Point(32, 218);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(38, 13);
             this.label7.TabIndex = 12;
@@ -153,24 +160,15 @@
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(120, 215);
+            this.txtPhone.MaxLength = 10;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(100, 20);
             this.txtPhone.TabIndex = 13;
             this.txtPhone.Tag = "\"Phone\"";
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(199, 264);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 16;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // txtEmployeeID
             // 
-            this.txtEmployeeID.Location = new System.Drawing.Point(120, 50);
+            this.txtEmployeeID.Location = new System.Drawing.Point(120, 52);
             this.txtEmployeeID.Name = "txtEmployeeID";
             this.txtEmployeeID.Size = new System.Drawing.Size(100, 20);
             this.txtEmployeeID.TabIndex = 17;
@@ -187,7 +185,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(60, 264);
+            this.btnUpdate.Location = new System.Drawing.Point(107, 256);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 19;
@@ -198,6 +196,7 @@
             // txtStreet2
             // 
             this.txtStreet2.Location = new System.Drawing.Point(120, 189);
+            this.txtStreet2.MaxLength = 100;
             this.txtStreet2.Name = "txtStreet2";
             this.txtStreet2.Size = new System.Drawing.Size(148, 20);
             this.txtStreet2.TabIndex = 22;
@@ -223,6 +222,7 @@
             // txtState
             // 
             this.txtState.Location = new System.Drawing.Point(310, 163);
+            this.txtState.MaxLength = 2;
             this.txtState.Name = "txtState";
             this.txtState.Size = new System.Drawing.Size(38, 20);
             this.txtState.TabIndex = 25;
@@ -231,15 +231,16 @@
             // txtCity
             // 
             this.txtCity.Location = new System.Drawing.Point(310, 137);
+            this.txtCity.MaxLength = 35;
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(148, 20);
+            this.txtCity.Size = new System.Drawing.Size(142, 20);
             this.txtCity.TabIndex = 26;
             this.txtCity.Tag = "\"City\"";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(49, 144);
+            this.label9.Location = new System.Drawing.Point(32, 144);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(29, 13);
             this.label9.TabIndex = 28;
@@ -248,6 +249,7 @@
             // txtSSN
             // 
             this.txtSSN.Location = new System.Drawing.Point(120, 137);
+            this.txtSSN.MaxLength = 9;
             this.txtSSN.Name = "txtSSN";
             this.txtSSN.Size = new System.Drawing.Size(100, 20);
             this.txtSSN.TabIndex = 29;
@@ -264,7 +266,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(335, 264);
+            this.btnCancel.Location = new System.Drawing.Point(280, 256);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 34;
@@ -332,7 +334,7 @@
             this.RadioGroupGender.Controls.Add(this.rBtnMale);
             this.RadioGroupGender.Location = new System.Drawing.Point(280, 189);
             this.RadioGroupGender.Name = "RadioGroupGender";
-            this.RadioGroupGender.Size = new System.Drawing.Size(178, 46);
+            this.RadioGroupGender.Size = new System.Drawing.Size(172, 46);
             this.RadioGroupGender.TabIndex = 37;
             this.RadioGroupGender.TabStop = false;
             this.RadioGroupGender.Text = "Gender";
@@ -359,11 +361,51 @@
             this.rBtnMale.Text = "Male";
             this.rBtnMale.UseVisualStyleBackColor = true;
             // 
+            // chkEnabled
+            // 
+            this.chkEnabled.AutoSize = true;
+            this.chkEnabled.Location = new System.Drawing.Point(199, 260);
+            this.chkEnabled.Name = "chkEnabled";
+            this.chkEnabled.Size = new System.Drawing.Size(65, 17);
+            this.chkEnabled.TabIndex = 38;
+            this.chkEnabled.Text = "Enabled";
+            this.chkEnabled.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(32, 192);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 13);
+            this.label11.TabIndex = 39;
+            this.label11.Text = "Street Address2";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(354, 166);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(22, 13);
+            this.label12.TabIndex = 68;
+            this.label12.Text = "Zip";
+            // 
+            // txtZip
+            // 
+            this.txtZip.Location = new System.Drawing.Point(382, 163);
+            this.txtZip.MaxLength = 10;
+            this.txtZip.Name = "txtZip";
+            this.txtZip.Size = new System.Drawing.Size(94, 20);
+            this.txtZip.TabIndex = 67;
+            // 
             // UpdateDeleteEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 309);
+            this.ClientSize = new System.Drawing.Size(534, 304);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.txtZip);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.chkEnabled);
             this.Controls.Add(this.RadioGroupGender);
             this.Controls.Add(this.radioGroupPosition);
             this.Controls.Add(this.dtpDOB);
@@ -379,7 +421,6 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtEmployeeID);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtStreet);
@@ -417,7 +458,6 @@
         private System.Windows.Forms.TextBox txtStreet;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtEmployeeID;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnUpdate;
@@ -438,6 +478,10 @@
         private System.Windows.Forms.GroupBox RadioGroupGender;
         private System.Windows.Forms.RadioButton rBtnFemale;
         private System.Windows.Forms.RadioButton rBtnMale;
+        private System.Windows.Forms.CheckBox chkEnabled;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtZip;
 
     }
 }

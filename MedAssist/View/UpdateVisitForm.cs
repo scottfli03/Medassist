@@ -16,6 +16,7 @@ namespace MedAssist.View
     public partial class UpdateVisitForm : Form
     {
         private Visit visit;
+        private List<Visit> visitDates;
         private List<Patient> patientList;
         private List<Employee> doctorList;
 
@@ -28,18 +29,33 @@ namespace MedAssist.View
             txtRespRate.Enabled = false;
             txtSymptoms.Enabled = false;
             txtTemp.Enabled = false;
+            cboPatient.Enabled = false;
+            cboDoctor.Enabled = false;
+            txtNurse.Enabled = false;
+            txtBoxFnlDiagnosis.Enabled = false;
             txtNurse.Text = EmployeeController.GetEmployeeByID(UserSecurityController.NurseLoggedIn.NurseID).FullName;
             this.loadComboBoxes();
         }
 
-        private void GetVisitInfo(string firstName, string lastName, DateTime visitDate)
+        private void GetVisitsByPatient(string firstName, string lastName)
+        {
+            
+            visitDates = VisitDAL.GetListVisitDates(firstName, lastName);
+            cboVisits.DataSource = visitDates;    
+            cboVisits.DisplayMember = "VisitDateID";
+            cboVisits.ValueMember = "VisitID";
+            
+
+        }
+
+        private void GetVisitInfo(int visitID)
         {
             try
             {
 
-                visit = VisitDAL.GetVisitToUpdate(firstName, lastName, visitDate); 
+                visit = VisitDAL.GetVisitToUpdate(visitID);
                 if (visit == null)
-                    MessageBox.Show("No Visit found with this First Name, Last Name or Visit Date. " +
+                    MessageBox.Show("No Visit found with this Visit ID. " +
                                     "Please try again.", "Visit Not Found");
                 else
                 {
@@ -62,20 +78,20 @@ namespace MedAssist.View
             txtHeartRate.Text = visit.HeartRate.ToString();
             txtTemp.Text = visit.Temperature.ToString();
             txtRespRate.Text = visit.RespirationRate.ToString();
-            txtBoxDiagnosis.Text = visit.Diagnosis;
+            //txtBoxDiagnosis.Text = visit.Diagnosis; 
             txtSymptoms.Text = visit.Symptoms;
+            txtBoxFnlDiagnosis.Text = visit.Diagnosis;
         }
 
         private void btnSearchVisit_Click(object sender, EventArgs e)
         {
-            if (Validator.IsPresent(txtSearchFirstName) &&
-               Validator.IsPresent(txtSearchLastName) &&
-                Validator.IsPresent(dateTimePickerSearchVisit))
+
+            if(Validator.IsPresent(txtSearchFirstName) &&
+                Validator.IsPresent(txtSearchLastName))
             {
-            string firstName = txtSearchFirstName.Text;
-            string lastName = txtSearchLastName.Text;
-            DateTime visitDate = dateTimePickerSearchVisit.Value.Date;
-            this.GetVisitInfo(firstName, lastName, visitDate);
+                string firstName = txtSearchFirstName.Text;
+                string lastName = txtSearchLastName.Text;
+                this.GetVisitsByPatient(firstName, lastName);
             }
         }
 
@@ -83,17 +99,7 @@ namespace MedAssist.View
         {
             try
             {
-            visit.DoctorID = (int)cboDoctor.SelectedValue;
-            //visit.Diagnosis = txtBoxDiagnosis.Text;
-            visit.PatientID = (int)cboPatient.SelectedValue;
-                if (!string.IsNullOrWhiteSpace(txtBoxDiagnosis.Text))
-                {
-                    visit.Diagnosis = txtBoxDiagnosis.Text;
-                }
-                else
-                {
-                    visit.Diagnosis = string.Empty;
-                }
+                visit.Diagnosis = txtBoxDiagnosis.Text + " " + txtBoxFnlDiagnosis.Text;
             }
             catch (Exception ex)
             {
@@ -112,7 +118,6 @@ namespace MedAssist.View
                 Validator.IsPresent(txtSystolic) &&
                 Validator.IsPresent(txtDiastolic) &&
                 Validator.IsPresent(cmbDoctor) &&
-                Validator.IsPresent(txtBoxDiagnosis) &&
                 Validator.IsPresent(txtTemp) &&
                 Validator.IsInt32(txtDiastolic) &&
                 Validator.IsInt32(txtHeartRate) &&
@@ -193,5 +198,15 @@ namespace MedAssist.View
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
+
+        private void btnGetVisitInfo_Click(object sender, EventArgs e)
+        {
+
+            int visitID = Convert.ToInt32(cboVisits.SelectedValue);
+            this.GetVisitInfo(visitID);
+
+        }
+
+
     }
 }

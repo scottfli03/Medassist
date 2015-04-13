@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MedAssist.Model;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace MedAssist.DAL
 {
@@ -388,69 +389,38 @@ namespace MedAssist.DAL
         }
 
 
-        public static Visit GetVisitToUpdate(string fName, string lName, DateTime visitDate)
+        public static Visit GetVisitToUpdate(int visitID)
         {
             Visit visit = new Visit();
             SqlConnection connection = MedassistDB.GetConnection();
-
-            var selectStatement = string.Format(@"
-                SELECT        
-                    Visits.VisitID
-                    ,Visits.VisitDate
-                    ,Visits.PatientID
-                    ,Visits.Diagnosis
-                    ,Visits.Systolic
-                    ,Visits.Diastolic
-                    ,Visits.Temperature
-                    ,Visits.RespirationRate
-                    ,Visits.HeartRate
-                    ,Visits.Symptoms
-                    ,Patients.FirstName
-                    ,Patients.MInit
-                    ,Patients.LastName
-                    ,Patients.DOB
-                    ,Orders.Result
-                    ,Orders.TestID
-                    ,Tests.TestName
-                FROM Visits 
-                INNER JOIN Patients
-                ON Visits.PatientID = Patients.PatientID
-                INNER JOIN Orders ON Visits.VisitID = Orders.VisitID
-                INNER JOIN Tests ON Orders.TestID = Tests.TestID
-                WHERE
-                    
-                    Patients.LastName = '{0}'
-                    AND Patients.DOB = '{1}'
-                    AND Patients.FirstName = '{0}'", lName, visitDate, fName);
+            string selectStatement =
+                "SELECT Visits.VisitID, Visits.VisitDate, Visits.PatientID, Visits.Diagnosis, Visits.Systolic, Visits.Diastolic, " +
+                "Visits.Temperature, Visits.RespirationRate, Visits.HeartRate, Visits.Symptoms " +
+                //"Patients.FirstName, Patients.LastName, " +
+                //"Employees.FirstName, Employees.LastName " +
+                "FROM Visits " + 
+                //"JOIN Patients ON Visits.PatientID = Patients.PatientID " +
+                //"JOIN Employees ON Visits.DoctorID = Employees.EmployeeID " +
+                "WHERE Visits.VisitID = @VisitID";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
+            selectCommand.Parameters.AddWithValue("@VisitID", visitID);
             try
             {
                 connection.Open();
-                reader = selectCommand.ExecuteReader();
-                while (reader.Read())
+                reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                if (reader.Read())
                 {
-
-                    
-                    visit.VisitID = (int)reader["VisitID"];
-                    visit.VisitDate = (DateTime)reader["VisitDate"];
-                    visit.PatientID = (int)reader["PatientID"];
-                    visit.FirstName = reader["FirstName"].ToString();
-                    visit.MInit = reader["MInit"].ToString();
-                    visit.LastName = reader["LastName"].ToString();
-                    visit.DOB = (DateTime)reader["DOB"];
+                    //visit.VisitID = (int)reader["VisitID"];
+                    //visit.VisitDate = (DateTime)reader["VisitDate"];
                     visit.Systolic = (int)reader["Systolic"];
                     visit.Diastolic = (int)reader["Diastolic"];
                     visit.Temperature = (decimal)reader["Temperature"];
                     visit.RespirationRate = (int)reader["RespirationRate"];
                     visit.HeartRate = (int)reader["HeartRate"];
                     visit.Symptoms = reader["Symptoms"].ToString();
-                    visit.Result = reader["Result"].ToString();
-                    visit.TestID = (int)reader["TestID"];
-                    visit.TestName = reader["TestName"].ToString();
                     visit.Diagnosis = reader["Diagnosis"].ToString();
-
                 }
             }
             catch (SqlException ex)
@@ -467,7 +437,48 @@ namespace MedAssist.DAL
             return visit;
         }
 
-
+        public static List<Visit> GetListVisitDates(string firstName, string lastName)
+        {
+            List<Visit> visitList = new List<Visit>();
+            SqlConnection connection = MedassistDB.GetConnection();
+            String selectStatement = "SELECT VisitID, VisitDate " +
+                "FROM Visits JOIN Patients ON Visits.PatientID = Patients.PatientID " +
+                "WHERE Patients.FirstName = @FirstName AND Patients.LastName = @LastName";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
+            selectCommand.Parameters.AddWithValue("@FirstName", firstName);
+            selectCommand.Parameters.AddWithValue("@LastName", lastName);
+            try
+            {
+                connection.Open();
+                reader = selectCommand.ExecuteReader();
+      
+                while (reader.Read())
+                {
+                    Patient patient = new Patient();
+                    Visit visit = new Visit();
+                    visit.VisitID = (int)reader["VisitID"];
+                    visit.VisitDate = (DateTime)reader["VisitDate"];
+                    visitList.Add(visit);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return visitList;
+        }
 
 
 

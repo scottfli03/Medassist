@@ -11,11 +11,11 @@ namespace MedAssist.Model
         private int orderID;
         private DateTime orderDate;
         private DateTime? datePerformed;
-        private Boolean? result;
+        private char? result;
         private int testID;
         private int visitID;
         private string patientName;
-        private string TestName;
+        private string testName;
 
         public int OrderID
         {
@@ -53,7 +53,7 @@ namespace MedAssist.Model
             }
         }
 
-        public Boolean? Result
+        public char? Result
         {
             get
             {
@@ -86,6 +86,30 @@ namespace MedAssist.Model
             set
             {
                 visitID = value;
+            }
+        }
+
+        public string PatientName
+        {
+            get
+            {
+                return patientName;
+            }
+            set
+            {
+                patientName = value;
+            }
+        }
+
+        public string TestName
+        {
+            get
+            {
+                return testName;
+            }
+            set
+            {
+                testName = value;
             }
         }
     }
