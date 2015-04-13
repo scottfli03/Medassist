@@ -30,6 +30,9 @@ namespace MedAssist.View
             txtSymptoms.Enabled = false;
             txtTemp.Enabled = false;
             cboPatient.Enabled = false;
+            cboDoctor.Enabled = false;
+            txtNurse.Enabled = false;
+            txtBoxFnlDiagnosis.Enabled = false;
             txtNurse.Text = EmployeeController.GetEmployeeByID(UserSecurityController.NurseLoggedIn.NurseID).FullName;
             this.loadComboBoxes();
         }
@@ -75,8 +78,9 @@ namespace MedAssist.View
             txtHeartRate.Text = visit.HeartRate.ToString();
             txtTemp.Text = visit.Temperature.ToString();
             txtRespRate.Text = visit.RespirationRate.ToString();
-            txtBoxDiagnosis.Text = visit.Diagnosis;
+            //txtBoxDiagnosis.Text = visit.Diagnosis; 
             txtSymptoms.Text = visit.Symptoms;
+            txtBoxFnlDiagnosis.Text = visit.Diagnosis;
         }
 
         private void btnSearchVisit_Click(object sender, EventArgs e)
@@ -95,17 +99,7 @@ namespace MedAssist.View
         {
             try
             {
-            visit.DoctorID = (int)cboDoctor.SelectedValue;
-            //visit.Diagnosis = txtBoxDiagnosis.Text;
-            visit.PatientID = (int)cboPatient.SelectedValue;
-                if (!string.IsNullOrWhiteSpace(txtBoxDiagnosis.Text))
-                {
-                    visit.Diagnosis = txtBoxDiagnosis.Text;
-                }
-                else
-                {
-                    visit.Diagnosis = string.Empty;
-                }
+                visit.Diagnosis = txtBoxDiagnosis.Text + " " + txtBoxFnlDiagnosis.Text;
             }
             catch (Exception ex)
             {
@@ -124,7 +118,6 @@ namespace MedAssist.View
                 Validator.IsPresent(txtSystolic) &&
                 Validator.IsPresent(txtDiastolic) &&
                 Validator.IsPresent(cmbDoctor) &&
-                Validator.IsPresent(txtBoxDiagnosis) &&
                 Validator.IsPresent(txtTemp) &&
                 Validator.IsInt32(txtDiastolic) &&
                 Validator.IsInt32(txtHeartRate) &&
@@ -204,6 +197,14 @@ namespace MedAssist.View
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void btnGetVisitInfo_Click(object sender, EventArgs e)
+        {
+
+            int visitID = Convert.ToInt32(cboVisits.SelectedValue);
+            this.GetVisitInfo(visitID);
+
         }
 
 

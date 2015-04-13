@@ -395,31 +395,25 @@ namespace MedAssist.DAL
             SqlConnection connection = MedassistDB.GetConnection();
             string selectStatement =
                 "SELECT Visits.VisitID, Visits.VisitDate, Visits.PatientID, Visits.Diagnosis, Visits.Systolic, Visits.Diastolic, " +
-                "Visits.Temperature, Visits.RespirationRate, Visits.HeartRate, Visits.Symptoms, Patients.FirstName, " +
-                "Patients.LastName, Employees.FirstName, Employees.LastName " +
+                "Visits.Temperature, Visits.RespirationRate, Visits.HeartRate, Visits.Symptoms " +
+                //"Patients.FirstName, Patients.LastName, " +
+                //"Employees.FirstName, Employees.LastName " +
                 "FROM Visits " + 
-                "INNER JOIN Patients ON Visits.PatientID = Patients.PatientID " +
-                "INNER JOIN Employees ON Visits.DoctorID = Employees.EmployeeID " +
+                //"JOIN Patients ON Visits.PatientID = Patients.PatientID " +
+                //"JOIN Employees ON Visits.DoctorID = Employees.EmployeeID " +
                 "WHERE Visits.VisitID = @VisitID";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
-            selectCommand.Parameters.AddWithValue("@VisitDate", visitID);
-
-
+            selectCommand.Parameters.AddWithValue("@VisitID", visitID);
             try
             {
                 connection.Open();
                 reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
                 if (reader.Read())
                 {
-
-                    Employee employee = new Employee();
-                    Patient patient = new Patient();
-                    visit.VisitID = (int)reader["VisitID"];
-                    visit.VisitDate = (DateTime)reader["VisitDate"];
-                    visit.FirstName = reader["FirstName"].ToString();
-                    visit.LastName = reader["LastName"].ToString();
+                    //visit.VisitID = (int)reader["VisitID"];
+                    //visit.VisitDate = (DateTime)reader["VisitDate"];
                     visit.Systolic = (int)reader["Systolic"];
                     visit.Diastolic = (int)reader["Diastolic"];
                     visit.Temperature = (decimal)reader["Temperature"];
@@ -427,8 +421,6 @@ namespace MedAssist.DAL
                     visit.HeartRate = (int)reader["HeartRate"];
                     visit.Symptoms = reader["Symptoms"].ToString();
                     visit.Diagnosis = reader["Diagnosis"].ToString();
-
-
                 }
             }
             catch (SqlException ex)

@@ -66,7 +66,7 @@
             this.btnViewUpdateTest = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGetVisitInfo = new System.Windows.Forms.Button();
             this.gpBoxFindPatientVisits = new System.Windows.Forms.GroupBox();
             this.gpBoxVisitDates = new System.Windows.Forms.GroupBox();
             nurseIDLabel = new System.Windows.Forms.Label();
@@ -148,7 +148,6 @@
             this.txtSearchFirstName.Name = "txtSearchFirstName";
             this.txtSearchFirstName.Size = new System.Drawing.Size(103, 20);
             this.txtSearchFirstName.TabIndex = 73;
-
             // 
             // label13
             // 
@@ -399,7 +398,6 @@
             this.txtBoxFnlDiagnosis.Name = "txtBoxFnlDiagnosis";
             this.txtBoxFnlDiagnosis.Size = new System.Drawing.Size(272, 144);
             this.txtBoxFnlDiagnosis.TabIndex = 92;
-
             // 
             // btnViewUpdateTest
             // 
@@ -428,15 +426,15 @@
             this.label11.TabIndex = 88;
             this.label11.Text = "Tests:";
             // 
-            // button1
+            // btnGetVisitInfo
             // 
-            this.button1.Location = new System.Drawing.Point(245, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 93;
-            this.button1.Text = "Get Visit Info";
-            this.button1.UseVisualStyleBackColor = true;
-
+            this.btnGetVisitInfo.Location = new System.Drawing.Point(245, 20);
+            this.btnGetVisitInfo.Name = "btnGetVisitInfo";
+            this.btnGetVisitInfo.Size = new System.Drawing.Size(75, 23);
+            this.btnGetVisitInfo.TabIndex = 93;
+            this.btnGetVisitInfo.Text = "Get Visit Info";
+            this.btnGetVisitInfo.UseVisualStyleBackColor = true;
+            this.btnGetVisitInfo.Click += new System.EventHandler(this.btnGetVisitInfo_Click);
             // 
             // gpBoxFindPatientVisits
             // 
@@ -449,7 +447,7 @@
             // 
             // gpBoxVisitDates
             // 
-            this.gpBoxVisitDates.Controls.Add(this.button1);
+            this.gpBoxVisitDates.Controls.Add(this.btnGetVisitInfo);
             this.gpBoxVisitDates.Controls.Add(this.cboVisits);
             this.gpBoxVisitDates.Location = new System.Drawing.Point(338, 7);
             this.gpBoxVisitDates.Name = "gpBoxVisitDates";
@@ -531,7 +529,7 @@
         private System.Windows.Forms.Button btnViewUpdateTest;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGetVisitInfo;
         private System.Windows.Forms.GroupBox gpBoxFindPatientVisits;
         private System.Windows.Forms.GroupBox gpBoxVisitDates;
     }
