@@ -67,8 +67,7 @@ namespace MedAssist.Controller
 
         public static bool UpdateEmployee(Employee oldEmployee, Employee employee) 
         {
-            //return EmployeeDAL.UpdateEmployee(oldEmployee, employee);
-            return false;
+            return EmployeeDAL.UpdateEmployee(oldEmployee, employee);
         }
     }
 }

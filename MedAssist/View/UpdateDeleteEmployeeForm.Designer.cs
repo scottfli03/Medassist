@@ -61,6 +61,8 @@
             this.rBtnMale = new System.Windows.Forms.RadioButton();
             this.chkEnabled = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtZip = new System.Windows.Forms.TextBox();
             this.radioGroupPosition.SuspendLayout();
             this.RadioGroupGender.SuspendLayout();
             this.SuspendLayout();
@@ -231,7 +233,7 @@
             this.txtCity.Location = new System.Drawing.Point(310, 137);
             this.txtCity.MaxLength = 35;
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(148, 20);
+            this.txtCity.Size = new System.Drawing.Size(142, 20);
             this.txtCity.TabIndex = 26;
             this.txtCity.Tag = "\"City\"";
             // 
@@ -332,7 +334,7 @@
             this.RadioGroupGender.Controls.Add(this.rBtnMale);
             this.RadioGroupGender.Location = new System.Drawing.Point(280, 189);
             this.RadioGroupGender.Name = "RadioGroupGender";
-            this.RadioGroupGender.Size = new System.Drawing.Size(178, 46);
+            this.RadioGroupGender.Size = new System.Drawing.Size(172, 46);
             this.RadioGroupGender.TabIndex = 37;
             this.RadioGroupGender.TabStop = false;
             this.RadioGroupGender.Text = "Gender";
@@ -378,11 +380,30 @@
             this.label11.TabIndex = 39;
             this.label11.Text = "Street Address2";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(354, 166);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(22, 13);
+            this.label12.TabIndex = 68;
+            this.label12.Text = "Zip";
+            // 
+            // txtZip
+            // 
+            this.txtZip.Location = new System.Drawing.Point(382, 163);
+            this.txtZip.MaxLength = 10;
+            this.txtZip.Name = "txtZip";
+            this.txtZip.Size = new System.Drawing.Size(94, 20);
+            this.txtZip.TabIndex = 67;
+            // 
             // UpdateDeleteEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 304);
+            this.ClientSize = new System.Drawing.Size(534, 304);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.txtZip);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.chkEnabled);
             this.Controls.Add(this.RadioGroupGender);
@@ -459,6 +480,8 @@
         private System.Windows.Forms.RadioButton rBtnMale;
         private System.Windows.Forms.CheckBox chkEnabled;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtZip;
 
     }
 }

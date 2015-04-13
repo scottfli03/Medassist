@@ -82,6 +82,10 @@ namespace MedAssist.View
                 Validator.IsPresent(txtSSN) &&
                 Validator.IsPresent(txtState) &&
                 Validator.IsPresent(txtStreet) &&
+                Validator.IsPresent(txtZip) &&
+                Validator.IsInt64(txtZip) &&
+                Validator.IsInt64(txtPhone) &&
+                Validator.IsState(txtState) &&
                 Validator.IsInt32(txtSSN) &&
                 this.IsValidEmployeeID())
             {
@@ -144,6 +148,7 @@ namespace MedAssist.View
                     txtState.Text = oldEmployee.State;
                     txtStreet.Text = oldEmployee.StreetAddr1;
                     txtStreet2.Text = oldEmployee.StreetAddr2;
+                    txtZip.Text = oldEmployee.ZipCode;
                     dtpDOB.Value = oldEmployee.DOB;
                     if (oldEmployee.Gender == 'm' || oldEmployee.Gender == 'M')
                     {
@@ -153,13 +158,13 @@ namespace MedAssist.View
                     {
                         rBtnFemale.Checked = true;
                     }
-                    if (!oldEmployee.Inactive)
+                    if (oldEmployee.Inactive)
                     {
-                        chkEnabled.Checked = true;
+                        chkEnabled.Checked = false;
                     }
                     else
                     {
-                        chkEnabled.Checked = false;
+                        chkEnabled.Checked = true;
                     }
                 }
                 catch (Exception ex)
@@ -197,7 +202,16 @@ namespace MedAssist.View
             try
             {
                 getEmployeeData();
-                EmployeeController.UpdateEmployee(oldEmployee, employee);
+                bool success = EmployeeController.UpdateEmployee(oldEmployee, employee);
+                if (success)
+                {
+                    MessageBox.Show("Employee " + " " + txtEmployeeID + " was updated properly.", "Employee Updated");
+                }
+                else
+                {
+                    MessageBox.Show("Either the Employee was already updated or there was another conflict. " + 
+                        "Employee was not updated.", "Employee Not Updated!");
+                }
             }
             catch (Exception ex)
             {
@@ -234,6 +248,7 @@ namespace MedAssist.View
                     employee.Phone = txtPhone.Text;
                     employee.SSN = txtSSN.Text;
                     employee.State = txtState.Text;
+                    employee.ZipCode = txtZip.Text;
                     employee.StreetAddr1 = txtStreet.Text;
                     employee.StreetAddr2 = txtStreet2.Text;
                     employee.DOB = dtpDOB.Value;
