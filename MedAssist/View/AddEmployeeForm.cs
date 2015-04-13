@@ -53,8 +53,8 @@ namespace MedAssist.View
                 {
                    if (radioButtonDoctor.Checked)
                    {
-                        Doctor doctor = new Doctor();
-                        employee.EmployeeID = EmployeeDAL.AddEmployeeDoctor(employee);
+
+                        EmployeeDAL.AddEmployeeDoctor(employee);
                         DialogResult = DialogResult.OK;
                         MessageBox.Show("Employee Accepted");
                         Close();
