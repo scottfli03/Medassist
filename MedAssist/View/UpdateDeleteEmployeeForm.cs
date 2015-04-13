@@ -142,7 +142,10 @@ namespace MedAssist.View
                     txtCity.Text = oldEmployee.City;
                     txtFirstName.Text = oldEmployee.FirstName;
                     txtLastName.Text = oldEmployee.LastName;
-                    txtMinit.Text = oldEmployee.MInit;
+                    if (oldEmployee.MInit != " ")
+                    {
+                        txtMinit.Text = oldEmployee.MInit;
+                    }
                     txtPhone.Text = oldEmployee.Phone.ToString();
                     txtSSN.Text = oldEmployee.SSN.ToString();
                     txtState.Text = oldEmployee.State;
@@ -205,7 +208,8 @@ namespace MedAssist.View
                 bool success = EmployeeController.UpdateEmployee(oldEmployee, employee);
                 if (success)
                 {
-                    MessageBox.Show("Employee " + " " + txtEmployeeID + " was updated properly.", "Employee Updated");
+                    MessageBox.Show("Employee " + " " + txtEmployeeID.Text + " was updated properly.", "Employee Updated");
+                    this.Close();
                 }
                 else
                 {
@@ -218,11 +222,6 @@ namespace MedAssist.View
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
             
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            //TODO: make sure admin count will not become zero
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
