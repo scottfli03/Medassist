@@ -325,7 +325,15 @@ namespace MedAssist.DAL
                     Patient patient = new Patient();
                     patient.FirstName = reader["FirstName"].ToString();
 
-                    patient.MInit = reader["MInit"].ToString();
+                    if (patient.MInit != null)
+                    {
+                        patient.MInit = reader["MInit"].ToString();
+                    }
+                    else
+                    {
+                        patient.MInit = null;
+                    }
+                    
                     
 
                     patient.LastName = reader["LastName"].ToString();
@@ -526,7 +534,16 @@ namespace MedAssist.DAL
                     patient.PatientID = (int)reader["PatientID"];
 
                     patient.FirstName = reader["FirstName"].ToString();
-                    patient.MInit = reader["MInit"].ToString();
+                    
+                    if (patient.MInit != null)
+                    {
+                        patient.MInit = reader["MInit"].ToString();
+                    }
+                    else
+                    {
+                        patient.MInit = null;
+                    }
+                    
                    
                     patient.LastName = reader["LastName"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];
@@ -693,18 +710,18 @@ namespace MedAssist.DAL
                         patient.VisitDate = null;
                     }
                    
-                    //patient.PatientID = (int)reader["PatientID"];
+                    patient.PatientID = (int)reader["PatientID"];
                     
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.MInit = reader["MInit"].ToString();
-                    //if (patient.MInit != null)
-                    //{
-                    //   patient.MInit = (char)reader["MInit"];
-                    //}
-                    //else
-                    //{
-                    //    patient.MInit = null;
-                    //}
+                    if (patient.MInit != null)
+                    {
+                       patient.MInit = reader["MInit"].ToString();
+                    }
+                    else
+                    {
+                        patient.MInit = null;
+                    }
                     
                     patient.LastName = reader["LastName"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];

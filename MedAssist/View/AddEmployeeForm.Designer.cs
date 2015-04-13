@@ -110,6 +110,7 @@
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(148, 20);
             this.txtCity.TabIndex = 10;
+            this.txtCity.Tag = "Tag";
             // 
             // label8
             // 
@@ -135,6 +136,7 @@
             this.txtStreetAddress2.Name = "txtStreetAddress2";
             this.txtStreetAddress2.Size = new System.Drawing.Size(148, 20);
             this.txtStreetAddress2.TabIndex = 11;
+            this.txtStreetAddress2.Tag = "Street Address 1";
             // 
             // radioButtonNurse
             // 
@@ -174,6 +176,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(100, 20);
             this.txtPhone.TabIndex = 13;
+            this.txtPhone.Tag = "Phone";
             // 
             // label7
             // 
@@ -190,6 +193,7 @@
             this.txtStreetAddress1.Name = "txtStreetAddress1";
             this.txtStreetAddress1.Size = new System.Drawing.Size(148, 20);
             this.txtStreetAddress1.TabIndex = 9;
+            this.txtStreetAddress1.Tag = "Street Address 1";
             // 
             // label6
             // 
@@ -215,6 +219,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(148, 20);
             this.txtLastName.TabIndex = 6;
+            this.txtLastName.Tag = "Last Name";
             // 
             // txtMInit
             // 
@@ -222,6 +227,7 @@
             this.txtMInit.Name = "txtMInit";
             this.txtMInit.Size = new System.Drawing.Size(19, 20);
             this.txtMInit.TabIndex = 5;
+            this.txtMInit.Tag = "Middle Initial";
             // 
             // label3
             // 
@@ -247,6 +253,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(148, 20);
             this.txtFirstName.TabIndex = 4;
+            this.txtFirstName.Tag = "First Name";
             // 
             // txtZip
             // 
@@ -254,6 +261,7 @@
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(100, 20);
             this.txtZip.TabIndex = 14;
+            this.txtZip.Tag = "Zip";
             // 
             // label1
             // 

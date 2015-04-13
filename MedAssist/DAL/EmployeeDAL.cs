@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MedAssist.Model;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace MedAssist.DAL
 {
@@ -276,8 +277,11 @@ namespace MedAssist.DAL
             insEmployee.Parameters.AddWithValue("@Phone", employee.Phone);
             insEmployee.Parameters.AddWithValue("@DOB", employee.DOB);
             insEmployee.Parameters.AddWithValue("@Gender", employee.Gender);
-
-           
+            insEmployee.Parameters.AddWithValue("@EmployeeID", SqlDbType.Int);
+            insEmployee.Parameters["@EmployeeID"].Direction = ParameterDirection.Output;
+            insEmployee.Parameters.Add("@Error", SqlDbType.Int);
+            insEmployee.Parameters["@Error"].Direction = ParameterDirection.ReturnValue;
+                  
             Doctor doctor = new Doctor();
             SqlCommand insDoctor = new SqlCommand();
             insDoctor.Connection = connection;
@@ -285,7 +289,7 @@ namespace MedAssist.DAL
                 "Insert Doctors " +
                 "(DoctorID) " +
                 "Values (@EmployeeID)";
-            insDoctor.Parameters.AddWithValue("@EmployeeID", doctor.DoctorID);
+            insDoctor.Parameters.AddWithValue("@EmployeeID", insEmployee.Parameters["@EmployeeID"]);
 
             try
             {
@@ -295,7 +299,7 @@ namespace MedAssist.DAL
                 insDoctor.Transaction = addEmployeeTrans;
 
                 int count = insEmployee.ExecuteNonQuery();
-                if(count > 0)
+                if (count > 0 && Convert.ToInt32(insEmployee.Parameters["@EmployeeID"].Value).Equals(0))
                 {
                     count = insDoctor.ExecuteNonQuery();
                     if(count >0)
