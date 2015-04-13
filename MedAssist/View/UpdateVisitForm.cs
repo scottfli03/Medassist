@@ -16,6 +16,7 @@ namespace MedAssist.View
     public partial class UpdateVisitForm : Form
     {
         private Visit visit;
+        private List<Visit> visitDates;
         private List<Patient> patientList;
         private List<Employee> doctorList;
 
@@ -28,8 +29,17 @@ namespace MedAssist.View
             txtRespRate.Enabled = false;
             txtSymptoms.Enabled = false;
             txtTemp.Enabled = false;
+            //cboPatient.Enabled = false;
             txtNurse.Text = EmployeeController.GetEmployeeByID(UserSecurityController.NurseLoggedIn.NurseID).FullName;
             this.loadComboBoxes();
+        }
+
+        private void GetVisitsByPatient(string firstName, string lastName)
+        {
+            visitDates = VisitDAL.GetListVisitDates(firstName, lastName);
+            cboVisits.DataSource = visitDates;
+            cboPatient.DisplayMember = "VisitDate";
+            cboPatient.ValueMember = "VisitID";
         }
 
         private void GetVisitInfo(string firstName, string lastName, DateTime visitDate)
@@ -37,7 +47,7 @@ namespace MedAssist.View
             try
             {
 
-                visit = VisitDAL.GetVisitToUpdate(firstName, lastName, visitDate); 
+                //visit = VisitDAL.GetVisitToUpdate(firstName, lastName, visitDate); 
                 if (visit == null)
                     MessageBox.Show("No Visit found with this First Name, Last Name or Visit Date. " +
                                     "Please try again.", "Visit Not Found");
@@ -68,15 +78,21 @@ namespace MedAssist.View
 
         private void btnSearchVisit_Click(object sender, EventArgs e)
         {
-            if (Validator.IsPresent(txtSearchFirstName) &&
-               Validator.IsPresent(txtSearchLastName) &&
-                Validator.IsPresent(dateTimePickerSearchVisit))
-            {
+           // if (Validator.IsPresent(txtSearchFirstName) &&
+           //    Validator.IsPresent(txtSearchLastName) &&
+           //     Validator.IsPresent(dateTimePickerSearchVisit))
+            //{
+            //string firstName = txtSearchFirstName.Text;
+            //string lastName = txtSearchLastName.Text;
+            //DateTime visitDate = dateTimePickerSearchVisit.Value.Date;
+            //this.GetVisitInfo(firstName, lastName, visitDate);
+            //}
+
             string firstName = txtSearchFirstName.Text;
             string lastName = txtSearchLastName.Text;
-            DateTime visitDate = dateTimePickerSearchVisit.Value.Date;
-            this.GetVisitInfo(firstName, lastName, visitDate);
-            }
+            this.GetVisitsByPatient(firstName, lastName);
+
+            
         }
 
         private void PutVisitData(Visit visit)
@@ -192,6 +208,11 @@ namespace MedAssist.View
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
+
+        private void txtSearchFirstName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

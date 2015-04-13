@@ -58,7 +58,7 @@ namespace MedAssist
 
                 try
                 {
-                    patient.PatientID = PatientDAL.AddPatient(patient); 
+                    patient.PatientID = PatientController.CreatePatient(patient);
                     DialogResult = DialogResult.OK;
                     MessageBox.Show("Patient Accepted");
                     Close();
