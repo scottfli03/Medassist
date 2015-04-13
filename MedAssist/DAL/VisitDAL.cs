@@ -463,28 +463,24 @@ namespace MedAssist.DAL
         {
             List<Visit> visitList = new List<Visit>();
             SqlConnection connection = MedassistDB.GetConnection();
-            String selectStatement = "SELECT VisitID, VisitDate, Patients.FirstName, Patients.LastName " +
+            String selectStatement = "SELECT VisitID, VisitDate " +
                 "FROM Visits JOIN Patients ON Visits.PatientID = Patients.PatientID " +
-                "WHERE Patients.FirstName = firstName AND Patients.LastName = lastName";
+                "WHERE Patients.FirstName = @FirstName AND Patients.LastName = @LastName";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
+            selectCommand.Parameters.AddWithValue("@FirstName", firstName);
+            selectCommand.Parameters.AddWithValue("@LastName", lastName);
             try
             {
                 connection.Open();
                 reader = selectCommand.ExecuteReader();
-                selectCommand.Parameters.AddWithValue("@FirstName", firstName);
-                selectCommand.Parameters.AddWithValue("@LastName", lastName);
+      
                 while (reader.Read())
                 {
                     Patient patient = new Patient();
                     Visit visit = new Visit();
                     visit.VisitID = (int)reader["VisitID"];
                     visit.VisitDate = (DateTime)reader["VisitDate"];
-                    visit.FirstName = reader["FirstName"].ToString();
-                    visit.LastName = reader["LastName"].ToString();
-                    //patient.FirstName = reader["FirstName"].ToString();
-                    //patient.LastName = reader["LastName"].ToString();
-                  
                     visitList.Add(visit);
                 }
             }

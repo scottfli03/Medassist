@@ -62,6 +62,11 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.cboVisits = new System.Windows.Forms.ComboBox();
+            this.txtBoxFnlDiagnosis = new System.Windows.Forms.TextBox();
+            this.btnViewUpdateTest = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnOrderTest = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             nurseIDLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             patientNameLabel = new System.Windows.Forms.Label();
@@ -377,17 +382,68 @@
             // 
             // cboVisits
             // 
+            this.cboVisits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVisits.FormattingEnabled = true;
             this.cboVisits.Location = new System.Drawing.Point(345, 23);
             this.cboVisits.Name = "cboVisits";
-            this.cboVisits.Size = new System.Drawing.Size(121, 21);
+            this.cboVisits.Size = new System.Drawing.Size(90, 21);
             this.cboVisits.TabIndex = 87;
+            // 
+            // txtBoxFnlDiagnosis
+            // 
+            this.txtBoxFnlDiagnosis.Location = new System.Drawing.Point(425, 322);
+            this.txtBoxFnlDiagnosis.Multiline = true;
+            this.txtBoxFnlDiagnosis.Name = "txtBoxFnlDiagnosis";
+            this.txtBoxFnlDiagnosis.Size = new System.Drawing.Size(240, 199);
+            this.txtBoxFnlDiagnosis.TabIndex = 92;
+            this.txtBoxFnlDiagnosis.TextChanged += new System.EventHandler(this.txtBoxFnlDiagnosis_TextChanged);
+            // 
+            // btnViewUpdateTest
+            // 
+            this.btnViewUpdateTest.Location = new System.Drawing.Point(557, 255);
+            this.btnViewUpdateTest.Name = "btnViewUpdateTest";
+            this.btnViewUpdateTest.Size = new System.Drawing.Size(108, 23);
+            this.btnViewUpdateTest.TabIndex = 91;
+            this.btnViewUpdateTest.Text = "View/Update";
+            this.btnViewUpdateTest.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(383, 294);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(81, 13);
+            this.label10.TabIndex = 90;
+            this.label10.Text = "Final Diagnosis:";
+            // 
+            // btnOrderTest
+            // 
+            this.btnOrderTest.Location = new System.Drawing.Point(425, 255);
+            this.btnOrderTest.Name = "btnOrderTest";
+            this.btnOrderTest.Size = new System.Drawing.Size(108, 23);
+            this.btnOrderTest.TabIndex = 89;
+            this.btnOrderTest.Text = "Order";
+            this.btnOrderTest.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(383, 260);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(36, 13);
+            this.label11.TabIndex = 88;
+            this.label11.Text = "Tests:";
             // 
             // UpdateVisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 634);
+            this.Controls.Add(this.txtBoxFnlDiagnosis);
+            this.Controls.Add(this.btnViewUpdateTest);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.btnOrderTest);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.cboVisits);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
@@ -446,5 +502,10 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.ComboBox cboVisits;
+        private System.Windows.Forms.TextBox txtBoxFnlDiagnosis;
+        private System.Windows.Forms.Button btnViewUpdateTest;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnOrderTest;
+        private System.Windows.Forms.Label label11;
     }
 }

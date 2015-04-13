@@ -29,7 +29,7 @@ namespace MedAssist.View
             txtRespRate.Enabled = false;
             txtSymptoms.Enabled = false;
             txtTemp.Enabled = false;
-            //cboPatient.Enabled = false;
+            cboPatient.Enabled = false;
             txtNurse.Text = EmployeeController.GetEmployeeByID(UserSecurityController.NurseLoggedIn.NurseID).FullName;
             this.loadComboBoxes();
         }
@@ -38,8 +38,9 @@ namespace MedAssist.View
         {
             visitDates = VisitDAL.GetListVisitDates(firstName, lastName);
             cboVisits.DataSource = visitDates;
-            cboPatient.DisplayMember = "VisitDate";
-            cboPatient.ValueMember = "VisitID";
+            cboVisits.DisplayMember = "VisitDate";
+            cboVisits.ValueMember = "VisitID";
+
         }
 
         private void GetVisitInfo(string firstName, string lastName, DateTime visitDate)
@@ -78,21 +79,14 @@ namespace MedAssist.View
 
         private void btnSearchVisit_Click(object sender, EventArgs e)
         {
-           // if (Validator.IsPresent(txtSearchFirstName) &&
-           //    Validator.IsPresent(txtSearchLastName) &&
-           //     Validator.IsPresent(dateTimePickerSearchVisit))
-            //{
-            //string firstName = txtSearchFirstName.Text;
-            //string lastName = txtSearchLastName.Text;
-            //DateTime visitDate = dateTimePickerSearchVisit.Value.Date;
-            //this.GetVisitInfo(firstName, lastName, visitDate);
-            //}
 
-            string firstName = txtSearchFirstName.Text;
-            string lastName = txtSearchLastName.Text;
-            this.GetVisitsByPatient(firstName, lastName);
-
-            
+            if(Validator.IsPresent(txtSearchFirstName) &&
+                Validator.IsPresent(txtSearchLastName))
+            {
+                string firstName = txtSearchFirstName.Text;
+                string lastName = txtSearchLastName.Text;
+                this.GetVisitsByPatient(firstName, lastName);
+            }
         }
 
         private void PutVisitData(Visit visit)
@@ -211,6 +205,11 @@ namespace MedAssist.View
         }
 
         private void txtSearchFirstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBoxFnlDiagnosis_TextChanged(object sender, EventArgs e)
         {
 
         }
