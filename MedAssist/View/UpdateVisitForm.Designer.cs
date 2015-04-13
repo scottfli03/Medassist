@@ -65,7 +65,6 @@
             this.txtBoxFnlDiagnosis = new System.Windows.Forms.TextBox();
             this.btnViewUpdateTest = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnOrderTest = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             nurseIDLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -400,7 +399,7 @@
             // 
             // btnViewUpdateTest
             // 
-            this.btnViewUpdateTest.Location = new System.Drawing.Point(557, 255);
+            this.btnViewUpdateTest.Location = new System.Drawing.Point(425, 260);
             this.btnViewUpdateTest.Name = "btnViewUpdateTest";
             this.btnViewUpdateTest.Size = new System.Drawing.Size(108, 23);
             this.btnViewUpdateTest.TabIndex = 91;
@@ -415,15 +414,6 @@
             this.label10.Size = new System.Drawing.Size(81, 13);
             this.label10.TabIndex = 90;
             this.label10.Text = "Final Diagnosis:";
-            // 
-            // btnOrderTest
-            // 
-            this.btnOrderTest.Location = new System.Drawing.Point(425, 255);
-            this.btnOrderTest.Name = "btnOrderTest";
-            this.btnOrderTest.Size = new System.Drawing.Size(108, 23);
-            this.btnOrderTest.TabIndex = 89;
-            this.btnOrderTest.Text = "Order";
-            this.btnOrderTest.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -442,7 +432,6 @@
             this.Controls.Add(this.txtBoxFnlDiagnosis);
             this.Controls.Add(this.btnViewUpdateTest);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.btnOrderTest);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cboVisits);
             this.Controls.Add(this.btnCancel);
@@ -505,7 +494,6 @@
         private System.Windows.Forms.TextBox txtBoxFnlDiagnosis;
         private System.Windows.Forms.Button btnViewUpdateTest;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btnOrderTest;
         private System.Windows.Forms.Label label11;
     }
 }
