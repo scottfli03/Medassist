@@ -154,9 +154,42 @@ namespace MedAssist.DAL
                     connection.Close();
             }
         }
-    
-    
-    
+
+
+        public static bool DeleteTestWithIDAndName(Test oldTest)
+        {
+            
+            SqlCommand deleteCommand = new SqlCommand();
+            
+            deleteCommand.Connection = MedassistDB.GetConnection();
+            deleteCommand.Parameters.AddWithValue("@TestID", oldTest.TestID);
+            deleteCommand.Parameters.AddWithValue("@TestName", oldTest.TestName);
+            deleteCommand.CommandText = "DELETE FROM Tests " +
+            "WHERE TestID = @TestID AND TestName = @TestName";
+
+           
+            
+            try
+            {
+                deleteCommand.Connection.Open();
+                int rowCount = deleteCommand.ExecuteNonQuery();
+                if (rowCount > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (deleteCommand.Connection != null)
+                    deleteCommand.Connection.Close();
+               
+            }
+            
+        }
     
     
     
