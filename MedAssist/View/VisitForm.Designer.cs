@@ -539,10 +539,6 @@
             this.cmbTest.TabIndex = 45;
             this.cmbTest.ValueMember = "TestID";
             // 
-            // testBindingSource
-            // 
-            this.testBindingSource.DataSource = typeof(MedAssist.Model.Test);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtSymptoms);

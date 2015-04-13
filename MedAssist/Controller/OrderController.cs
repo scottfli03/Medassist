@@ -16,6 +16,11 @@ namespace MedAssist.Controller
         public static bool OrderTests(BindingList<Test> tests, int visitID)
         {
             return OrderDAL.OrderTests(tests, visitID);
-        } 
+        }
+
+        public static BindingList<OrderDetails> GetPatientsOrders(int patientID)
+        {
+            return OrderDAL.GetPatientsOrdersWithDetails(patientID);
+        }
     }
 }

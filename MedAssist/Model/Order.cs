@@ -11,7 +11,7 @@ namespace MedAssist.Model
         private int orderID;
         private DateTime orderDate;
         private DateTime? datePerformed;
-        private Boolean? result;
+        private char? result;
         private int testID;
         private int visitID;
 
@@ -53,7 +53,7 @@ namespace MedAssist.Model
             }
         }
 
-        public Boolean? Result
+        public char? Result
         {
             get
             {
