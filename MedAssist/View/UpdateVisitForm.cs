@@ -36,21 +36,23 @@ namespace MedAssist.View
 
         private void GetVisitsByPatient(string firstName, string lastName)
         {
+            
             visitDates = VisitDAL.GetListVisitDates(firstName, lastName);
-            cboVisits.DataSource = visitDates;
-            cboVisits.DisplayMember = "VisitDate";
+            cboVisits.DataSource = visitDates;    
+            cboVisits.DisplayMember = "VisitDateID";
             cboVisits.ValueMember = "VisitID";
+            
 
         }
 
-        private void GetVisitInfo(string firstName, string lastName, DateTime visitDate)
+        private void GetVisitInfo(int visitID)
         {
             try
             {
 
-                //visit = VisitDAL.GetVisitToUpdate(firstName, lastName, visitDate); 
+                visit = VisitDAL.GetVisitToUpdate(visitID);
                 if (visit == null)
-                    MessageBox.Show("No Visit found with this First Name, Last Name or Visit Date. " +
+                    MessageBox.Show("No Visit found with this Visit ID. " +
                                     "Please try again.", "Visit Not Found");
                 else
                 {
@@ -204,14 +206,6 @@ namespace MedAssist.View
             }
         }
 
-        private void txtSearchFirstName_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void txtBoxFnlDiagnosis_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

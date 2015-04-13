@@ -389,26 +389,22 @@ namespace MedAssist.DAL
         }
 
 
-        public static Visit GetVisitToUpdate(string firstName, string lastName, DateTime visitDate)
+        public static Visit GetVisitToUpdate(int visitID)
         {
             Visit visit = new Visit();
             SqlConnection connection = MedassistDB.GetConnection();
             string selectStatement =
                 "SELECT Visits.VisitID, Visits.VisitDate, Visits.PatientID, Visits.Diagnosis, Visits.Systolic, Visits.Diastolic, " +
-                "Visits.Temperature, Visits.RespirationRate, Visits.HeartRate, Visits.Symptoms, Patients.FirstName, Patients.MInit, " +
-                "Patients.LastName, Patients.DOB, Orders.Result, Orders.TestID, Tests.TestName, Employees.FirstName, Employees.LastName " +
+                "Visits.Temperature, Visits.RespirationRate, Visits.HeartRate, Visits.Symptoms, Patients.FirstName, " +
+                "Patients.LastName, Employees.FirstName, Employees.LastName " +
                 "FROM Visits " + 
                 "INNER JOIN Patients ON Visits.PatientID = Patients.PatientID " +
-                "INNER JOIN Orders ON Visits.VisitID = Orders.VisitID " +
-                "INNER JOIN Tests ON Orders.TestID = Tests.TestID " +
                 "INNER JOIN Employees ON Visits.DoctorID = Employees.EmployeeID " +
-                "WHERE Patients.FirstName = @FirstName AND Patients.LastName = @LastName AND Visits.VisitDate = @VisitDate";
+                "WHERE Visits.VisitID = @VisitID";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
-            selectCommand.Parameters.AddWithValue("@FirstName", firstName);
-            selectCommand.Parameters.AddWithValue("@LastName", lastName);
-            selectCommand.Parameters.AddWithValue("@VisitDate", visitDate);
+            selectCommand.Parameters.AddWithValue("@VisitDate", visitID);
 
 
             try
@@ -422,25 +418,15 @@ namespace MedAssist.DAL
                     Patient patient = new Patient();
                     visit.VisitID = (int)reader["VisitID"];
                     visit.VisitDate = (DateTime)reader["VisitDate"];
-                    visit.PatientID = (int)reader["PatientID"];
                     visit.FirstName = reader["FirstName"].ToString();
-                    visit.MInit = reader["MInit"].ToString();
                     visit.LastName = reader["LastName"].ToString();
-                    visit.DOB = (DateTime)reader["DOB"];
                     visit.Systolic = (int)reader["Systolic"];
                     visit.Diastolic = (int)reader["Diastolic"];
                     visit.Temperature = (decimal)reader["Temperature"];
                     visit.RespirationRate = (int)reader["RespirationRate"];
                     visit.HeartRate = (int)reader["HeartRate"];
                     visit.Symptoms = reader["Symptoms"].ToString();
-                    visit.Result = reader["Result"].ToString();
-                    visit.TestID = (int)reader["TestID"];
-                    visit.TestName = reader["TestName"].ToString();
                     visit.Diagnosis = reader["Diagnosis"].ToString();
-                    //employee.FirstName = reader["FirstName"].ToString();
-                    //employee.LastName = reader["LastName"].ToString();
-                    //patient.FirstName = reader["FirstName"].ToString();
-                    //patient.LastName = reader["LastName"].ToString();
 
 
                 }
