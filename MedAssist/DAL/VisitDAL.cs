@@ -411,6 +411,7 @@ namespace MedAssist.DAL
                     Employee employee = new Employee();
                     //visit.VisitID = (int)reader["VisitID"];
                     //visit.VisitDate = (DateTime)reader["VisitDate"];
+                    visit.PatientID = (int)reader["PatientID"];
                     visit.Systolic = (int)reader["Systolic"];
                     visit.Diastolic = (int)reader["Diastolic"];
                     visit.Temperature = (decimal)reader["Temperature"];

@@ -24,9 +24,16 @@ namespace MedAssist.View
 
         private void TestForm_Load(object sender, EventArgs e)
         {
-            txtPatient.Text = CurrentPatientController.currentPatient.FullName;
-            this.FillComboBoxes();
-            orders = OrderController.GetPatientsOrders(CurrentPatientController.currentPatient.PatientID);
+            try
+            {
+                txtPatient.Text = CurrentPatientController.currentPatient.FullName;
+                this.FillComboBoxes();
+                orders = OrderController.GetPatientsOrders(CurrentPatientController.currentPatient.PatientID);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
 
         private void FillComboBoxes()

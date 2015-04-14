@@ -36,17 +36,18 @@ namespace MedAssist.View
             txtNurse.Enabled = false;
             txtBoxFnlDiagnosis.Enabled = false;
             txtNurse.Text = EmployeeController.GetEmployeeByID(UserSecurityController.NurseLoggedIn.NurseID).FullName;
+            CurrentPatientController.currentPatient = null;
             this.loadComboBoxes();
         }
 
         private void GetVisitsByPatient(string firstName, string lastName)
         {
-            
+
             visitDates = VisitDAL.GetListVisitDates(firstName, lastName);
-            cboVisits.DataSource = visitDates;    
+            cboVisits.DataSource = visitDates;
             cboVisits.DisplayMember = "VisitDateID";
             cboVisits.ValueMember = "VisitID";
-            
+
 
         }
 
@@ -62,6 +63,7 @@ namespace MedAssist.View
                 else
                 {
                     this.DisplayVisit();
+                    CurrentPatientController.currentPatient = PatientController.GetPatientWithID(visit.PatientID);
                 }
 
             }
@@ -90,7 +92,7 @@ namespace MedAssist.View
         private void btnSearchVisit_Click(object sender, EventArgs e)
         {
 
-            if(Validator.IsPresent(txtSearchFirstName) &&
+            if (Validator.IsPresent(txtSearchFirstName) &&
                 Validator.IsPresent(txtSearchLastName))
             {
                 string firstName = txtSearchFirstName.Text;
@@ -211,6 +213,24 @@ namespace MedAssist.View
 
         }
 
-
+        private void btnViewUpdateTest_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CurrentPatientController.currentPatient != null)
+                {
+                    TestForm tf = new TestForm();
+                    tf.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please select a patient and visit before reviewing tests", "Patient Selection Needed.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
     }
 }

@@ -387,6 +387,7 @@
             this.btnViewUpdateTest.TabIndex = 91;
             this.btnViewUpdateTest.Text = "View/Update";
             this.btnViewUpdateTest.UseVisualStyleBackColor = true;
+            this.btnViewUpdateTest.Click += new System.EventHandler(this.btnViewUpdateTest_Click);
             // 
             // label10
             // 
