@@ -19,12 +19,7 @@ namespace MedAssist.View
 
         private void ReportForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'patient_Report_Dataset.Visits' table. You can move, or remove it, as needed.
-            this.visitsTableAdapter.Fill(this.patient_Report_Dataset.Visits);
-            // TODO: This line of code loads data into the 'patient_Report_Dataset.Visits' table. You can move, or remove it, as needed.
-            this.visitsTableAdapter.Fill(this.patient_Report_Dataset.Visits);
-
-            this.reportViewer1.RefreshReport();
+    
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -40,6 +35,17 @@ namespace MedAssist.View
         private void btnSearch_Click(object sender, EventArgs e)
         {
 
+           DateTime vs = this.dateTimePickerStart.Value;
+           DateTime ve = this.dateTimePickerEnd.Value;
+
+           this.patientDetailedDataTableAdapter.Fill(patient_Report_Dataset.PatientDetailedData, vs, ve);
+           
+           
+           this.reportViewer1.RefreshReport();
+            
+            
+
+            
         }
     }
 }

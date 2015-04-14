@@ -29,74 +29,50 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.patientReportDatasetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patient_Report_Dataset = new MedAssist.Patient_Report_Dataset();
-            this.visitsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.visitsTableAdapter = new MedAssist.Patient_Report_DatasetTableAdapters.VisitsTableAdapter();
-            this.visitsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.lblFrom = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.patientReportDatasetBindingSource)).BeginInit();
+            this.patient_Report_Dataset = new MedAssist.Patient_Report_Dataset();
+            this.patientDetailedDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientDetailedDataTableAdapter = new MedAssist.Patient_Report_DatasetTableAdapters.PatientDetailedDataTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.patient_Report_Dataset)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.visitsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.visitsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientDetailedDataBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "PatientDetailedDataSet";
-            reportDataSource2.Value = this.visitsBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "PatientDetailedDataSet";
+            reportDataSource1.Value = this.patientDetailedDataBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "MedAssist.PatientDetailedReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(1, 62);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(1460, 554);
             this.reportViewer1.TabIndex = 0;
             // 
-            // patientReportDatasetBindingSource
+            // dateTimePickerStart
             // 
-            this.patientReportDatasetBindingSource.DataSource = this.patient_Report_Dataset;
-            this.patientReportDatasetBindingSource.Position = 0;
+            this.dateTimePickerStart.CustomFormat = "yyyy-mm-dd";
+            this.dateTimePickerStart.Location = new System.Drawing.Point(456, 21);
+            this.dateTimePickerStart.Name = "dateTimePickerStart";
+            this.dateTimePickerStart.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerStart.TabIndex = 1;
+            this.dateTimePickerStart.Value = new System.DateTime(2014, 12, 12, 0, 0, 0, 0);
+            this.dateTimePickerStart.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // patient_Report_Dataset
+            // dateTimePickerEnd
             // 
-            this.patient_Report_Dataset.DataSetName = "Patient_Report_Dataset";
-            this.patient_Report_Dataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // visitsBindingSource
-            // 
-            this.visitsBindingSource.DataMember = "Visits";
-            this.visitsBindingSource.DataSource = this.patientReportDatasetBindingSource;
-            // 
-            // visitsTableAdapter
-            // 
-            this.visitsTableAdapter.ClearBeforeFill = true;
-            // 
-            // visitsBindingSource1
-            // 
-            this.visitsBindingSource1.DataMember = "Visits";
-            this.visitsBindingSource1.DataSource = this.patientReportDatasetBindingSource;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(456, 21);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 1;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(736, 21);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 2;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            this.dateTimePickerEnd.CustomFormat = "yyyy-mm-dd";
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(736, 21);
+            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
+            this.dateTimePickerEnd.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerEnd.TabIndex = 2;
+            this.dateTimePickerEnd.Value = new System.DateTime(2015, 5, 5, 0, 0, 0, 0);
+            this.dateTimePickerEnd.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // lblFrom
             // 
@@ -126,6 +102,20 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // patient_Report_Dataset
+            // 
+            this.patient_Report_Dataset.DataSetName = "Patient_Report_Dataset";
+            this.patient_Report_Dataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // patientDetailedDataBindingSource
+            // 
+            this.patientDetailedDataBindingSource.DataMember = "PatientDetailedData";
+            this.patientDetailedDataBindingSource.DataSource = this.patient_Report_Dataset;
+            // 
+            // patientDetailedDataTableAdapter
+            // 
+            this.patientDetailedDataTableAdapter.ClearBeforeFill = true;
+            // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,16 +124,14 @@
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblTo);
             this.Controls.Add(this.lblFrom);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePickerEnd);
+            this.Controls.Add(this.dateTimePickerStart);
             this.Controls.Add(this.reportViewer1);
             this.Name = "ReportForm";
             this.Text = "Patient Visit Report";
             this.Load += new System.EventHandler(this.ReportForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.patientReportDatasetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patient_Report_Dataset)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.visitsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.visitsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientDetailedDataBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,15 +140,14 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource patientReportDatasetBindingSource;
-        private Patient_Report_Dataset patient_Report_Dataset;
-        private System.Windows.Forms.BindingSource visitsBindingSource;
-        private Patient_Report_DatasetTableAdapters.VisitsTableAdapter visitsTableAdapter;
-        private System.Windows.Forms.BindingSource visitsBindingSource1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePickerStart;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Label lblTo;
         private System.Windows.Forms.Button btnSearch;
+        private Patient_Report_DatasetTableAdapters.VisitsTableAdapter visitsTableAdapter;
+        private System.Windows.Forms.BindingSource patientDetailedDataBindingSource;
+        private Patient_Report_Dataset patient_Report_Dataset;
+        private Patient_Report_DatasetTableAdapters.PatientDetailedDataTableAdapter patientDetailedDataTableAdapter;
     }
 }

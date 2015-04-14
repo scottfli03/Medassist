@@ -24,7 +24,7 @@ namespace MedAssist {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class Patient_Report_Dataset : global::System.Data.DataSet {
         
-        private VisitsDataTable tableVisits;
+        private PatientDetailedDataDataTable tablePatientDetailedData;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace MedAssist {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Visits"] != null)) {
-                    base.Tables.Add(new VisitsDataTable(ds.Tables["Visits"]));
+                if ((ds.Tables["PatientDetailedData"] != null)) {
+                    base.Tables.Add(new PatientDetailedDataDataTable(ds.Tables["PatientDetailedData"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace MedAssist {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public VisitsDataTable Visits {
+        public PatientDetailedDataDataTable PatientDetailedData {
             get {
-                return this.tableVisits;
+                return this.tablePatientDetailedData;
             }
         }
         
@@ -152,8 +152,8 @@ namespace MedAssist {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Visits"] != null)) {
-                    base.Tables.Add(new VisitsDataTable(ds.Tables["Visits"]));
+                if ((ds.Tables["PatientDetailedData"] != null)) {
+                    base.Tables.Add(new PatientDetailedDataDataTable(ds.Tables["PatientDetailedData"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace MedAssist {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableVisits = ((VisitsDataTable)(base.Tables["Visits"]));
+            this.tablePatientDetailedData = ((PatientDetailedDataDataTable)(base.Tables["PatientDetailedData"]));
             if ((initTable == true)) {
-                if ((this.tableVisits != null)) {
-                    this.tableVisits.InitVars();
+                if ((this.tablePatientDetailedData != null)) {
+                    this.tablePatientDetailedData.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace MedAssist {
             this.Namespace = "http://tempuri.org/Patient_Report_Dataset.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableVisits = new VisitsDataTable();
-            base.Tables.Add(this.tableVisits);
+            this.tablePatientDetailedData = new PatientDetailedDataDataTable();
+            base.Tables.Add(this.tablePatientDetailedData);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeVisits() {
+        private bool ShouldSerializePatientDetailedData() {
             return false;
         }
         
@@ -270,14 +270,14 @@ namespace MedAssist {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void VisitsRowChangeEventHandler(object sender, VisitsRowChangeEvent e);
+        public delegate void PatientDetailedDataRowChangeEventHandler(object sender, PatientDetailedDataRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class VisitsDataTable : global::System.Data.TypedTableBase<VisitsRow> {
+        public partial class PatientDetailedDataDataTable : global::System.Data.TypedTableBase<PatientDetailedDataRow> {
             
             private global::System.Data.DataColumn columnVisitID;
             
@@ -327,8 +327,8 @@ namespace MedAssist {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsDataTable() {
-                this.TableName = "Visits";
+            public PatientDetailedDataDataTable() {
+                this.TableName = "PatientDetailedData";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -336,7 +336,7 @@ namespace MedAssist {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal VisitsDataTable(global::System.Data.DataTable table) {
+            internal PatientDetailedDataDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -353,7 +353,7 @@ namespace MedAssist {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected VisitsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected PatientDetailedDataDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -553,33 +553,33 @@ namespace MedAssist {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsRow this[int index] {
+            public PatientDetailedDataRow this[int index] {
                 get {
-                    return ((VisitsRow)(this.Rows[index]));
+                    return ((PatientDetailedDataRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event VisitsRowChangeEventHandler VisitsRowChanging;
+            public event PatientDetailedDataRowChangeEventHandler PatientDetailedDataRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event VisitsRowChangeEventHandler VisitsRowChanged;
+            public event PatientDetailedDataRowChangeEventHandler PatientDetailedDataRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event VisitsRowChangeEventHandler VisitsRowDeleting;
+            public event PatientDetailedDataRowChangeEventHandler PatientDetailedDataRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event VisitsRowChangeEventHandler VisitsRowDeleted;
+            public event PatientDetailedDataRowChangeEventHandler PatientDetailedDataRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddVisitsRow(VisitsRow row) {
+            public void AddPatientDetailedDataRow(PatientDetailedDataRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsRow AddVisitsRow(
+            public PatientDetailedDataRow AddPatientDetailedDataRow(
                         System.DateTime VisitDate, 
                         int NurseID, 
                         int PatientID, 
@@ -601,7 +601,7 @@ namespace MedAssist {
                         string MInit, 
                         System.DateTime DOB, 
                         string Gender) {
-                VisitsRow rowVisitsRow = ((VisitsRow)(this.NewRow()));
+                PatientDetailedDataRow rowPatientDetailedDataRow = ((PatientDetailedDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         VisitDate,
@@ -626,22 +626,15 @@ namespace MedAssist {
                         MInit,
                         DOB,
                         Gender};
-                rowVisitsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowVisitsRow);
-                return rowVisitsRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsRow FindByVisitID(int VisitID) {
-                return ((VisitsRow)(this.Rows.Find(new object[] {
-                            VisitID})));
+                rowPatientDetailedDataRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPatientDetailedDataRow);
+                return rowPatientDetailedDataRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                VisitsDataTable cln = ((VisitsDataTable)(base.Clone()));
+                PatientDetailedDataDataTable cln = ((PatientDetailedDataDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -649,7 +642,7 @@ namespace MedAssist {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new VisitsDataTable();
+                return new PatientDetailedDataDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -729,14 +722,11 @@ namespace MedAssist {
                 base.Columns.Add(this.columnDOB);
                 this.columnGender = new global::System.Data.DataColumn("Gender", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGender);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnVisitID}, true));
                 this.columnVisitID.AutoIncrement = true;
                 this.columnVisitID.AutoIncrementSeed = -1;
                 this.columnVisitID.AutoIncrementStep = -1;
                 this.columnVisitID.AllowDBNull = false;
                 this.columnVisitID.ReadOnly = true;
-                this.columnVisitID.Unique = true;
                 this.columnVisitDate.AllowDBNull = false;
                 this.columnNurseID.AllowDBNull = false;
                 this.columnPatientID.AllowDBNull = false;
@@ -775,28 +765,28 @@ namespace MedAssist {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsRow NewVisitsRow() {
-                return ((VisitsRow)(this.NewRow()));
+            public PatientDetailedDataRow NewPatientDetailedDataRow() {
+                return ((PatientDetailedDataRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new VisitsRow(builder);
+                return new PatientDetailedDataRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(VisitsRow);
+                return typeof(PatientDetailedDataRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.VisitsRowChanged != null)) {
-                    this.VisitsRowChanged(this, new VisitsRowChangeEvent(((VisitsRow)(e.Row)), e.Action));
+                if ((this.PatientDetailedDataRowChanged != null)) {
+                    this.PatientDetailedDataRowChanged(this, new PatientDetailedDataRowChangeEvent(((PatientDetailedDataRow)(e.Row)), e.Action));
                 }
             }
             
@@ -804,8 +794,8 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.VisitsRowChanging != null)) {
-                    this.VisitsRowChanging(this, new VisitsRowChangeEvent(((VisitsRow)(e.Row)), e.Action));
+                if ((this.PatientDetailedDataRowChanging != null)) {
+                    this.PatientDetailedDataRowChanging(this, new PatientDetailedDataRowChangeEvent(((PatientDetailedDataRow)(e.Row)), e.Action));
                 }
             }
             
@@ -813,8 +803,8 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.VisitsRowDeleted != null)) {
-                    this.VisitsRowDeleted(this, new VisitsRowChangeEvent(((VisitsRow)(e.Row)), e.Action));
+                if ((this.PatientDetailedDataRowDeleted != null)) {
+                    this.PatientDetailedDataRowDeleted(this, new PatientDetailedDataRowChangeEvent(((PatientDetailedDataRow)(e.Row)), e.Action));
                 }
             }
             
@@ -822,14 +812,14 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.VisitsRowDeleting != null)) {
-                    this.VisitsRowDeleting(this, new VisitsRowChangeEvent(((VisitsRow)(e.Row)), e.Action));
+                if ((this.PatientDetailedDataRowDeleting != null)) {
+                    this.PatientDetailedDataRowDeleting(this, new PatientDetailedDataRowChangeEvent(((PatientDetailedDataRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveVisitsRow(VisitsRow row) {
+            public void RemovePatientDetailedDataRow(PatientDetailedDataRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -856,7 +846,7 @@ namespace MedAssist {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "VisitsDataTable";
+                attribute2.FixedValue = "PatientDetailedDataDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -900,25 +890,25 @@ namespace MedAssist {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class VisitsRow : global::System.Data.DataRow {
+        public partial class PatientDetailedDataRow : global::System.Data.DataRow {
             
-            private VisitsDataTable tableVisits;
+            private PatientDetailedDataDataTable tablePatientDetailedData;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal VisitsRow(global::System.Data.DataRowBuilder rb) : 
+            internal PatientDetailedDataRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableVisits = ((VisitsDataTable)(this.Table));
+                this.tablePatientDetailedData = ((PatientDetailedDataDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int VisitID {
                 get {
-                    return ((int)(this[this.tableVisits.VisitIDColumn]));
+                    return ((int)(this[this.tablePatientDetailedData.VisitIDColumn]));
                 }
                 set {
-                    this[this.tableVisits.VisitIDColumn] = value;
+                    this[this.tablePatientDetailedData.VisitIDColumn] = value;
                 }
             }
             
@@ -926,10 +916,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime VisitDate {
                 get {
-                    return ((global::System.DateTime)(this[this.tableVisits.VisitDateColumn]));
+                    return ((global::System.DateTime)(this[this.tablePatientDetailedData.VisitDateColumn]));
                 }
                 set {
-                    this[this.tableVisits.VisitDateColumn] = value;
+                    this[this.tablePatientDetailedData.VisitDateColumn] = value;
                 }
             }
             
@@ -937,10 +927,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int NurseID {
                 get {
-                    return ((int)(this[this.tableVisits.NurseIDColumn]));
+                    return ((int)(this[this.tablePatientDetailedData.NurseIDColumn]));
                 }
                 set {
-                    this[this.tableVisits.NurseIDColumn] = value;
+                    this[this.tablePatientDetailedData.NurseIDColumn] = value;
                 }
             }
             
@@ -948,10 +938,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int PatientID {
                 get {
-                    return ((int)(this[this.tableVisits.PatientIDColumn]));
+                    return ((int)(this[this.tablePatientDetailedData.PatientIDColumn]));
                 }
                 set {
-                    this[this.tableVisits.PatientIDColumn] = value;
+                    this[this.tablePatientDetailedData.PatientIDColumn] = value;
                 }
             }
             
@@ -959,10 +949,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int DoctorID {
                 get {
-                    return ((int)(this[this.tableVisits.DoctorIDColumn]));
+                    return ((int)(this[this.tablePatientDetailedData.DoctorIDColumn]));
                 }
                 set {
-                    this[this.tableVisits.DoctorIDColumn] = value;
+                    this[this.tablePatientDetailedData.DoctorIDColumn] = value;
                 }
             }
             
@@ -970,10 +960,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Diagnosis {
                 get {
-                    return ((string)(this[this.tableVisits.DiagnosisColumn]));
+                    return ((string)(this[this.tablePatientDetailedData.DiagnosisColumn]));
                 }
                 set {
-                    this[this.tableVisits.DiagnosisColumn] = value;
+                    this[this.tablePatientDetailedData.DiagnosisColumn] = value;
                 }
             }
             
@@ -981,10 +971,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int Systolic {
                 get {
-                    return ((int)(this[this.tableVisits.SystolicColumn]));
+                    return ((int)(this[this.tablePatientDetailedData.SystolicColumn]));
                 }
                 set {
-                    this[this.tableVisits.SystolicColumn] = value;
+                    this[this.tablePatientDetailedData.SystolicColumn] = value;
                 }
             }
             
@@ -992,10 +982,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int Diastolic {
                 get {
-                    return ((int)(this[this.tableVisits.DiastolicColumn]));
+                    return ((int)(this[this.tablePatientDetailedData.DiastolicColumn]));
                 }
                 set {
-                    this[this.tableVisits.DiastolicColumn] = value;
+                    this[this.tablePatientDetailedData.DiastolicColumn] = value;
                 }
             }
             
@@ -1003,10 +993,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal Temperature {
                 get {
-                    return ((decimal)(this[this.tableVisits.TemperatureColumn]));
+                    return ((decimal)(this[this.tablePatientDetailedData.TemperatureColumn]));
                 }
                 set {
-                    this[this.tableVisits.TemperatureColumn] = value;
+                    this[this.tablePatientDetailedData.TemperatureColumn] = value;
                 }
             }
             
@@ -1014,10 +1004,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int RespirationRate {
                 get {
-                    return ((int)(this[this.tableVisits.RespirationRateColumn]));
+                    return ((int)(this[this.tablePatientDetailedData.RespirationRateColumn]));
                 }
                 set {
-                    this[this.tableVisits.RespirationRateColumn] = value;
+                    this[this.tablePatientDetailedData.RespirationRateColumn] = value;
                 }
             }
             
@@ -1025,10 +1015,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int HeartRate {
                 get {
-                    return ((int)(this[this.tableVisits.HeartRateColumn]));
+                    return ((int)(this[this.tablePatientDetailedData.HeartRateColumn]));
                 }
                 set {
-                    this[this.tableVisits.HeartRateColumn] = value;
+                    this[this.tablePatientDetailedData.HeartRateColumn] = value;
                 }
             }
             
@@ -1036,10 +1026,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Symptoms {
                 get {
-                    return ((string)(this[this.tableVisits.SymptomsColumn]));
+                    return ((string)(this[this.tablePatientDetailedData.SymptomsColumn]));
                 }
                 set {
-                    this[this.tableVisits.SymptomsColumn] = value;
+                    this[this.tablePatientDetailedData.SymptomsColumn] = value;
                 }
             }
             
@@ -1047,10 +1037,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int OrderID {
                 get {
-                    return ((int)(this[this.tableVisits.OrderIDColumn]));
+                    return ((int)(this[this.tablePatientDetailedData.OrderIDColumn]));
                 }
                 set {
-                    this[this.tableVisits.OrderIDColumn] = value;
+                    this[this.tablePatientDetailedData.OrderIDColumn] = value;
                 }
             }
             
@@ -1058,10 +1048,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string TestName {
                 get {
-                    return ((string)(this[this.tableVisits.TestNameColumn]));
+                    return ((string)(this[this.tablePatientDetailedData.TestNameColumn]));
                 }
                 set {
-                    this[this.tableVisits.TestNameColumn] = value;
+                    this[this.tablePatientDetailedData.TestNameColumn] = value;
                 }
             }
             
@@ -1070,14 +1060,14 @@ namespace MedAssist {
             public string DoctorFirst {
                 get {
                     try {
-                        return ((string)(this[this.tableVisits.DoctorFirstColumn]));
+                        return ((string)(this[this.tablePatientDetailedData.DoctorFirstColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DoctorFirst\' in table \'Visits\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DoctorFirst\' in table \'PatientDetailedData\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableVisits.DoctorFirstColumn] = value;
+                    this[this.tablePatientDetailedData.DoctorFirstColumn] = value;
                 }
             }
             
@@ -1086,14 +1076,14 @@ namespace MedAssist {
             public string DoctorLast {
                 get {
                     try {
-                        return ((string)(this[this.tableVisits.DoctorLastColumn]));
+                        return ((string)(this[this.tablePatientDetailedData.DoctorLastColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DoctorLast\' in table \'Visits\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DoctorLast\' in table \'PatientDetailedData\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableVisits.DoctorLastColumn] = value;
+                    this[this.tablePatientDetailedData.DoctorLastColumn] = value;
                 }
             }
             
@@ -1101,10 +1091,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NursesFirst {
                 get {
-                    return ((string)(this[this.tableVisits.NursesFirstColumn]));
+                    return ((string)(this[this.tablePatientDetailedData.NursesFirstColumn]));
                 }
                 set {
-                    this[this.tableVisits.NursesFirstColumn] = value;
+                    this[this.tablePatientDetailedData.NursesFirstColumn] = value;
                 }
             }
             
@@ -1112,10 +1102,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NursesLast {
                 get {
-                    return ((string)(this[this.tableVisits.NursesLastColumn]));
+                    return ((string)(this[this.tablePatientDetailedData.NursesLastColumn]));
                 }
                 set {
-                    this[this.tableVisits.NursesLastColumn] = value;
+                    this[this.tablePatientDetailedData.NursesLastColumn] = value;
                 }
             }
             
@@ -1123,10 +1113,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string FirstName {
                 get {
-                    return ((string)(this[this.tableVisits.FirstNameColumn]));
+                    return ((string)(this[this.tablePatientDetailedData.FirstNameColumn]));
                 }
                 set {
-                    this[this.tableVisits.FirstNameColumn] = value;
+                    this[this.tablePatientDetailedData.FirstNameColumn] = value;
                 }
             }
             
@@ -1134,10 +1124,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string LastName {
                 get {
-                    return ((string)(this[this.tableVisits.LastNameColumn]));
+                    return ((string)(this[this.tablePatientDetailedData.LastNameColumn]));
                 }
                 set {
-                    this[this.tableVisits.LastNameColumn] = value;
+                    this[this.tablePatientDetailedData.LastNameColumn] = value;
                 }
             }
             
@@ -1146,14 +1136,14 @@ namespace MedAssist {
             public string MInit {
                 get {
                     try {
-                        return ((string)(this[this.tableVisits.MInitColumn]));
+                        return ((string)(this[this.tablePatientDetailedData.MInitColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MInit\' in table \'Visits\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'MInit\' in table \'PatientDetailedData\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableVisits.MInitColumn] = value;
+                    this[this.tablePatientDetailedData.MInitColumn] = value;
                 }
             }
             
@@ -1161,10 +1151,10 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime DOB {
                 get {
-                    return ((global::System.DateTime)(this[this.tableVisits.DOBColumn]));
+                    return ((global::System.DateTime)(this[this.tablePatientDetailedData.DOBColumn]));
                 }
                 set {
-                    this[this.tableVisits.DOBColumn] = value;
+                    this[this.tablePatientDetailedData.DOBColumn] = value;
                 }
             }
             
@@ -1172,47 +1162,47 @@ namespace MedAssist {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Gender {
                 get {
-                    return ((string)(this[this.tableVisits.GenderColumn]));
+                    return ((string)(this[this.tablePatientDetailedData.GenderColumn]));
                 }
                 set {
-                    this[this.tableVisits.GenderColumn] = value;
+                    this[this.tablePatientDetailedData.GenderColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDoctorFirstNull() {
-                return this.IsNull(this.tableVisits.DoctorFirstColumn);
+                return this.IsNull(this.tablePatientDetailedData.DoctorFirstColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDoctorFirstNull() {
-                this[this.tableVisits.DoctorFirstColumn] = global::System.Convert.DBNull;
+                this[this.tablePatientDetailedData.DoctorFirstColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDoctorLastNull() {
-                return this.IsNull(this.tableVisits.DoctorLastColumn);
+                return this.IsNull(this.tablePatientDetailedData.DoctorLastColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDoctorLastNull() {
-                this[this.tableVisits.DoctorLastColumn] = global::System.Convert.DBNull;
+                this[this.tablePatientDetailedData.DoctorLastColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsMInitNull() {
-                return this.IsNull(this.tableVisits.MInitColumn);
+                return this.IsNull(this.tablePatientDetailedData.MInitColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMInitNull() {
-                this[this.tableVisits.MInitColumn] = global::System.Convert.DBNull;
+                this[this.tablePatientDetailedData.MInitColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1220,22 +1210,22 @@ namespace MedAssist {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class VisitsRowChangeEvent : global::System.EventArgs {
+        public class PatientDetailedDataRowChangeEvent : global::System.EventArgs {
             
-            private VisitsRow eventRow;
+            private PatientDetailedDataRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsRowChangeEvent(VisitsRow row, global::System.Data.DataRowAction action) {
+            public PatientDetailedDataRowChangeEvent(PatientDetailedDataRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public VisitsRow Row {
+            public PatientDetailedDataRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1263,7 +1253,7 @@ namespace MedAssist.Patient_Report_DatasetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class VisitsTableAdapter : global::System.ComponentModel.Component {
+    public partial class PatientDetailedDataTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1277,7 +1267,7 @@ namespace MedAssist.Patient_Report_DatasetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public VisitsTableAdapter() {
+        public PatientDetailedDataTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1374,7 +1364,7 @@ namespace MedAssist.Patient_Report_DatasetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Visits";
+            tableMapping.DataSetTable = "PatientDetailedData";
             tableMapping.ColumnMappings.Add("VisitID", "VisitID");
             tableMapping.ColumnMappings.Add("VisitDate", "VisitDate");
             tableMapping.ColumnMappings.Add("NurseID", "NurseID");
@@ -1423,16 +1413,21 @@ FROM            Visits INNER JOIN
                          Patients ON Visits.PatientID = Patients.PatientID INNER JOIN
                          Employees AS Nurses ON Visits.NurseID = Nurses.EmployeeID LEFT OUTER JOIN
                          Employees AS Doctors ON Visits.DoctorID = Doctors.EmployeeID
+WHERE        (Visits.VisitDate BETWEEN @visitStart AND @visitEnd)
 ORDER BY Visits.VisitDate";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@visitStart", global::System.Data.SqlDbType.DateTime, 3, global::System.Data.ParameterDirection.Input, 0, 0, "VisitDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@visitEnd", global::System.Data.SqlDbType.DateTime, 3, global::System.Data.ParameterDirection.Input, 0, 0, "VisitDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(Patient_Report_Dataset.VisitsDataTable dataTable) {
+        public virtual int Fill(Patient_Report_Dataset.PatientDetailedDataDataTable dataTable, System.DateTime visitStart, System.DateTime visitEnd) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(visitStart));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(visitEnd));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1444,9 +1439,11 @@ ORDER BY Visits.VisitDate";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual Patient_Report_Dataset.VisitsDataTable GetData() {
+        public virtual Patient_Report_Dataset.PatientDetailedDataDataTable GetData(System.DateTime visitStart, System.DateTime visitEnd) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            Patient_Report_Dataset.VisitsDataTable dataTable = new Patient_Report_Dataset.VisitsDataTable();
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(visitStart));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(visitEnd));
+            Patient_Report_Dataset.PatientDetailedDataDataTable dataTable = new Patient_Report_Dataset.PatientDetailedDataDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

@@ -233,6 +233,11 @@ namespace MedAssist.View
 
         }
 
+        private void dateTimePickerSearchDOB_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
        
     }
 }

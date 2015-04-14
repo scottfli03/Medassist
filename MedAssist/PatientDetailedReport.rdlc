@@ -63,7 +63,19 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Count(Fields!PatientID.Value)</Value>
+                              <Value>=Fields!PatientID.Value</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <Color>#4d4d4d</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -94,6 +106,82 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox38">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <Color>#4d4d4d</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox38</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>#e5e5e5</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox57">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <Color>#4d4d4d</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox57</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>#e5e5e5</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox96">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -101,7 +189,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Count(Fields!PatientID.Value)</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -606,7 +694,7 @@
                                                           <TablixMembers>
                                                             <TablixMember>
                                                               <TablixHeader>
-                                                                <Size>1in</Size>
+                                                                <Size>1.15625in</Size>
                                                                 <CellContents>
                                                                   <Textbox Name="Textbox13">
                                                                     <CanGrow>true</CanGrow>
@@ -1463,7 +1551,7 @@
                                                                 </SortExpression>
                                                               </SortExpressions>
                                                               <TablixHeader>
-                                                                <Size>1in</Size>
+                                                                <Size>1.15625in</Size>
                                                                 <CellContents>
                                                                   <Textbox Name="NursesFirst">
                                                                     <CanGrow>true</CanGrow>
@@ -1739,6 +1827,8 @@
                                                                                     </CellContents>
                                                                                   </TablixHeader>
                                                                                   <TablixMembers>
+                                                                                    <TablixMember />
+                                                                                    <TablixMember />
                                                                                     <TablixMember />
                                                                                   </TablixMembers>
                                                                                 </TablixMember>
@@ -2234,7 +2324,7 @@
                                                           <TablixMembers>
                                                             <TablixMember>
                                                               <TablixHeader>
-                                                                <Size>1in</Size>
+                                                                <Size>1.15625in</Size>
                                                                 <CellContents>
                                                                   <Textbox Name="Textbox90">
                                                                     <CanGrow>true</CanGrow>
@@ -2395,7 +2485,7 @@
                                                                                       <Paragraph>
                                                                                         <TextRuns>
                                                                                           <TextRun>
-                                                                                            <Value />
+                                                                                            <Value>Total Patients</Value>
                                                                                             <Style>
                                                                                               <FontFamily>Tahoma</FontFamily>
                                                                                               <FontWeight>Bold</FontWeight>
@@ -2407,6 +2497,7 @@
                                                                                       </Paragraph>
                                                                                     </Paragraphs>
                                                                                     <rd:DefaultName>Textbox94</rd:DefaultName>
+                                                                                    <ToolTip>Total Patients </ToolTip>
                                                                                     <Style>
                                                                                       <Border>
                                                                                         <Color>White</Color>
@@ -2433,11 +2524,10 @@
                                                                                           <Paragraph>
                                                                                             <TextRuns>
                                                                                               <TextRun>
-                                                                                                <Value />
+                                                                                                <Value>=Count(Fields!PatientID.Value)</Value>
                                                                                                 <Style>
                                                                                                   <FontFamily>Tahoma</FontFamily>
-                                                                                                  <FontWeight>Bold</FontWeight>
-                                                                                                  <Color>#4c68a2</Color>
+                                                                                                  <Color>#4d4d4d</Color>
                                                                                                 </Style>
                                                                                               </TextRun>
                                                                                             </TextRuns>
@@ -2502,8 +2592,8 @@
         </TablixRowHierarchy>
         <DataSetName>PatientDetailedDataSet</DataSetName>
         <Top>0.47in</Top>
-        <Height>0.75in</Height>
-        <Width>19in</Width>
+        <Height>1.25in</Height>
+        <Width>19.15625in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2514,7 +2604,7 @@
     <Height>2.19917in</Height>
     <Style />
   </Body>
-  <Width>19in</Width>
+  <Width>19.15625in</Width>
   <Page>
     <PageHeader>
       <Height>1in</Height>

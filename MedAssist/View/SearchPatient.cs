@@ -62,7 +62,7 @@ namespace MedAssist.View
             {
                 //get a patient object for the typed Patient
                 //will bind the datagrid to that object
-                //visitList = VisitDAL.GetVisitForPatient(fName, lName);
+                
                 patientList = PatientController.GetVisitForPatient(fName, lName);
                 if (patientList.Count == 0) //was visitList
                 {
