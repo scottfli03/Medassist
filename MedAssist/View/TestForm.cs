@@ -7,55 +7,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MedAssist.Controller;
+using MedAssist.Model;
 
 namespace MedAssist.View
 {
     public partial class TestForm : Form
     {
+        private BindingList<OrderDetails> orders;
+        private Order newOrder;
+        private Order oldOrder;
         public TestForm()
         {
             InitializeComponent();
         }
 
-        private void ordersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.ordersBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.orderTestDataSet);
-
-        }
-
         private void TestForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'orderTestDataSet.Orders' table. You can move, or remove it, as needed.
-            this.ordersTableAdapter.Fill(this.orderTestDataSet.Orders);
-            // TODO: This line of code loads data into the 'orderTestDataSet.Orders' table. You can move, or remove it, as needed.
-            this.ordersTableAdapter.Fill(this.orderTestDataSet.Orders);
-        }
-
-        private void fillByPatientIDToolStripButton_Click(object sender, EventArgs e)
-        {
             try
             {
-                this.ordersTableAdapter.FillByPatientID(this.orderTestDataSet.Orders, ((int)(System.Convert.ChangeType(patientIDToolStripTextBox.Text, typeof(int)))));
+                txtPatient.Text = CurrentPatientController.currentPatient.FullName;
+                this.FillComboBoxes();
+                orders = OrderController.GetPatientsOrders(CurrentPatientController.currentPatient.PatientID);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-
         }
 
-        private void fillByPatientIDToolStripButton_Click_1(object sender, EventArgs e)
+        private void FillComboBoxes()
         {
-            try
-            {
-                this.ordersTableAdapter.FillByPatientID(this.orderTestDataSet.Orders, ((int)(System.Convert.ChangeType(patientIDToolStripTextBox.Text, typeof(int)))));
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
+            cmbOrderID.DisplayMember = "OrderID";
+            cmbOrderID.ValueMember = "OrderID";
+            cmbOrderID.DataSource = orders;
+        }
+
+        private void buildDGV()
+        {
+            dgvOrders.DataSource = orders;
+        }
+
+        private void getOrderAdjustments()
+        {
 
         }
     }

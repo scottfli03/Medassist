@@ -104,7 +104,7 @@ namespace MedAssist.View
             }
         }
 
-        public bool IsState(TextBox textBox)
+        public static bool IsState(TextBox textBox)
         {
             try
             {

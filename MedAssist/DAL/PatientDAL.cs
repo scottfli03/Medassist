@@ -42,16 +42,7 @@ namespace MedAssist.DAL
                     patient.PatientID = (int)reader["PatientID"];
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.LastName = reader["LastName"].ToString();
-                    
-                    //if (reader["MInit"] == DBNull.Value)
-                    //{
-                    //    patient.MInit = '\0';
-                    //}
-                    //else
-                    //{
-                    //    patient.MInit = Convert.ToChar(reader["Minit"]);
-                    //}
-
+                    patient.MInit = reader["MInit"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = Convert.ToChar(reader["Gender"]);
                     patient.SSN = reader["SSN"].ToString();
@@ -208,14 +199,6 @@ namespace MedAssist.DAL
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.LastName = reader["LastName"].ToString();
                     patient.MInit = reader["Minit"].ToString();
-
-                    //if (reader["MInit"] == DBNull.Value) {
-                    //    patient.MInit = '\0';
-                    //}
-                    //else
-                    //{
-                    //    patient.MInit = Convert.ToChar(reader["Minit"]);
-                    //}
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = Convert.ToChar(reader["Gender"]);
                     patient.SSN =  reader["SSN"].ToString();
@@ -267,8 +250,7 @@ namespace MedAssist.DAL
                     patient.PatientID = (int)reader["PatientID"];
                     patient.SSN = reader["SSN"].ToString();
                     patient.FirstName = reader["FirstName"].ToString();
-                    patient.Phone = reader["MInit"].ToString();
-                    //patient.MInit = reader["MInit"].ToString()[0];
+                    patient.Phone = reader["Phone"].ToString();
                     patient.MInit = reader["MInit"].ToString();
                     patient.LastName = reader["LastName"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];
@@ -343,15 +325,16 @@ namespace MedAssist.DAL
                     Patient patient = new Patient();
                     patient.FirstName = reader["FirstName"].ToString();
 
-                    patient.MInit = reader["MInit"].ToString();
-                    //if (patient.MInit != null)
-                    //{
-                    //    patient.MInit = (char)reader["MInit"];
-                    //}
-                    //else
-                    //{
-                    //    patient.MInit = null;
-                    //}
+                    if (patient.MInit != null)
+                    {
+                        patient.MInit = reader["MInit"].ToString();
+                    }
+                    else
+                    {
+                        patient.MInit = null;
+                    }
+                    
+                    
 
                     patient.LastName = reader["LastName"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];
@@ -364,7 +347,7 @@ namespace MedAssist.DAL
                         patient.VisitDate = null;
                     }
                     
-                    //patient.PatientID = (int)reader["PatientID"];
+                    patient.PatientID = (int)reader["PatientID"];
                     if (patient.Systolic != null)
                     {
                         patient.Systolic = (int?)reader["Systolic"];
@@ -548,19 +531,20 @@ namespace MedAssist.DAL
                         patient.VisitDate = null;
                     }
 
-                    //patient.PatientID = (int)reader["PatientID"];
+                    patient.PatientID = (int)reader["PatientID"];
 
                     patient.FirstName = reader["FirstName"].ToString();
-                    patient.MInit = reader["MInit"].ToString();
-                    //if (patient.MInit != null)
-                    //{
-                    //    patient.MInit = (char)reader["MInit"];
-                    //}
-                    //else
-                    //{
-                    //    patient.MInit = null;
-                    //}
-
+                    
+                    if (patient.MInit != null)
+                    {
+                        patient.MInit = reader["MInit"].ToString();
+                    }
+                    else
+                    {
+                        patient.MInit = null;
+                    }
+                    
+                   
                     patient.LastName = reader["LastName"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];
                     if (patient.Systolic != null)
@@ -726,18 +710,18 @@ namespace MedAssist.DAL
                         patient.VisitDate = null;
                     }
                    
-                    //patient.PatientID = (int)reader["PatientID"];
+                    patient.PatientID = (int)reader["PatientID"];
                     
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.MInit = reader["MInit"].ToString();
-                    //if (patient.MInit != null)
-                    //{
-                    //   patient.MInit = (char)reader["MInit"];
-                    //}
-                    //else
-                    //{
-                    //    patient.MInit = null;
-                    //}
+                    if (patient.MInit != null)
+                    {
+                       patient.MInit = reader["MInit"].ToString();
+                    }
+                    else
+                    {
+                        patient.MInit = null;
+                    }
                     
                     patient.LastName = reader["LastName"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];
@@ -835,6 +819,58 @@ namespace MedAssist.DAL
                     reader.Close();
             }
             return patientList;
+        }
+
+        public static Patient GetPatientWithID(int patientID)
+        {
+            Patient patient = new Patient();
+            SqlConnection connection = MedassistDB.GetConnection();
+            string selectStatement =
+
+                   "SELECT PatientID, FirstName, MInit, DOB, Gender, SSN, LastName, StreetAddress1, StreetAddress2, City, State, ZipCode, Phone " +
+                   "FROM Patients " +
+                   "WHERE PatientID = @PatientID";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
+            selectCommand.Parameters.AddWithValue("@PatientID", patientID);
+            try
+            {
+                connection.Open();
+                reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                if (reader.Read())
+                {
+                    patient.PatientID = (int)reader["PatientID"];
+                    patient.FirstName = reader["FirstName"].ToString();
+                    patient.LastName = reader["LastName"].ToString();
+                    patient.MInit = reader["MInit"].ToString();
+                    patient.DOB = (DateTime)reader["DOB"];
+                    patient.Gender = Convert.ToChar(reader["Gender"]);
+                    patient.SSN = reader["SSN"].ToString();
+                    patient.StreetAddr1 = reader["StreetAddress1"].ToString();
+                    patient.StreetAddr2 = reader["StreetAddress2"].ToString();
+                    patient.City = reader["City"].ToString();
+                    patient.State = reader["State"].ToString();
+                    patient.ZipCode = reader["ZipCode"].ToString();
+                    patient.Phone = reader["Phone"].ToString();
+                }
+                else
+                {
+                    patient = null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return patient;
         }
     }
 }

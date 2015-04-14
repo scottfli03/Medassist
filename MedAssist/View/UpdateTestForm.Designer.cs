@@ -52,6 +52,7 @@
             this.txtTestID.Name = "txtTestID";
             this.txtTestID.Size = new System.Drawing.Size(208, 20);
             this.txtTestID.TabIndex = 1;
+            this.txtTestID.TextChanged += new System.EventHandler(this.txtTestID_TextChanged);
             // 
             // btnGetTestID
             // 

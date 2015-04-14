@@ -67,7 +67,6 @@ namespace MedAssist.View
                 catch (Exception ex)
                 {
                     MessageBox.Show("Id already in use. Please select another");
-                    
                 }
 
                 finally
@@ -81,7 +80,7 @@ namespace MedAssist.View
         private bool IsValidData()
         {
             if (Validator.IsPresent(txtTestName) &&
-               Validator.IsInt32(txtTestID))
+               Validator.IsInt32(txtTestID) && Validator.IsPresent(txtTestID))
             {
                 return true;
             }
@@ -118,6 +117,48 @@ namespace MedAssist.View
         }
 
         private void txtTestName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (IsValidData())
+            {
+                Test oldTest = new Test();
+                this.PutTestData(oldTest);
+
+                try
+                {
+                    if (!TestDAL.DeleteTestWithIDAndName(oldTest)) 
+                    {
+                        MessageBox.Show("No test found");
+                        this.DialogResult = DialogResult.Retry;
+                    }
+                    else
+                    {
+                        test = oldTest;
+
+                        this.DialogResult = DialogResult.OK;
+                        MessageBox.Show("Test has been deleted");
+
+                    }
+
+                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Id in use. Please select another");
+                }
+
+                finally
+                {
+                    this.Close();
+                }
+            }
+        }
+
+        private void txtTestID_TextChanged(object sender, EventArgs e)
         {
 
         }

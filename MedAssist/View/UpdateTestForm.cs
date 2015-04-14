@@ -17,9 +17,10 @@ namespace MedAssist.View
         public UpdateTestForm()
         {
             InitializeComponent();
+            btnUpdate.Enabled = false;
         }
 
-        Test test;
+        private Test test;
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -76,12 +77,14 @@ namespace MedAssist.View
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            Test newTest = new Test();
+           
             if (IsValidData())
             {
-                Test newTest = new Test();
+                
                 newTest.TestID = test.TestID;
-                newTest.TestName = test.TestName;
                 this.PutTestData(newTest);
+                
                 try
                 {
 
@@ -96,6 +99,7 @@ namespace MedAssist.View
                         test = newTest;
                         this.DialogResult = DialogResult.OK;
                         MessageBox.Show("Test has been updated");
+                        this.Close();
                     }
                 }
                 catch (Exception ex)
@@ -110,11 +114,11 @@ namespace MedAssist.View
             }
         }
 
-        // this method sets the values that the form contains to the incident object
-        private void PutTestData(Test newTest)
+        // this method sets the values that the form contains to the test object
+        private void PutTestData(Test test)
         {
-            newTest.TestID = int.Parse(txtTestID.Text);
-            newTest.TestName = txtTestName.Text;
+            //test.TestID = int.Parse(txtTestID.Text);
+            test.TestName = txtTestName.Text;
             
         }
 
@@ -129,6 +133,11 @@ namespace MedAssist.View
             }
             else
                 return false;
+
+        }
+
+        private void txtTestID_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

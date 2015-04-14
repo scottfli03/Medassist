@@ -86,19 +86,18 @@ namespace MedAssist.DAL
             Test test  = new Test();
             SqlConnection connection = MedassistDB.GetConnection();
             string selectStatement = @"Select
-            Tests.TestID, Tests.TestName 
-            FROM Tests";
-            SqlCommand selectCommand =
-                new SqlCommand(selectStatement, connection);
+            TestID, TestName 
+            FROM Tests
+            WHERE TestID = @TestID" ;
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
             selectCommand.Parameters.AddWithValue("@TestID", testID);
             try
             {
                 connection.Open();
-                SqlDataReader reader =
-                    selectCommand.ExecuteReader();
+                reader = selectCommand.ExecuteReader();
                 if (reader.Read())
                 {
-                   
                     test.TestName = reader["TestName"].ToString();
                     test.TestID = (int)reader["TestID"];
                     
@@ -115,7 +114,10 @@ namespace MedAssist.DAL
             }
             finally
             {
-                connection.Close();
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
             }
             return test;
         }
@@ -125,15 +127,13 @@ namespace MedAssist.DAL
             SqlConnection connection = MedassistDB.GetConnection();
             string updateStatement =
                 "UPDATE Tests SET " +
-                "TestID = @TestID, " +
-                "TestName = @TestName " +
-                "WHERE TestID = @OldTestID " +
-                "AND TestName = @OldTestName";
+                "TestName = @NewTestName " +
+                "WHERE TestID = @OldTestID ";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@TestID", newTest.TestID);
-            updateCommand.Parameters.AddWithValue("@TestName", newTest.TestName);
+            updateCommand.Parameters.AddWithValue("@NewTestName", newTest.TestName);
             updateCommand.Parameters.AddWithValue("@OldTestID", oldTest.TestID);
-            updateCommand.Parameters.AddWithValue("@OldTestName", oldTest.TestName);
+            
+            
             
             try
             {
@@ -150,12 +150,46 @@ namespace MedAssist.DAL
             }
             finally
             {
-                connection.Close();
+                if (connection != null)
+                    connection.Close();
             }
         }
-    
-    
-    
+
+
+        public static bool DeleteTestWithIDAndName(Test oldTest)
+        {
+            
+            SqlCommand deleteCommand = new SqlCommand();
+            
+            deleteCommand.Connection = MedassistDB.GetConnection();
+            deleteCommand.Parameters.AddWithValue("@TestID", oldTest.TestID);
+            deleteCommand.Parameters.AddWithValue("@TestName", oldTest.TestName);
+            deleteCommand.CommandText = "DELETE FROM Tests " +
+            "WHERE TestID = @TestID AND TestName = @TestName";
+
+           
+            
+            try
+            {
+                deleteCommand.Connection.Open();
+                int rowCount = deleteCommand.ExecuteNonQuery();
+                if (rowCount > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (deleteCommand.Connection != null)
+                    deleteCommand.Connection.Close();
+               
+            }
+            
+        }
     
     
     

@@ -367,7 +367,8 @@ namespace MedAssist.View
         }
 
         UpdateTestForm utf;
-        private void updateTestToolStripMenuItem_Click(object sender, EventArgs e)
+        
+        private void updateTestToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (utf == null)
             {
@@ -388,6 +389,9 @@ namespace MedAssist.View
             utf = null;
             //throw new NotImplementedException();
         }
+
+        
+
 
         
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -258,6 +259,15 @@ namespace MedAssist.Model
             set
             {
                 testID = value;
+            }
+        }
+
+        public string visitDateID
+        {
+            get
+            {
+                string date = VisitDate.ToString("MM/dd/yyyy");
+                return ("Visit Date: " + date + "     " + "Visit ID: " + VisitID);
             }
         }
     }

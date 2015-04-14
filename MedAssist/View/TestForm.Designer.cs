@@ -28,321 +28,115 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestForm));
-            this.ordersBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.orderTestDataSet = new MedAssist.OrderTestDataSet();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ordersBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.ordersTableAdapter = new MedAssist.OrderTestDataSetTableAdapters.OrdersTableAdapter();
-            this.tableAdapterManager = new MedAssist.OrderTestDataSetTableAdapters.TableAdapterManager();
-            this.ordersDataGridView = new System.Windows.Forms.DataGridView();
-            this.fillByPatientIDToolStrip = new System.Windows.Forms.ToolStrip();
-            this.patientIDToolStripLabel = new System.Windows.Forms.ToolStripLabel();
-            this.patientIDToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.fillByPatientIDToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingNavigator)).BeginInit();
-            this.ordersBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderTestDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).BeginInit();
-            this.fillByPatientIDToolStrip.SuspendLayout();
+            this.dgvOrders = new System.Windows.Forms.DataGridView();
+            this.txtPatient = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbOrderID = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.SuspendLayout();
             // 
-            // ordersBindingNavigator
+            // dgvOrders
             // 
-            this.ordersBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.ordersBindingNavigator.BindingSource = this.ordersBindingSource;
-            this.ordersBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.ordersBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.ordersBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem,
-            this.ordersBindingNavigatorSaveItem});
-            this.ordersBindingNavigator.Location = new System.Drawing.Point(0, 0);
-            this.ordersBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.ordersBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.ordersBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.ordersBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.ordersBindingNavigator.Name = "ordersBindingNavigator";
-            this.ordersBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.ordersBindingNavigator.Size = new System.Drawing.Size(944, 25);
-            this.ordersBindingNavigator.TabIndex = 0;
-            this.ordersBindingNavigator.Text = "bindingNavigator1";
+            this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrders.Location = new System.Drawing.Point(12, 128);
+            this.dgvOrders.Name = "dgvOrders";
+            this.dgvOrders.Size = new System.Drawing.Size(911, 258);
+            this.dgvOrders.TabIndex = 0;
             // 
-            // bindingNavigatorAddNewItem
+            // txtPatient
             // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.txtPatient.Location = new System.Drawing.Point(70, 15);
+            this.txtPatient.Name = "txtPatient";
+            this.txtPatient.Size = new System.Drawing.Size(166, 20);
+            this.txtPatient.TabIndex = 1;
             // 
-            // ordersBindingSource
+            // label1
             // 
-            this.ordersBindingSource.DataMember = "Orders";
-            this.ordersBindingSource.DataSource = this.orderTestDataSet;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Patient:";
             // 
-            // orderTestDataSet
+            // comboBox1
             // 
-            this.orderTestDataSet.DataSetName = "OrderTestDataSet";
-            this.orderTestDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "\"-\"",
+            "\"+\""});
+            this.comboBox1.Location = new System.Drawing.Point(70, 69);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 3;
             // 
-            // bindingNavigatorCountItem
+            // label2
             // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Result:";
             // 
-            // bindingNavigatorDeleteItem
+            // cmbOrderID
             // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
+            this.cmbOrderID.FormattingEnabled = true;
+            this.cmbOrderID.Location = new System.Drawing.Point(70, 42);
+            this.cmbOrderID.Name = "cmbOrderID";
+            this.cmbOrderID.Size = new System.Drawing.Size(166, 21);
+            this.cmbOrderID.TabIndex = 5;
             // 
-            // bindingNavigatorMoveFirstItem
+            // label3
             // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Order ID:";
             // 
-            // bindingNavigatorMovePreviousItem
+            // btnSubmit
             // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            this.btnSubmit.Location = new System.Drawing.Point(70, 96);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 7;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
             // 
-            // bindingNavigatorSeparator
+            // btnClose
             // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // ordersBindingNavigatorSaveItem
-            // 
-            this.ordersBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ordersBindingNavigatorSaveItem.Enabled = false;
-            this.ordersBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("ordersBindingNavigatorSaveItem.Image")));
-            this.ordersBindingNavigatorSaveItem.Name = "ordersBindingNavigatorSaveItem";
-            this.ordersBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.ordersBindingNavigatorSaveItem.Text = "Save Data";
-            // 
-            // ordersTableAdapter
-            // 
-            this.ordersTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.Connection = null;
-            this.tableAdapterManager.PatientsTableAdapter = null;
-            this.tableAdapterManager.TestsTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = MedAssist.OrderTestDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.VisitsTableAdapter = null;
-            // 
-            // ordersDataGridView
-            // 
-            this.ordersDataGridView.AutoGenerateColumns = false;
-            this.ordersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ordersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn3});
-            this.ordersDataGridView.DataSource = this.ordersBindingSource;
-            this.ordersDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ordersDataGridView.Location = new System.Drawing.Point(0, 50);
-            this.ordersDataGridView.Name = "ordersDataGridView";
-            this.ordersDataGridView.Size = new System.Drawing.Size(944, 411);
-            this.ordersDataGridView.TabIndex = 1;
-            // 
-            // fillByPatientIDToolStrip
-            // 
-            this.fillByPatientIDToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.patientIDToolStripLabel,
-            this.patientIDToolStripTextBox,
-            this.fillByPatientIDToolStripButton});
-            this.fillByPatientIDToolStrip.Location = new System.Drawing.Point(0, 25);
-            this.fillByPatientIDToolStrip.Name = "fillByPatientIDToolStrip";
-            this.fillByPatientIDToolStrip.Size = new System.Drawing.Size(944, 25);
-            this.fillByPatientIDToolStrip.TabIndex = 2;
-            this.fillByPatientIDToolStrip.Text = "fillByPatientIDToolStrip";
-            // 
-            // patientIDToolStripLabel
-            // 
-            this.patientIDToolStripLabel.Name = "patientIDToolStripLabel";
-            this.patientIDToolStripLabel.Size = new System.Drawing.Size(58, 22);
-            this.patientIDToolStripLabel.Text = "patientID:";
-            // 
-            // patientIDToolStripTextBox
-            // 
-            this.patientIDToolStripTextBox.Name = "patientIDToolStripTextBox";
-            this.patientIDToolStripTextBox.Size = new System.Drawing.Size(100, 23);
-            // 
-            // fillByPatientIDToolStripButton
-            // 
-            this.fillByPatientIDToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fillByPatientIDToolStripButton.Name = "fillByPatientIDToolStripButton";
-            this.fillByPatientIDToolStripButton.Size = new System.Drawing.Size(87, 19);
-            this.fillByPatientIDToolStripButton.Text = "FillByPatientID";
-            this.fillByPatientIDToolStripButton.Click += new System.EventHandler(this.fillByPatientIDToolStripButton_Click_1);
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Patient";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Patient";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "OrderID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "OrderID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "VisitDate";
-            this.dataGridViewTextBoxColumn8.HeaderText = "VisitDate";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "VisitID";
-            this.dataGridViewTextBoxColumn6.HeaderText = "VisitID";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "OrderDate";
-            this.dataGridViewTextBoxColumn2.HeaderText = "OrderDate";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "TestID";
-            this.dataGridViewTextBoxColumn5.HeaderText = "TestID";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "TestName";
-            this.dataGridViewTextBoxColumn7.HeaderText = "TestName";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Result";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Result";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "DatePerformed";
-            this.dataGridViewTextBoxColumn3.HeaderText = "DatePerformed";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.btnClose.Location = new System.Drawing.Point(161, 96);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 8;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 461);
-            this.Controls.Add(this.ordersDataGridView);
-            this.Controls.Add(this.fillByPatientIDToolStrip);
-            this.Controls.Add(this.ordersBindingNavigator);
+            this.ClientSize = new System.Drawing.Size(940, 402);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cmbOrderID);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtPatient);
+            this.Controls.Add(this.dgvOrders);
             this.Name = "TestForm";
             this.Text = "TestForm";
             this.Load += new System.EventHandler(this.TestForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingNavigator)).EndInit();
-            this.ordersBindingNavigator.ResumeLayout(false);
-            this.ordersBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderTestDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).EndInit();
-            this.fillByPatientIDToolStrip.ResumeLayout(false);
-            this.fillByPatientIDToolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,37 +144,17 @@
 
         #endregion
 
-        private OrderTestDataSet orderTestDataSet;
-        private System.Windows.Forms.BindingSource ordersBindingSource;
-        private OrderTestDataSetTableAdapters.OrdersTableAdapter ordersTableAdapter;
-        private OrderTestDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.BindingNavigator ordersBindingNavigator;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton ordersBindingNavigatorSaveItem;
-        private System.Windows.Forms.DataGridView ordersDataGridView;
-        private System.Windows.Forms.ToolStrip fillByPatientIDToolStrip;
-        private System.Windows.Forms.ToolStripLabel patientIDToolStripLabel;
-        private System.Windows.Forms.ToolStripTextBox patientIDToolStripTextBox;
-        private System.Windows.Forms.ToolStripButton fillByPatientIDToolStripButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridView dgvOrders;
+        private System.Windows.Forms.TextBox txtPatient;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbOrderID;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnClose;
+
+
 
 
     }

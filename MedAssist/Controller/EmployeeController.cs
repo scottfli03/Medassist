@@ -64,5 +64,10 @@ namespace MedAssist.Controller
         {
             return EmployeeDAL.isEmployeeAdmin(employeeID);
         }
+
+        public static bool UpdateEmployee(Employee oldEmployee, Employee employee) 
+        {
+            return EmployeeDAL.UpdateEmployee(oldEmployee, employee);
+        }
     }
 }

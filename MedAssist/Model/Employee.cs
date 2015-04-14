@@ -21,6 +21,7 @@ namespace MedAssist.Model
         private string phone;
         private string state;
         private string zip;
+        private bool inactive;
 
         public int EmployeeID
         {
@@ -175,6 +176,18 @@ namespace MedAssist.Model
             set
             {
                 zip = value;
+            }
+        }
+
+        public bool Inactive
+        {
+            get
+            {
+                return inactive;
+            }
+            set
+            {
+                inactive = value;
             }
         }
 

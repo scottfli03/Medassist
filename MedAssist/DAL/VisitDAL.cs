@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MedAssist.Model;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace MedAssist.DAL
 {
@@ -306,6 +307,162 @@ namespace MedAssist.DAL
             catch (SqlException ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return visitList;
+        }
+
+        public static bool UpdateDiagnosis(Visit visit, Visit oldVisit)
+        {
+            SqlConnection connection = MedassistDB.GetConnection();
+            string updateStatement =
+                "UPDATE Visits SET " +
+                "Diagnosis = @Diagnosis " +
+                "WHERE VisitID = @VisitID " +
+                "AND Diagnosis = @OldDiagnosis";
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@OldDiagnosis", oldVisit.Diagnosis);
+            updateCommand.Parameters.AddWithValue("@VisitID", oldVisit.VisitID);
+            updateCommand.Parameters.AddWithValue("@Diagnosis", visit.Diagnosis);
+            try
+            {
+                connection.Open();
+                int count = updateCommand.ExecuteNonQuery();
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+        }
+
+
+        public static bool UpdateVisit(Visit oldVisit, Visit newVisit)
+        {
+            SqlConnection connection = MedassistDB.GetConnection();
+            string updateStatement =
+                "UPDATE Visits SET " +
+                "Diagnosis = @NewDiagnosis " +
+                "WHERE VisitID = @OldVisitID";
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@NewDiagnosis", newVisit.Diagnosis);
+            updateCommand.Parameters.AddWithValue("@OldVisitID", oldVisit.VisitID);
+
+            try
+            {
+                connection.Open();
+                int count = updateCommand.ExecuteNonQuery();
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+        }
+
+
+        public static Visit GetVisitToUpdate(int visitID)
+        {
+            Visit visit = new Visit();
+            SqlConnection connection = MedassistDB.GetConnection();
+            string selectStatement =
+                "SELECT Visits.VisitID, Visits.VisitDate, Visits.PatientID, Visits.DoctorID, Employees.FirstName, Visits.Diagnosis, Visits.Systolic, Visits.Diastolic, " +
+                "Visits.Temperature, Visits.RespirationRate, Visits.HeartRate, Visits.Symptoms " +
+                "FROM Visits " + 
+                "JOIN Employees ON Visits.DoctorID = Employees.EmployeeID " +
+                "JOIN Patients ON Visits.PatientID = Patients.PatientID " +
+                "WHERE Visits.VisitID = @VisitID";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
+            selectCommand.Parameters.AddWithValue("@VisitID", visitID);
+            try
+            {
+                connection.Open();
+                reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                if (reader.Read())
+                {
+                    visit.PatientID = (int)reader["PatientID"];
+                    visit.Systolic = (int)reader["Systolic"];
+                    visit.Diastolic = (int)reader["Diastolic"];
+                    visit.Temperature = (decimal)reader["Temperature"];
+                    visit.RespirationRate = (int)reader["RespirationRate"];
+                    visit.HeartRate = (int)reader["HeartRate"];
+                    visit.Symptoms = reader["Symptoms"].ToString();
+                    visit.Diagnosis = reader["Diagnosis"].ToString();
+                    visit.PatientID = (int)reader["PatientID"];
+                    visit.DoctorID = (int)reader["DoctorID"];
+                  
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+                if (reader != null)
+                    reader.Close();
+            }
+            return visit;
+        }
+
+        public static List<Visit> GetListVisitDates(string firstName, string lastName)
+        {
+            List<Visit> visitList = new List<Visit>();
+            SqlConnection connection = MedassistDB.GetConnection();
+            String selectStatement = "SELECT VisitID, VisitDate " +
+                "FROM Visits JOIN Patients ON Visits.PatientID = Patients.PatientID " +
+                "WHERE Patients.FirstName = @FirstName AND Patients.LastName = @LastName";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = null;
+            selectCommand.Parameters.AddWithValue("@FirstName", firstName);
+            selectCommand.Parameters.AddWithValue("@LastName", lastName);
+            try
+            {
+                connection.Open();
+                reader = selectCommand.ExecuteReader();
+      
+                while (reader.Read())
+                {
+                    Patient patient = new Patient();
+                    Visit visit = new Visit();
+                    visit.VisitID = (int)reader["VisitID"];
+                    visit.VisitDate = (DateTime)reader["VisitDate"];
+                    visitList.Add(visit);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
             finally
             {

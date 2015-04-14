@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MedAssist.Model;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace MedAssist.DAL
 {
@@ -25,8 +26,9 @@ namespace MedAssist.DAL
             List<Employee> employeeList = new List<Employee>();
             SqlConnection connection = MedassistDB.GetConnection();
             String selectStatement = "SELECT EmployeeID, SSN, FirstName, MInit, LastName, DOB, Gender, " +
-	            "StreetAddress1, StreetAddress2, Phone, City, State, ZipCode " +
-                "FROM Employees e JOIN Doctors d ON e.EmployeeID = d.DoctorID";
+	            "StreetAddress1, StreetAddress2, Phone, City, State, ZipCode, Inactive " +
+                "FROM Employees e JOIN Doctors d ON e.EmployeeID = d.DoctorID " +
+                "WHERE Inactive = 0";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
             try
@@ -48,7 +50,8 @@ namespace MedAssist.DAL
                     employee.Phone = reader["SSN"].ToString();
                     employee.City = reader["City"].ToString();
                     employee.State = reader["State"].ToString();
-                    employee.ZipCode = reader["SSN"].ToString();
+                    employee.ZipCode = reader["ZipCode"].ToString();
+                    employee.Inactive = Convert.ToBoolean(reader["Inactive"]);
                     employeeList.Add(employee);
                 }
             }
@@ -81,7 +84,7 @@ namespace MedAssist.DAL
             SqlConnection connection = MedassistDB.GetConnection();
             string selectStatement =
 
-                   "SELECT EmployeeID, FirstName, MInit, DOB, Gender, SSN, LastName, StreetAddress1, StreetAddress2, City, State, ZipCode, Phone " +
+                   "SELECT EmployeeID, FirstName, MInit, DOB, Gender, SSN, LastName, StreetAddress1, StreetAddress2, City, State, ZipCode, Phone, Inactive " +
                    "FROM Employees " +
                    "WHERE EmployeeID = @EmployeeID";
 
@@ -107,6 +110,7 @@ namespace MedAssist.DAL
                     employee.State = reader["State"].ToString();
                     employee.ZipCode = reader["ZipCode"].ToString();
                     employee.Phone = reader["Phone"].ToString();
+                    employee.Inactive = (bool)reader["Inactive"];
                 }
                 else
                 {
@@ -272,6 +276,7 @@ namespace MedAssist.DAL
             insertCommand.Parameters.AddWithValue("@Phone", employee.Phone);
             insertCommand.Parameters.AddWithValue("@DOB", employee.DOB);
             insertCommand.Parameters.AddWithValue("@Gender", employee.Gender);
+
             try
             {
                 connection.Open();
@@ -293,6 +298,52 @@ namespace MedAssist.DAL
             }
         }
 
-       
+        public static bool UpdateEmployee(Employee oldEmployee, Employee newEmployee)
+        {
+            SqlConnection connection = MedassistDB.GetConnection();
+            string updateStatement =
+                "UPDATE Employees SET " +
+                "FirstName = @NewFirstName, " +
+                "LastName = @NewLastName, " +
+                "MInit = @NewMInit, " +
+                "StreetAddress1 = @NewStreetAddress1, " +
+                "StreetAddress2 = @NewStreetAddress2, " +
+                "Phone = @NewPhone, " +
+                "City = @NewCity, " +
+                "State = @NewState, " +
+                "ZipCode = @NewZipCode, " +
+                "Inactive = @Inactive " +
+                "WHERE EmployeeID = @OldEmployeeID";
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@NewFirstName", newEmployee.FirstName);
+            updateCommand.Parameters.AddWithValue("@NewLastName", newEmployee.LastName);
+            updateCommand.Parameters.AddWithValue("@NewMInit", newEmployee.MInit);
+            updateCommand.Parameters.AddWithValue("@NewStreetAddress1", newEmployee.StreetAddr1);
+            updateCommand.Parameters.AddWithValue("@NewStreetAddress2", newEmployee.StreetAddr2);
+            updateCommand.Parameters.AddWithValue("@NewPhone", newEmployee.Phone);
+            updateCommand.Parameters.AddWithValue("@NewCity", newEmployee.City);
+            updateCommand.Parameters.AddWithValue("@NewState", newEmployee.State);
+            updateCommand.Parameters.AddWithValue("@NewZipCode", newEmployee.ZipCode);
+            updateCommand.Parameters.AddWithValue("@Inactive", newEmployee.Inactive);
+            updateCommand.Parameters.AddWithValue("@OldEmployeeID", oldEmployee.EmployeeID);
+            try
+            {
+                connection.Open();
+                int count = updateCommand.ExecuteNonQuery();
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+        }
     }
 }

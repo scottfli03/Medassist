@@ -299,6 +299,7 @@
             // 
             // cboState
             // 
+            this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboState.FormattingEnabled = true;
             this.cboState.Items.AddRange(new object[] {
             "",
@@ -359,7 +360,7 @@
             // 
             // btnPatientInfo
             // 
-            this.btnPatientInfo.Location = new System.Drawing.Point(315, 132);
+            this.btnPatientInfo.Location = new System.Drawing.Point(257, 132);
             this.btnPatientInfo.Name = "btnPatientInfo";
             this.btnPatientInfo.Size = new System.Drawing.Size(98, 23);
             this.btnPatientInfo.TabIndex = 65;
@@ -376,16 +377,17 @@
             // 
             // txtSearchLastName
             // 
-            this.txtSearchLastName.Location = new System.Drawing.Point(313, 99);
+            this.txtSearchLastName.Location = new System.Drawing.Point(257, 103);
             this.txtSearchLastName.Name = "txtSearchLastName";
             this.txtSearchLastName.Size = new System.Drawing.Size(100, 20);
             this.txtSearchLastName.TabIndex = 67;
             // 
             // dateTimePickerSearchDOB
             // 
+            this.dateTimePickerSearchDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerSearchDOB.Location = new System.Drawing.Point(73, 132);
             this.dateTimePickerSearchDOB.Name = "dateTimePickerSearchDOB";
-            this.dateTimePickerSearchDOB.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerSearchDOB.Size = new System.Drawing.Size(100, 20);
             this.dateTimePickerSearchDOB.TabIndex = 68;
             // 
             // label13
@@ -400,7 +402,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(249, 106);
+            this.label14.Location = new System.Drawing.Point(193, 106);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(58, 13);
             this.label14.TabIndex = 70;

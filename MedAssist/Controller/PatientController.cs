@@ -35,5 +35,15 @@ namespace MedAssist.Controller
         {
             return PatientDAL.GetVisitForPatientWithDobAndLName(lName, patientDob);
         }
+
+        public static int CreatePatient(Patient patient)
+        {
+            return PatientDAL.AddPatient(patient);
+        }
+
+        public static Patient GetPatientWithID(int patientID)
+        {
+            return PatientDAL.GetPatientWithID(patientID);
+        }
     }
 }
