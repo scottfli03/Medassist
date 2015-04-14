@@ -39,19 +39,26 @@ namespace MedAssist.View
 
         private void registerPatientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (np == null)
+            if (UserSecurityController.AdminLoggedIn != null)
             {
-                np = new NewPatient();
-                np.MdiParent = this;
-                np.FormClosed += new FormClosedEventHandler(np_FormClosed);
-                np.Show();
+                MessageBox.Show("You are not authorized to access this. ", "Access denied");
             }
             else
             {
-                np.Activate();
+
+                if (np == null)
+                {
+                    np = new NewPatient();
+                    np.MdiParent = this;
+                    np.FormClosed += new FormClosedEventHandler(np_FormClosed);
+                    np.Show();
+                }
+                else
+                {
+                    np.Activate();
+                }
+
             }
-
-
         }
 
         void np_FormClosed(object sender, FormClosedEventArgs e)
@@ -62,21 +69,27 @@ namespace MedAssist.View
 
         private void updatePatientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            if (up == null)
+            if (UserSecurityController.AdminLoggedIn != null)
             {
-                up = new UpdatePatientForm();
-                up.MdiParent = this;
-                this.up.FormClosed += up_FormClosed;
-
-                up.Show();
-
+                MessageBox.Show("You are not authorized to access this. ", "Access denied");
             }
             else
             {
-                up.Activate();
-            }
 
+                if (up == null)
+                {
+                    up = new UpdatePatientForm();
+                    up.MdiParent = this;
+                    this.up.FormClosed += up_FormClosed;
+
+                    up.Show();
+
+                }
+                else
+                {
+                    up.Activate();
+                }
+            }
 
         }
 
@@ -99,19 +112,27 @@ namespace MedAssist.View
 
         private void searchPatientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
-            if (sp == null)
+            if (UserSecurityController.AdminLoggedIn != null)
             {
-                sp = new MedAssist.View.SearchPatient();
-                sp.StartPosition = FormStartPosition.Manual;
-                sp.MdiParent = this;
-                sp.FormClosed += new FormClosedEventHandler(sp_FormClosed);
-                sp.Show();
+                MessageBox.Show("You are not authorized to access this. ", "Access denied");
             }
             else
-                sp.Activate();
+            {
 
+
+                if (sp == null)
+                {
+                    sp = new MedAssist.View.SearchPatient();
+                    sp.StartPosition = FormStartPosition.Manual;
+                    sp.MdiParent = this;
+                    sp.FormClosed += new FormClosedEventHandler(sp_FormClosed);
+                    sp.Show();
+                }
+                else
+                {
+                    sp.Activate();
+                }
+            }
 
         }
 
@@ -140,19 +161,26 @@ namespace MedAssist.View
 
         private void newVisitToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            if (vf == null)
+            if (UserSecurityController.AdminLoggedIn != null)
             {
-                vf = new VisitForm();
-                vf.MdiParent = this;
-                vf.FormClosed += new FormClosedEventHandler(vf_FormClosed);
-                vf.Show();
-
+                MessageBox.Show("You are not authorized to access this. ", "Access denied");
             }
             else
             {
-                vf.Activate();
-            }
 
+                if (vf == null)
+                {
+                    vf = new VisitForm();
+                    vf.MdiParent = this;
+                    vf.FormClosed += new FormClosedEventHandler(vf_FormClosed);
+                    vf.Show();
+
+                }
+                else
+                {
+                    vf.Activate();
+                }
+            }
         }
 
         void vf_FormClosed(object sender, FormClosedEventArgs e)
@@ -187,17 +215,25 @@ namespace MedAssist.View
         UpdateVisitForm uvf;
         private void updateVisitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (uvf == null)
+            if (UserSecurityController.AdminLoggedIn != null)
             {
-                uvf = new UpdateVisitForm();
-                uvf.MdiParent = this;
-                uvf.FormClosed += new FormClosedEventHandler(uvf_FormClosed);
-                uvf.Show();
-
+                MessageBox.Show("You are not authorized to access this. ", "Access denied");
             }
             else
             {
-                uvf.Activate();
+
+                if (uvf == null)
+                {
+                    uvf = new UpdateVisitForm();
+                    uvf.MdiParent = this;
+                    uvf.FormClosed += new FormClosedEventHandler(uvf_FormClosed);
+                    uvf.Show();
+
+                }
+                else
+                {
+                    uvf.Activate();
+                }
             }
         }
 
@@ -210,17 +246,24 @@ namespace MedAssist.View
         ReportForm rf;
         private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (rf == null)
+            if (UserSecurityController.NurseLoggedIn != null)
             {
-                rf = new ReportForm();
-                rf.MdiParent = this;
-                rf.FormClosed += new FormClosedEventHandler(rf_FormClosed);
-                rf.Show();
-
+                MessageBox.Show("You are not authorized to access this. ", "Access denied");
             }
             else
             {
-                rf.Activate();
+                if (rf == null)
+                {
+                    rf = new ReportForm();
+                    rf.MdiParent = this;
+                    rf.FormClosed += new FormClosedEventHandler(rf_FormClosed);
+                    rf.Show();
+
+                }
+                else
+                {
+                    rf.Activate();
+                }
             }
         }
 
@@ -233,17 +276,25 @@ namespace MedAssist.View
         UpdateDeleteEmployeeForm udef;
         private void updateEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (udef == null)
+            if (UserSecurityController.NurseLoggedIn != null)
             {
-                udef = new UpdateDeleteEmployeeForm();
-                udef.MdiParent = this;
-                udef.FormClosed += new FormClosedEventHandler(udef_FormClosed);
-                udef.Show();
-
+                MessageBox.Show("You are not authorized to access this. ", "Access denied");
             }
             else
             {
-                udef.Activate();
+
+                if (udef == null)
+                {
+                    udef = new UpdateDeleteEmployeeForm();
+                    udef.MdiParent = this;
+                    udef.FormClosed += new FormClosedEventHandler(udef_FormClosed);
+                    udef.Show();
+
+                }
+                else
+                {
+                    udef.Activate();
+                }
             }
         }
 
@@ -256,17 +307,25 @@ namespace MedAssist.View
         AddEmployeeForm aef;
         private void addEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (aef == null)
+            if (UserSecurityController.NurseLoggedIn != null)
             {
-                aef = new AddEmployeeForm();
-                aef.MdiParent = this;
-                aef.FormClosed += new FormClosedEventHandler(aef_FormClosed);
-                aef.Show();
-
+                MessageBox.Show("You are not authorized to access this. ", "Access denied");
             }
             else
             {
-                aef.Activate();
+
+                if (aef == null)
+                {
+                    aef = new AddEmployeeForm();
+                    aef.MdiParent = this;
+                    aef.FormClosed += new FormClosedEventHandler(aef_FormClosed);
+                    aef.Show();
+
+                }
+                else
+                {
+                    aef.Activate();
+                }
             }
         }
 
@@ -279,17 +338,25 @@ namespace MedAssist.View
         AddTestForm atf;
         private void addTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (atf == null)
+            if (UserSecurityController.NurseLoggedIn != null)
             {
-                atf = new AddTestForm();
-                atf.MdiParent = this;
-                atf.FormClosed += new FormClosedEventHandler(atf_FormClosed);
-                atf.Show();
-
+                MessageBox.Show("You are not authorized to access this. ", "Access denied");
             }
             else
             {
-                atf.Activate();
+
+                if (atf == null)
+                {
+                    atf = new AddTestForm();
+                    atf.MdiParent = this;
+                    atf.FormClosed += new FormClosedEventHandler(atf_FormClosed);
+                    atf.Show();
+
+                }
+                else
+                {
+                    atf.Activate();
+                }
             }
         }
 
@@ -303,17 +370,26 @@ namespace MedAssist.View
         
         private void updateTestToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            if (utf == null)
+            if (UserSecurityController.NurseLoggedIn != null)
             {
-                utf = new UpdateTestForm();
-                utf.MdiParent = this;
-                utf.FormClosed += new FormClosedEventHandler(utf_FormClosed);
-                utf.Show();
-
+                MessageBox.Show("You are not authorized to access this. ", "Access denied");
             }
             else
             {
-                utf.Activate();
+
+                if (utf == null)
+                {
+                    utf = new UpdateTestForm();
+                    utf.MdiParent = this;
+                    utf.FormClosed += new FormClosedEventHandler(utf_FormClosed);
+                    utf.Show();
+
+                }
+                else
+                {
+                    utf.Activate();
+                }
+
             }
         }
 

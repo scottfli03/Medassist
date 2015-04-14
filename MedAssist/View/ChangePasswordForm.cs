@@ -39,7 +39,7 @@ namespace MedAssist.View
 
                 UserSecurityController.UpdatePassword(this.oldUserSecurity, this.newUserSecurity);
              
-                   MessageBox.Show("Password changed");
+                   //MessageBox.Show("Password changed");
                
            }
            catch (Exception ex)

@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 using MedAssist.Controller;
@@ -19,12 +21,23 @@ namespace MedAssist.View
     public partial class FormLogin : Form
     {
         private ControllerNurse controllerNurse;
+        private ControllerAdmin adminController;
+        private Administrator admin;
         private Nurse nurse;
         private MainForm mainForm;
+
+        //string cipherData;
+        byte[] cipherBytes;
+        byte[] plainBytes;
+        byte[] plainBytes2;
+        byte[] plainKey;
+        SymmetricAlgorithm symObject;
         public FormLogin()
         {
             InitializeComponent();
             this.controllerNurse = new ControllerNurse();
+            this.adminController = new ControllerAdmin();
+            symObject = Rijndael.Create();
 
         }
 
@@ -41,27 +54,30 @@ namespace MedAssist.View
         /// <param name="e"></param>
         public void button1_Click(object sender, EventArgs e)
         {
+           
+
             string userName = textBoxUserName.Text;
             string password = textBoxPassword.Text;
 
-           
+
 
             if (Validator.IsPresent(textBoxUserName) &&
-                Validator.IsPresent(textBoxPassword))
+                Validator.IsPresent(textBoxPassword));
             {
                 try
                 {
 
                    
                         this.nurse = this.controllerNurse.GetNurse(userName, password);
-
+                        this.admin = this.adminController.GetAdmin(userName, password);
+                        UserSecurityController.AdminLoggedIn = this.admin;
                         UserSecurityController.NurseLoggedIn = this.nurse;
 
 
-                        if (this.nurse != null)
+                        if (this.nurse != null || this.admin != null)
                         {
                             this.mainForm = new MainForm();
-                            this.mainForm.Text = "You are logged in as " + userName;
+                            this.mainForm.Text = "You are logged in as  " + userName;
                             if (this.mainForm.ShowDialog() == DialogResult.OK)
                             {
                                 this.mainForm.Show();
@@ -111,6 +127,77 @@ namespace MedAssist.View
             }
         }
 
-               
+
+        
+
+        public  string MD5Hash(string text)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+
+            //compute hash from the bytes of text
+            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
+
+            //get hash result after compute it
+            byte[] result = md5.Hash;
+
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < result.Length; i++)
+            {
+                //change it into 2 hexadecimal digits
+                //for each byte
+                strBuilder.Append(result[i].ToString("x2"));
+            }
+
+            return strBuilder.ToString();
+        }
+
+        public  bool verifyMd5Hash(string input, string hash)
+        {
+            // Hash the input.
+            string hashOfInput = MD5Hash(input);
+
+            // Create a StringComparer an compare the hashes.
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+            if (0 == comparer.Compare(hashOfInput, hash))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+
+            using (SqlConnection connection = MedassistDB.GetConnection()) 
+            {
+
+                using (SqlCommand cmd = 
+                    new SqlCommand("INSERT INTO UserSecurity VALUES(@Username, @Password)", connection))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@Username",textBox1.Text);
+                    cmd.Parameters.AddWithValue("@Password", MD5Hash(textBox2.Text));
+
+                    try
+                    {
+                        connection.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("" + ex);
+
+                    }
+                    
+                }
+            }
+        }  
+
+
     }
 }

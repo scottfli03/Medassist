@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ControllerAdmin.cs" />
     <Compile Include="Controller\ControllerNurse.cs" />
     <Compile Include="Controller\CurrentPatientController.cs" />
     <Compile Include="Controller\CurrentVisitController.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Controller\TestController.cs" />
     <Compile Include="Controller\UserSecurityController.cs" />
     <Compile Include="Controller\VisitController.cs" />
+    <Compile Include="DAL\AdminDAL.cs" />
     <Compile Include="DAL\DoctorDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\MedassistDB.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="DAL\OrderDAL.cs" />
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\TestDAL.cs" />
+    <Compile Include="DAL\UserSecurityDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
     <Compile Include="Doctor_Patient_Nurse_Employee_Visit_Dataset.cs">
       <DependentUpon>Doctor_Patient_Nurse_Employee_Visit_Dataset.xsd</DependentUpon>

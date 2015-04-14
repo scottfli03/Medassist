@@ -15,9 +15,9 @@ namespace MedAssist.DAL
         {
             string updateCommand = "UPDATE UserSecurity SET " +
                 "Password = @newPassword " +
-                "WHERE UserName = @oldUserName AND " + 
+                "WHERE UserName = @oldUserName AND " +
                 "Password = @oldPassword";
-               
+
             try
             {
                 using (SqlConnection connection = new SqlConnection())
@@ -56,8 +56,11 @@ namespace MedAssist.DAL
 
         }
 
-        
+       
+       
     }
+
+   
 }
 
 
