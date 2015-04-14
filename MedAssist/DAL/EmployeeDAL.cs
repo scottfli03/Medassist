@@ -255,6 +255,11 @@ namespace MedAssist.DAL
             return isAdmin;
         }
 
+        /// <summary>
+        /// Adds an Employee
+        /// </summary>
+        /// <param name="employee">The Employee</param>
+        /// <returns>The EmployeeID</returns>
         public static int AddEmployee(Employee employee)
         {
             SqlConnection connection = MedassistDB.GetConnection();
@@ -298,6 +303,12 @@ namespace MedAssist.DAL
             }
         }
 
+        /// <summary>
+        /// Updates the Employee
+        /// </summary>
+        /// <param name="oldEmployee">The old Employee</param>
+        /// <param name="newEmployee">The new Employee</param>
+        /// <returns>True if successful</returns>
         public static bool UpdateEmployee(Employee oldEmployee, Employee newEmployee)
         {
             SqlConnection connection = MedassistDB.GetConnection();

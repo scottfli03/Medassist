@@ -22,5 +22,15 @@ namespace MedAssist.Controller
         {
             return OrderDAL.GetPatientsOrdersWithDetails(patientID);
         }
+
+        public static Order GetOrderByID(int orderID)
+        {
+            return OrderDAL.GetOrderByID(orderID);
+        }
+
+        public static bool UpdateResults(Order newOrder, Order oldOrder)
+        {
+            return OrderDAL.UpdateResults(newOrder, oldOrder);
+        }
     }
 }

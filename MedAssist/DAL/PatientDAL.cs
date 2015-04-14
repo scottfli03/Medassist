@@ -346,8 +346,11 @@ namespace MedAssist.DAL
                     {
                         patient.VisitDate = null;
                     }
+
+                   
+                     
                     
-                    patient.PatientID = (int)reader["PatientID"];
+                    
                     if (patient.Systolic != null)
                     {
                         patient.Systolic = (int?)reader["Systolic"];
@@ -821,6 +824,11 @@ namespace MedAssist.DAL
             return patientList;
         }
 
+        /// <summary>
+        /// Returns a patient based on their PatientID
+        /// </summary>
+        /// <param name="patientID"></param>
+        /// <returns>The PatientID</returns>
         public static Patient GetPatientWithID(int patientID)
         {
             Patient patient = new Patient();
