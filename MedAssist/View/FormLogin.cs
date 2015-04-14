@@ -62,8 +62,7 @@ namespace MedAssist.View
 
 
             if (Validator.IsPresent(textBoxUserName) &&
-                Validator.IsPresent(textBoxPassword) && 
-                verifyMd5Hash(textBoxPassword.Text, MD5Hash(textBox2.Text)));
+                Validator.IsPresent(textBoxPassword));
             {
                 try
                 {

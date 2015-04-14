@@ -370,17 +370,26 @@ namespace MedAssist.View
         
         private void updateTestToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            if (utf == null)
+            if (UserSecurityController.NurseLoggedIn != null)
             {
-                utf = new UpdateTestForm();
-                utf.MdiParent = this;
-                utf.FormClosed += new FormClosedEventHandler(utf_FormClosed);
-                utf.Show();
-
+                MessageBox.Show("You are not authorized to access this. ", "Access denied");
             }
             else
             {
-                utf.Activate();
+
+                if (utf == null)
+                {
+                    utf = new UpdateTestForm();
+                    utf.MdiParent = this;
+                    utf.FormClosed += new FormClosedEventHandler(utf_FormClosed);
+                    utf.Show();
+
+                }
+                else
+                {
+                    utf.Activate();
+                }
+
             }
         }
 
