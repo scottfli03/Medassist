@@ -27,8 +27,9 @@ namespace MedAssist.View
             try
             {
                 txtPatient.Text = CurrentPatientController.currentPatient.FullName;
-                this.FillComboBoxes();
                 orders = OrderController.GetPatientsOrders(CurrentPatientController.currentPatient.PatientID);
+                this.FillComboBoxes();
+                this.buildDGV();
             }
             catch (Exception ex)
             {
@@ -41,16 +42,65 @@ namespace MedAssist.View
             cmbOrderID.DisplayMember = "OrderID";
             cmbOrderID.ValueMember = "OrderID";
             cmbOrderID.DataSource = orders;
+            List<string> options = new List<string>();
+            options.Add("\0");
+            options.Add("-");
+            options.Add("+");
+            cmbResult.DataSource = options;
         }
 
         private void buildDGV()
         {
-            dgvOrders.DataSource = orders;
+            try
+            {
+                orders = OrderController.GetPatientsOrders(CurrentPatientController.currentPatient.PatientID);
+                dgvOrders.DataSource = orders;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+            
         }
 
         private void getOrderAdjustments()
         {
+            oldOrder = OrderController.GetOrderByID((int)cmbOrderID.SelectedValue);
+            newOrder = OrderController.GetOrderByID((int)cmbOrderID.SelectedValue);
+        }
 
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                char result = Convert.ToChar(cmbResult.SelectedItem.ToString());
+                this.getOrderAdjustments();
+                if (result == '-' || result == '+')
+                {
+                    newOrder.Result = result;
+                    newOrder.DatePerformed = DateTime.Today;
+                }
+                else
+                {
+                    newOrder.Result = null;
+                    newOrder.DatePerformed = null;
+                }
+                bool success = OrderController.UpdateResults(newOrder, oldOrder);
+                if (success)
+                {
+                    MessageBox.Show("Test Updated", "Test Updated");
+                }
+                else
+                {
+                    MessageBox.Show("Test not updated, something went wrong. Try again.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+            dgvOrders.DataSource = null;
+            buildDGV();
         }
     }
 }

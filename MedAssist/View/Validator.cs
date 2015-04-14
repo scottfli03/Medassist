@@ -74,6 +74,11 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Checks that the Text Box contains a long or int64.
+        /// </summary>
+        /// <param name="textBox"></param>
+        /// <returns></returns>
         public static bool IsInt64(TextBox textBox)
         {
             try
@@ -104,6 +109,11 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Checks if the textbox contains a valid state abbreviation.  Not case sensitive.
+        /// </summary>
+        /// <param name="textBox"></param>
+        /// <returns></returns>
         public static bool IsState(TextBox textBox)
         {
             try

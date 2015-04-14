@@ -55,7 +55,6 @@ namespace MedAssist
             {
                 patient = new Patient();
                 PutPatientData(patient);
-
                 try
                 {
                     patient.PatientID = PatientController.CreatePatient(patient);

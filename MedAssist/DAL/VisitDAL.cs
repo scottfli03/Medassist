@@ -318,6 +318,12 @@ namespace MedAssist.DAL
             return visitList;
         }
 
+        /// <summary>
+        /// Updates the Visits Diagnosis
+        /// </summary>
+        /// <param name="visit">the new visit</param>
+        /// <param name="oldVisit">the old visit</param>
+        /// <returns>false</returns>
         public static bool UpdateDiagnosis(Visit visit, Visit oldVisit)
         {
             SqlConnection connection = MedassistDB.GetConnection();

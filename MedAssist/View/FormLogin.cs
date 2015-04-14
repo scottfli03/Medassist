@@ -26,18 +26,13 @@ namespace MedAssist.View
         private Nurse nurse;
         private MainForm mainForm;
 
-        //string cipherData;
-        byte[] cipherBytes;
-        byte[] plainBytes;
-        byte[] plainBytes2;
-        byte[] plainKey;
-        SymmetricAlgorithm symObject;
+        
         public FormLogin()
         {
             InitializeComponent();
             this.controllerNurse = new ControllerNurse();
             this.adminController = new ControllerAdmin();
-            symObject = Rijndael.Create();
+           
 
         }
 
@@ -169,34 +164,8 @@ namespace MedAssist.View
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
-
-            using (SqlConnection connection = MedassistDB.GetConnection()) 
-            {
-
-                using (SqlCommand cmd = 
-                    new SqlCommand("INSERT INTO UserSecurity VALUES(@Username, @Password)", connection))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@Username",textBox1.Text);
-                    cmd.Parameters.AddWithValue("@Password", MD5Hash(textBox2.Text));
-
-                    try
-                    {
-                        connection.Open();
-                        cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("" + ex);
-
-                    }
-                    
-                }
-            }
-        }  
+       
+        
 
 
     }

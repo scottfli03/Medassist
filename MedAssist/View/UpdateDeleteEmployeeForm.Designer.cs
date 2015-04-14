@@ -172,6 +172,7 @@
             this.txtEmployeeID.Name = "txtEmployeeID";
             this.txtEmployeeID.Size = new System.Drawing.Size(100, 20);
             this.txtEmployeeID.TabIndex = 17;
+            this.txtEmployeeID.Tag = "Employee ID";
             // 
             // btnSearch
             // 

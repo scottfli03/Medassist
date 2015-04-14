@@ -29,7 +29,16 @@ namespace MedAssist.View
 
         private void SearchPatientForm_Load(object sender, EventArgs e)
         {
-           
+
+            try
+            {
+                // TODO: This line of code loads data into the 'patientsAndAllVisitInfo.Patients' table. You can move, or remove it, as needed.
+                this.patientsTableAdapter.Fill(this.patientsAndAllVisitInfo.Patients);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex);
+            }
 
 
         }

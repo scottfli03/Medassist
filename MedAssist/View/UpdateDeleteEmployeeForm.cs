@@ -12,6 +12,9 @@ using MedAssist.Model;
 
 namespace MedAssist.View
 {
+    /// <summary>
+    /// Form allows the user to Update information about an employee
+    /// </summary>
     public partial class UpdateDeleteEmployeeForm : Form
     {
         private bool isDoctor;
@@ -20,16 +23,27 @@ namespace MedAssist.View
         private Employee employee;
         private Employee oldEmployee;
 
+        /// <summary>
+        /// Initializes the components
+        /// </summary>
         public UpdateDeleteEmployeeForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Controls the actions taken when the form loads
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UpdateDeleteEmployeeForm_Load(object sender, EventArgs e)
         {
             this.disableFields();
         }
 
+        /// <summary>
+        /// Disables the fields
+        /// </summary>
         private void disableFields()
         {
             txtCity.Enabled = false;
@@ -51,6 +65,9 @@ namespace MedAssist.View
             chkEnabled.Enabled = false;
         }
 
+        /// <summary>
+        /// Enables the fields
+        /// </summary>
         private void enableFields()
         {
             txtCity.Enabled = true;
@@ -72,7 +89,7 @@ namespace MedAssist.View
         /// <summary>
         /// Checks if the data entered into the form is valid.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>true if valid information</returns>
         private bool IsValidEmployeeData()
         {
             if (Validator.IsPresent(txtCity) &&
@@ -97,6 +114,10 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Returns if the EmployeeID is valid.
+        /// </summary>
+        /// <returns>True if it is.</returns>
         private bool IsValidEmployeeID()
         {
             if (Validator.IsPresent(txtEmployeeID) &&
@@ -110,6 +131,12 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// When the Search button is clicked the Employee ID is used to find the
+        /// employee and fill in the information.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             oldEmployee = null;
@@ -122,6 +149,10 @@ namespace MedAssist.View
                     fillEmployeePosition(oldEmployee.EmployeeID);
                     this.enableFields();
                 }
+                catch (NullReferenceException)
+                {
+                    MessageBox.Show("There is no Employee with that EmployeeID. Try again.");
+                } 
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, ex.GetType().ToString());
@@ -133,6 +164,9 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Fills the fields with the employees data.
+        /// </summary>
         private void fillEmployeeData()
         {
             if (oldEmployee != null)
@@ -177,6 +211,10 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Fills the appropriate radiobutton depending on the employees position.
+        /// </summary>
+        /// <param name="employeeID">The employeeID</param>
         private void fillEmployeePosition(int employeeID) 
         {
             if (EmployeeController.isEmployeeDoctor(employeeID))
@@ -200,30 +238,42 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Updates the employee and closes the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            try
+            if (IsValidEmployeeData())
             {
-                getEmployeeData();
-                bool success = EmployeeController.UpdateEmployee(oldEmployee, employee);
-                if (success)
+                try
                 {
-                    MessageBox.Show("Employee " + " " + txtEmployeeID.Text + " was updated properly.", "Employee Updated");
-                    this.Close();
+                    getEmployeeData();
+                    bool success = EmployeeController.UpdateEmployee(oldEmployee, employee);
+                    if (success)
+                    {
+                        MessageBox.Show("Employee " + " " + txtEmployeeID.Text + " was updated properly.", "Employee Updated");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Either the Employee was already updated or there was another conflict. " +
+                            "Employee was not updated.", "Employee Not Updated!");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Either the Employee was already updated or there was another conflict. " + 
-                        "Employee was not updated.", "Employee Not Updated!");
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-            
         }
 
+        /// <summary>
+        /// Closes the form if user agrees they want to.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you'd like to close the form?", "Close Form?", MessageBoxButtons.YesNo);
@@ -233,6 +283,9 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Loads the data from the form to the Employee object.
+        /// </summary>
         private void getEmployeeData()
         {
             if (IsValidEmployeeData())
