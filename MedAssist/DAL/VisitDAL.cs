@@ -355,13 +355,12 @@ namespace MedAssist.DAL
         {
             SqlConnection connection = MedassistDB.GetConnection();
             string updateStatement =
-                 "Update Visits SET " +
-                 "Diagnosis = @NewDiagnosis " + 
-                 "WHERE VisitID = @OldVisitID";
-
+                "UPDATE Visits SET " +
+                "Diagnosis = @Diagnosis " +
+                "WHERE VisitID = @VisitID";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@NewDiagnosis", newVisit.Diagnosis);
-            updateCommand.Parameters.AddWithValue("@OldVisitID", oldVisit.VisitID);
+            updateCommand.Parameters.AddWithValue("@VisitID", oldVisit.VisitID);
+            updateCommand.Parameters.AddWithValue("@Diagnosis", newVisit.Diagnosis);
 
             try
             {
@@ -389,13 +388,11 @@ namespace MedAssist.DAL
             Visit visit = new Visit();
             SqlConnection connection = MedassistDB.GetConnection();
             string selectStatement =
-                "SELECT Visits.VisitID, Visits.VisitDate, Visits.PatientID, Visits.DoctorID, Visits.Diagnosis, Visits.Systolic, Visits.Diastolic, " +
+                "SELECT Visits.VisitID, Visits.VisitDate, Visits.PatientID, Visits.DoctorID, Employees.FirstName, Visits.Diagnosis, Visits.Systolic, Visits.Diastolic, " +
                 "Visits.Temperature, Visits.RespirationRate, Visits.HeartRate, Visits.Symptoms " +
-                //"Patients.FirstName, Patients.LastName, " +
-                //"Employees.FirstName, Employees.LastName " +
                 "FROM Visits " + 
-                //"JOIN Patients ON Visits.PatientID = Patients.PatientID " +
-                //"JOIN Employees ON Visits.DoctorID = Employees.EmployeeID " +
+                "JOIN Employees ON Visits.DoctorID = Employees.EmployeeID " +
+                "JOIN Patients ON Visits.PatientID = Patients.PatientID " +
                 "WHERE Visits.VisitID = @VisitID";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
@@ -407,10 +404,6 @@ namespace MedAssist.DAL
                 reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
                 if (reader.Read())
                 {
-                    Patient patient = new Patient();
-                    Employee employee = new Employee();
-                    //visit.VisitID = (int)reader["VisitID"];
-                    //visit.VisitDate = (DateTime)reader["VisitDate"];
                     visit.PatientID = (int)reader["PatientID"];
                     visit.Systolic = (int)reader["Systolic"];
                     visit.Diastolic = (int)reader["Diastolic"];
@@ -420,11 +413,8 @@ namespace MedAssist.DAL
                     visit.Symptoms = reader["Symptoms"].ToString();
                     visit.Diagnosis = reader["Diagnosis"].ToString();
                     visit.PatientID = (int)reader["PatientID"];
-                    visit.DoctorID = (int)reader["EmployeeID"];
-                    //patient.FirstName = reader["FirstName"].ToString();
-                    //patient.LastName = reader["LastName"].ToString();
-                    //employee.FirstName = reader["FirstName"].ToString();
-                    //employee.LastName = reader["LastName"].ToString();
+                    visit.DoctorID = (int)reader["DoctorID"];
+                  
                 }
             }
             catch (SqlException ex)

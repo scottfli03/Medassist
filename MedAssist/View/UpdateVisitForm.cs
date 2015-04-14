@@ -29,15 +29,14 @@ namespace MedAssist.View
             txtRespRate.Enabled = false;
             txtSymptoms.Enabled = false;
             txtTemp.Enabled = false;
-            //cboPatient.Enabled = false;
-            //cboDoctor.Enabled = false;
-            txtDoctor.Enabled = false;
-            txtPatient.Enabled = false;
+            cboPatient.Enabled = false;
+            cboDoctor.Enabled = false;
             txtNurse.Enabled = false;
             txtBoxFnlDiagnosis.Enabled = false;
+            txtBoxDiagnosis.Enabled = true;
             txtNurse.Text = EmployeeController.GetEmployeeByID(UserSecurityController.NurseLoggedIn.NurseID).FullName;
             CurrentPatientController.currentPatient = null;
-            this.loadComboBoxes();
+            
         }
 
         private void GetVisitsByPatient(string firstName, string lastName)
@@ -55,7 +54,7 @@ namespace MedAssist.View
         {
             try
             {
-
+                
                 visit = VisitDAL.GetVisitToUpdate(visitID);
                 if (visit == null)
                     MessageBox.Show("No Visit found with this Visit ID. " +
@@ -75,11 +74,9 @@ namespace MedAssist.View
 
         private void DisplayVisit()
         {
-            //cboDoctor.SelectedValue = visit.DoctorID.ToString();
-            //cboPatient.SelectedValue = visit.PatientID.ToString();
-            int doctorID = visit.DoctorID;
-
-            txtDoctor.Text = EmployeeController.GetEmployeeByID(doctorID).FullName;
+            cboDoctor.SelectedText = EmployeeController.GetEmployeeByID(visit.DoctorID).FullName;
+            cboPatient.SelectedText = PatientController.GetPatientWithID(visit.PatientID).FullName;
+            cboPatient.SelectedValue = 
             txtSystolic.Text = visit.Systolic.ToString();
             txtDiastolic.Text = visit.Diagnosis.ToString();
             txtHeartRate.Text = visit.HeartRate.ToString();
@@ -103,27 +100,20 @@ namespace MedAssist.View
 
         private void PutVisitData(Visit visit)
         {
-            try
-            {
                 visit.Diagnosis = txtBoxDiagnosis.Text + " " + txtBoxFnlDiagnosis.Text;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
         }
 
 
         private bool IsValidData()
         {
             if (Validator.IsPresent(txtHeartRate) &&
-                //Validator.IsPresent(cboPatient) &&
+                Validator.IsPresent(cboPatient) &&
                 Validator.IsPresent(txtNurse) &&
                 Validator.IsPresent(txtRespRate) &&
                 Validator.IsPresent(txtSymptoms) &&
                 Validator.IsPresent(txtSystolic) &&
                 Validator.IsPresent(txtDiastolic) &&
-                //Validator.IsPresent(cmbDoctor) &&
+                Validator.IsPresent(cmbDoctor) &&
                 Validator.IsPresent(txtTemp) &&
                 Validator.IsInt32(txtDiastolic) &&
                 Validator.IsInt32(txtHeartRate) &&
@@ -190,14 +180,14 @@ namespace MedAssist.View
             PatientController patCont = new PatientController();
             try
             {
-                //doctorList = empCont.GetListOfDoctorEmployees();
-                //cboDoctor.DataSource = doctorList;
-                //cboDoctor.DisplayMember = "FullName";
-                //cboDoctor.ValueMember = "EmployeeID";
-                //patientList = patCont.GetPatientList();
-                //cboPatient.DataSource = patientList;
-                //cboPatient.DisplayMember = "FullName";
-                //cboPatient.ValueMember = "PatientID";
+                doctorList = empCont.GetListOfDoctorEmployees();
+                cboDoctor.DataSource = doctorList;
+                cboDoctor.DisplayMember = "FullName";
+                cboDoctor.ValueMember = "EmployeeID";
+                patientList = patCont.GetPatientList();
+                cboPatient.DataSource = patientList;
+                cboPatient.DisplayMember = "FullName";
+                cboPatient.ValueMember = "PatientID";
             }
             catch (Exception ex)
             {
