@@ -255,76 +255,42 @@ namespace MedAssist.DAL
             return isAdmin;
         }
 
-        public static bool AddEmployeeDoctor(Employee employee)
+        public static int AddEmployee(Employee employee)
         {
             SqlConnection connection = MedassistDB.GetConnection();
-            SqlTransaction addEmployeeTrans = null;
-            
-            SqlCommand insEmployee = new SqlCommand();
-            insEmployee.Connection = connection;
-            insEmployee.CommandText =
+            string insertStatement =
                 "Insert Employees " +
                 "(FirstName, MInit, LastName, SSN, StreetAddress1, StreetAddress2, City, State, ZipCode, Phone, DOB, Gender) " +
                 "Values (@FirstName, @MInit, @LastName, @SSN, @StreetAddress1, @StreetAddress2, @City, @State, @ZipCode, @Phone, @DOB, @Gender)";
-            insEmployee.Parameters.AddWithValue("@SSN", employee.SSN);
-            insEmployee.Parameters.AddWithValue("@FirstName", employee.FirstName);
-            insEmployee.Parameters.AddWithValue("@LastName", employee.LastName);
-            insEmployee.Parameters.AddWithValue("@MInit", employee.MInit);
-            insEmployee.Parameters.AddWithValue("@StreetAddress1", employee.StreetAddr1);
-            insEmployee.Parameters.AddWithValue("@StreetAddress2", employee.StreetAddr2);
-            insEmployee.Parameters.AddWithValue("@City", employee.City);
-            insEmployee.Parameters.AddWithValue("@State", employee.State);
-            insEmployee.Parameters.AddWithValue("@ZipCode", employee.ZipCode);
-            insEmployee.Parameters.AddWithValue("@Phone", employee.Phone);
-            insEmployee.Parameters.AddWithValue("@DOB", employee.DOB);
-            insEmployee.Parameters.AddWithValue("@Gender", employee.Gender);
-            insEmployee.Parameters.AddWithValue("@EmployeeID", SqlDbType.Int);
-            insEmployee.Parameters["@EmployeeID"].Direction = ParameterDirection.Output;
-            insEmployee.Parameters.Add("@Error", SqlDbType.Int);
-            insEmployee.Parameters["@Error"].Direction = ParameterDirection.ReturnValue;
-                  
-            Doctor doctor = new Doctor();
-            SqlCommand insDoctor = new SqlCommand();
-            insDoctor.Connection = connection;
-            insDoctor.CommandText =
-                "Insert Doctors " +
-                "(DoctorID) " +
-                "Values (@EmployeeID)";
-            insDoctor.Parameters.AddWithValue("@EmployeeID", insEmployee.Parameters["@EmployeeID"]);
+
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+            insertCommand.Parameters.AddWithValue("@SSN", employee.SSN);
+            insertCommand.Parameters.AddWithValue("@FirstName", employee.FirstName);
+            insertCommand.Parameters.AddWithValue("@LastName", employee.LastName);
+            insertCommand.Parameters.AddWithValue("@MInit", employee.MInit);
+            insertCommand.Parameters.AddWithValue("@StreetAddress1", employee.StreetAddr1);
+            insertCommand.Parameters.AddWithValue("@StreetAddress2", employee.StreetAddr2);
+            insertCommand.Parameters.AddWithValue("@City", employee.City);
+            insertCommand.Parameters.AddWithValue("@State", employee.State);
+            insertCommand.Parameters.AddWithValue("@ZipCode", employee.ZipCode);
+            insertCommand.Parameters.AddWithValue("@Phone", employee.Phone);
+            insertCommand.Parameters.AddWithValue("@DOB", employee.DOB);
+            insertCommand.Parameters.AddWithValue("@Gender", employee.Gender);
 
             try
             {
                 connection.Open();
-                addEmployeeTrans = connection.BeginTransaction();
-                insEmployee.Transaction = addEmployeeTrans;
-                insDoctor.Transaction = addEmployeeTrans;
+                insertCommand.ExecuteNonQuery();
+                string selectStatement =
+                    "Select Ident_Current('Employees') FROM Employees";
+                SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+                int employeeID = Convert.ToInt32(selectCommand.ExecuteScalar());
 
-                int count = insEmployee.ExecuteNonQuery();
-                if (count > 0 && Convert.ToInt32(insEmployee.Parameters["@EmployeeID"].Value).Equals(0))
-                {
-                    count = insDoctor.ExecuteNonQuery();
-                    if(count >0)
-                    {
-                        addEmployeeTrans.Commit();
-                        return true;
-                    }
-                    else
-                    {
-                        addEmployeeTrans.Rollback();
-                        return false;
-                    }
-                }
-                else
-                {
-                    addEmployeeTrans.Rollback();
-                    return false;
-                }
+                return employeeID;
             }
             catch (SqlException ex)
             {
-                if(addEmployeeTrans != null)
-                    addEmployeeTrans.Rollback();
-                    throw ex;
+                throw ex;
             }
             finally
             {

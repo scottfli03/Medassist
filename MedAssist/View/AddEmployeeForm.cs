@@ -54,19 +54,24 @@ namespace MedAssist.View
                    if (radioButtonDoctor.Checked)
                    {
 
-                        EmployeeDAL.AddEmployeeDoctor(employee);
+                        EmployeeDAL.AddEmployee(employee);
                         DialogResult = DialogResult.OK;
                         MessageBox.Show("Employee Accepted");
                         Close();
                     }
                     else if (radioButtonNurse.Checked)
                     {
-                        
-                        //employee.EmployeeID = EmployeeDAL.AddEmployeeNurse(employee);
+                        EmployeeDAL.AddEmployee(employee);
+                        DialogResult = DialogResult.OK;
+                        MessageBox.Show("Employee Accepted");
+                        Close();
                     }
                     else if (radioButtonAdmin.Checked)
                     {
-                        //employee.EmployeeID = EmployeeDAL.AddEmployeeAdmin(employee);
+                        EmployeeDAL.AddEmployee(employee);
+                        DialogResult = DialogResult.OK;
+                        MessageBox.Show("Employee Accepted");
+                        Close();
                     }
                     else 
                     {

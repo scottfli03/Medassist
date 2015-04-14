@@ -42,8 +42,6 @@
             this.btnSearchVisit = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtNurse = new System.Windows.Forms.TextBox();
-            this.cboPatient = new System.Windows.Forms.ComboBox();
-            this.cboDoctor = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtSymptoms = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,6 +67,8 @@
             this.btnGetVisitInfo = new System.Windows.Forms.Button();
             this.gpBoxFindPatientVisits = new System.Windows.Forms.GroupBox();
             this.gpBoxVisitDates = new System.Windows.Forms.GroupBox();
+            this.txtDoctor = new System.Windows.Forms.TextBox();
+            this.txtPatient = new System.Windows.Forms.TextBox();
             nurseIDLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             patientNameLabel = new System.Windows.Forms.Label();
@@ -186,12 +186,12 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtPatient);
+            this.groupBox3.Controls.Add(this.txtDoctor);
             this.groupBox3.Controls.Add(this.txtNurse);
             this.groupBox3.Controls.Add(nurseIDLabel);
-            this.groupBox3.Controls.Add(this.cboPatient);
             this.groupBox3.Controls.Add(label1);
             this.groupBox3.Controls.Add(patientNameLabel);
-            this.groupBox3.Controls.Add(this.cboDoctor);
             this.groupBox3.Location = new System.Drawing.Point(12, 97);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(316, 125);
@@ -205,26 +205,6 @@
             this.txtNurse.Name = "txtNurse";
             this.txtNurse.Size = new System.Drawing.Size(219, 20);
             this.txtNurse.TabIndex = 2;
-            // 
-            // cboPatient
-            // 
-            this.cboPatient.DisplayMember = "PatientName";
-            this.cboPatient.FormattingEnabled = true;
-            this.cboPatient.Location = new System.Drawing.Point(74, 78);
-            this.cboPatient.Name = "cboPatient";
-            this.cboPatient.Size = new System.Drawing.Size(219, 21);
-            this.cboPatient.TabIndex = 3;
-            this.cboPatient.ValueMember = "PatientID";
-            // 
-            // cboDoctor
-            // 
-            this.cboDoctor.DisplayMember = "DoctorName";
-            this.cboDoctor.FormattingEnabled = true;
-            this.cboDoctor.Location = new System.Drawing.Point(74, 22);
-            this.cboDoctor.Name = "cboDoctor";
-            this.cboDoctor.Size = new System.Drawing.Size(219, 21);
-            this.cboDoctor.TabIndex = 1;
-            this.cboDoctor.ValueMember = "DoctorID";
             // 
             // groupBox2
             // 
@@ -456,6 +436,20 @@
             this.gpBoxVisitDates.TabStop = false;
             this.gpBoxVisitDates.Text = "Visit Dates for Patient";
             // 
+            // txtDoctor
+            // 
+            this.txtDoctor.Location = new System.Drawing.Point(74, 20);
+            this.txtDoctor.Name = "txtDoctor";
+            this.txtDoctor.Size = new System.Drawing.Size(219, 20);
+            this.txtDoctor.TabIndex = 41;
+            // 
+            // txtPatient
+            // 
+            this.txtPatient.Location = new System.Drawing.Point(75, 78);
+            this.txtPatient.Name = "txtPatient";
+            this.txtPatient.Size = new System.Drawing.Size(219, 20);
+            this.txtPatient.TabIndex = 42;
+            // 
             // UpdateVisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -505,8 +499,6 @@
         private System.Windows.Forms.Label diagnosisLabel;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtNurse;
-        private System.Windows.Forms.ComboBox cboPatient;
-        private System.Windows.Forms.ComboBox cboDoctor;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtSymptoms;
         private System.Windows.Forms.Label label2;
@@ -532,5 +524,7 @@
         private System.Windows.Forms.Button btnGetVisitInfo;
         private System.Windows.Forms.GroupBox gpBoxFindPatientVisits;
         private System.Windows.Forms.GroupBox gpBoxVisitDates;
+        private System.Windows.Forms.TextBox txtPatient;
+        private System.Windows.Forms.TextBox txtDoctor;
     }
 }

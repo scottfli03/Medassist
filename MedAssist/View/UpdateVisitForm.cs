@@ -29,8 +29,10 @@ namespace MedAssist.View
             txtRespRate.Enabled = false;
             txtSymptoms.Enabled = false;
             txtTemp.Enabled = false;
-            cboPatient.Enabled = false;
-            cboDoctor.Enabled = false;
+            //cboPatient.Enabled = false;
+            //cboDoctor.Enabled = false;
+            txtDoctor.Enabled = false;
+            txtPatient.Enabled = false;
             txtNurse.Enabled = false;
             txtBoxFnlDiagnosis.Enabled = false;
             txtNurse.Text = EmployeeController.GetEmployeeByID(UserSecurityController.NurseLoggedIn.NurseID).FullName;
@@ -71,14 +73,16 @@ namespace MedAssist.View
 
         private void DisplayVisit()
         {
-            cboDoctor.SelectedText = visit.DoctorID.ToString();
-            cboPatient.SelectedText = visit.PatientID.ToString();
+            //cboDoctor.SelectedValue = visit.DoctorID.ToString();
+            //cboPatient.SelectedValue = visit.PatientID.ToString();
+            int doctorID = visit.DoctorID;
+
+            txtDoctor.Text = EmployeeController.GetEmployeeByID(doctorID).FullName;
             txtSystolic.Text = visit.Systolic.ToString();
             txtDiastolic.Text = visit.Diagnosis.ToString();
             txtHeartRate.Text = visit.HeartRate.ToString();
             txtTemp.Text = visit.Temperature.ToString();
             txtRespRate.Text = visit.RespirationRate.ToString();
-            //txtBoxDiagnosis.Text = visit.Diagnosis; 
             txtSymptoms.Text = visit.Symptoms;
             txtBoxFnlDiagnosis.Text = visit.Diagnosis;
         }
@@ -111,13 +115,13 @@ namespace MedAssist.View
         private bool IsValidData()
         {
             if (Validator.IsPresent(txtHeartRate) &&
-                Validator.IsPresent(cboPatient) &&
+                //Validator.IsPresent(cboPatient) &&
                 Validator.IsPresent(txtNurse) &&
                 Validator.IsPresent(txtRespRate) &&
                 Validator.IsPresent(txtSymptoms) &&
                 Validator.IsPresent(txtSystolic) &&
                 Validator.IsPresent(txtDiastolic) &&
-                Validator.IsPresent(cmbDoctor) &&
+                //Validator.IsPresent(cmbDoctor) &&
                 Validator.IsPresent(txtTemp) &&
                 Validator.IsInt32(txtDiastolic) &&
                 Validator.IsInt32(txtHeartRate) &&
@@ -184,14 +188,14 @@ namespace MedAssist.View
             PatientController patCont = new PatientController();
             try
             {
-                doctorList = empCont.GetListOfDoctorEmployees();
-                cboDoctor.DataSource = doctorList;
-                cboDoctor.DisplayMember = "FullName";
-                cboDoctor.ValueMember = "EmployeeID";
-                patientList = patCont.GetPatientList();
-                cboPatient.DataSource = patientList;
-                cboPatient.DisplayMember = "FullName";
-                cboPatient.ValueMember = "PatientID";
+                //doctorList = empCont.GetListOfDoctorEmployees();
+                //cboDoctor.DataSource = doctorList;
+                //cboDoctor.DisplayMember = "FullName";
+                //cboDoctor.ValueMember = "EmployeeID";
+                //patientList = patCont.GetPatientList();
+                //cboPatient.DataSource = patientList;
+                //cboPatient.DisplayMember = "FullName";
+                //cboPatient.ValueMember = "PatientID";
             }
             catch (Exception ex)
             {
