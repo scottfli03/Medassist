@@ -25,6 +25,9 @@ namespace MedAssist.View
         private Visit visit;
         private BindingList<Test> tests;
 
+        /// <summary>
+        /// Initializes components and instance variables
+        /// </summary>
         public VisitForm()
         {
             InitializeComponent();
@@ -301,6 +304,9 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Disables fields in the form
+        /// </summary>
         private void disableFields()
         {
             txtDiastolic.Enabled = false;
@@ -314,6 +320,12 @@ namespace MedAssist.View
             cmbDoctor.Enabled = false;
         }
 
+        /// <summary>
+        /// Adds a test to the Data Grid View and adds the test
+        /// to a list of tests.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             Test test = this.GetTestData();
@@ -321,6 +333,10 @@ namespace MedAssist.View
             this.buildDGV();
         }
 
+        /// <summary>
+        /// Gets the Test from the comboBox and returns the Test
+        /// </summary>
+        /// <returns>The Test</returns>
         private Test GetTestData()
         {
             int testID = (int)cmbTest.SelectedValue;
@@ -328,11 +344,19 @@ namespace MedAssist.View
             return test;
         }
 
+        /// <summary>
+        /// Builds the Data Grid View for Tests being added.
+        /// </summary>
         private void buildDGV()
         {
             dgvTests.DataSource = tests;
         }
 
+        /// <summary>
+        /// Clears the Data Grid View
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClear_Click(object sender, EventArgs e)
         {
             tests = new BindingList<Test>();

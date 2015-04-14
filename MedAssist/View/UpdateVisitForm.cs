@@ -21,6 +21,9 @@ namespace MedAssist.View
         private List<Patient> patientList;
         private List<Employee> doctorList;
 
+        /// <summary>
+        /// Initializes the components and disables appropriate fields
+        /// </summary>
         public UpdateVisitForm()
         {
             InitializeComponent();
@@ -40,23 +43,27 @@ namespace MedAssist.View
             
         }
 
+        /// <summary>
+        /// Sets the visitCombobox
+        /// </summary>
+        /// <param name="firstName">Patients first name</param>
+        /// <param name="lastName">Patients last name</param>
         private void GetVisitsByPatient(string firstName, string lastName)
         {
-
             visitDates = VisitDAL.GetListVisitDates(firstName, lastName);
             cboVisits.DataSource = visitDates;
             cboVisits.DisplayMember = "VisitDateID";
             cboVisits.ValueMember = "VisitID";
-
-
         }
 
-        private void GetVisitInfo(int visitID1)
+        /// <summary>
+        /// Loads the fields with the visit info.
+        /// </summary>
+        /// <param name="visitID">The visit ID</param>
+        private void GetVisitInfo(int visitID)
         {
-
             try
             {
-                
                 visit = VisitDAL.GetVisitToUpdate(visitID);
                 if (visit == null)
                     MessageBox.Show("No Visit found with this Visit ID. " +
@@ -66,7 +73,6 @@ namespace MedAssist.View
                     this.DisplayVisit();
                     CurrentPatientController.currentPatient = PatientController.GetPatientWithID(visit.PatientID);
                 }
-
             }
             catch (Exception ex)
             {
@@ -74,6 +80,9 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Helper that loads the fields with Visit Info.
+        /// </summary>
         private void DisplayVisit()
         {
             cboDoctor.SelectedText = EmployeeController.GetEmployeeByID(visit.DoctorID).FullName;
@@ -88,6 +97,11 @@ namespace MedAssist.View
             txtBoxDiagnosis.Text = visit.Diagnosis;
         }
 
+        /// <summary>
+        /// Searches for visit info by first and last name when button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearchVisit_Click(object sender, EventArgs e)
         {
 
@@ -100,13 +114,19 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Sets the Diagnosis information for a Visit object
+        /// </summary>
+        /// <param name="visit">the visit</param>
         private void PutVisitData(Visit visit)
         {
                 visit.Diagnosis = txtBoxDiagnosis.Text + ", " + txtBoxFnlDiagnosis.Text;
-
         }
 
-
+        /// <summary>
+        /// Checks if the search fields are valid.
+        /// </summary>
+        /// <returns></returns>
         private bool IsValidData()
         {
             if (Validator.IsPresent(txtSearchFirstName) &&
@@ -120,6 +140,11 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Updates the visit when the submit button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             visit.VisitID = visitID;
@@ -150,6 +175,11 @@ namespace MedAssist.View
 
         }
 
+        /// <summary>
+        /// Closes the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Are you sure you would like to exit the form?", "Form Closing", MessageBoxButtons.YesNo);
@@ -163,6 +193,9 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Loads the ComboBoxes for doctor and patient
+        /// </summary>
         private void loadComboBoxes()
         {
             EmployeeController empCont = new EmployeeController();
@@ -184,6 +217,11 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Gets the visit info when the button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGetVisitInfo_Click(object sender, EventArgs e)
         {
 
@@ -192,6 +230,11 @@ namespace MedAssist.View
 
         }
 
+        /// <summary>
+        /// Opens the View/Update Tests form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnViewUpdateTest_Click(object sender, EventArgs e)
         {
             try

@@ -31,7 +31,7 @@
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.txtPatient = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbResult = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbOrderID = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,6 +50,7 @@
             // 
             // txtPatient
             // 
+            this.txtPatient.Enabled = false;
             this.txtPatient.Location = new System.Drawing.Point(70, 15);
             this.txtPatient.Name = "txtPatient";
             this.txtPatient.Size = new System.Drawing.Size(166, 20);
@@ -64,16 +65,18 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Patient:";
             // 
-            // comboBox1
+            // cmbResult
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "\"-\"",
-            "\"+\""});
-            this.comboBox1.Location = new System.Drawing.Point(70, 69);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 3;
+            this.cmbResult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbResult.FormattingEnabled = true;
+            this.cmbResult.Items.AddRange(new object[] {
+            "",
+            "-",
+            "+"});
+            this.cmbResult.Location = new System.Drawing.Point(70, 69);
+            this.cmbResult.Name = "cmbResult";
+            this.cmbResult.Size = new System.Drawing.Size(121, 21);
+            this.cmbResult.TabIndex = 3;
             // 
             // label2
             // 
@@ -86,6 +89,7 @@
             // 
             // cmbOrderID
             // 
+            this.cmbOrderID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOrderID.FormattingEnabled = true;
             this.cmbOrderID.Location = new System.Drawing.Point(70, 42);
             this.cmbOrderID.Name = "cmbOrderID";
@@ -109,6 +113,7 @@
             this.btnSubmit.TabIndex = 7;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnClose
             // 
@@ -129,7 +134,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbOrderID);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbResult);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPatient);
             this.Controls.Add(this.dgvOrders);
@@ -147,7 +152,7 @@
         private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.TextBox txtPatient;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbResult;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbOrderID;
         private System.Windows.Forms.Label label3;
