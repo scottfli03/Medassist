@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label nurseIDLabel;
-            System.Windows.Forms.Label label1;
-            System.Windows.Forms.Label patientNameLabel;
             System.Windows.Forms.Label label9;
             this.doctorNameLabel = new System.Windows.Forms.Label();
             this.diagnosisLabel = new System.Windows.Forms.Label();
@@ -41,9 +38,12 @@
             this.txtSearchLastName = new System.Windows.Forms.TextBox();
             this.btnSearchVisit = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtNurse = new System.Windows.Forms.TextBox();
-            this.cboPatient = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.cboDoctor = new System.Windows.Forms.ComboBox();
+            this.patientNameLabel = new System.Windows.Forms.Label();
+            this.cboPatient = new System.Windows.Forms.ComboBox();
+            this.nurseIDLabel = new System.Windows.Forms.Label();
+            this.txtNurse = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtSymptoms = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,46 +69,16 @@
             this.btnGetVisitInfo = new System.Windows.Forms.Button();
             this.gpBoxFindPatientVisits = new System.Windows.Forms.GroupBox();
             this.gpBoxVisitDates = new System.Windows.Forms.GroupBox();
-            nurseIDLabel = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
-            patientNameLabel = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gpBoxVisitDates.SuspendLayout();
             this.SuspendLayout();
             // 
-            // nurseIDLabel
-            // 
-            nurseIDLabel.AutoSize = true;
-            nurseIDLabel.Location = new System.Drawing.Point(16, 52);
-            nurseIDLabel.Name = "nurseIDLabel";
-            nurseIDLabel.Size = new System.Drawing.Size(38, 13);
-            nurseIDLabel.TabIndex = 5;
-            nurseIDLabel.Text = "Nurse:";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(16, 26);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(42, 13);
-            label1.TabIndex = 40;
-            label1.Text = "Doctor:";
-            // 
-            // patientNameLabel
-            // 
-            patientNameLabel.AutoSize = true;
-            patientNameLabel.Location = new System.Drawing.Point(16, 78);
-            patientNameLabel.Name = "patientNameLabel";
-            patientNameLabel.Size = new System.Drawing.Size(43, 13);
-            patientNameLabel.TabIndex = 39;
-            patientNameLabel.Text = "Patient:";
-            // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(370, 97);
+            label9.Location = new System.Drawing.Point(374, 352);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(56, 13);
             label9.TabIndex = 80;
@@ -186,12 +156,12 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txtNurse);
-            this.groupBox3.Controls.Add(nurseIDLabel);
-            this.groupBox3.Controls.Add(this.cboPatient);
-            this.groupBox3.Controls.Add(label1);
-            this.groupBox3.Controls.Add(patientNameLabel);
+            this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.cboDoctor);
+            this.groupBox3.Controls.Add(this.patientNameLabel);
+            this.groupBox3.Controls.Add(this.cboPatient);
+            this.groupBox3.Controls.Add(this.nurseIDLabel);
+            this.groupBox3.Controls.Add(this.txtNurse);
             this.groupBox3.Location = new System.Drawing.Point(12, 97);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(316, 125);
@@ -199,32 +169,59 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Participants";
             // 
-            // txtNurse
+            // label12
             // 
-            this.txtNurse.Location = new System.Drawing.Point(74, 49);
-            this.txtNurse.Name = "txtNurse";
-            this.txtNurse.Size = new System.Drawing.Size(219, 20);
-            this.txtNurse.TabIndex = 2;
-            // 
-            // cboPatient
-            // 
-            this.cboPatient.DisplayMember = "PatientName";
-            this.cboPatient.FormattingEnabled = true;
-            this.cboPatient.Location = new System.Drawing.Point(74, 78);
-            this.cboPatient.Name = "cboPatient";
-            this.cboPatient.Size = new System.Drawing.Size(219, 21);
-            this.cboPatient.TabIndex = 3;
-            this.cboPatient.ValueMember = "PatientID";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(19, 25);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(42, 13);
+            this.label12.TabIndex = 78;
+            this.label12.Text = "Doctor:";
             // 
             // cboDoctor
             // 
             this.cboDoctor.DisplayMember = "DoctorName";
             this.cboDoctor.FormattingEnabled = true;
-            this.cboDoctor.Location = new System.Drawing.Point(74, 22);
+            this.cboDoctor.Location = new System.Drawing.Point(79, 25);
             this.cboDoctor.Name = "cboDoctor";
             this.cboDoctor.Size = new System.Drawing.Size(219, 21);
-            this.cboDoctor.TabIndex = 1;
+            this.cboDoctor.TabIndex = 77;
             this.cboDoctor.ValueMember = "DoctorID";
+            // 
+            // patientNameLabel
+            // 
+            this.patientNameLabel.AutoSize = true;
+            this.patientNameLabel.Location = new System.Drawing.Point(19, 78);
+            this.patientNameLabel.Name = "patientNameLabel";
+            this.patientNameLabel.Size = new System.Drawing.Size(43, 13);
+            this.patientNameLabel.TabIndex = 76;
+            this.patientNameLabel.Text = "Patient:";
+            // 
+            // cboPatient
+            // 
+            this.cboPatient.DisplayMember = "PatientName";
+            this.cboPatient.FormattingEnabled = true;
+            this.cboPatient.Location = new System.Drawing.Point(79, 78);
+            this.cboPatient.Name = "cboPatient";
+            this.cboPatient.Size = new System.Drawing.Size(219, 21);
+            this.cboPatient.TabIndex = 74;
+            this.cboPatient.ValueMember = "PatientID";
+            // 
+            // nurseIDLabel
+            // 
+            this.nurseIDLabel.AutoSize = true;
+            this.nurseIDLabel.Location = new System.Drawing.Point(19, 52);
+            this.nurseIDLabel.Name = "nurseIDLabel";
+            this.nurseIDLabel.Size = new System.Drawing.Size(38, 13);
+            this.nurseIDLabel.TabIndex = 75;
+            this.nurseIDLabel.Text = "Nurse:";
+            // 
+            // txtNurse
+            // 
+            this.txtNurse.Location = new System.Drawing.Point(79, 52);
+            this.txtNurse.Name = "txtNurse";
+            this.txtNurse.Size = new System.Drawing.Size(219, 20);
+            this.txtNurse.TabIndex = 73;
             // 
             // groupBox2
             // 
@@ -356,7 +353,7 @@
             // 
             // txtBoxDiagnosis
             // 
-            this.txtBoxDiagnosis.Location = new System.Drawing.Point(386, 123);
+            this.txtBoxDiagnosis.Location = new System.Drawing.Point(377, 373);
             this.txtBoxDiagnosis.Multiline = true;
             this.txtBoxDiagnosis.Name = "txtBoxDiagnosis";
             this.txtBoxDiagnosis.Size = new System.Drawing.Size(281, 172);
@@ -393,7 +390,7 @@
             // 
             // txtBoxFnlDiagnosis
             // 
-            this.txtBoxFnlDiagnosis.Location = new System.Drawing.Point(395, 377);
+            this.txtBoxFnlDiagnosis.Location = new System.Drawing.Point(386, 129);
             this.txtBoxFnlDiagnosis.Multiline = true;
             this.txtBoxFnlDiagnosis.Name = "txtBoxFnlDiagnosis";
             this.txtBoxFnlDiagnosis.Size = new System.Drawing.Size(272, 144);
@@ -407,11 +404,12 @@
             this.btnViewUpdateTest.TabIndex = 91;
             this.btnViewUpdateTest.Text = "View/Update";
             this.btnViewUpdateTest.UseVisualStyleBackColor = true;
+            this.btnViewUpdateTest.Click += new System.EventHandler(this.btnViewUpdateTest_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(374, 352);
+            this.label10.Location = new System.Drawing.Point(349, 113);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(81, 13);
             this.label10.TabIndex = 90;
@@ -504,9 +502,6 @@
         private System.Windows.Forms.Label doctorNameLabel;
         private System.Windows.Forms.Label diagnosisLabel;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtNurse;
-        private System.Windows.Forms.ComboBox cboPatient;
-        private System.Windows.Forms.ComboBox cboDoctor;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtSymptoms;
         private System.Windows.Forms.Label label2;
@@ -532,5 +527,11 @@
         private System.Windows.Forms.Button btnGetVisitInfo;
         private System.Windows.Forms.GroupBox gpBoxFindPatientVisits;
         private System.Windows.Forms.GroupBox gpBoxVisitDates;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cboDoctor;
+        private System.Windows.Forms.Label patientNameLabel;
+        private System.Windows.Forms.ComboBox cboPatient;
+        private System.Windows.Forms.Label nurseIDLabel;
+        private System.Windows.Forms.TextBox txtNurse;
     }
 }

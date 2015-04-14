@@ -16,6 +16,7 @@ namespace MedAssist.View
     public partial class UpdateVisitForm : Form
     {
         private Visit visit;
+        private int visitID;
         private List<Visit> visitDates;
         private List<Patient> patientList;
         private List<Employee> doctorList;
@@ -32,27 +33,30 @@ namespace MedAssist.View
             cboPatient.Enabled = false;
             cboDoctor.Enabled = false;
             txtNurse.Enabled = false;
-            txtBoxFnlDiagnosis.Enabled = false;
+            txtBoxFnlDiagnosis.Enabled = true;
+            txtBoxDiagnosis.Enabled = false;
             txtNurse.Text = EmployeeController.GetEmployeeByID(UserSecurityController.NurseLoggedIn.NurseID).FullName;
-            this.loadComboBoxes();
+            CurrentPatientController.currentPatient = null;
+            
         }
 
         private void GetVisitsByPatient(string firstName, string lastName)
         {
-            
+
             visitDates = VisitDAL.GetListVisitDates(firstName, lastName);
-            cboVisits.DataSource = visitDates;    
+            cboVisits.DataSource = visitDates;
             cboVisits.DisplayMember = "VisitDateID";
             cboVisits.ValueMember = "VisitID";
-            
+
 
         }
 
-        private void GetVisitInfo(int visitID)
+        private void GetVisitInfo(int visitID1)
         {
+
             try
             {
-
+                
                 visit = VisitDAL.GetVisitToUpdate(visitID);
                 if (visit == null)
                     MessageBox.Show("No Visit found with this Visit ID. " +
@@ -60,6 +64,7 @@ namespace MedAssist.View
                 else
                 {
                     this.DisplayVisit();
+                    CurrentPatientController.currentPatient = PatientController.GetPatientWithID(visit.PatientID);
                 }
 
             }
@@ -71,22 +76,22 @@ namespace MedAssist.View
 
         private void DisplayVisit()
         {
-            cboDoctor.SelectedText = visit.DoctorID.ToString();
-            cboPatient.SelectedText = visit.PatientID.ToString();
+            cboDoctor.SelectedText = EmployeeController.GetEmployeeByID(visit.DoctorID).FullName;
+            cboPatient.SelectedText = PatientController.GetPatientWithID(visit.PatientID).FullName;
+            cboPatient.SelectedValue = 
             txtSystolic.Text = visit.Systolic.ToString();
             txtDiastolic.Text = visit.Diagnosis.ToString();
             txtHeartRate.Text = visit.HeartRate.ToString();
             txtTemp.Text = visit.Temperature.ToString();
             txtRespRate.Text = visit.RespirationRate.ToString();
-            //txtBoxDiagnosis.Text = visit.Diagnosis; 
             txtSymptoms.Text = visit.Symptoms;
-            txtBoxFnlDiagnosis.Text = visit.Diagnosis;
+            txtBoxDiagnosis.Text = visit.Diagnosis;
         }
 
         private void btnSearchVisit_Click(object sender, EventArgs e)
         {
 
-            if(Validator.IsPresent(txtSearchFirstName) &&
+            if (Validator.IsPresent(txtSearchFirstName) &&
                 Validator.IsPresent(txtSearchLastName))
             {
                 string firstName = txtSearchFirstName.Text;
@@ -97,33 +102,15 @@ namespace MedAssist.View
 
         private void PutVisitData(Visit visit)
         {
-            try
-            {
-                visit.Diagnosis = txtBoxDiagnosis.Text + " " + txtBoxFnlDiagnosis.Text;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
+                visit.Diagnosis = txtBoxDiagnosis.Text + ", " + txtBoxFnlDiagnosis.Text;
+
         }
 
 
         private bool IsValidData()
         {
-            if (Validator.IsPresent(txtHeartRate) &&
-                Validator.IsPresent(cboPatient) &&
-                Validator.IsPresent(txtNurse) &&
-                Validator.IsPresent(txtRespRate) &&
-                Validator.IsPresent(txtSymptoms) &&
-                Validator.IsPresent(txtSystolic) &&
-                Validator.IsPresent(txtDiastolic) &&
-                Validator.IsPresent(cmbDoctor) &&
-                Validator.IsPresent(txtTemp) &&
-                Validator.IsInt32(txtDiastolic) &&
-                Validator.IsInt32(txtHeartRate) &&
-                Validator.IsInt32(txtRespRate) &&
-                Validator.IsInt32(txtSystolic) &&
-                Validator.IsDecimal(txtTemp))
+            if (Validator.IsPresent(txtSearchFirstName) &&
+                Validator.IsPresent(txtSearchLastName))
             {
                 return true;
             }
@@ -135,12 +122,10 @@ namespace MedAssist.View
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            visit.VisitID = visitID;
             Visit newVisit = new Visit();
-
-            if (IsValidData())
-            {
-                newVisit.VisitID = visit.VisitID;
-                this.PutVisitData(newVisit);
+            newVisit.VisitID = visit.VisitID;
+            this.PutVisitData(newVisit);
 
                 try
                 {
@@ -162,7 +147,7 @@ namespace MedAssist.View
                 {
                     MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
-            }
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -202,11 +187,29 @@ namespace MedAssist.View
         private void btnGetVisitInfo_Click(object sender, EventArgs e)
         {
 
-            int visitID = Convert.ToInt32(cboVisits.SelectedValue);
+            visitID = Convert.ToInt32(cboVisits.SelectedValue);
             this.GetVisitInfo(visitID);
 
         }
 
-
+        private void btnViewUpdateTest_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CurrentPatientController.currentPatient != null)
+                {
+                    TestForm tf = new TestForm();
+                    tf.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please select a patient and visit before reviewing tests", "Patient Selection Needed.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
     }
 }

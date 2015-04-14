@@ -64,10 +64,11 @@ namespace MedAssist.DAL
         {
             BindingList<OrderDetails> orderList = new BindingList<OrderDetails>();
             SqlConnection connection = MedassistDB.GetConnection();
-            String selectStatement = "SELECT o.OrderID, o.OrderDate, o.DatePerformed, o.Result, o.TestID, v.VisitID " +
+            String selectStatement = "SELECT o.OrderID, o.OrderDate, o.DatePerformed, o.Result, o.TestID, o.VisitID, " +
                 "(p.LastName + ', ' + p.FirstName) AS PatientName, t.TestName " +
                 "FROM Orders o JOIN Visits v ON o.VisitID = v.VisitID " +
                 "JOIN Tests t ON t.TestID = o.TestID " +
+                "JOIN Patients p ON v.PatientID = v.PatientID " +
                 "WHERE v.PatientID = @PatientID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@PatientID", patientID);
@@ -82,7 +83,7 @@ namespace MedAssist.DAL
                     order.OrderID = (int)reader["OrderID"];
                     order.OrderDate = (DateTime)reader["OrderDate"];
                     order.DatePerformed = (DateTime)reader["DatePerformed"];
-                    order.Result = (char?)reader["Result"];
+                    order.Result = reader["Result"].ToString()[0];
                     order.TestID = (int)reader["TestID"];
                     order.VisitID = (int)reader["VisitID"];
                     order.PatientName = reader["PatientName"].ToString();
