@@ -145,7 +145,6 @@
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Label lblTo;
         private System.Windows.Forms.Button btnSearch;
-        private Patient_Report_DatasetTableAdapters.VisitsTableAdapter visitsTableAdapter;
         private System.Windows.Forms.BindingSource patientDetailedDataBindingSource;
         private Patient_Report_Dataset patient_Report_Dataset;
         private Patient_Report_DatasetTableAdapters.PatientDetailedDataTableAdapter patientDetailedDataTableAdapter;

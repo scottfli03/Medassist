@@ -6,13 +6,10 @@
 }
 
 namespace MedAssist.Patient_Report_DatasetTableAdapters {
-    
-    
-    public partial class VisitsTableAdapter {
-       
-
-        
-
-        
+    partial class PatientDetailedDataTableAdapter
+    {
     }
+    
+    
+   
 }

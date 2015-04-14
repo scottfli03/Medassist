@@ -80,7 +80,7 @@ namespace MedAssist.View
         private bool IsValidData()
         {
             if (Validator.IsPresent(txtTestName) &&
-               Validator.IsInt32(txtTestID))
+               Validator.IsInt32(txtTestID) && Validator.IsPresent(txtTestID))
             {
                 return true;
             }
@@ -148,7 +148,7 @@ namespace MedAssist.View
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Id already in use. Please select another");
+                    MessageBox.Show("Id in use. Please select another");
                 }
 
                 finally
@@ -156,6 +156,11 @@ namespace MedAssist.View
                     this.Close();
                 }
             }
+        }
+
+        private void txtTestID_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

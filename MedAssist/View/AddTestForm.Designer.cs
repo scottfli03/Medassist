@@ -40,6 +40,7 @@
             // txtTestName
             // 
             this.txtTestName.Location = new System.Drawing.Point(90, 57);
+            this.txtTestName.MaxLength = 100;
             this.txtTestName.Name = "txtTestName";
             this.txtTestName.Size = new System.Drawing.Size(198, 20);
             this.txtTestName.TabIndex = 0;
@@ -87,9 +88,11 @@
             // txtTestID
             // 
             this.txtTestID.Location = new System.Drawing.Point(90, 22);
+            this.txtTestID.MaxLength = 4;
             this.txtTestID.Name = "txtTestID";
             this.txtTestID.Size = new System.Drawing.Size(198, 20);
             this.txtTestID.TabIndex = 5;
+            this.txtTestID.TextChanged += new System.EventHandler(this.txtTestID_TextChanged);
             // 
             // btnDelete
             // 
