@@ -9,6 +9,19 @@ namespace MedAssist.Controller
 {
     static class CurrentPatientController
     {
-        public static Patient currentPatient = null;
+        public static Patient currentPatient;
+
+        static Patient _currentPatient;
+        public static Patient CurrentPatient
+        {
+            get
+            {
+                return _currentPatient;
+            }
+            set
+            {
+                _currentPatient = value;
+            }
+        }
     }
 }

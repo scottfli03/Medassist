@@ -833,7 +833,7 @@ namespace MedAssist.DAL
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
-            selectCommand.Parameters.AddWithValue("@Patient", patientID);
+            selectCommand.Parameters.AddWithValue("@PatientID", patientID);
             try
             {
                 connection.Open();

@@ -66,12 +66,16 @@
             this.btnViewUpdateTest = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.btnGetVisitInfo = new System.Windows.Forms.Button();
+            this.gpBoxFindPatientVisits = new System.Windows.Forms.GroupBox();
+            this.gpBoxVisitDates = new System.Windows.Forms.GroupBox();
             nurseIDLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             patientNameLabel = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.gpBoxVisitDates.SuspendLayout();
             this.SuspendLayout();
             // 
             // nurseIDLabel
@@ -104,7 +108,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(363, 63);
+            label9.Location = new System.Drawing.Point(370, 97);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(56, 13);
             label9.TabIndex = 80;
@@ -140,16 +144,15 @@
             // 
             // txtSearchFirstName
             // 
-            this.txtSearchFirstName.Location = new System.Drawing.Point(72, 19);
+            this.txtSearchFirstName.Location = new System.Drawing.Point(72, 25);
             this.txtSearchFirstName.Name = "txtSearchFirstName";
             this.txtSearchFirstName.Size = new System.Drawing.Size(103, 20);
             this.txtSearchFirstName.TabIndex = 73;
-            this.txtSearchFirstName.TextChanged += new System.EventHandler(this.txtSearchFirstName_TextChanged);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 21);
+            this.label13.Location = new System.Drawing.Point(8, 29);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(57, 13);
             this.label13.TabIndex = 74;
@@ -158,7 +161,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(8, 48);
+            this.label14.Location = new System.Drawing.Point(8, 54);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(58, 13);
             this.label14.TabIndex = 75;
@@ -166,14 +169,14 @@
             // 
             // txtSearchLastName
             // 
-            this.txtSearchLastName.Location = new System.Drawing.Point(72, 48);
+            this.txtSearchLastName.Location = new System.Drawing.Point(72, 54);
             this.txtSearchLastName.Name = "txtSearchLastName";
             this.txtSearchLastName.Size = new System.Drawing.Size(100, 20);
             this.txtSearchLastName.TabIndex = 76;
             // 
             // btnSearchVisit
             // 
-            this.btnSearchVisit.Location = new System.Drawing.Point(190, 21);
+            this.btnSearchVisit.Location = new System.Drawing.Point(190, 27);
             this.btnSearchVisit.Name = "btnSearchVisit";
             this.btnSearchVisit.Size = new System.Drawing.Size(115, 23);
             this.btnSearchVisit.TabIndex = 79;
@@ -353,15 +356,15 @@
             // 
             // txtBoxDiagnosis
             // 
-            this.txtBoxDiagnosis.Location = new System.Drawing.Point(425, 63);
+            this.txtBoxDiagnosis.Location = new System.Drawing.Point(386, 123);
             this.txtBoxDiagnosis.Multiline = true;
             this.txtBoxDiagnosis.Name = "txtBoxDiagnosis";
-            this.txtBoxDiagnosis.Size = new System.Drawing.Size(240, 172);
+            this.txtBoxDiagnosis.Size = new System.Drawing.Size(281, 172);
             this.txtBoxDiagnosis.TabIndex = 81;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(557, 566);
+            this.btnCancel.Location = new System.Drawing.Point(550, 551);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(108, 25);
             this.btnCancel.TabIndex = 86;
@@ -371,7 +374,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(425, 566);
+            this.btnSubmit.Location = new System.Drawing.Point(395, 551);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(108, 25);
             this.btnSubmit.TabIndex = 85;
@@ -383,23 +386,22 @@
             // 
             this.cboVisits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVisits.FormattingEnabled = true;
-            this.cboVisits.Location = new System.Drawing.Point(345, 23);
+            this.cboVisits.Location = new System.Drawing.Point(16, 22);
             this.cboVisits.Name = "cboVisits";
-            this.cboVisits.Size = new System.Drawing.Size(90, 21);
+            this.cboVisits.Size = new System.Drawing.Size(208, 21);
             this.cboVisits.TabIndex = 87;
             // 
             // txtBoxFnlDiagnosis
             // 
-            this.txtBoxFnlDiagnosis.Location = new System.Drawing.Point(425, 322);
+            this.txtBoxFnlDiagnosis.Location = new System.Drawing.Point(395, 377);
             this.txtBoxFnlDiagnosis.Multiline = true;
             this.txtBoxFnlDiagnosis.Name = "txtBoxFnlDiagnosis";
-            this.txtBoxFnlDiagnosis.Size = new System.Drawing.Size(240, 199);
+            this.txtBoxFnlDiagnosis.Size = new System.Drawing.Size(272, 144);
             this.txtBoxFnlDiagnosis.TabIndex = 92;
-            this.txtBoxFnlDiagnosis.TextChanged += new System.EventHandler(this.txtBoxFnlDiagnosis_TextChanged);
             // 
             // btnViewUpdateTest
             // 
-            this.btnViewUpdateTest.Location = new System.Drawing.Point(425, 260);
+            this.btnViewUpdateTest.Location = new System.Drawing.Point(412, 314);
             this.btnViewUpdateTest.Name = "btnViewUpdateTest";
             this.btnViewUpdateTest.Size = new System.Drawing.Size(108, 23);
             this.btnViewUpdateTest.TabIndex = 91;
@@ -410,7 +412,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(383, 294);
+            this.label10.Location = new System.Drawing.Point(374, 352);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(81, 13);
             this.label10.TabIndex = 90;
@@ -419,22 +421,52 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(383, 260);
+            this.label11.Location = new System.Drawing.Point(370, 319);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 13);
             this.label11.TabIndex = 88;
             this.label11.Text = "Tests:";
             // 
+            // btnGetVisitInfo
+            // 
+            this.btnGetVisitInfo.Location = new System.Drawing.Point(245, 20);
+            this.btnGetVisitInfo.Name = "btnGetVisitInfo";
+            this.btnGetVisitInfo.Size = new System.Drawing.Size(75, 23);
+            this.btnGetVisitInfo.TabIndex = 93;
+            this.btnGetVisitInfo.Text = "Get Visit Info";
+            this.btnGetVisitInfo.UseVisualStyleBackColor = true;
+            this.btnGetVisitInfo.Click += new System.EventHandler(this.btnGetVisitInfo_Click);
+            // 
+            // gpBoxFindPatientVisits
+            // 
+            this.gpBoxFindPatientVisits.Location = new System.Drawing.Point(5, 7);
+            this.gpBoxFindPatientVisits.Name = "gpBoxFindPatientVisits";
+            this.gpBoxFindPatientVisits.Size = new System.Drawing.Size(323, 79);
+            this.gpBoxFindPatientVisits.TabIndex = 94;
+            this.gpBoxFindPatientVisits.TabStop = false;
+            this.gpBoxFindPatientVisits.Text = "Find Visit Dates By Patient";
+            // 
+            // gpBoxVisitDates
+            // 
+            this.gpBoxVisitDates.Controls.Add(this.btnGetVisitInfo);
+            this.gpBoxVisitDates.Controls.Add(this.cboVisits);
+            this.gpBoxVisitDates.Location = new System.Drawing.Point(338, 7);
+            this.gpBoxVisitDates.Name = "gpBoxVisitDates";
+            this.gpBoxVisitDates.Size = new System.Drawing.Size(343, 75);
+            this.gpBoxVisitDates.TabIndex = 95;
+            this.gpBoxVisitDates.TabStop = false;
+            this.gpBoxVisitDates.Text = "Visit Dates for Patient";
+            // 
             // UpdateVisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 634);
+            this.ClientSize = new System.Drawing.Size(693, 593);
+            this.Controls.Add(this.gpBoxVisitDates);
             this.Controls.Add(this.txtBoxFnlDiagnosis);
             this.Controls.Add(this.btnViewUpdateTest);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.cboVisits);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.groupBox3);
@@ -449,12 +481,14 @@
             this.Controls.Add(this.doctorNameLabel);
             this.Controls.Add(this.cmbDoctor);
             this.Controls.Add(this.diagnosisLabel);
+            this.Controls.Add(this.gpBoxFindPatientVisits);
             this.Name = "UpdateVisitForm";
             this.Text = "Update Visit";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.gpBoxVisitDates.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -496,5 +530,8 @@
         private System.Windows.Forms.Button btnViewUpdateTest;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnGetVisitInfo;
+        private System.Windows.Forms.GroupBox gpBoxFindPatientVisits;
+        private System.Windows.Forms.GroupBox gpBoxVisitDates;
     }
 }

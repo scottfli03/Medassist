@@ -30,6 +30,9 @@ namespace MedAssist.View
             txtSymptoms.Enabled = false;
             txtTemp.Enabled = false;
             cboPatient.Enabled = false;
+            cboDoctor.Enabled = false;
+            txtNurse.Enabled = false;
+            txtBoxFnlDiagnosis.Enabled = false;
             txtNurse.Text = EmployeeController.GetEmployeeByID(UserSecurityController.NurseLoggedIn.NurseID).FullName;
             CurrentPatientController.currentPatient = null;
             this.loadComboBoxes();
@@ -37,24 +40,28 @@ namespace MedAssist.View
 
         private void GetVisitsByPatient(string firstName, string lastName)
         {
+
             visitDates = VisitDAL.GetListVisitDates(firstName, lastName);
             cboVisits.DataSource = visitDates;
-            cboVisits.DisplayMember = "VisitDate";
+            cboVisits.DisplayMember = "VisitDateID";
             cboVisits.ValueMember = "VisitID";
+
+
         }
 
-        private void GetVisitInfo(string firstName, string lastName, DateTime visitDate)
+        private void GetVisitInfo(int visitID)
         {
             try
             {
 
-                //visit = VisitDAL.GetVisitToUpdate(firstName, lastName, visitDate); 
+                visit = VisitDAL.GetVisitToUpdate(visitID);
                 if (visit == null)
-                    MessageBox.Show("No Visit found with this First Name, Last Name or Visit Date. " +
+                    MessageBox.Show("No Visit found with this Visit ID. " +
                                     "Please try again.", "Visit Not Found");
                 else
                 {
                     this.DisplayVisit();
+                    CurrentPatientController.currentPatient = PatientController.GetPatientWithID(visit.PatientID);
                 }
 
             }
@@ -73,14 +80,15 @@ namespace MedAssist.View
             txtHeartRate.Text = visit.HeartRate.ToString();
             txtTemp.Text = visit.Temperature.ToString();
             txtRespRate.Text = visit.RespirationRate.ToString();
-            txtBoxDiagnosis.Text = visit.Diagnosis;
+            //txtBoxDiagnosis.Text = visit.Diagnosis; 
             txtSymptoms.Text = visit.Symptoms;
+            txtBoxFnlDiagnosis.Text = visit.Diagnosis;
         }
 
         private void btnSearchVisit_Click(object sender, EventArgs e)
         {
 
-            if(Validator.IsPresent(txtSearchFirstName) &&
+            if (Validator.IsPresent(txtSearchFirstName) &&
                 Validator.IsPresent(txtSearchLastName))
             {
                 string firstName = txtSearchFirstName.Text;
@@ -93,18 +101,7 @@ namespace MedAssist.View
         {
             try
             {
-            visit.DoctorID = (int)cboDoctor.SelectedValue;
-            //visit.Diagnosis = txtBoxDiagnosis.Text;
-            visit.PatientID = (int)cboPatient.SelectedValue;
-            CurrentPatientController.currentPatient = PatientController.GetPatientWithID(visit.PatientID);
-                if (!string.IsNullOrWhiteSpace(txtBoxDiagnosis.Text))
-                {
-                    visit.Diagnosis = txtBoxDiagnosis.Text;
-                }
-                else
-                {
-                    visit.Diagnosis = string.Empty;
-                }
+                visit.Diagnosis = txtBoxDiagnosis.Text + " " + txtBoxFnlDiagnosis.Text;
             }
             catch (Exception ex)
             {
@@ -123,7 +120,6 @@ namespace MedAssist.View
                 Validator.IsPresent(txtSystolic) &&
                 Validator.IsPresent(txtDiastolic) &&
                 Validator.IsPresent(cmbDoctor) &&
-                Validator.IsPresent(txtBoxDiagnosis) &&
                 Validator.IsPresent(txtTemp) &&
                 Validator.IsInt32(txtDiastolic) &&
                 Validator.IsInt32(txtHeartRate) &&
@@ -205,15 +201,14 @@ namespace MedAssist.View
             }
         }
 
-        private void txtSearchFirstName_TextChanged(object sender, EventArgs e)
+        private void btnGetVisitInfo_Click(object sender, EventArgs e)
         {
+
+            int visitID = Convert.ToInt32(cboVisits.SelectedValue);
+            this.GetVisitInfo(visitID);
 
         }
 
-        private void txtBoxFnlDiagnosis_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         private void btnViewUpdateTest_Click(object sender, EventArgs e)
         {
             try
