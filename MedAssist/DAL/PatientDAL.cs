@@ -346,8 +346,11 @@ namespace MedAssist.DAL
                     {
                         patient.VisitDate = null;
                     }
+
+                   
+                     
                     
-                    patient.PatientID = (int)reader["PatientID"];
+                    
                     if (patient.Systolic != null)
                     {
                         patient.Systolic = (int?)reader["Systolic"];
