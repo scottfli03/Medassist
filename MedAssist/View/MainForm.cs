@@ -190,6 +190,8 @@ namespace MedAssist.View
         /// <param name="e"></param>
         private void logoutToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+            UserSecurityController.NurseLoggedIn = null;
+                UserSecurityController.AdminLoggedIn = null;
             this.Close();
             this.th = new Thread(openLoginForm);
             this.th.SetApartmentState(ApartmentState.STA);

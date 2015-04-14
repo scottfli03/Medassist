@@ -88,7 +88,7 @@ namespace MedAssist.View
 
                         else
                         {
-                            MessageBox.Show("Invalid user name or passoword.");
+                            MessageBox.Show("Invalid user name or password.");
                         }
                     }
 
