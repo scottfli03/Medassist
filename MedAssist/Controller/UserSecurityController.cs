@@ -17,7 +17,7 @@ namespace MedAssist.Controller
 
         public static bool UpdatePassword(UserSecurity oldUser, UserSecurity newUser)
         {
-            return UpdatePassword(oldUser, newUser);
+            return UserSecurityDAL.UpdatePassword(oldUser, newUser);
         }
     }
 
