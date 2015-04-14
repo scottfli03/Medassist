@@ -16,6 +16,7 @@ namespace MedAssist.View
     public partial class UpdateVisitForm : Form
     {
         private Visit visit;
+        private int visitID;
         private List<Visit> visitDates;
         private List<Patient> patientList;
         private List<Employee> doctorList;
@@ -32,8 +33,8 @@ namespace MedAssist.View
             cboPatient.Enabled = false;
             cboDoctor.Enabled = false;
             txtNurse.Enabled = false;
-            txtBoxFnlDiagnosis.Enabled = false;
-            txtBoxDiagnosis.Enabled = true;
+            txtBoxFnlDiagnosis.Enabled = true;
+            txtBoxDiagnosis.Enabled = false;
             txtNurse.Text = EmployeeController.GetEmployeeByID(UserSecurityController.NurseLoggedIn.NurseID).FullName;
             CurrentPatientController.currentPatient = null;
             
@@ -50,8 +51,9 @@ namespace MedAssist.View
 
         }
 
-        private void GetVisitInfo(int visitID)
+        private void GetVisitInfo(int visitID1)
         {
+
             try
             {
                 
@@ -83,7 +85,7 @@ namespace MedAssist.View
             txtTemp.Text = visit.Temperature.ToString();
             txtRespRate.Text = visit.RespirationRate.ToString();
             txtSymptoms.Text = visit.Symptoms;
-            txtBoxFnlDiagnosis.Text = visit.Diagnosis;
+            txtBoxDiagnosis.Text = visit.Diagnosis;
         }
 
         private void btnSearchVisit_Click(object sender, EventArgs e)
@@ -100,26 +102,15 @@ namespace MedAssist.View
 
         private void PutVisitData(Visit visit)
         {
-                visit.Diagnosis = txtBoxDiagnosis.Text + " " + txtBoxFnlDiagnosis.Text;
+                visit.Diagnosis = txtBoxDiagnosis.Text + ", " + txtBoxFnlDiagnosis.Text;
+
         }
 
 
         private bool IsValidData()
         {
-            if (Validator.IsPresent(txtHeartRate) &&
-                Validator.IsPresent(cboPatient) &&
-                Validator.IsPresent(txtNurse) &&
-                Validator.IsPresent(txtRespRate) &&
-                Validator.IsPresent(txtSymptoms) &&
-                Validator.IsPresent(txtSystolic) &&
-                Validator.IsPresent(txtDiastolic) &&
-                Validator.IsPresent(cmbDoctor) &&
-                Validator.IsPresent(txtTemp) &&
-                Validator.IsInt32(txtDiastolic) &&
-                Validator.IsInt32(txtHeartRate) &&
-                Validator.IsInt32(txtRespRate) &&
-                Validator.IsInt32(txtSystolic) &&
-                Validator.IsDecimal(txtTemp))
+            if (Validator.IsPresent(txtSearchFirstName) &&
+                Validator.IsPresent(txtSearchLastName))
             {
                 return true;
             }
@@ -131,12 +122,10 @@ namespace MedAssist.View
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            visit.VisitID = visitID;
             Visit newVisit = new Visit();
-
-            if (IsValidData())
-            {
-                newVisit.VisitID = visit.VisitID;
-                this.PutVisitData(newVisit);
+            newVisit.VisitID = visit.VisitID;
+            this.PutVisitData(newVisit);
 
                 try
                 {
@@ -158,7 +147,7 @@ namespace MedAssist.View
                 {
                     MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
-            }
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -198,7 +187,7 @@ namespace MedAssist.View
         private void btnGetVisitInfo_Click(object sender, EventArgs e)
         {
 
-            int visitID = Convert.ToInt32(cboVisits.SelectedValue);
+            visitID = Convert.ToInt32(cboVisits.SelectedValue);
             this.GetVisitInfo(visitID);
 
         }

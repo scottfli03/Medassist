@@ -351,16 +351,16 @@ namespace MedAssist.DAL
         }
 
 
-        public static bool UpdateVisit(Visit newVisit, Visit oldVisit)
+        public static bool UpdateVisit(Visit oldVisit, Visit newVisit)
         {
             SqlConnection connection = MedassistDB.GetConnection();
             string updateStatement =
                 "UPDATE Visits SET " +
-                "Diagnosis = @Diagnosis " +
-                "WHERE VisitID = @VisitID";
+                "Diagnosis = @NewDiagnosis " +
+                "WHERE VisitID = @OldVisitID";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@VisitID", oldVisit.VisitID);
-            updateCommand.Parameters.AddWithValue("@Diagnosis", newVisit.Diagnosis);
+            updateCommand.Parameters.AddWithValue("@NewDiagnosis", newVisit.Diagnosis);
+            updateCommand.Parameters.AddWithValue("@OldVisitID", oldVisit.VisitID);
 
             try
             {
