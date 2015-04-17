@@ -288,7 +288,7 @@ namespace MedAssist.DAL
             List<Patient> patientList = new List<Patient>();
             SqlConnection connection = MedassistDB.GetConnection();
 
-            var selectStatement = string.Format(@"
+            var selectStatement = @"
                 SELECT  
                      Patients.FirstName
                     ,Patients.MInit
@@ -312,10 +312,11 @@ namespace MedAssist.DAL
                 ON Patients.PatientID = Visits.PatientID 
                 LEFT OUTER JOIN Orders ON Visits.VisitID = Orders.VisitID
                 LEFT OUTER JOIN Tests ON Orders.TestID = Tests.TestID
-                WHERE Patients.DOB = '{0}'", patientDob);
+                WHERE Patients.DOB =  @patientDOB";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
+            selectCommand.Parameters.AddWithValue("@PatientDOB", patientDob);
             try
             {
                 connection.Open();
@@ -476,7 +477,7 @@ namespace MedAssist.DAL
             List<Patient> patientList = new List<Patient>();
             SqlConnection connection = MedassistDB.GetConnection();
 
-            var selectStatement = string.Format(@"
+            var selectStatement = @"
                 SELECT        
                     Visits.VisitID
                     ,Visits.VisitDate
@@ -501,12 +502,14 @@ namespace MedAssist.DAL
                 LEFT JOIN Orders ON Visits.VisitID = Orders.VisitID
                 LEFT JOIN Tests ON Orders.TestID = Tests.TestID
                 WHERE
+                    Patients.LastName = @lName
                     
-                    Patients.LastName = '{0}'
-                    AND Patients.DOB = '{1}'", lName, patientDob);
+                    AND Patients.DOB = @PatientDob";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
+            selectCommand.Parameters.AddWithValue("@Lname", lName);
+            selectCommand.Parameters.AddWithValue("@PatientDob", patientDob);
             try
             {
                 connection.Open();
@@ -657,7 +660,7 @@ namespace MedAssist.DAL
             List<Patient> patientList = new List<Patient>();
             SqlConnection connection = MedassistDB.GetConnection();
 
-            var selectStatement = string.Format(@"
+            var selectStatement = @"
                 SELECT        
                     Visits.VisitID
                     ,Visits.VisitDate
@@ -682,11 +685,13 @@ namespace MedAssist.DAL
                 LEFT JOIN Orders ON Visits.VisitID = Orders.VisitID
                 LEFT JOIN Tests ON Orders.TestID = Tests.TestID
                 WHERE
-                    Patients.FirstName = '{0}'
-                    AND Patients.LastName = '{1}'", fName, lName);
+                    Patients.FirstName = @fName
+                    AND Patients.LastName = @lName";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
+            selectCommand.Parameters.AddWithValue("@fName", fName);
+            selectCommand.Parameters.AddWithValue("@lName", lName);
             try
             {
                 connection.Open();
