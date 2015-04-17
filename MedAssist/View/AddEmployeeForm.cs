@@ -109,6 +109,7 @@ namespace MedAssist.View
             if (Validator.IsPresent(txtFirstName) &&
                 Validator.IsPresent(txtLastName) &&
                 Validator.IsPresent(txtStreetAddress1) &&
+                Validator.IsPresent(txtSSN) &&
                 Validator.IsPresent(txtCity) &&
                 Validator.IsPresent(cboState) &&
                 Validator.IsPresent(txtPhone) &&

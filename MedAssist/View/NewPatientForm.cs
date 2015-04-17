@@ -77,12 +77,14 @@ namespace MedAssist
         {
             if (Validator.IsPresent(txtFirstName) &&
                 Validator.IsPresent(txtLastName) &&
+                Validator.IsPresent(dateTimePickerDOB) &&
+                Validator.IsPresent(cboGender) &&
+                Validator.IsPresent(txtSSN) &&
                 Validator.IsPresent(txtAddress1) &&
                 Validator.IsPresent(txtCity) &&
                 Validator.IsPresent(cboState) &&
                 Validator.IsPresent(txtPhone) &&
                 Validator.IsPresent(txtZip) &&
-                Validator.IsPresent(dateTimePickerDOB) &&
                 Validator.IsInt64(txtPhone) &&
                 Validator.IsInt64(txtZip) &&
                 Validator.IsInt32(txtSSN))

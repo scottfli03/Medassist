@@ -221,6 +221,7 @@
             this.dateTimePickerDOB.Name = "dateTimePickerDOB";
             this.dateTimePickerDOB.Size = new System.Drawing.Size(100, 20);
             this.dateTimePickerDOB.TabIndex = 4;
+            this.dateTimePickerDOB.Tag = "DOB";
             // 
             // cboState
             // 
@@ -281,6 +282,7 @@
             this.cboState.Name = "cboState";
             this.cboState.Size = new System.Drawing.Size(98, 21);
             this.cboState.TabIndex = 10;
+            this.cboState.Tag = "State";
             // 
             // txtMiddleInit
             // 
@@ -288,6 +290,7 @@
             this.txtMiddleInit.Name = "txtMiddleInit";
             this.txtMiddleInit.Size = new System.Drawing.Size(27, 20);
             this.txtMiddleInit.TabIndex = 2;
+            this.txtMiddleInit.Tag = "Middle Initial";
             // 
             // txtPhone
             // 
@@ -295,6 +298,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(100, 20);
             this.txtPhone.TabIndex = 11;
+            this.txtPhone.Tag = "Phone";
             // 
             // txtZip
             // 
@@ -302,6 +306,7 @@
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(100, 20);
             this.txtZip.TabIndex = 12;
+            this.txtZip.Tag = "Zip";
             // 
             // txtSSN
             // 
@@ -309,6 +314,7 @@
             this.txtSSN.Name = "txtSSN";
             this.txtSSN.Size = new System.Drawing.Size(100, 20);
             this.txtSSN.TabIndex = 6;
+            this.txtSSN.Tag = "SSN";
             // 
             // cboGender
             // 
@@ -321,6 +327,7 @@
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(73, 21);
             this.cboGender.TabIndex = 5;
+            this.cboGender.Tag = "Gender";
             // 
             // NewPatient
             // 

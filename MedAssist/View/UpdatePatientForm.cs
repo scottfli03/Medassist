@@ -33,6 +33,7 @@ namespace MedAssist.View
             txtMiddleInit.MaxLength = 1;
             txtPhone.MaxLength = 10;
             txtZip.MaxLength = 10;
+
         }
 
         /// <summary>
@@ -65,10 +66,21 @@ namespace MedAssist.View
             try
             {
                 patient = PatientDAL.GetPatientToUpdateWithNoID(firstName, lastName, DOB);
-                if (patient == null)
-                    MessageBox.Show("No Patient found with this First Name, Last Name or Date of Birth. " +
+                if (firstName == null)
+                    MessageBox.Show("First Name is required " +
                                     "Please try again.", "Patient Not Found");
+                else if (lastName == null)
+                    MessageBox.Show("Last Name is required " +  
+                       "Please try again.", "Patient Not Found");
+                else if (DOB == null)
+                    MessageBox.Show("Date of Birth is required " +
+                       "Please try again.", "Patient Not Found");
+                else if (patient == null)
+                    MessageBox.Show("No Patient found. " +
+                                    "Please try again.", "Patient Not Found");
+
                 else
+
                 {
                     this.DisplayPatient();
 
@@ -167,7 +179,13 @@ namespace MedAssist.View
             txtMiddleInit.MaxLength = 1;
             patient.FirstName = txtFirstName.Text;
             patient.LastName = txtLastName.Text;
-            patient.MInit = txtMiddleInit.Text;
+
+            if (txtMiddleInit.Text != " ")
+            {
+                patient.MInit = txtMiddleInit.Text;
+            }
+
+            
             patient.StreetAddr1 = txtAddress1.Text;
             patient.StreetAddr2 = txtAddress2.Text;
             patient.City = txtCity.Text;
@@ -235,8 +253,9 @@ namespace MedAssist.View
 
         private void dateTimePickerSearchDOB_ValueChanged(object sender, EventArgs e)
         {
-
+            dateTimePickerSearchDOB.Format = DateTimePickerFormat.Short;
         }
+
 
        
     }

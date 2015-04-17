@@ -198,6 +198,7 @@ namespace MedAssist.DAL
                     patient.PatientID = (int)reader["PatientID"];
                     patient.FirstName = reader["FirstName"].ToString();
                     patient.LastName = reader["LastName"].ToString();
+                    
                     patient.MInit = reader["Minit"].ToString();
                     patient.DOB = (DateTime)reader["DOB"];
                     patient.Gender = Convert.ToChar(reader["Gender"]);

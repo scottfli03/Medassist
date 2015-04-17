@@ -83,6 +83,7 @@
             this.txtSSN.Name = "txtSSN";
             this.txtSSN.Size = new System.Drawing.Size(100, 20);
             this.txtSSN.TabIndex = 7;
+            this.txtSSN.Tag = "SSN";
             // 
             // label9
             // 
@@ -110,7 +111,8 @@
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(148, 20);
             this.txtCity.TabIndex = 10;
-            this.txtCity.Tag = "Tag";
+            this.txtCity.Tag = "City";
+
             // 
             // label8
             // 
@@ -300,6 +302,7 @@
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(100, 21);
             this.cboGender.TabIndex = 8;
+            this.cboGender.Tag = "Gender";
             // 
             // cboState
             // 
@@ -360,6 +363,7 @@
             this.cboState.Name = "cboState";
             this.cboState.Size = new System.Drawing.Size(121, 21);
             this.cboState.TabIndex = 12;
+            this.cboState.Tag = "State";
             // 
             // AddEmployeeForm
             // 

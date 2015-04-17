@@ -237,6 +237,7 @@
             this.txtPatientID.Name = "txtPatientID";
             this.txtPatientID.Size = new System.Drawing.Size(100, 20);
             this.txtPatientID.TabIndex = 1;
+            this.txtPatientID.Tag = "Patient ID";
             // 
             // btnGetPatient
             // 
@@ -255,6 +256,7 @@
             this.txtSSN.Name = "txtSSN";
             this.txtSSN.Size = new System.Drawing.Size(100, 20);
             this.txtSSN.TabIndex = 4;
+            this.txtSSN.Tag = "SSN";
             // 
             // txtGender
             // 
@@ -262,6 +264,7 @@
             this.txtGender.Name = "txtGender";
             this.txtGender.Size = new System.Drawing.Size(27, 20);
             this.txtGender.TabIndex = 3;
+            this.txtGender.Tag = "Gender";
             // 
             // label7
             // 
@@ -296,6 +299,7 @@
             this.txtDOB.Name = "txtDOB";
             this.txtDOB.Size = new System.Drawing.Size(100, 20);
             this.txtDOB.TabIndex = 63;
+            this.txtDOB.Tag = "DOB";
             // 
             // cboState
             // 
@@ -357,6 +361,7 @@
             this.cboState.Name = "cboState";
             this.cboState.Size = new System.Drawing.Size(102, 21);
             this.cboState.TabIndex = 64;
+            this.cboState.Tag = "State";
             // 
             // btnPatientInfo
             // 
@@ -374,6 +379,7 @@
             this.txtSearchFirstName.Name = "txtSearchFirstName";
             this.txtSearchFirstName.Size = new System.Drawing.Size(100, 20);
             this.txtSearchFirstName.TabIndex = 66;
+            this.txtSearchFirstName.Tag = "First Name";
             // 
             // txtSearchLastName
             // 
@@ -381,14 +387,18 @@
             this.txtSearchLastName.Name = "txtSearchLastName";
             this.txtSearchLastName.Size = new System.Drawing.Size(100, 20);
             this.txtSearchLastName.TabIndex = 67;
+            this.txtSearchLastName.Tag = "Last Name";
             // 
             // dateTimePickerSearchDOB
             // 
-            this.dateTimePickerSearchDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerSearchDOB.CustomFormat = " ";
+            this.dateTimePickerSearchDOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerSearchDOB.Location = new System.Drawing.Point(73, 132);
             this.dateTimePickerSearchDOB.Name = "dateTimePickerSearchDOB";
             this.dateTimePickerSearchDOB.Size = new System.Drawing.Size(100, 20);
             this.dateTimePickerSearchDOB.TabIndex = 68;
+            this.dateTimePickerSearchDOB.Tag = "DOB";
+            this.dateTimePickerSearchDOB.ValueChanged += new System.EventHandler(this.dateTimePickerSearchDOB_ValueChanged);
             // 
             // label13
             // 
@@ -477,6 +487,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.MinimizeBox = false;
             this.Name = "UpdatePatientForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Patient";

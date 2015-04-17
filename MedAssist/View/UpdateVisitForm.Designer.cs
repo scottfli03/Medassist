@@ -79,7 +79,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(374, 340);
+            label9.Location = new System.Drawing.Point(374, 339);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(56, 13);
             label9.TabIndex = 80;
@@ -354,7 +354,7 @@
             // 
             // txtBoxDiagnosis
             // 
-            this.txtBoxDiagnosis.Location = new System.Drawing.Point(377, 373);
+            this.txtBoxDiagnosis.Location = new System.Drawing.Point(388, 355);
             this.txtBoxDiagnosis.Multiline = true;
             this.txtBoxDiagnosis.Name = "txtBoxDiagnosis";
             this.txtBoxDiagnosis.Size = new System.Drawing.Size(281, 172);
@@ -362,7 +362,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(550, 551);
+            this.btnCancel.Location = new System.Drawing.Point(561, 533);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(108, 25);
             this.btnCancel.TabIndex = 86;
@@ -372,11 +372,11 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(395, 551);
+            this.btnSubmit.Location = new System.Drawing.Point(426, 533);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(108, 25);
             this.btnSubmit.TabIndex = 85;
-            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.Text = "Update";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
@@ -399,7 +399,7 @@
             // 
             // btnViewUpdateTest
             // 
-            this.btnViewUpdateTest.Location = new System.Drawing.Point(550, 303);
+            this.btnViewUpdateTest.Location = new System.Drawing.Point(561, 290);
             this.btnViewUpdateTest.Name = "btnViewUpdateTest";
             this.btnViewUpdateTest.Size = new System.Drawing.Size(108, 23);
             this.btnViewUpdateTest.TabIndex = 91;
@@ -419,7 +419,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(370, 308);
+            this.label11.Location = new System.Drawing.Point(374, 294);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 13);
             this.label11.TabIndex = 88;
@@ -457,7 +457,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(423, 303);
+            this.button1.Location = new System.Drawing.Point(416, 290);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 23);
             this.button1.TabIndex = 96;
