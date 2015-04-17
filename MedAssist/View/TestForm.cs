@@ -102,5 +102,18 @@ namespace MedAssist.View
             dgvOrders.DataSource = null;
             buildDGV();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you'd like to exit?", "Close Form?", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }

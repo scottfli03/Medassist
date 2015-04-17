@@ -317,6 +317,7 @@ namespace MedAssist.DAL
                 "FirstName = @NewFirstName, " +
                 "LastName = @NewLastName, " +
                 "MInit = @NewMInit, " +
+                "DOB = @DOB, " +
                 "StreetAddress1 = @NewStreetAddress1, " +
                 "StreetAddress2 = @NewStreetAddress2, " +
                 "Phone = @NewPhone, " +
@@ -328,6 +329,7 @@ namespace MedAssist.DAL
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             updateCommand.Parameters.AddWithValue("@NewFirstName", newEmployee.FirstName);
             updateCommand.Parameters.AddWithValue("@NewLastName", newEmployee.LastName);
+            updateCommand.Parameters.AddWithValue("@DOB", newEmployee.DOB);
             updateCommand.Parameters.AddWithValue("@NewMInit", newEmployee.MInit);
             updateCommand.Parameters.AddWithValue("@NewStreetAddress1", newEmployee.StreetAddr1);
             updateCommand.Parameters.AddWithValue("@NewStreetAddress2", newEmployee.StreetAddr2);
