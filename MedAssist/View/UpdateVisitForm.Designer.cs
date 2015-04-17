@@ -69,6 +69,7 @@
             this.btnGetVisitInfo = new System.Windows.Forms.Button();
             this.gpBoxFindPatientVisits = new System.Windows.Forms.GroupBox();
             this.gpBoxVisitDates = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             label9 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -78,7 +79,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(374, 352);
+            label9.Location = new System.Drawing.Point(374, 340);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(56, 13);
             label9.TabIndex = 80;
@@ -398,7 +399,7 @@
             // 
             // btnViewUpdateTest
             // 
-            this.btnViewUpdateTest.Location = new System.Drawing.Point(412, 314);
+            this.btnViewUpdateTest.Location = new System.Drawing.Point(550, 303);
             this.btnViewUpdateTest.Name = "btnViewUpdateTest";
             this.btnViewUpdateTest.Size = new System.Drawing.Size(108, 23);
             this.btnViewUpdateTest.TabIndex = 91;
@@ -418,7 +419,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(370, 319);
+            this.label11.Location = new System.Drawing.Point(370, 308);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 13);
             this.label11.TabIndex = 88;
@@ -454,11 +455,22 @@
             this.gpBoxVisitDates.TabStop = false;
             this.gpBoxVisitDates.Text = "Visit Dates for Patient";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(423, 303);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(108, 23);
+            this.button1.TabIndex = 96;
+            this.button1.Text = "Order Tests";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // UpdateVisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 593);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.gpBoxVisitDates);
             this.Controls.Add(this.txtBoxFnlDiagnosis);
             this.Controls.Add(this.btnViewUpdateTest);
@@ -533,5 +545,6 @@
         private System.Windows.Forms.ComboBox cboPatient;
         private System.Windows.Forms.Label nurseIDLabel;
         private System.Windows.Forms.TextBox txtNurse;
+        private System.Windows.Forms.Button button1;
     }
 }

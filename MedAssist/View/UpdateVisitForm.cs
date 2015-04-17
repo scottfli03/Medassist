@@ -70,6 +70,7 @@ namespace MedAssist.View
                                     "Please try again.", "Visit Not Found");
                 else
                 {
+                    CurrentVisitController.CurrentVisit = VisitDAL.GetVisitToUpdate(visitID);
                     this.DisplayVisit();
                     CurrentPatientController.currentPatient = PatientController.GetPatientWithID(visit.PatientID);
                 }
@@ -243,6 +244,26 @@ namespace MedAssist.View
                 {
                     TestForm tf = new TestForm();
                     tf.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Please select a patient and visit before reviewing tests", "Patient Selection Needed.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CurrentPatientController.currentPatient != null)
+                {
+                    OrderTestsForm otf = new OrderTestsForm();
+                    otf.Show();
                 }
                 else
                 {

@@ -134,6 +134,12 @@
     <Compile Include="View\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\OrderTestsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\OrderTestsForm.Designer.cs">
+      <DependentUpon>OrderTestsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AddTestForm.resx">
       <DependentUpon>AddTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\OrderTestsForm.resx">
+      <DependentUpon>OrderTestsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>

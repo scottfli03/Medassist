@@ -410,6 +410,7 @@ namespace MedAssist.DAL
                 reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
                 if (reader.Read())
                 {
+                    visit.VisitID = (int)reader["VisitID"];
                     visit.PatientID = (int)reader["PatientID"];
                     visit.Systolic = (int)reader["Systolic"];
                     visit.Diastolic = (int)reader["Diastolic"];
