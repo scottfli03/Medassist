@@ -44,6 +44,7 @@
             this.txtTestName.Name = "txtTestName";
             this.txtTestName.Size = new System.Drawing.Size(198, 20);
             this.txtTestName.TabIndex = 0;
+            this.txtTestName.Tag = "Test Name";
             this.txtTestName.TextChanged += new System.EventHandler(this.txtTestName_TextChanged);
             // 
             // label1
@@ -92,6 +93,7 @@
             this.txtTestID.Name = "txtTestID";
             this.txtTestID.Size = new System.Drawing.Size(198, 20);
             this.txtTestID.TabIndex = 5;
+            this.txtTestID.Tag = "Test ID";
             this.txtTestID.TextChanged += new System.EventHandler(this.txtTestID_TextChanged);
             // 
             // btnDelete
