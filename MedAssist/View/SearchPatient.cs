@@ -99,10 +99,10 @@ namespace MedAssist.View
 
                 try
                 {
-                    //visitList = VisitDAL.GetVisitForPatientWithDobAndLName(lName, patientDob);
+                    
                     patientList = PatientController.GetVisitForPatientWithDobAndLName(lName, patientDob);
 
-                    if (patientList.Count == 0) //was visitList
+                    if (patientList.Count == 0) 
                     {
                         MessageBox.Show("No Patient/Visit Info Found!", "Create a New Patient");
                     }
