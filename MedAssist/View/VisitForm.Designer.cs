@@ -79,11 +79,11 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbTest = new System.Windows.Forms.ComboBox();
+            this.testsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.testDataSet = new MedAssist.TestDataSet();
             this.testBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.testDataSet = new MedAssist.TestDataSet();
-            this.testsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.testsTableAdapter = new MedAssist.TestDataSetTableAdapters.TestsTableAdapter();
             this.tableAdapterManager1 = new MedAssist.TestDataSetTableAdapters.TableAdapterManager();
             nurseIDLabel = new System.Windows.Forms.Label();
@@ -98,11 +98,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTests)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.testDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // nurseIDLabel
@@ -152,6 +152,7 @@
             // 
             // txtNurse
             // 
+            this.txtNurse.Enabled = false;
             this.txtNurse.Location = new System.Drawing.Point(74, 49);
             this.txtNurse.Name = "txtNurse";
             this.txtNurse.Size = new System.Drawing.Size(219, 20);
@@ -499,6 +500,7 @@
             this.dgvTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTests.Location = new System.Drawing.Point(30, 90);
             this.dgvTests.Name = "dgvTests";
+            this.dgvTests.ReadOnly = true;
             this.dgvTests.Size = new System.Drawing.Size(242, 182);
             this.dgvTests.TabIndex = 43;
             // 
@@ -539,6 +541,16 @@
             this.cmbTest.TabIndex = 45;
             this.cmbTest.ValueMember = "TestID";
             // 
+            // testsBindingSource1
+            // 
+            this.testsBindingSource1.DataMember = "Tests";
+            this.testsBindingSource1.DataSource = this.testDataSet;
+            // 
+            // testDataSet
+            // 
+            this.testDataSet.DataSetName = "TestDataSet";
+            this.testDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtSymptoms);
@@ -577,16 +589,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Participants";
             // 
-            // testDataSet
-            // 
-            this.testDataSet.DataSetName = "TestDataSet";
-            this.testDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // testsBindingSource1
-            // 
-            this.testsBindingSource1.DataMember = "Tests";
-            this.testsBindingSource1.DataSource = this.testDataSet;
-            // 
             // testsTableAdapter
             // 
             this.testsTableAdapter.ClearBeforeFill = true;
@@ -623,13 +625,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTests)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.testDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

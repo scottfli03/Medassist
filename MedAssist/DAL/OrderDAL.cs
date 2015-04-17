@@ -82,7 +82,7 @@ namespace MedAssist.DAL
                 "(p.LastName + ', ' + p.FirstName) AS PatientName, t.TestName " +
                 "FROM Orders o JOIN Visits v ON o.VisitID = v.VisitID " +
                 "JOIN Tests t ON t.TestID = o.TestID " +
-                "JOIN Patients p ON v.PatientID = v.PatientID " +
+                "JOIN Patients p ON v.PatientID = p.PatientID " +
                 "WHERE p.PatientID = @PatientID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@PatientID", patientID);

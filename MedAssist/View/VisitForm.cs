@@ -360,7 +360,7 @@ namespace MedAssist.View
         private void btnClear_Click(object sender, EventArgs e)
         {
             tests = new BindingList<Test>();
-            dgvTests.Rows.Clear();
+            dgvTests.DataSource = null;
             dgvTests.Refresh();
         }
     }
