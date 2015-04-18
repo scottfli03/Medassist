@@ -52,7 +52,7 @@ namespace MedAssist.View
            
 
             string userName = textBoxUserName.Text;
-            string password = textBoxPassword.Text;
+            string password = MD5Hash(textBoxPassword.Text);
 
 
 
@@ -146,27 +146,6 @@ namespace MedAssist.View
             return strBuilder.ToString();
         }
 
-        public  bool verifyMd5Hash(string input, string hash)
-        {
-            // Hash the input.
-            string hashOfInput = MD5Hash(input);
-
-            // Create a StringComparer an compare the hashes.
-            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-
-            if (0 == comparer.Compare(hashOfInput, hash))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-       
-        
-
-
+    
     }
 }
