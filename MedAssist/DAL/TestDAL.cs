@@ -10,18 +10,17 @@ namespace MedAssist.DAL
 {
     class TestDAL
     {
-        // inserts incident to database
+        // inserts test to database
         public static bool CreateTest(Test test)
         {
             Test newTest = new Test();
             SqlConnection connection = MedassistDB.GetConnection();
             string insertStatement =
             "INSERT Tests " +
-                "(TestID, TestName)" +
-                "Values (@TestID, @TestName)";
+                "(TestName)" +
+                "Values  (@TestName)";
 
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@TestID", test.TestID);
             insertCommand.Parameters.AddWithValue("@TestName", test.TestName);
 
             try
@@ -162,10 +161,9 @@ namespace MedAssist.DAL
             SqlCommand deleteCommand = new SqlCommand();
             
             deleteCommand.Connection = MedassistDB.GetConnection();
-            deleteCommand.Parameters.AddWithValue("@TestID", oldTest.TestID);
             deleteCommand.Parameters.AddWithValue("@TestName", oldTest.TestName);
             deleteCommand.CommandText = "DELETE FROM Tests " +
-            "WHERE TestID = @TestID AND TestName = @TestName";
+            "WHERE TestName = @TestName";
 
            
             

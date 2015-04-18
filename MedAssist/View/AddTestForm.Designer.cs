@@ -32,14 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtTestID = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTestName
             // 
-            this.txtTestName.Location = new System.Drawing.Point(90, 57);
+            this.txtTestName.Location = new System.Drawing.Point(90, 22);
             this.txtTestName.MaxLength = 100;
             this.txtTestName.Name = "txtTestName";
             this.txtTestName.Size = new System.Drawing.Size(198, 20);
@@ -50,7 +48,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 57);
+            this.label1.Location = new System.Drawing.Point(13, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 1;
@@ -76,26 +74,6 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Test ID";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // txtTestID
-            // 
-            this.txtTestID.Location = new System.Drawing.Point(90, 22);
-            this.txtTestID.MaxLength = 4;
-            this.txtTestID.Name = "txtTestID";
-            this.txtTestID.Size = new System.Drawing.Size(198, 20);
-            this.txtTestID.TabIndex = 5;
-            this.txtTestID.Tag = "Test ID";
-            this.txtTestID.TextChanged += new System.EventHandler(this.txtTestID_TextChanged);
-            // 
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(245, 99);
@@ -112,8 +90,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 146);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.txtTestID);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.label1);
@@ -132,8 +108,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtTestID;
         private System.Windows.Forms.Button btnDelete;
     }
 }
