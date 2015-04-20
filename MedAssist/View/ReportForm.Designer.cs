@@ -29,26 +29,40 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.patientDetailedDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patient_Report_Dataset = new MedAssist.Patient_Report_Dataset();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.lblFrom = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.patient_Report_Dataset = new MedAssist.Patient_Report_Dataset();
-            this.patientDetailedDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientDetailedDataTableAdapter = new MedAssist.Patient_Report_DatasetTableAdapters.PatientDetailedDataTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.patient_Report_Dataset)).BeginInit();
+            this.patientReportDatasetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientDetailedDataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.patientDetailedDataBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patient_Report_Dataset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientReportDatasetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientDetailedDataBindingSource1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // patientDetailedDataBindingSource
+            // 
+            this.patientDetailedDataBindingSource.DataMember = "PatientDetailedData";
+            this.patientDetailedDataBindingSource.DataSource = this.patient_Report_Dataset;
+            // 
+            // patient_Report_Dataset
+            // 
+            this.patient_Report_Dataset.DataSetName = "Patient_Report_Dataset";
+            this.patient_Report_Dataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
-            reportDataSource1.Name = "PatientDetailedDataSet";
-            reportDataSource1.Value = this.patientDetailedDataBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "MedAssist.PatientDetailedReport.rdlc";
+            reportDataSource2.Name = "PatientDetailedReportRev";
+            reportDataSource2.Value = this.patientDetailedDataBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "MedAssist.PatientDetailedReportRevised.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(1, 62);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(1460, 554);
@@ -102,19 +116,19 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // patient_Report_Dataset
-            // 
-            this.patient_Report_Dataset.DataSetName = "Patient_Report_Dataset";
-            this.patient_Report_Dataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // patientDetailedDataBindingSource
-            // 
-            this.patientDetailedDataBindingSource.DataMember = "PatientDetailedData";
-            this.patientDetailedDataBindingSource.DataSource = this.patient_Report_Dataset;
-            // 
             // patientDetailedDataTableAdapter
             // 
             this.patientDetailedDataTableAdapter.ClearBeforeFill = true;
+            // 
+            // patientReportDatasetBindingSource
+            // 
+            this.patientReportDatasetBindingSource.DataSource = this.patient_Report_Dataset;
+            this.patientReportDatasetBindingSource.Position = 0;
+            // 
+            // patientDetailedDataBindingSource1
+            // 
+            this.patientDetailedDataBindingSource1.DataMember = "PatientDetailedData";
+            this.patientDetailedDataBindingSource1.DataSource = this.patient_Report_Dataset;
             // 
             // ReportForm
             // 
@@ -130,8 +144,10 @@
             this.Name = "ReportForm";
             this.Text = "Patient Visit Report";
             this.Load += new System.EventHandler(this.ReportForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.patient_Report_Dataset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientDetailedDataBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patient_Report_Dataset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientReportDatasetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientDetailedDataBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,5 +164,7 @@
         private System.Windows.Forms.BindingSource patientDetailedDataBindingSource;
         private Patient_Report_Dataset patient_Report_Dataset;
         private Patient_Report_DatasetTableAdapters.PatientDetailedDataTableAdapter patientDetailedDataTableAdapter;
+        private System.Windows.Forms.BindingSource patientReportDatasetBindingSource;
+        private System.Windows.Forms.BindingSource patientDetailedDataBindingSource1;
     }
 }
