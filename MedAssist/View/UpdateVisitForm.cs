@@ -90,7 +90,7 @@ namespace MedAssist.View
             cboPatient.SelectedText = PatientController.GetPatientWithID(visit.PatientID).FullName;
             cboPatient.SelectedValue = 
             txtSystolic.Text = visit.Systolic.ToString();
-            txtDiastolic.Text = visit.Diagnosis.ToString();
+            txtDiastolic.Text = visit.Diastolic.ToString();
             txtHeartRate.Text = visit.HeartRate.ToString();
             txtTemp.Text = visit.Temperature.ToString();
             txtRespRate.Text = visit.RespirationRate.ToString();
