@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MedAssist.Model;
-using MedAssist.DAL;
+using MedAssist.Controller;
+
 
 namespace MedAssist.View
 {
@@ -48,7 +49,7 @@ namespace MedAssist.View
 
                 try
                 {
-                    if (!TestDAL.CreateTest(newTest)) 
+                    if (!TestController.CreateTest(newTest)) 
                     {
                         MessageBox.Show("ID already in use. Please use another");
                         this.DialogResult = DialogResult.Retry;

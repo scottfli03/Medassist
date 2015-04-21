@@ -21,5 +21,15 @@ namespace MedAssist.Controller
         {
             return TestDAL.GetTest();
         }
+
+        public static bool CreateTest(Test test)
+        {
+            return TestDAL.CreateTest(test);
+        }
+
+        public static bool UpdateTest(Test oldTest, Test newTest)
+        {
+            return TestDAL.UpdateTest(oldTest, newTest);
+        }
     }
 }

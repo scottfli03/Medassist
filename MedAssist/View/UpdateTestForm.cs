@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MedAssist.Model;
-using MedAssist.DAL;
+using MedAssist.Controller;
 
 namespace MedAssist.View
 {
@@ -39,9 +39,10 @@ namespace MedAssist.View
 
         private void GetTest(int testID)
         {
+            
             try
             {
-                test = TestDAL.GetTestWithID(testID);
+                test = TestController.GetTestWithID(testID);
                 if (test == null)
                     MessageBox.Show("No test found with this ID. " +
                         "Please try again.", "Test Not Found");
@@ -96,7 +97,7 @@ namespace MedAssist.View
                 {
 
 
-                    if (!TestDAL.UpdateTest(test, newTest))
+                    if (!TestController.UpdateTest(test, newTest))
                     {
                         MessageBox.Show("Another user has updated or " + "deleted that Test.", "Database Error");
                         this.DialogResult = DialogResult.Retry;

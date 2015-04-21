@@ -19,11 +19,7 @@ namespace MedAssist.View
 
         private void ReportForm_Load(object sender, EventArgs e)
         {
-           
-            
-           
-      
-    
+ 
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -48,9 +44,7 @@ namespace MedAssist.View
           
            
            this.reportViewer1.RefreshReport();
-            
-            
-
+    
             
         }
     }
