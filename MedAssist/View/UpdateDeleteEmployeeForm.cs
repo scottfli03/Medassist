@@ -327,5 +327,10 @@ namespace MedAssist.View
                 }
             }
         }
+
+        private void chkEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

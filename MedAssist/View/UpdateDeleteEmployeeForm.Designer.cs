@@ -371,6 +371,7 @@
             this.chkEnabled.TabIndex = 38;
             this.chkEnabled.Text = "Enabled";
             this.chkEnabled.UseVisualStyleBackColor = true;
+            this.chkEnabled.CheckedChanged += new System.EventHandler(this.chkEnabled_CheckedChanged);
             // 
             // label11
             // 

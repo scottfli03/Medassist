@@ -155,22 +155,25 @@ namespace MedAssist.DAL
         }
 
 
-        public static bool DeleteTestWithIDAndName(Test oldTest)
+        public static bool DisableTestWithIDAndName(Test oldTest)
         {
             
-            SqlCommand deleteCommand = new SqlCommand();
+           
             
-            deleteCommand.Connection = MedassistDB.GetConnection();
-            deleteCommand.Parameters.AddWithValue("@TestName", oldTest.TestName);
-            deleteCommand.CommandText = "DELETE FROM Tests " +
-            "WHERE TestName = @TestName";
-
+            SqlConnection connection = MedassistDB.GetConnection();
+            
+            string updateStatement = 
+                "UPDATE Tests SET " +
+                "Inactive = @Inactive," +
+                "WHERE TestName = @TestName";
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            //updateCommand.Parameters.AddWithValue("@Inactive", oldTest.Inactive);
            
             
             try
             {
-                deleteCommand.Connection.Open();
-                int rowCount = deleteCommand.ExecuteNonQuery();
+                 connection.Open();
+                int rowCount = updateCommand.ExecuteNonQuery();
                 if (rowCount > 0)
                     return true;
                 else
@@ -182,8 +185,8 @@ namespace MedAssist.DAL
             }
             finally
             {
-                if (deleteCommand.Connection != null)
-                    deleteCommand.Connection.Close();
+                if (connection != null)
+                    connection.Close();
                
             }
             

@@ -58,7 +58,14 @@ namespace MedAssist.View
         private void DisplayTest()
         {
             txtTestName.Text = test.TestName;
-
+           // if (test.Inactive)
+          //  {
+           //     test.Checked = false;
+          //  }
+          //  else
+          //  {
+          //      test.Checked = true;
+          //  }
             btnUpdate.Enabled = true;
         }
 
