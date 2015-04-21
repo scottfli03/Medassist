@@ -28,11 +28,11 @@ namespace MedAssist.View
             
         }
 
-        
-        
+        /// <summary>
+        /// this method will submit the test to the patient selected 
+        /// </summary>
+        /// <param name="test"></param>
 
-
-        //this method wil submit the test to the patient selected 
         private void PutTestData(Test test)
         {
            
@@ -62,8 +62,7 @@ namespace MedAssist.View
                         MessageBox.Show("Test has been created");
 
                     }
-
-                    
+  
                 }
                 catch (Exception ex)
                 {
@@ -77,7 +76,11 @@ namespace MedAssist.View
             }
         }
 
-        //validation 
+        /// <summary>
+        /// Validator
+        /// </summary>
+        /// <returns></returns>
+
         private bool IsValidData()
         {
             if (Validator.IsPresent(txtTestName))
@@ -89,9 +92,12 @@ namespace MedAssist.View
                 return false;
             }
 
-
         }
-
+        /// <summary>
+        /// Cancel button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cancelButton_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Are you sure you would like to cancel?", "Cancel Adding Test?", MessageBoxButtons.YesNo);

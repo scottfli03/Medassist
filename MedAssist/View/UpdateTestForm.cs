@@ -26,7 +26,11 @@ namespace MedAssist.View
         {
 
         }
-
+        /// <summary>
+        /// button to get test
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGetTestID_Click(object sender, EventArgs e)
         {
             if (Validator.IsPresent(txtTestID) &&
@@ -36,7 +40,10 @@ namespace MedAssist.View
                 this.GetTest(testID);
             }
         }
-
+        /// <summary>
+        /// gets a test
+        /// </summary>
+        /// <param name="testID"></param>
         private void GetTest(int testID)
         {
             
@@ -55,7 +62,10 @@ namespace MedAssist.View
             }
         }
 
-        //this displays the incident to the form
+        /// <summary>
+        /// this displays the incident to the form
+        /// </summary>
+
         private void DisplayTest()
         {
             txtTestName.Text = test.TestName;
@@ -69,7 +79,11 @@ namespace MedAssist.View
             }
             btnUpdate.Enabled = true;
         }
-
+        /// <summary>
+        /// cancel button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Are you sure you would like to Cancel?", "Cancel Update?", MessageBoxButtons.YesNo);
@@ -82,7 +96,11 @@ namespace MedAssist.View
                 this.Close();
             }
         }
-
+        /// <summary>
+        /// update button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Test newTest = new Test();
@@ -122,7 +140,11 @@ namespace MedAssist.View
             }
         }
 
-        // this method sets the values that the form contains to the test object
+        /// <summary>
+        /// this method sets the values that the form contains to the test object
+        /// </summary>
+        /// <param name="test"></param>
+ 
         private void PutTestData(Test test)
         {
             
@@ -138,7 +160,10 @@ namespace MedAssist.View
             }
         }
 
-
+        /// <summary>
+        /// validator
+        /// </summary>
+        /// <returns></returns>
         private bool IsValidData()
         {
             if (Validator.IsInt32(txtTestID) &&

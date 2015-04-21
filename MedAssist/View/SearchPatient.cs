@@ -48,7 +48,12 @@ namespace MedAssist.View
 
         }
 
-        //Close button
+        /// <summary>
+        /// Close button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -60,7 +65,10 @@ namespace MedAssist.View
         }
 
 
-        //This method will search for the patient by their first name and last name
+        /// <summary>
+        /// This method will search for the patient by their first name and last name
+        /// </summary>
+
         private void GetPatientData()
         {
             fName = txtFName.Text;
@@ -129,10 +137,10 @@ namespace MedAssist.View
 
                 try
                 {
-                    // visitList = VisitDAL.GetPatientsByDOB(patientDob);
+                    
                     patientList = PatientController.GetPatientsByDOB(patientDob);
 
-                    if (patientList.Count == 0) //was visitList
+                    if (patientList.Count == 0) 
                     {
                         MessageBox.Show("No Patient/Visit Info Found!", "Create a New Patient");
                     }
@@ -161,7 +169,12 @@ namespace MedAssist.View
 
         }
 
-        //Search button
+        /// <summary>
+        /// Search button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void button1_Click(object sender, EventArgs e)
         {
             if ((txtFName.Text != null && txtFName.Text != "") && (txtLName.Text != null && txtLName.Text != ""))
@@ -179,7 +192,12 @@ namespace MedAssist.View
 
 
         }
-        //New Patient Button
+        /// <summary>
+        /// New Patient Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void button3_Click(object sender, EventArgs e)
         {
             this.displayNewPatientForm();
@@ -194,7 +212,7 @@ namespace MedAssist.View
             if (np == null)
             {
                 np = new NewPatient();
-                // np.MdiParent = this;
+               
                 np.FormClosed += new FormClosedEventHandler(np_FormClosed);
                 np.Show();
             }
@@ -207,7 +225,7 @@ namespace MedAssist.View
         void np_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.np = null;
-            //throw new NotImplementedException();
+            ;
         }
 
     }

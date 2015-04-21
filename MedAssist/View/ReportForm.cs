@@ -31,7 +31,11 @@ namespace MedAssist.View
         {
 
         }
-
+        /// <summary>
+        /// search button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
 
