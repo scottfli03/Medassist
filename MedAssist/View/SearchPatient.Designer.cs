@@ -56,6 +56,13 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.patientVisitSearchBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.patientVisitSearchDataGridView = new System.Windows.Forms.DataGridView();
+            this.patientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientsAndAllVisitInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientsAndAllVisitInfo = new MedAssist.PatientsAndAllVisitInfo();
+            this.lblDateFormat = new System.Windows.Forms.Label();
+            this.patientVisitSearchTableAdapter = new MedAssist.PatientsAndVisitsTableAdapters.PatientVisitSearchTableAdapter();
+            this.tableAdapterManager = new MedAssist.PatientsAndVisitsTableAdapters.TableAdapterManager();
+            this.patientsTableAdapter = new MedAssist.PatientsAndAllVisitInfoTableAdapters.PatientsTableAdapter();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mInitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,15 +74,9 @@
             this.respirationRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.heartRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.symptomsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Diagnosis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientsAndAllVisitInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientsAndAllVisitInfo = new MedAssist.PatientsAndAllVisitInfo();
-            this.lblDateFormat = new System.Windows.Forms.Label();
-            this.patientVisitSearchTableAdapter = new MedAssist.PatientsAndVisitsTableAdapters.PatientVisitSearchTableAdapter();
-            this.tableAdapterManager = new MedAssist.PatientsAndVisitsTableAdapters.TableAdapterManager();
-            this.patientsTableAdapter = new MedAssist.PatientsAndAllVisitInfoTableAdapters.PatientsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingNavigator)).BeginInit();
             this.patientVisitSearchBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientVisitSearchBindingSource)).BeginInit();
@@ -314,6 +315,8 @@
             // 
             // patientVisitSearchDataGridView
             // 
+            this.patientVisitSearchDataGridView.AllowUserToAddRows = false;
+            this.patientVisitSearchDataGridView.AllowUserToDeleteRows = false;
             this.patientVisitSearchDataGridView.AutoGenerateColumns = false;
             this.patientVisitSearchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.patientVisitSearchDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -328,94 +331,16 @@
             this.respirationRateDataGridViewTextBoxColumn,
             this.heartRateDataGridViewTextBoxColumn,
             this.symptomsDataGridViewTextBoxColumn,
+            this.TestName,
             this.Result,
             this.Diagnosis});
             this.patientVisitSearchDataGridView.DataSource = this.patientVisitSearchBindingSource;
             this.patientVisitSearchDataGridView.Location = new System.Drawing.Point(12, 76);
             this.patientVisitSearchDataGridView.Name = "patientVisitSearchDataGridView";
+            this.patientVisitSearchDataGridView.ReadOnly = true;
             this.patientVisitSearchDataGridView.Size = new System.Drawing.Size(1155, 297);
             this.patientVisitSearchDataGridView.TabIndex = 11;
             this.patientVisitSearchDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.patientVisitSearchDataGridView_CellContentClick);
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // mInitDataGridViewTextBoxColumn
-            // 
-            this.mInitDataGridViewTextBoxColumn.DataPropertyName = "MInit";
-            this.mInitDataGridViewTextBoxColumn.HeaderText = "MInit";
-            this.mInitDataGridViewTextBoxColumn.Name = "mInitDataGridViewTextBoxColumn";
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            // 
-            // DOB
-            // 
-            this.DOB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DOB.DataPropertyName = "DOB";
-            this.DOB.HeaderText = "DOB";
-            this.DOB.Name = "DOB";
-            this.DOB.Width = 55;
-            // 
-            // visitDateDataGridViewTextBoxColumn
-            // 
-            this.visitDateDataGridViewTextBoxColumn.DataPropertyName = "VisitDate";
-            this.visitDateDataGridViewTextBoxColumn.HeaderText = "VisitDate";
-            this.visitDateDataGridViewTextBoxColumn.Name = "visitDateDataGridViewTextBoxColumn";
-            // 
-            // systolicDataGridViewTextBoxColumn
-            // 
-            this.systolicDataGridViewTextBoxColumn.DataPropertyName = "Systolic";
-            this.systolicDataGridViewTextBoxColumn.HeaderText = "Systolic";
-            this.systolicDataGridViewTextBoxColumn.Name = "systolicDataGridViewTextBoxColumn";
-            // 
-            // diastolicDataGridViewTextBoxColumn
-            // 
-            this.diastolicDataGridViewTextBoxColumn.DataPropertyName = "Diastolic";
-            this.diastolicDataGridViewTextBoxColumn.HeaderText = "Diastolic";
-            this.diastolicDataGridViewTextBoxColumn.Name = "diastolicDataGridViewTextBoxColumn";
-            // 
-            // temperatureDataGridViewTextBoxColumn
-            // 
-            this.temperatureDataGridViewTextBoxColumn.DataPropertyName = "Temperature";
-            this.temperatureDataGridViewTextBoxColumn.HeaderText = "Temperature";
-            this.temperatureDataGridViewTextBoxColumn.Name = "temperatureDataGridViewTextBoxColumn";
-            // 
-            // respirationRateDataGridViewTextBoxColumn
-            // 
-            this.respirationRateDataGridViewTextBoxColumn.DataPropertyName = "RespirationRate";
-            this.respirationRateDataGridViewTextBoxColumn.HeaderText = "RespirationRate";
-            this.respirationRateDataGridViewTextBoxColumn.Name = "respirationRateDataGridViewTextBoxColumn";
-            // 
-            // heartRateDataGridViewTextBoxColumn
-            // 
-            this.heartRateDataGridViewTextBoxColumn.DataPropertyName = "HeartRate";
-            this.heartRateDataGridViewTextBoxColumn.HeaderText = "HeartRate";
-            this.heartRateDataGridViewTextBoxColumn.Name = "heartRateDataGridViewTextBoxColumn";
-            // 
-            // symptomsDataGridViewTextBoxColumn
-            // 
-            this.symptomsDataGridViewTextBoxColumn.DataPropertyName = "Symptoms";
-            this.symptomsDataGridViewTextBoxColumn.HeaderText = "Symptoms";
-            this.symptomsDataGridViewTextBoxColumn.Name = "symptomsDataGridViewTextBoxColumn";
-            // 
-            // Result
-            // 
-            this.Result.DataPropertyName = "Result";
-            this.Result.HeaderText = "Result";
-            this.Result.Name = "Result";
-            // 
-            // Diagnosis
-            // 
-            this.Diagnosis.DataPropertyName = "Diagnosis";
-            this.Diagnosis.HeaderText = "Diagnosis";
-            this.Diagnosis.Name = "Diagnosis";
             // 
             // patientsBindingSource
             // 
@@ -455,6 +380,106 @@
             // patientsTableAdapter
             // 
             this.patientsTableAdapter.ClearBeforeFill = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // mInitDataGridViewTextBoxColumn
+            // 
+            this.mInitDataGridViewTextBoxColumn.DataPropertyName = "MInit";
+            this.mInitDataGridViewTextBoxColumn.HeaderText = "MInit";
+            this.mInitDataGridViewTextBoxColumn.Name = "mInitDataGridViewTextBoxColumn";
+            this.mInitDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // DOB
+            // 
+            this.DOB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DOB.DataPropertyName = "DOB";
+            this.DOB.HeaderText = "DOB";
+            this.DOB.Name = "DOB";
+            this.DOB.ReadOnly = true;
+            this.DOB.Width = 55;
+            // 
+            // visitDateDataGridViewTextBoxColumn
+            // 
+            this.visitDateDataGridViewTextBoxColumn.DataPropertyName = "VisitDate";
+            this.visitDateDataGridViewTextBoxColumn.HeaderText = "VisitDate";
+            this.visitDateDataGridViewTextBoxColumn.Name = "visitDateDataGridViewTextBoxColumn";
+            this.visitDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // systolicDataGridViewTextBoxColumn
+            // 
+            this.systolicDataGridViewTextBoxColumn.DataPropertyName = "Systolic";
+            this.systolicDataGridViewTextBoxColumn.HeaderText = "Systolic";
+            this.systolicDataGridViewTextBoxColumn.Name = "systolicDataGridViewTextBoxColumn";
+            this.systolicDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // diastolicDataGridViewTextBoxColumn
+            // 
+            this.diastolicDataGridViewTextBoxColumn.DataPropertyName = "Diastolic";
+            this.diastolicDataGridViewTextBoxColumn.HeaderText = "Diastolic";
+            this.diastolicDataGridViewTextBoxColumn.Name = "diastolicDataGridViewTextBoxColumn";
+            this.diastolicDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // temperatureDataGridViewTextBoxColumn
+            // 
+            this.temperatureDataGridViewTextBoxColumn.DataPropertyName = "Temperature";
+            this.temperatureDataGridViewTextBoxColumn.HeaderText = "Temperature";
+            this.temperatureDataGridViewTextBoxColumn.Name = "temperatureDataGridViewTextBoxColumn";
+            this.temperatureDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // respirationRateDataGridViewTextBoxColumn
+            // 
+            this.respirationRateDataGridViewTextBoxColumn.DataPropertyName = "RespirationRate";
+            this.respirationRateDataGridViewTextBoxColumn.HeaderText = "RespirationRate";
+            this.respirationRateDataGridViewTextBoxColumn.Name = "respirationRateDataGridViewTextBoxColumn";
+            this.respirationRateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // heartRateDataGridViewTextBoxColumn
+            // 
+            this.heartRateDataGridViewTextBoxColumn.DataPropertyName = "HeartRate";
+            this.heartRateDataGridViewTextBoxColumn.HeaderText = "HeartRate";
+            this.heartRateDataGridViewTextBoxColumn.Name = "heartRateDataGridViewTextBoxColumn";
+            this.heartRateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // symptomsDataGridViewTextBoxColumn
+            // 
+            this.symptomsDataGridViewTextBoxColumn.DataPropertyName = "Symptoms";
+            this.symptomsDataGridViewTextBoxColumn.HeaderText = "Symptoms";
+            this.symptomsDataGridViewTextBoxColumn.Name = "symptomsDataGridViewTextBoxColumn";
+            this.symptomsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // TestName
+            // 
+            this.TestName.DataPropertyName = "TestName";
+            this.TestName.HeaderText = "Test Name";
+            this.TestName.Name = "TestName";
+            this.TestName.ReadOnly = true;
+            // 
+            // Result
+            // 
+            this.Result.DataPropertyName = "Result";
+            this.Result.HeaderText = "Result";
+            this.Result.Name = "Result";
+            this.Result.ReadOnly = true;
+            // 
+            // Diagnosis
+            // 
+            this.Diagnosis.DataPropertyName = "Diagnosis";
+            this.Diagnosis.HeaderText = "Diagnosis";
+            this.Diagnosis.Name = "Diagnosis";
+            this.Diagnosis.ReadOnly = true;
             // 
             // SearchPatient
             // 
@@ -539,6 +564,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn respirationRateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn heartRateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn symptomsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TestName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Result;
         private System.Windows.Forms.DataGridViewTextBoxColumn Diagnosis;
     }

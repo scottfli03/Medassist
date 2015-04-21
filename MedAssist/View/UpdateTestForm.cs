@@ -155,5 +155,10 @@ namespace MedAssist.View
         {
 
         }
+
+        private void txtTestName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
