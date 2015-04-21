@@ -185,7 +185,7 @@
             // 
             this.addTestToolStripMenuItem.Name = "addTestToolStripMenuItem";
             this.addTestToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.addTestToolStripMenuItem.Text = "Add/Delete Test";
+            this.addTestToolStripMenuItem.Text = "Add Test";
             this.addTestToolStripMenuItem.Click += new System.EventHandler(this.addTestToolStripMenuItem_Click);
             // 
             // updateTestToolStripMenuItem

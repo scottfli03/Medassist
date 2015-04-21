@@ -11,6 +11,7 @@ namespace MedAssist.Model
     {
         private int testID;
         private string testName;
+        private bool inactive;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -38,6 +39,18 @@ namespace MedAssist.Model
             set
             {
                 testName = value;
+            }
+        }
+
+        public bool Inactive
+        {
+            get
+            {
+                return inactive;
+            }
+            set
+            {
+                inactive = value;
             }
         }
 

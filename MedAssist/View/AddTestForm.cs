@@ -34,7 +34,7 @@ namespace MedAssist.View
         //this method wil submit the test to the patient selected 
         private void PutTestData(Test test)
         {
-            //test.TestID = Convert.ToInt32(txtTestID.Text);
+           
             test.TestName = txtTestName.Text;
             
         }
@@ -80,7 +80,6 @@ namespace MedAssist.View
         private bool IsValidData()
         {
             if (Validator.IsPresent(txtTestName))
-              // && Validator.IsInt32(txtTestID) && Validator.IsPresent(txtTestID))
             {
                 return true;
             }

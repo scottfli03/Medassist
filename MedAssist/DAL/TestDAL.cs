@@ -85,7 +85,7 @@ namespace MedAssist.DAL
             Test test  = new Test();
             SqlConnection connection = MedassistDB.GetConnection();
             string selectStatement = @"Select
-            TestID, TestName 
+            TestID, TestName, Inactive 
             FROM Tests
             WHERE TestID = @TestID" ;
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
@@ -99,6 +99,7 @@ namespace MedAssist.DAL
                 {
                     test.TestName = reader["TestName"].ToString();
                     test.TestID = (int)reader["TestID"];
+                    test.Inactive = (bool)reader["Inactive"];
                     
                 }
                 else
@@ -126,14 +127,14 @@ namespace MedAssist.DAL
             SqlConnection connection = MedassistDB.GetConnection();
             string updateStatement =
                 "UPDATE Tests SET " +
-                "TestName = @NewTestName " +
-                "WHERE TestID = @OldTestID ";
+                "TestName = @NewTestName, " +
+                "Inactive = @Inactive " +
+                "WHERE TestID = @OldTestID";
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             updateCommand.Parameters.AddWithValue("@NewTestName", newTest.TestName);
             updateCommand.Parameters.AddWithValue("@OldTestID", oldTest.TestID);
-            
-            
-            
+            updateCommand.Parameters.AddWithValue("@Inactive", newTest.Inactive);
+        
             try
             {
                 connection.Open();
@@ -155,44 +156,5 @@ namespace MedAssist.DAL
         }
 
 
-        public static bool DisableTestWithIDAndName(Test oldTest)
-        {
-            
-           
-            
-            SqlConnection connection = MedassistDB.GetConnection();
-            
-            string updateStatement = 
-                "UPDATE Tests SET " +
-                "Inactive = @Inactive," +
-                "WHERE TestName = @TestName";
-            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            //updateCommand.Parameters.AddWithValue("@Inactive", oldTest.Inactive);
-           
-            
-            try
-            {
-                 connection.Open();
-                int rowCount = updateCommand.ExecuteNonQuery();
-                if (rowCount > 0)
-                    return true;
-                else
-                    return false;
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                if (connection != null)
-                    connection.Close();
-               
-            }
-            
-        }
-    
-    
-    
     }
 }

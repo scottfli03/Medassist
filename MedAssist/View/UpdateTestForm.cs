@@ -58,14 +58,14 @@ namespace MedAssist.View
         private void DisplayTest()
         {
             txtTestName.Text = test.TestName;
-           // if (test.Inactive)
-          //  {
-           //     test.Checked = false;
-          //  }
-          //  else
-          //  {
-          //      test.Checked = true;
-          //  }
+            if (test.Inactive)
+            {
+                ckBox.Checked = false;
+            }
+            else
+            {
+                ckBox.Checked = true;
+            }
             btnUpdate.Enabled = true;
         }
 
@@ -124,9 +124,17 @@ namespace MedAssist.View
         // this method sets the values that the form contains to the test object
         private void PutTestData(Test test)
         {
-            //test.TestID = int.Parse(txtTestID.Text);
-            test.TestName = txtTestName.Text;
             
+            test.TestName = txtTestName.Text;
+           
+            if (ckBox.Checked)
+            {
+                test.Inactive = false;
+            }
+            else
+            {
+               test.Inactive = true;
+            }
         }
 
 
