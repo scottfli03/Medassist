@@ -12,12 +12,14 @@ using System.Windows.Forms;
 
 namespace MedAssist.View
 {
+    /// <summary>
+    /// Add new Employees
+    /// </summary>
     public partial class AddEmployeeForm : Form
     {
 
         private Employee employee;
         private string userName;
-
 
         public AddEmployeeForm()
         {
@@ -28,6 +30,10 @@ namespace MedAssist.View
             txtSSN.MaxLength = 9;
         }
 
+        /// <summary>
+        /// gets patient data from form
+        /// </summary>
+        /// <param name="employee"></param>
         private void PutEmployeeData(Employee employee)
         {
                 employee.FirstName = txtFirstName.Text;
@@ -44,6 +50,11 @@ namespace MedAssist.View
                 employee.DOB = dateTimePickerDOB.Value.Date;
          }
 
+        /// <summary>
+        /// creates new employee
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCreate_Click(object sender, EventArgs e)
         {
             if (IsValidData())
@@ -98,6 +109,11 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// cancels form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Are you sure you would like to exit the form?", "Form Closing", MessageBoxButtons.YesNo);
@@ -111,6 +127,10 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// validates data
+        /// </summary>
+        /// <returns></returns>
         private bool IsValidData()
         {
             if (Validator.IsPresent(txtFirstName) &&

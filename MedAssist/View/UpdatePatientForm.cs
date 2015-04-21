@@ -61,6 +61,12 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Gets patients with no id
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="DOB"></param>
         private void GetPatientWithNoID(string firstName, string lastName, DateTime DOB)
         {
             try
@@ -235,6 +241,12 @@ namespace MedAssist.View
 
 
         }
+
+        /// <summary>
+        /// gets patient info on click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPatientInfo_Click(object sender, EventArgs e)
         {
 

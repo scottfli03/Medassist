@@ -256,6 +256,11 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Orders test
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             try

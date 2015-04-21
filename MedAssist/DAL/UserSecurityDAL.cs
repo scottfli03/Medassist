@@ -11,6 +11,12 @@ namespace MedAssist.DAL
 {
     class UserSecurityDAL
     {
+        /// <summary>
+        /// Updates password
+        /// </summary>
+        /// <param name="oldUser"></param>
+        /// <param name="newUser"></param>
+        /// <returns></returns>
         public static bool UpdatePassword(UserSecurity oldUser, UserSecurity newUser)
         {
             string updateCommand = "UPDATE UserSecurity SET " +
