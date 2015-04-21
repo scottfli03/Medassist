@@ -55,6 +55,11 @@ namespace MedAssist.View
             return test;
         }
 
+        /// <summary>
+        /// Button that orders the tests currently in the list of tests
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOrderTest_Click(object sender, EventArgs e)
         {
             if (dgvTests.RowCount == 0)
@@ -88,16 +93,24 @@ namespace MedAssist.View
             this.Validate();
             this.testsBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.testDataSet);
-
         }
 
+        /// <summary>
+        /// Controls what happens when the test loads.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OrderTestsForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'testDataSet.Tests' table. You can move, or remove it, as needed.
             this.testsTableAdapter.Fill(this.testDataSet.Tests);
-
         }
 
+        /// <summary>
+        /// Button clears the data grid view.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClear_Click(object sender, EventArgs e)
         {
             tests = new BindingList<Test>();

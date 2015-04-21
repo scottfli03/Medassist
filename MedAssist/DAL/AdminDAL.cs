@@ -11,11 +11,15 @@ namespace MedAssist.DAL
 {
     class AdminDAL
     {
-
+        /// <summary>
+        /// Interacts with usersecurity on behalf of Administators
+        /// </summary>
+        /// <param name="userName">the username</param>
+        /// <param name="password">the password</param>
+        /// <returns>An Administrator</returns>
         public static Administrator GetAdmin(string userName, string password)
         {
             Administrator admin = null;
-
             String selectStatement = " SELECT a.UserName, u.Password, a.AdminID " +
                 " FROM Administrators a JOIN UserSecurity u ON a.UserName = u.UserName " +
                 " WHERE a.UserName = @UserName AND u.Password = @Password ";

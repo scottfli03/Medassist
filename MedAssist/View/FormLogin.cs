@@ -26,14 +26,14 @@ namespace MedAssist.View
         private Nurse nurse;
         private MainForm mainForm;
 
-        
+        /// <summary>
+        /// Initializes the components and instance variables.
+        /// </summary>
         public FormLogin()
         {
             InitializeComponent();
             this.controllerNurse = new ControllerNurse();
             this.adminController = new ControllerAdmin();
-           
-
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -49,51 +49,35 @@ namespace MedAssist.View
         /// <param name="e"></param>
         public void button1_Click(object sender, EventArgs e)
         {
-           
-
             string userName = textBoxUserName.Text;
             string password = MD5Hash(textBoxPassword.Text);
-
-
-
             if (Validator.IsPresent(textBoxUserName) &&
                 Validator.IsPresent(textBoxPassword));
             {
                 try
                 {
-
-                   
-                        this.nurse = this.controllerNurse.GetNurse(userName, password);
-                        this.admin = this.adminController.GetAdmin(userName, password);
-                        UserSecurityController.AdminLoggedIn = this.admin;
-                        UserSecurityController.NurseLoggedIn = this.nurse;
-
-
-                        if (this.nurse != null || this.admin != null)
+                    this.nurse = this.controllerNurse.GetNurse(userName, password);
+                    this.admin = this.adminController.GetAdmin(userName, password);
+                    UserSecurityController.AdminLoggedIn = this.admin;
+                    UserSecurityController.NurseLoggedIn = this.nurse;
+                    if (this.nurse != null || this.admin != null)
+                    {
+                        this.mainForm = new MainForm();
+                        this.mainForm.Text = "You are logged in as  " + userName;
+                        if (this.mainForm.ShowDialog() == DialogResult.OK)
                         {
-                            this.mainForm = new MainForm();
-                            this.mainForm.Text = "You are logged in as  " + userName;
-                            if (this.mainForm.ShowDialog() == DialogResult.OK)
-                            {
-                                this.mainForm.Show();
-                               
-                            }
-                            else
-                            {
-                                this.Close();
-
-                            }
-
+                            this.mainForm.Show();
                         }
-
                         else
                         {
-                            MessageBox.Show("Invalid user name or password.");
+                            this.Close();
                         }
                     }
-
-               
-
+                    else
+                    {
+                        MessageBox.Show("Invalid user name or password.");
+                    }
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
@@ -122,10 +106,12 @@ namespace MedAssist.View
             }
         }
 
-
-        
-
-        public  string MD5Hash(string text)
+        /// <summary>
+        /// Encrypts text
+        /// </summary>
+        /// <param name="text">the text</param>
+        /// <returns>The encrypted text</returns>
+        public string MD5Hash(string text)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
 

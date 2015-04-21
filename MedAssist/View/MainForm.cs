@@ -198,6 +198,10 @@ namespace MedAssist.View
             this.th.Start();
         }
 
+        /// <summary>
+        /// Opens the FormLogin when the application begins.
+        /// </summary>
+        /// <param name="obj"></param>
         private void openLoginForm(object obj)
         {
             Application.Run(new FormLogin());

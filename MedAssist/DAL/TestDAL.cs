@@ -10,7 +10,11 @@ namespace MedAssist.DAL
 {
     class TestDAL
     {
-        // inserts test to database
+        /// <summary>
+        /// inserts test to database
+        /// </summary>
+        /// <param name="test">a test</param>
+        /// <returns>true if successful</returns>
         public static bool CreateTest(Test test)
         {
             Test newTest = new Test();
@@ -19,10 +23,8 @@ namespace MedAssist.DAL
             "INSERT Tests " +
                 "(TestName)" +
                 "Values  (@TestName)";
-
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@TestName", test.TestName);
-
             try
             {
                 connection.Open();
@@ -42,7 +44,10 @@ namespace MedAssist.DAL
             }
         }
 
-
+        /// <summary>
+        /// Gets a list of the tests
+        /// </summary>
+        /// <returns>list of tests</returns>
         public static List<Test> GetTest()
         {
             List<Test> testList = new List<Test>();
@@ -52,7 +57,6 @@ namespace MedAssist.DAL
             FROM Tests";
             SqlCommand selectCommand =
                 new SqlCommand(selectStatement, connection);
-            
             try
             {
                 connection.Open();
@@ -78,6 +82,11 @@ namespace MedAssist.DAL
             return testList;
         }
 
+        /// <summary>
+        /// Gets a test with the id
+        /// </summary>
+        /// <param name="testID">the id</param>
+        /// <returns>A Test</returns>
         public static Test GetTestWithID(int testID)
         {
             Test test  = new Test();
@@ -98,7 +107,6 @@ namespace MedAssist.DAL
                     test.TestName = reader["TestName"].ToString();
                     test.TestID = (int)reader["TestID"];
                     test.Inactive = (bool)reader["Inactive"];
-                    
                 }
                 else
                 {
@@ -120,6 +128,12 @@ namespace MedAssist.DAL
             return test;
         }
 
+        /// <summary>
+        /// Updates a test
+        /// </summary>
+        /// <param name="oldTest">The old test</param>
+        /// <param name="newTest">the new test</param>
+        /// <returns>true if successful</returns>
         public static bool UpdateTest(Test oldTest, Test newTest)
         {
             SqlConnection connection = MedassistDB.GetConnection();
@@ -132,7 +146,6 @@ namespace MedAssist.DAL
             updateCommand.Parameters.AddWithValue("@NewTestName", newTest.TestName);
             updateCommand.Parameters.AddWithValue("@OldTestID", oldTest.TestID);
             updateCommand.Parameters.AddWithValue("@Inactive", newTest.Inactive);
-        
             try
             {
                 connection.Open();
@@ -152,7 +165,5 @@ namespace MedAssist.DAL
                     connection.Close();
             }
         }
-
-
     }
 }

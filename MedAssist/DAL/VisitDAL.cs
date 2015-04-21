@@ -111,7 +111,6 @@ namespace MedAssist.DAL
                 reader = selectCommand.ExecuteReader();
                 while (reader.Read())
                 {
-                    
                     Visit visit = new Visit();
                     visit.VisitID = (int)reader["VisitID"];
                     visit.VisitDate = (DateTime)reader["VisitDate"];
@@ -130,10 +129,7 @@ namespace MedAssist.DAL
                     visit.TestID = (int)reader["TestID"];
                     visit.TestName = reader["TestName"].ToString();
                     visit.Diagnosis = reader["Diagnosis"].ToString();
-                  
-
                     visitList.Add(visit);
-
                 }
             }
             catch (SqlException ex)
@@ -160,7 +156,6 @@ namespace MedAssist.DAL
         {
             List<Visit> visitList = new List<Visit>();
             SqlConnection connection = MedassistDB.GetConnection();
-
             var selectStatement = string.Format(@"
                 SELECT        
                     Visits.VisitID
@@ -198,7 +193,6 @@ namespace MedAssist.DAL
                 reader = selectCommand.ExecuteReader();
                 while (reader.Read())
                 {
-                    
                     Visit visit = new Visit();
                     visit.VisitID = (int)reader["VisitID"];
                     visit.VisitDate = (DateTime)reader["VisitDate"];
@@ -217,10 +211,7 @@ namespace MedAssist.DAL
                     visit.TestID = (int)reader["TestID"];
                     visit.TestName = reader["TestName"].ToString();
                     visit.Diagnosis = reader["Diagnosis"].ToString();
-                  
-
                     visitList.Add(visit);
-
                 }
             }
             catch (SqlException ex)
@@ -367,7 +358,6 @@ namespace MedAssist.DAL
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
             updateCommand.Parameters.AddWithValue("@NewDiagnosis", newVisit.Diagnosis);
             updateCommand.Parameters.AddWithValue("@OldVisitID", oldVisit.VisitID);
-
             try
             {
                 connection.Open();
@@ -421,7 +411,6 @@ namespace MedAssist.DAL
                     visit.Diagnosis = reader["Diagnosis"].ToString();
                     visit.PatientID = (int)reader["PatientID"];
                     visit.DoctorID = (int)reader["DoctorID"];
-                  
                 }
             }
             catch (SqlException ex)

@@ -7,10 +7,12 @@ using MedAssist.Model;
 
 namespace MedAssist.Controller
 {
+    /// <summary>
+    /// Static class that tracks the current patient
+    /// </summary>
     static class CurrentPatientController
     {
         public static Patient currentPatient;
-
         static Patient _currentPatient;
         public static Patient CurrentPatient
         {

@@ -129,10 +129,10 @@
     <Compile Include="View\AddTestForm.Designer.cs">
       <DependentUpon>AddTestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ChangePasswordForm.cs">
+    <Compile Include="View\Not implemented\ChangePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ChangePasswordForm.Designer.cs">
+    <Compile Include="View\Not implemented\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\OrderTestsForm.cs">

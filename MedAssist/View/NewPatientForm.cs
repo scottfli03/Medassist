@@ -51,7 +51,6 @@ namespace MedAssist
             {
                 this.Close();
             }
-            
         }
 
         /// <summary>
@@ -78,7 +77,6 @@ namespace MedAssist
                         MessageBox.Show(ex.Message, ex.GetType().ToString());
                     }
                 }
-
             }
         }
 

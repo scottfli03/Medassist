@@ -17,10 +17,12 @@ namespace MedAssist.View
     /// </summary>
     public partial class AddEmployeeForm : Form
     {
-
         private Employee employee;
         private string userName;
 
+        /// <summary>
+        /// Initializes the components and sets maxlength of fields
+        /// </summary>
         public AddEmployeeForm()
         {
             InitializeComponent();

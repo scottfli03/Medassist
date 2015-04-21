@@ -38,18 +38,10 @@ namespace MedAssist.View
         /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
            DateTime vs = this.dateTimePickerStart.Value;
            DateTime ve = this.dateTimePickerEnd.Value;
-
-           
-
            this.patientDetailedDataTableAdapter.Fill(patient_Report_Dataset.PatientDetailedData, vs, ve);
-          
-           
            this.reportViewer1.RefreshReport();
-    
-            
         }
     }
 }

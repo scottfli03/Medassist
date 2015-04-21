@@ -12,18 +12,16 @@ namespace MedAssist.DAL
 {
     class PatientDAL
     {
-
         /// <summary>
         /// Gets patient to Update
         /// </summary>
-        /// <param name="patientID"></param>
+        /// <param name="patientID">Patient ID</param>
         /// <returns>The Patient</returns>
         public static Patient GetPatientToUpdateWithNoID(string FirstName, string LastName, DateTime DOB)
         {
             Patient patient = new Patient();
             SqlConnection connection = MedassistDB.GetConnection();
             string selectStatement =
-
                    "SELECT PatientID, FirstName, MInit, DOB, Gender, SSN, LastName, StreetAddress1, StreetAddress2, City, State, ZipCode, Phone " +
                    "FROM Patients " +
                    "WHERE FirstName = @FirstName AND LastName = @LastName AND DOB = @DOB";
@@ -333,7 +331,6 @@ namespace MedAssist.DAL
                     {
                         patient.VisitID = (int?)reader["VisitID"];
                     }
-
                     if (reader["VisitDate"] == DBNull.Value)
                     {
                         DateTime? visitDate = (reader["VisitDate"] as DateTime?) ?? null;
@@ -342,7 +339,6 @@ namespace MedAssist.DAL
                     {
                         patient.VisitDate = (DateTime?)reader["VisitDate"];
                     }
-
                     patient.PatientID = (int)reader["PatientID"];
                     patient.FirstName = reader["FirstName"].ToString();
                     if (reader["MINit"].ToString() != null)
@@ -353,10 +349,8 @@ namespace MedAssist.DAL
                     {
                         patient.MInit = null;
                     }
-
                     patient.LastName = (string)reader["LastName"];
                     patient.DOB = (DateTime)reader["DOB"];
-
                     if (reader["Systolic"] == DBNull.Value)
                     {
                         int systolic = (reader["Systolic"] as int?) ?? 0;
@@ -365,7 +359,6 @@ namespace MedAssist.DAL
                     {
                         patient.Systolic = (int)reader["Systolic"];
                     }
-
                     if (reader["Diastolic"] == DBNull.Value)
                     {
                         int diastolic = (reader["Diastolic"] as int?) ?? 0;
@@ -374,7 +367,6 @@ namespace MedAssist.DAL
                     {
                         patient.Diastolic = (int)reader["Diastolic"];
                     }
-
                     if (reader["Temperature"] == DBNull.Value)
                     {
                         decimal temperature = (reader["Temperature"] as decimal?) ?? 0;
@@ -383,8 +375,6 @@ namespace MedAssist.DAL
                     {
                         patient.Temperature = (decimal?)reader["Temperature"];
                     }
-
-
                     if (reader["RespirationRate"] == DBNull.Value)
                     {
                         int respirationRate = (reader["RespirationRate"] as int?) ?? 0;
@@ -393,7 +383,6 @@ namespace MedAssist.DAL
                     {
                         patient.RespirationRate = (int)reader["RespirationRate"];
                     }
-
                     if (reader["HeartRate"] == DBNull.Value)
                     {
                         int heartRate = (reader["HeartRate"] as int?) ?? 0;
@@ -402,8 +391,6 @@ namespace MedAssist.DAL
                     {
                         patient.HeartRate = (int)reader["HeartRate"];
                     }
-
-
                     if (reader["Symptoms"].ToString() != null)
                     {
                         patient.Symptoms = reader["Symptoms"].ToString();
@@ -412,7 +399,6 @@ namespace MedAssist.DAL
                     {
                         patient.Symptoms = null;
                     }
-
                     if (reader["Result"].ToString() != null)
                     {
                         patient.Result = reader["Result"].ToString();
@@ -421,7 +407,6 @@ namespace MedAssist.DAL
                     {
                         patient.Result = null;
                     }
-
                     if (reader["TestID"] == DBNull.Value)
                     {
                         int testID = (reader["TestID"] as int?) ?? 0;
@@ -430,7 +415,6 @@ namespace MedAssist.DAL
                     {
                         patient.TestID = (int)reader["TestID"];
                     }
-
                     if (reader["TestName"].ToString() != null)
                     {
                         patient.TestName = reader["TestName"].ToString();
@@ -439,7 +423,6 @@ namespace MedAssist.DAL
                     {
                         patient.TestName = null;
                     }
-
                     if (reader["Diagnosis"].ToString() != null)
                     {
                         patient.Diagnosis = reader["Diagnosis"].ToString();
@@ -448,9 +431,7 @@ namespace MedAssist.DAL
                     {
                         patient.Diagnosis = null;
                     }
-
                     patientList.Add(patient);
-
                 }
             }
             catch (SqlException ex)
@@ -477,7 +458,6 @@ namespace MedAssist.DAL
         {
             List<Patient> patientList = new List<Patient>();
             SqlConnection connection = MedassistDB.GetConnection();
-
             var selectStatement = @"
                 SELECT        
                     Visits.VisitID
@@ -505,9 +485,7 @@ namespace MedAssist.DAL
                 LEFT JOIN Tests ON Orders.TestID = Tests.TestID
                 WHERE
                     Patients.LastName = @lName
-                    
                     AND Patients.DOB = @PatientDob";
-
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
             selectCommand.Parameters.AddWithValue("@Lname", lName);
@@ -547,10 +525,8 @@ namespace MedAssist.DAL
                     {
                         patient.MInit = null;
                     }
-
                     patient.LastName = (string)reader["LastName"];
                     patient.DOB = (DateTime)reader["DOB"];
-
                     if (reader["Systolic"] == DBNull.Value)
                     {
                         int systolic = (reader["Systolic"] as int?) ?? 0;
@@ -559,7 +535,6 @@ namespace MedAssist.DAL
                     {
                         patient.Systolic = (int)reader["Systolic"];
                     }
-
                     if (reader["Diastolic"] == DBNull.Value)
                     {
                         int diastolic = (reader["Diastolic"] as int?) ?? 0;
@@ -577,8 +552,6 @@ namespace MedAssist.DAL
                     {
                         patient.Temperature = (decimal?)reader["Temperature"];
                     }
-
-
                     if (reader["RespirationRate"] == DBNull.Value)
                     {
                         int respirationRate = (reader["RespirationRate"] as int?) ?? 0;
@@ -596,8 +569,6 @@ namespace MedAssist.DAL
                     {
                         patient.HeartRate = (int)reader["HeartRate"];
                     }
-
-
                     if (reader["Symptoms"].ToString() != null)
                     {
                         patient.Symptoms = reader["Symptoms"].ToString();
@@ -606,7 +577,6 @@ namespace MedAssist.DAL
                     {
                         patient.Symptoms = null;
                     }
-
                     if (reader["Result"].ToString() != null)
                     {
                         patient.Result = reader["Result"].ToString();
@@ -615,7 +585,6 @@ namespace MedAssist.DAL
                     {
                         patient.Result = null;
                     }
-
                     if (reader["TestID"] == DBNull.Value)
                     {
                         int testID = (reader["TestID"] as int?) ?? 0;
@@ -624,7 +593,6 @@ namespace MedAssist.DAL
                     {
                         patient.TestID = (int)reader["TestID"];
                     }
-
                     if (reader["TestName"].ToString() != null)
                     {
                         patient.TestName = reader["TestName"].ToString();
@@ -633,7 +601,6 @@ namespace MedAssist.DAL
                     {
                         patient.TestName = null;
                     }
-
                     if (reader["Diagnosis"].ToString() != null)
                     {
                         patient.Diagnosis = reader["Diagnosis"].ToString();
@@ -642,9 +609,7 @@ namespace MedAssist.DAL
                     {
                         patient.Diagnosis = null;
                     }
-
                     patientList.Add(patient);
-
                 }
             }
             catch (SqlException ex)
@@ -701,7 +666,6 @@ namespace MedAssist.DAL
                 WHERE
                     Patients.FirstName = @fName
                     AND Patients.LastName = @lName";
-
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataReader reader = null;
             selectCommand.Parameters.AddWithValue("@fName", fName);
@@ -721,7 +685,6 @@ namespace MedAssist.DAL
                     {
                         patient.VisitID = (int?)reader["VisitID"];
                     }
-
                     if (reader["VisitDate"] == DBNull.Value)
                     {
                         DateTime? visitDate = (reader["VisitDate"] as DateTime?) ?? null;
@@ -730,7 +693,6 @@ namespace MedAssist.DAL
                     {
                         patient.VisitDate = (DateTime?)reader["VisitDate"];
                     }
-                    
                     patient.PatientID = (int)reader["PatientID"];
                     patient.FirstName = reader["FirstName"].ToString();
                     if (reader["MINit"].ToString() != null)
@@ -741,10 +703,8 @@ namespace MedAssist.DAL
                     {
                         patient.MInit = null;
                     }
-                    
                     patient.LastName = (string)reader["LastName"];
                     patient.DOB = (DateTime)reader["DOB"];
-
                     if (reader["Systolic"] == DBNull.Value)
                     {
                         int systolic = (reader["Systolic"] as int?) ?? 0;
@@ -753,7 +713,6 @@ namespace MedAssist.DAL
                     {
                         patient.Systolic = (int)reader["Systolic"];
                     }
-
                     if (reader["Diastolic"] == DBNull.Value)
                     {
                         int diastolic = (reader["Diastolic"] as int?) ?? 0;
@@ -762,7 +721,6 @@ namespace MedAssist.DAL
                     {
                         patient.Diastolic = (int)reader["Diastolic"];
                     }
-
                     if (reader["Temperature"] == DBNull.Value)
                     {
                         decimal temperature = (reader["Temperature"] as decimal?) ?? 0;
@@ -771,8 +729,6 @@ namespace MedAssist.DAL
                     {
                         patient.Temperature = (decimal?)reader["Temperature"];
                     }
-                    
-                  
                     if (reader["RespirationRate"] == DBNull.Value)
                     {
                         int respirationRate = (reader["RespirationRate"] as int?) ?? 0;
@@ -781,7 +737,6 @@ namespace MedAssist.DAL
                     {
                         patient.RespirationRate = (int)reader["RespirationRate"];
                     }
-
                     if (reader["HeartRate"] == DBNull.Value)
                     {
                         int heartRate = (reader["HeartRate"] as int?) ?? 0;
@@ -790,8 +745,6 @@ namespace MedAssist.DAL
                     {
                         patient.HeartRate = (int)reader["HeartRate"];
                     }
-                    
-                    
                     if (reader["Symptoms"].ToString() != null)
                     {
                         patient.Symptoms = reader["Symptoms"].ToString();
@@ -800,7 +753,6 @@ namespace MedAssist.DAL
                     {
                         patient.Symptoms = null;
                     }
-
                     if (reader["Result"].ToString() != null)
                     {
                         patient.Result = reader["Result"].ToString();
@@ -809,7 +761,6 @@ namespace MedAssist.DAL
                     {
                         patient.Result = null;
                     }
-
                     if (reader["TestID"] == DBNull.Value)
                     {
                         int testID = (reader["TestID"] as int?) ?? 0;
@@ -836,9 +787,7 @@ namespace MedAssist.DAL
                     {
                         patient.Diagnosis = null;
                     }
-
                     patientList.Add(patient);
-
                 }
             }
             catch (SqlException ex)

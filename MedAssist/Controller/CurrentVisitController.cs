@@ -7,6 +7,9 @@ using MedAssist.Model;
 
 namespace MedAssist.Controller
 {
+    /// <summary>
+    /// Static class that tracks the current visit.
+    /// </summary>
     static class CurrentVisitController
     {
         public static Visit CurrentVisit = null;

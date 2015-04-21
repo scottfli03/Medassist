@@ -281,7 +281,6 @@ namespace MedAssist.DAL
             insertCommand.Parameters.AddWithValue("@Phone", employee.Phone);
             insertCommand.Parameters.AddWithValue("@DOB", employee.DOB);
             insertCommand.Parameters.AddWithValue("@Gender", employee.Gender);
-
             try
             {
                 connection.Open();
@@ -290,7 +289,6 @@ namespace MedAssist.DAL
                     "Select Ident_Current('Employees') FROM Employees";
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
                 int employeeID = Convert.ToInt32(selectCommand.ExecuteScalar());
-
                 switch (employee.Type)
                 {
                     case Employee.EmployeeType.Doctor:

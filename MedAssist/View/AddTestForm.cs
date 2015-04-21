@@ -19,13 +19,11 @@ namespace MedAssist.View
         {
             InitializeComponent();
         }
-
         Test test = new Test();
         private List<Test> testList;
 
         private void AddTestForm_Load(object sender, EventArgs e)
         {
-            
         }
 
         /// <summary>
@@ -35,9 +33,7 @@ namespace MedAssist.View
 
         private void PutTestData(Test test)
         {
-           
             test.TestName = txtTestName.Text;
-            
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -46,7 +42,6 @@ namespace MedAssist.View
             {
                 Test newTest = new Test();
                 this.PutTestData(newTest);
-
                 try
                 {
                     if (!TestController.CreateTest(newTest)) 
@@ -57,12 +52,9 @@ namespace MedAssist.View
                     else
                     {
                         test = newTest;
-
                         this.DialogResult = DialogResult.OK;
                         MessageBox.Show("Test has been created");
-
                     }
-  
                 }
                 catch (Exception ex)
                 {
@@ -79,7 +71,7 @@ namespace MedAssist.View
         /// <summary>
         /// Validator
         /// </summary>
-        /// <returns></returns>
+        /// <returns>True if valid</returns>
 
         private bool IsValidData()
         {
@@ -91,8 +83,8 @@ namespace MedAssist.View
             {
                 return false;
             }
-
         }
+
         /// <summary>
         /// Cancel button
         /// </summary>
@@ -114,23 +106,18 @@ namespace MedAssist.View
 
         private void label2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void cboTestID_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void txtTestName_TextChanged(object sender, EventArgs e)
         {
-
         }
 
-      
         private void txtTestID_TextChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

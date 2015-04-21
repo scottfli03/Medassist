@@ -23,19 +23,16 @@ namespace MedAssist.DAL
                 "Password = @newPassword " +
                 "WHERE UserName = @oldUserName AND " +
                 "Password = @oldPassword";
-
             try
             {
                 using (SqlConnection connection = new SqlConnection())
                 {
                     connection.Open();
-
                     using (SqlCommand cmnd = new SqlCommand(updateCommand, connection))
                     {
                         cmnd.Parameters.AddWithValue("@newPassword", newUser.Password);
                         cmnd.Parameters.AddWithValue("@oldUserName", oldUser.UserName);
                         cmnd.Parameters.AddWithValue("@oldPassword", oldUser.Password);
-
                         int count = cmnd.ExecuteNonQuery();
                         if (count > 0)
                         {
@@ -46,8 +43,6 @@ namespace MedAssist.DAL
                             return false;
                         }
                     }
-
-
                 }
             }
             catch (SqlException ex)
@@ -75,7 +70,6 @@ namespace MedAssist.DAL
                 "Insert UserSecurity " +
                 "(UserName) " +
                 "Values (@UserName)";
-
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@UserName", employee.UserName);
             userName = employee.UserName;
@@ -97,11 +91,7 @@ namespace MedAssist.DAL
             }
             return userName;
         }
-
-       
     }
-
-   
 }
 
 

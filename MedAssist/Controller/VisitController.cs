@@ -26,6 +26,12 @@ namespace MedAssist.Controller
             return visitDAL.createVisit(visit);
         }
 
+        /// <summary>
+        /// Updates the diagnosis
+        /// </summary>
+        /// <param name="visit">new visit</param>
+        /// <param name="oldVisit">old visit</param>
+        /// <returns>true if successful</returns>
         public static bool UpdateDiagnosis(Visit visit, Visit oldVisit)
         {
             return VisitDAL.UpdateDiagnosis(visit, oldVisit);
