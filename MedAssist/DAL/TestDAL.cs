@@ -64,8 +64,6 @@ namespace MedAssist.DAL
                     test.TestName = reader["TestName"].ToString();
                     test.TestID = (int)reader["TestID"];
                     testList.Add(test);
-
-
                 }     
                 reader.Close();
             }
