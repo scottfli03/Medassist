@@ -84,6 +84,7 @@
     <Compile Include="Model\OrderDetails.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Test.cs" />
+    <Compile Include="Model\UserPrincipal.cs" />
     <Compile Include="Model\UserSecurity.cs" />
     <Compile Include="Model\Visit.cs" />
     <Compile Include="PatientsAndAllVisitInfo.Designer.cs">

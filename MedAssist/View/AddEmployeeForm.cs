@@ -51,9 +51,9 @@ namespace MedAssist.View
                 PutEmployeeData(employee);
                 try
                 {
-                   if (radioButtonDoctor.Checked)
-                   {
-
+                    if (radioButtonDoctor.Checked)
+                    {
+                        employee.Type = Employee.EmployeeType.Doctor;
                         EmployeeDAL.AddEmployee(employee);
                         DialogResult = DialogResult.OK;
                         MessageBox.Show("Employee Accepted");
@@ -61,6 +61,7 @@ namespace MedAssist.View
                     }
                     else if (radioButtonNurse.Checked)
                     {
+                        employee.Type = Employee.EmployeeType.Nurse;
                         EmployeeDAL.AddEmployee(employee);
                         DialogResult = DialogResult.OK;
                         MessageBox.Show("Employee Accepted");
@@ -68,12 +69,13 @@ namespace MedAssist.View
                     }
                     else if (radioButtonAdmin.Checked)
                     {
+                        employee.Type = Employee.EmployeeType.Admin;
                         EmployeeDAL.AddEmployee(employee);
                         DialogResult = DialogResult.OK;
                         MessageBox.Show("Employee Accepted");
                         Close();
                     }
-                    else 
+                    else
                     {
                         MessageBox.Show("Employee type not chosen.");
                     }
@@ -114,6 +116,7 @@ namespace MedAssist.View
                 Validator.IsPresent(cboState) &&
                 Validator.IsPresent(txtPhone) &&
                 Validator.IsPresent(dateTimePickerDOB) &&
+                Validator.IsPresent(cboGender) &&
                 Validator.IsInt64(txtPhone) &&
                 Validator.IsInt64(txtZip) &&
                 Validator.IsInt32(txtSSN))

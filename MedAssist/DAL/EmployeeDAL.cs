@@ -291,6 +291,30 @@ namespace MedAssist.DAL
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
                 int employeeID = Convert.ToInt32(selectCommand.ExecuteScalar());
 
+                switch (employee.Type)
+                {
+                    case Employee.EmployeeType.Doctor:
+                        const string doctorInsert = "insert into doctors (DoctorID) values (@DoctorID)";
+                        SqlCommand doctorCommand = new SqlCommand(doctorInsert, connection);
+                        doctorCommand.Parameters.AddWithValue("@DoctorID", employeeID);
+                        doctorCommand.ExecuteNonQuery();
+                        break;
+                    case Employee.EmployeeType.Nurse:
+                        const string nurseInsert = "insert into nurses (NurseID, UserName) values (@NurseID, @UserName)";
+                        SqlCommand nurseCommand = new SqlCommand(nurseInsert, connection);
+                        nurseCommand.Parameters.AddWithValue("@NurseID", employeeID);
+                        nurseCommand.Parameters.AddWithValue("@UserName", UserPrincipal.UserName);
+                        nurseCommand.ExecuteNonQuery();
+                        break;
+                    case Employee.EmployeeType.Admin:
+                        const string adminInsert = "insert into Administrators (AdminID, UserName) values (@AdminID, @UserName)";
+                        SqlCommand adminCommand = new SqlCommand(adminInsert, connection);
+                        adminCommand.Parameters.AddWithValue("@AdminID", employeeID);
+                        adminCommand.Parameters.AddWithValue("@UserName", UserPrincipal.UserName);
+                        adminCommand.ExecuteNonQuery();
+                        break;
+                }
+
                 return employeeID;
             }
             catch (SqlException ex)
