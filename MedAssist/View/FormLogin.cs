@@ -73,7 +73,6 @@ namespace MedAssist.View
                         {
                             this.mainForm = new MainForm();
                             this.mainForm.Text = "You are logged in as  " + userName;
-                            UserPrincipal.UserName = userName;
                             if (this.mainForm.ShowDialog() == DialogResult.OK)
                             {
                                 this.mainForm.Show();

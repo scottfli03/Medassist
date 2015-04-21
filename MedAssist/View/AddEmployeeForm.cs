@@ -16,6 +16,7 @@ namespace MedAssist.View
     {
 
         private Employee employee;
+        private string userName;
 
 
         public AddEmployeeForm()
@@ -49,6 +50,8 @@ namespace MedAssist.View
             {
                 employee = new Employee();
                 PutEmployeeData(employee);
+                UserSecurityDAL.AddEmployee(employee);
+                
                 try
                 {
                     if (radioButtonDoctor.Checked)
@@ -61,6 +64,7 @@ namespace MedAssist.View
                     }
                     else if (radioButtonNurse.Checked)
                     {
+                        
                         employee.Type = Employee.EmployeeType.Nurse;
                         EmployeeDAL.AddEmployee(employee);
                         DialogResult = DialogResult.OK;
@@ -69,6 +73,7 @@ namespace MedAssist.View
                     }
                     else if (radioButtonAdmin.Checked)
                     {
+
                         employee.Type = Employee.EmployeeType.Admin;
                         EmployeeDAL.AddEmployee(employee);
                         DialogResult = DialogResult.OK;

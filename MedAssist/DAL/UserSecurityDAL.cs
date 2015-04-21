@@ -56,7 +56,42 @@ namespace MedAssist.DAL
 
         }
 
-       
+        /// <summary>
+        /// Add New Employee to security table
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        public static string AddEmployee(Employee employee)
+        {
+            string userName;
+            SqlConnection connection = MedassistDB.GetConnection();
+            string insertStatement =
+                "Insert UserSecurity " +
+                "(UserName) " +
+                "Values (@UserName)";
+
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+            insertCommand.Parameters.AddWithValue("@UserName", employee.UserName);
+            userName = employee.UserName;
+            try
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+                string selectStatement =
+                    "Select Ident_Current('UserName') FROM UserSecurity";
+                SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return userName;
+        }
+
        
     }
 

@@ -207,5 +207,15 @@ namespace MedAssist.Model
                 return LastName + ", " + FirstName;
             }
         }
+
+        public string UserName
+        {
+            get
+            {
+                return FirstName + LastName;
+            }
+
+        }
+
     }
 }

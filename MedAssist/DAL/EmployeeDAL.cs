@@ -303,14 +303,14 @@ namespace MedAssist.DAL
                         const string nurseInsert = "insert into nurses (NurseID, UserName) values (@NurseID, @UserName)";
                         SqlCommand nurseCommand = new SqlCommand(nurseInsert, connection);
                         nurseCommand.Parameters.AddWithValue("@NurseID", employeeID);
-                        nurseCommand.Parameters.AddWithValue("@UserName", UserPrincipal.UserName);
+                        nurseCommand.Parameters.AddWithValue("@UserName", employee.UserName);
                         nurseCommand.ExecuteNonQuery();
                         break;
                     case Employee.EmployeeType.Admin:
                         const string adminInsert = "insert into Administrators (AdminID, UserName) values (@AdminID, @UserName)";
                         SqlCommand adminCommand = new SqlCommand(adminInsert, connection);
                         adminCommand.Parameters.AddWithValue("@AdminID", employeeID);
-                        adminCommand.Parameters.AddWithValue("@UserName", UserPrincipal.UserName);
+                        adminCommand.Parameters.AddWithValue("@UserName", employee.UserName);
                         adminCommand.ExecuteNonQuery();
                         break;
                 }
@@ -326,6 +326,8 @@ namespace MedAssist.DAL
                 connection.Close();
             }
         }
+
+       
 
         /// <summary>
         /// Updates the Employee
