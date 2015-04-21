@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.patientDetailedDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patient_Report_Dataset = new MedAssist.Patient_Report_Dataset();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -59,10 +59,10 @@
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "PatientDetailedReportRev";
-            reportDataSource2.Value = this.patientDetailedDataBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "MedAssist.PatientDetailedReportRevised.rdlc";
+            reportDataSource1.Name = "PatientDetailedData";
+            reportDataSource1.Value = this.patientDetailedDataBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "MedAssist.View.PatientDetailedReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(1, 62);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(1460, 554);

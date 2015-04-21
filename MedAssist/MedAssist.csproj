@@ -208,7 +208,6 @@
     <Compile Include="View\VisitForm.Designer.cs">
       <DependentUpon>VisitForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="PatientDetailedReportRevised.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -227,6 +226,7 @@
     <EmbeddedResource Include="View\OrderTestsForm.resx">
       <DependentUpon>OrderTestsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\PatientDetailedReport.rdlc" />
     <EmbeddedResource Include="View\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>

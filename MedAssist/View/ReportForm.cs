@@ -19,7 +19,10 @@ namespace MedAssist.View
 
         private void ReportForm_Load(object sender, EventArgs e)
         {
+           
             
+           
+      
     
         }
 
