@@ -83,6 +83,7 @@
             this.txtTestName.Size = new System.Drawing.Size(191, 20);
             this.txtTestName.TabIndex = 3;
             this.txtTestName.Tag = "Test Name";
+            this.txtTestName.TextChanged += new System.EventHandler(this.txtTestName_TextChanged);
             // 
             // btnUpdate
             // 
