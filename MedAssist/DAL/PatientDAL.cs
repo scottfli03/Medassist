@@ -290,13 +290,14 @@ namespace MedAssist.DAL
 
             var selectStatement = @"
                 SELECT  
-                     Patients.FirstName
+                     Patients.PatientID AS PatientID
+                    ,Patients.FirstName
                     ,Patients.MInit
                     ,Patients.LastName
                     ,Patients.DOB      
                     ,Visits.VisitID
                     ,Visits.VisitDate
-                    ,Visits.PatientID
+                    ,Visits.PatientID AS VPatientID
                     ,Visits.Diagnosis
                     ,Visits.Systolic
                     ,Visits.Diastolic
@@ -323,86 +324,96 @@ namespace MedAssist.DAL
                 reader = selectCommand.ExecuteReader();
                 while (reader.Read())
                 {
-
                     Patient patient = new Patient();
-                    patient.FirstName = reader["FirstName"].ToString();
-
-                    if (patient.MInit != null)
+                    if (reader["VisitID"] == DBNull.Value)
                     {
-                        patient.MInit = reader["MInit"].ToString();
+                        int visitID = (reader["VisitID"] as int?) ?? 0;
+                    }
+                    else
+                    {
+                        patient.VisitID = (int?)reader["VisitID"];
+                    }
+
+                    if (reader["VisitDate"] == DBNull.Value)
+                    {
+                        DateTime? visitDate = (reader["VisitDate"] as DateTime?) ?? null;
+                    }
+                    else
+                    {
+                        patient.VisitDate = (DateTime?)reader["VisitDate"];
+                    }
+
+                    patient.PatientID = (int)reader["PatientID"];
+                    patient.FirstName = reader["FirstName"].ToString();
+                    if (reader["MINit"].ToString() != null)
+                    {
+                        patient.MInit = reader["MINit"].ToString();
                     }
                     else
                     {
                         patient.MInit = null;
                     }
-                    
-                    
 
-                    patient.LastName = reader["LastName"].ToString();
+                    patient.LastName = (string)reader["LastName"];
                     patient.DOB = (DateTime)reader["DOB"];
-                    if (patient.VisitDate != null)
+
+                    if (reader["Systolic"] == DBNull.Value)
                     {
-                        patient.VisitDate = (DateTime?)reader["VisitDate"];
+                        int systolic = (reader["Systolic"] as int?) ?? 0;
                     }
                     else
                     {
-                        patient.VisitDate = null;
+                        patient.Systolic = (int)reader["Systolic"];
                     }
 
-                   
-                     
-                    
-                    
-                    if (patient.Systolic != null)
+                    if (reader["Diastolic"] == DBNull.Value)
                     {
-                        patient.Systolic = (int?)reader["Systolic"];
+                        int diastolic = (reader["Diastolic"] as int?) ?? 0;
                     }
                     else
-                    {
-                        patient.Systolic = null;
-                    }
-                    if (patient.Diastolic != null)
                     {
                         patient.Diastolic = (int)reader["Diastolic"];
                     }
+
+                    if (reader["Temperature"] == DBNull.Value)
+                    {
+                        decimal temperature = (reader["Temperature"] as decimal?) ?? 0;
+                    }
                     else
                     {
-                        patient.Diastolic = null;
+                        patient.Temperature = (decimal?)reader["Temperature"];
                     }
 
-                    if (patient.Temperature != null)
+
+                    if (reader["RespirationRate"] == DBNull.Value)
                     {
-                        patient.Temperature = (decimal)reader["Temperature"];
+                        int respirationRate = (reader["RespirationRate"] as int?) ?? 0;
                     }
-
-                    if (patient.RespirationRate != null)
+                    else
                     {
                         patient.RespirationRate = (int)reader["RespirationRate"];
                     }
-                    else
-                    {
-                        patient.RespirationRate = null;
-                    }
 
-                    if (patient.HeartRate != null)
+                    if (reader["HeartRate"] == DBNull.Value)
+                    {
+                        int heartRate = (reader["HeartRate"] as int?) ?? 0;
+                    }
+                    else
                     {
                         patient.HeartRate = (int)reader["HeartRate"];
                     }
-                    else
-                    {
-                        patient.HeartRate = null;
-                    }
 
-                    if (patient.Symptoms != null)
+
+                    if (reader["Symptoms"].ToString() != null)
                     {
-                       patient.Symptoms = reader["Symptoms"].ToString(); 
+                        patient.Symptoms = reader["Symptoms"].ToString();
                     }
                     else
                     {
                         patient.Symptoms = null;
                     }
 
-                    if (patient.Result != null)
+                    if (reader["Result"].ToString() != null)
                     {
                         patient.Result = reader["Result"].ToString();
                     }
@@ -410,16 +421,17 @@ namespace MedAssist.DAL
                     {
                         patient.Result = null;
                     }
-                    if (patient.TestID != null)
+
+                    if (reader["TestID"] == DBNull.Value)
                     {
-                        patient.TestID = (int)reader["TestID"];
+                        int testID = (reader["TestID"] as int?) ?? 0;
                     }
                     else
                     {
-                        patient.TestID = null;
+                        patient.TestID = (int)reader["TestID"];
                     }
 
-                    if (patient.TestName != null)
+                    if (reader["TestName"].ToString() != null)
                     {
                         patient.TestName = reader["TestName"].ToString();
                     }
@@ -428,7 +440,7 @@ namespace MedAssist.DAL
                         patient.TestName = null;
                     }
 
-                    if (patient.Diagnosis != null)
+                    if (reader["Diagnosis"].ToString() != null)
                     {
                         patient.Diagnosis = reader["Diagnosis"].ToString();
                     }
@@ -436,17 +448,6 @@ namespace MedAssist.DAL
                     {
                         patient.Diagnosis = null;
                     }
-
-                    if (patient.VisitID != null)
-                    {
-                        patient.VisitID = (int)reader["VisitID"];
-                    }
-                    else
-                    {
-                        patient.VisitID = null;
-                    }
-                    
-
 
                     patientList.Add(patient);
 
