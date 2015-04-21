@@ -59,6 +59,7 @@ namespace MedAssist.View
             cmbDoctor.Tag = "Doctor";
             cmbPatient.Tag = "Patient";
             txtNurse.Text = EmployeeController.GetEmployeeByID(UserSecurityController.NurseLoggedIn.NurseID).FullName;
+            cmbDoctor.Select(); 
         }
 
         /// <summary>
@@ -362,6 +363,19 @@ namespace MedAssist.View
             tests = new BindingList<Test>();
             dgvTests.DataSource = null;
             dgvTests.Refresh();
+        }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.testsTableAdapter.FillBy(this.testDataSet.Tests);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }
