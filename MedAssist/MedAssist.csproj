@@ -84,6 +84,7 @@
     <Compile Include="Model\OrderDetails.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Test.cs" />
+    <Compile Include="Model\UserPrincipal.cs" />
     <Compile Include="Model\UserSecurity.cs" />
     <Compile Include="Model\Visit.cs" />
     <Compile Include="PatientsAndAllVisitInfo.Designer.cs">
@@ -332,8 +333,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Content Include="DB\cs6232-g5Revised.sql" />
+    <Content Include="DB\cs6232-g5FinalRevised.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

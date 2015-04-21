@@ -90,7 +90,7 @@ namespace MedAssist.View
             cboPatient.SelectedText = PatientController.GetPatientWithID(visit.PatientID).FullName;
             cboPatient.SelectedValue = 
             txtSystolic.Text = visit.Systolic.ToString();
-            txtDiastolic.Text = visit.Diagnosis.ToString();
+            txtDiastolic.Text = visit.Diastolic.ToString();
             txtHeartRate.Text = visit.HeartRate.ToString();
             txtTemp.Text = visit.Temperature.ToString();
             txtRespRate.Text = visit.RespirationRate.ToString();
@@ -256,6 +256,11 @@ namespace MedAssist.View
             }
         }
 
+        /// <summary>
+        /// Orders test
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             try

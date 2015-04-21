@@ -394,7 +394,7 @@
             this.txtBoxFnlDiagnosis.Location = new System.Drawing.Point(386, 129);
             this.txtBoxFnlDiagnosis.Multiline = true;
             this.txtBoxFnlDiagnosis.Name = "txtBoxFnlDiagnosis";
-            this.txtBoxFnlDiagnosis.Size = new System.Drawing.Size(272, 144);
+            this.txtBoxFnlDiagnosis.Size = new System.Drawing.Size(283, 144);
             this.txtBoxFnlDiagnosis.TabIndex = 92;
             // 
             // btnViewUpdateTest

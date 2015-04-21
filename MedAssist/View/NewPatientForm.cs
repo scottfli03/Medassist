@@ -35,6 +35,11 @@ namespace MedAssist
 
         }
 
+        /// <summary>
+        /// cancels form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Are you sure you would like to exit the form?", "Form Closing", MessageBoxButtons.YesNo);
@@ -49,6 +54,11 @@ namespace MedAssist
             
         }
 
+        /// <summary>
+        /// submits new patient info
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (IsValidData())
@@ -72,7 +82,10 @@ namespace MedAssist
             }
         }
 
-
+        /// <summary>
+        /// validates data
+        /// </summary>
+        /// <returns></returns>
         private bool IsValidData()
         {
             if (Validator.IsPresent(txtFirstName) &&
@@ -93,7 +106,10 @@ namespace MedAssist
             }
             return false;
         }
-
+        /// <summary>
+        /// gets patient data from form
+        /// </summary>
+        /// <param name="patient"></param>
         private void PutPatientData(Patient patient)
         {
             try

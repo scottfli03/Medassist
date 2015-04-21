@@ -46,9 +46,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtPatientID = new System.Windows.Forms.TextBox();
-            this.btnGetPatient = new System.Windows.Forms.Button();
             this.txtSSN = new System.Windows.Forms.TextBox();
             this.txtGender = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -65,6 +62,19 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPatientID = new System.Windows.Forms.TextBox();
+            this.btnGetPatient = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -222,33 +232,6 @@
             this.label3.TabIndex = 31;
             this.label3.Text = "Last Name";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
-            this.label2.TabIndex = 54;
-            this.label2.Text = "Patient ID";
-            // 
-            // txtPatientID
-            // 
-            this.txtPatientID.Location = new System.Drawing.Point(73, 30);
-            this.txtPatientID.Name = "txtPatientID";
-            this.txtPatientID.Size = new System.Drawing.Size(100, 20);
-            this.txtPatientID.TabIndex = 1;
-            this.txtPatientID.Tag = "Patient ID";
-            // 
-            // btnGetPatient
-            // 
-            this.btnGetPatient.Location = new System.Drawing.Point(196, 27);
-            this.btnGetPatient.Name = "btnGetPatient";
-            this.btnGetPatient.Size = new System.Drawing.Size(97, 23);
-            this.btnGetPatient.TabIndex = 56;
-            this.btnGetPatient.Text = "Get Patient";
-            this.btnGetPatient.UseVisualStyleBackColor = true;
-            this.btnGetPatient.Click += new System.EventHandler(this.btnGetPatient_Click);
-            // 
             // txtSSN
             // 
             this.txtSSN.Location = new System.Drawing.Point(313, 237);
@@ -306,57 +289,56 @@
             this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboState.FormattingEnabled = true;
             this.cboState.Items.AddRange(new object[] {
-            "",
-            "Alabama",
-            "Alaska",
-            "Arizona",
-            "Arkansas",
-            "California",
-            "Colorado",
-            "Connecticut",
-            "Delaware",
-            "Florida",
-            "Georgia",
-            "Hawaii",
-            "Idaho",
-            "Illinois",
-            "Indiana",
-            "Iowa",
-            "Kansas",
-            "Kentucky",
-            "Louisiana",
-            "Maine",
-            "Maryland",
-            "Massachusetts",
-            "Michigan",
-            "Minnesota",
-            "Mississippi",
-            "Missouri",
-            "Montana",
-            "Nebraska",
-            "Nevada",
-            "New Hampshire",
-            "New Jersey",
-            "New Mexico",
-            "New York",
-            "North Carolina",
-            "North Dakota",
-            "Ohio",
-            "Oklahoma",
-            "Oregon",
-            "Pennsylvania",
-            "Rhode Island",
-            "South Carolina",
-            "South Dakota",
-            "Tennessee",
-            "Texas",
-            "Utah",
-            "Vermont",
-            "Virginia",
-            "Washington",
-            "West Virginia",
-            "Wisconsin",
-            "Wyoming"});
+            "AL",
+            "AK",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "FL",
+            "GA",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"});
             this.cboState.Location = new System.Drawing.Point(313, 296);
             this.cboState.Name = "cboState";
             this.cboState.Size = new System.Drawing.Size(102, 21);
@@ -403,7 +385,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 106);
+            this.label13.Location = new System.Drawing.Point(3, 36);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(57, 13);
             this.label13.TabIndex = 69;
@@ -445,6 +427,113 @@
             this.label17.TabIndex = 73;
             this.label17.Text = "If Patient ID is not known";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Location = new System.Drawing.Point(12, 81);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(403, 109);
+            this.groupBox1.TabIndex = 74;
+            this.groupBox1.TabStop = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(351, 25);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(11, 13);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "*";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(167, 25);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(11, 13);
+            this.label20.TabIndex = 2;
+            this.label20.Text = "*";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(167, 51);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(11, 13);
+            this.label21.TabIndex = 3;
+            this.label21.Text = "*";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(9, 93);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(57, 13);
+            this.label23.TabIndex = 78;
+            this.label23.Text = "* Required";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Patient ID";
+            // 
+            // txtPatientID
+            // 
+            this.txtPatientID.Location = new System.Drawing.Point(72, 17);
+            this.txtPatientID.Name = "txtPatientID";
+            this.txtPatientID.Size = new System.Drawing.Size(100, 20);
+            this.txtPatientID.TabIndex = 1;
+            this.txtPatientID.Tag = "Patient ID";
+            // 
+            // btnGetPatient
+            // 
+            this.btnGetPatient.Location = new System.Drawing.Point(195, 14);
+            this.btnGetPatient.Name = "btnGetPatient";
+            this.btnGetPatient.Size = new System.Drawing.Size(97, 23);
+            this.btnGetPatient.TabIndex = 56;
+            this.btnGetPatient.Text = "Get Patient";
+            this.btnGetPatient.UseVisualStyleBackColor = true;
+            this.btnGetPatient.Click += new System.EventHandler(this.btnGetPatient_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(175, 16);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(11, 13);
+            this.label18.TabIndex = 76;
+            this.label18.Text = "*";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(9, 43);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(57, 13);
+            this.label22.TabIndex = 77;
+            this.label22.Text = "* Required";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.btnGetPatient);
+            this.groupBox2.Controls.Add(this.txtPatientID);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Location = new System.Drawing.Point(12, 5);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(403, 59);
+            this.groupBox2.TabIndex = 75;
+            this.groupBox2.TabStop = false;
+            // 
             // UpdatePatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,7 +543,6 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.dateTimePickerSearchDOB);
             this.Controls.Add(this.txtSearchLastName);
             this.Controls.Add(this.txtSearchFirstName);
@@ -466,9 +554,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.btnGetPatient);
-            this.Controls.Add(this.txtPatientID);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtZip);
             this.Controls.Add(this.txtCity);
@@ -487,10 +572,16 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.MinimizeBox = false;
             this.Name = "UpdatePatientForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Patient";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -516,9 +607,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtPatientID;
-        private System.Windows.Forms.Button btnGetPatient;
         private System.Windows.Forms.TextBox txtSSN;
         private System.Windows.Forms.TextBox txtGender;
         private System.Windows.Forms.Label label7;
@@ -535,5 +623,16 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtPatientID;
+        private System.Windows.Forms.Button btnGetPatient;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

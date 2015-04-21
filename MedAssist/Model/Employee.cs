@@ -8,6 +8,14 @@ namespace MedAssist.Model
 {
     class Employee
     {
+
+        public enum EmployeeType
+        {
+            Doctor = 0,
+            Nurse = 1,
+            Admin = 2
+        }
+
         private int employeeID;
         private string ssn;
         private string fName;
@@ -22,6 +30,7 @@ namespace MedAssist.Model
         private string state;
         private string zip;
         private bool inactive;
+        public EmployeeType Type { get; set; }
 
         public int EmployeeID
         {
@@ -198,5 +207,15 @@ namespace MedAssist.Model
                 return LastName + ", " + FirstName;
             }
         }
+
+        public string UserName
+        {
+            get
+            {
+                return FirstName + LastName;
+            }
+
+        }
+
     }
 }
