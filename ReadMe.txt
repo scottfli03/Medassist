@@ -3,6 +3,5 @@ Sign In:
 		    JohnSmith sesame
 	Admin - DavidAbreham sesame
 
-	Database was altered since Iteration 2.  It's contained in the DB folder. 
+	Database script is contained in the DB folder and must be run before using the application. 
 	A Database diagram is located in the Medassist folder which contains this file also.
-	Thanks for a good semester!
